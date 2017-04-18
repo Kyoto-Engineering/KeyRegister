@@ -39,7 +39,7 @@
             // saveButton
             // 
             this.saveButton.BackColor = System.Drawing.Color.Plum;
-            this.saveButton.Location = new System.Drawing.Point(314, 328);
+            this.saveButton.Location = new System.Drawing.Point(348, 338);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(84, 41);
             this.saveButton.TabIndex = 0;
