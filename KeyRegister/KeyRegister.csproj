@@ -82,6 +82,24 @@
     <Compile Include="UI\LocationEntry.Designer.cs">
       <DependentUpon>LocationEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\LocationInchargeEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LocationInchargeEntry.Designer.cs">
+      <DependentUpon>LocationInchargeEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LockEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LockEntry.Designer.cs">
+      <DependentUpon>LockEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainUI.Designer.cs">
+      <DependentUpon>MainUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\PropertyEntry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +138,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LocationEntry.resx">
       <DependentUpon>LocationEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LocationInchargeEntry.resx">
+      <DependentUpon>LocationInchargeEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LockEntry.resx">
+      <DependentUpon>LockEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainUI.resx">
+      <DependentUpon>MainUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\PropertyEntry.resx">
       <DependentUpon>PropertyEntry.cs</DependentUpon>
