@@ -58,6 +58,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\KeyAllocationEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\KeyAllocationEntry.Designer.cs">
+      <DependentUpon>KeyAllocationEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\KeyEntry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\KeyAllocationEntry.resx">
+      <DependentUpon>KeyAllocationEntry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\KeyEntry.resx">
       <DependentUpon>KeyEntry.cs</DependentUpon>
     </EmbeddedResource>
