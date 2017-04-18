@@ -84,11 +84,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 162);
+            this.label4.Location = new System.Drawing.Point(12, 161);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(159, 20);
+            this.label4.Size = new System.Drawing.Size(165, 20);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Location Name   :";
+            this.label4.Text = "Location Name    :";
             // 
             // propertyNameText
             // 
