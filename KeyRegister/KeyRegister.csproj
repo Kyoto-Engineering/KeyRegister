@@ -44,6 +44,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoginUI\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUI\registrationByAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\registrationByAdmin.Designer.cs">
+      <DependentUpon>registrationByAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUI\ResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\ResetPassword.Designer.cs">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUI\UserManagementUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\UserManagementUI.Designer.cs">
+      <DependentUpon>UserManagementUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\COO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +136,18 @@
     <Compile Include="UI\TerritoryEntry.Designer.cs">
       <DependentUpon>TerritoryEntry.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="LoginUI\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\registrationByAdmin.resx">
+      <DependentUpon>registrationByAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\ResetPassword.resx">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\UserManagementUI.resx">
+      <DependentUpon>UserManagementUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\COO.resx">
       <DependentUpon>COO.cs</DependentUpon>
     </EmbeddedResource>
