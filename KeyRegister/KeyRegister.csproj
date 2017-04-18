@@ -70,6 +70,12 @@
     <Compile Include="UI\LocationEntry.Designer.cs">
       <DependentUpon>LocationEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\PropertyEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PropertyEntry.Designer.cs">
+      <DependentUpon>PropertyEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\TerritoryEntry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LocationEntry.resx">
       <DependentUpon>LocationEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PropertyEntry.resx">
+      <DependentUpon>PropertyEntry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TerritoryEntry.resx">
       <DependentUpon>TerritoryEntry.cs</DependentUpon>
