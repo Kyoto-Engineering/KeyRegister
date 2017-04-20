@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.createUserButton = new System.Windows.Forms.Button();
             this.resetPasswordButton = new System.Windows.Forms.Button();
+            this.createUserButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,15 +45,15 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // label1
+            // resetPasswordButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(233, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(237, 26);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "User Management UI";
+            this.resetPasswordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetPasswordButton.Location = new System.Drawing.Point(15, 120);
+            this.resetPasswordButton.Name = "resetPasswordButton";
+            this.resetPasswordButton.Size = new System.Drawing.Size(137, 67);
+            this.resetPasswordButton.TabIndex = 1;
+            this.resetPasswordButton.Text = "Reset Password";
+            this.resetPasswordButton.UseVisualStyleBackColor = true;
             // 
             // createUserButton
             // 
@@ -65,22 +65,22 @@
             this.createUserButton.Text = "Create User";
             this.createUserButton.UseVisualStyleBackColor = true;
             // 
-            // resetPasswordButton
+            // label1
             // 
-            this.resetPasswordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetPasswordButton.Location = new System.Drawing.Point(15, 120);
-            this.resetPasswordButton.Name = "resetPasswordButton";
-            this.resetPasswordButton.Size = new System.Drawing.Size(137, 67);
-            this.resetPasswordButton.TabIndex = 1;
-            this.resetPasswordButton.Text = "Reset Password";
-            this.resetPasswordButton.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(233, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(237, 26);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "User Management UI";
             // 
             // UserManagementUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(607, 417);
+            this.ClientSize = new System.Drawing.Size(605, 428);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "UserManagementUI";
