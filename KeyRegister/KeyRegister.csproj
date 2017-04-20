@@ -44,6 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\Company.cs" />
+    <Compile Include="DAO\COO.cs" />
+    <Compile Include="DAO\Countries.cs" />
+    <Compile Include="DAO\Designations.cs" />
+    <Compile Include="DAO\ForeignAddress.cs" />
+    <Compile Include="DAO\PerManantAddress.cs" />
+    <Compile Include="DAO\PresentAddress.cs" />
+    <Compile Include="DAO\User.cs" />
+    <Compile Include="DBGateway\ConnectionGateway.cs" />
+    <Compile Include="DBGateway\ConnectionString.cs" />
+    <Compile Include="Gateway\UserGateway.cs" />
     <Compile Include="LoginUI\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +79,7 @@
     <Compile Include="LoginUI\UserManagementUI.Designer.cs">
       <DependentUpon>UserManagementUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manager\UserManager.cs" />
     <Compile Include="UI\COO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +215,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -26,5 +26,10 @@ namespace KeyRegister.LoginUI
         {
 
         }
+
+        private void createUserButton_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
