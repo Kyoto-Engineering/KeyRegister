@@ -67,9 +67,9 @@
             // 
             this.createButton.BackColor = System.Drawing.Color.Plum;
             this.createButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.createButton.Location = new System.Drawing.Point(347, 300);
+            this.createButton.Location = new System.Drawing.Point(347, 292);
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(97, 40);
+            this.createButton.Size = new System.Drawing.Size(97, 48);
             this.createButton.TabIndex = 3;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = false;
