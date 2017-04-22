@@ -77,13 +77,13 @@ namespace KeyRegister.DAO
             set { perDistrict = value; }
         }
 
-        public string PreThana
+        public string PerThana
         {
             get { return perThana; }
             set { perThana = value; }
         }
 
-        public string PrePostCode
+        public string PerPostCode
         {
             get { return perPostcode; }
             set { perPostcode = value; }

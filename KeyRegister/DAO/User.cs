@@ -8,6 +8,7 @@ namespace KeyRegister.DAO
 {
     public class  User
     {
+        private int employeeId;
         private int userId;
         private string userName;
         private string fullName;
@@ -19,9 +20,11 @@ namespace KeyRegister.DAO
         private int emailBankId;
         private int countryId;
         private int designationId;
+        private int departmentId;
         private string password;
         private DateTime dateOfBirth;
-        public string nationalId;
+        private string nationalId;
+        private int nationalityId;
         public string birthCertificateNumber;
         public string passportNumber;
 
@@ -31,6 +34,11 @@ namespace KeyRegister.DAO
         public DateTime registrationDate;
         public DateTime exitDate;
 
+        public int EmployeeId
+        {
+            get { return employeeId; }
+            set { employeeId = value; }
+        }
         public int UserId
         {
             set { userId = value; }
@@ -76,6 +84,12 @@ namespace KeyRegister.DAO
             set { countryId = value; }
             get { return countryId; }
         }
+
+        public int DepartmentId
+        {
+            set { departmentId = value; }
+            get { return departmentId; }
+        }
         public int DesignationId
         {
             set { designationId = value; }
@@ -97,6 +111,12 @@ namespace KeyRegister.DAO
         {
             set { nationalId = value; }
             get { return nationalId; }
+        }
+
+        public int NationalityId
+        {
+            set { nationalityId = value; }
+            get { return nationalityId; }
         }
 
         public string BirthCertificateNo

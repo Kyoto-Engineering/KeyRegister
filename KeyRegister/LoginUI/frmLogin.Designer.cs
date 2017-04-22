@@ -31,8 +31,8 @@
             this.loginButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.userNameText = new System.Windows.Forms.TextBox();
-            this.passwordText = new System.Windows.Forms.TextBox();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // loginButton
@@ -46,6 +46,7 @@
             this.loginButton.TabIndex = 0;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = false;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // label1
             // 
@@ -69,21 +70,21 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Password   :";
             // 
-            // userNameText
+            // txtUserName
             // 
-            this.userNameText.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameText.Location = new System.Drawing.Point(275, 79);
-            this.userNameText.Name = "userNameText";
-            this.userNameText.Size = new System.Drawing.Size(375, 35);
-            this.userNameText.TabIndex = 3;
+            this.txtUserName.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUserName.Location = new System.Drawing.Point(275, 79);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(375, 35);
+            this.txtUserName.TabIndex = 3;
             // 
-            // passwordText
+            // txtPassword
             // 
-            this.passwordText.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordText.Location = new System.Drawing.Point(275, 149);
-            this.passwordText.Name = "passwordText";
-            this.passwordText.Size = new System.Drawing.Size(375, 35);
-            this.passwordText.TabIndex = 4;
+            this.txtPassword.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(275, 149);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(375, 35);
+            this.txtPassword.TabIndex = 4;
             // 
             // frmLogin
             // 
@@ -91,8 +92,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
             this.ClientSize = new System.Drawing.Size(775, 447);
-            this.Controls.Add(this.passwordText);
-            this.Controls.Add(this.userNameText);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.loginButton);
@@ -108,7 +109,7 @@
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox userNameText;
-        private System.Windows.Forms.TextBox passwordText;
+        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.TextBox txtPassword;
     }
 }
