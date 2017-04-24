@@ -16,5 +16,27 @@ namespace KeyRegister.LoginUI
         {
             InitializeComponent();
         }
+
+        private void createUserButton_Click(object sender, EventArgs e)
+        {
+                           this.Hide();
+            registrationByAdmin frm=new registrationByAdmin();
+                           frm.Show();
+
+        }
+
+        private void resetPasswordButton_Click(object sender, EventArgs e)
+        { 
+                      this.Hide();
+            ResetPassword frm = new ResetPassword();
+                      frm.Show();
+        }
+
+        private void buttonUserProfile_Click(object sender, EventArgs e)
+        {
+                        this.Hide();
+            UploadUserImage frm =new UploadUserImage();
+                         frm.Show();
+        } 
     }
 }

@@ -4,12 +4,21 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace KeyRegister.DBGateway
 {
   public  class ConnectionGateway
     {
         protected  SqlConnection connection;
-        string connectionString = @"server=tcp:KyotoServer,49172; Integrated Security = SSPI; database =KeyRegistar;Connect Timeout=30";
+        //string connectionString = @"server=tcp:KyotoServer,49172; Integrated Security = SSPI; database =KeyRegistar;Connect Timeout=30";
+
+        public ConnectionGateway()
+        {
+            string connectionString = ConfigurationManager.AppSettings["dbConnectionString"];
+            connection = new SqlConnection();
+            connection.ConnectionString = connectionString;
+        }
+      
     }
 }

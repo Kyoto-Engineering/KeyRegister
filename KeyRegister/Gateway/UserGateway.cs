@@ -78,7 +78,6 @@ namespace KeyRegister.Gateway
             cmd.Parameters.AddWithValue("@d4", aperAddress.PerBlock);
             cmd.Parameters.AddWithValue("@d5", aperAddress.PerArea);
             cmd.Parameters.AddWithValue("@d6", aperAddress.PerPostOfficeId);   
-
             affectedRows3 = cmd.ExecuteNonQuery();
             conn.Close();
             return affectedRows3;
@@ -97,6 +96,35 @@ namespace KeyRegister.Gateway
             conn.Close();
             return affectedRows4;
 
+        }
+
+        public List<User> GetUserName()
+        {
+            connection.Open();
+            //query
+            string query = "select FullName,UserId, UserName  from  Users";
+            SqlCommand command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandText = query;
+
+            //execution
+            List<User> users = new List<User>();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                
+                string fName = reader[0].ToString();
+                string userId = reader[1].ToString();
+                string userName = reader[2].ToString();
+
+                User user = new User();               
+                user.FullName = fName;
+                user.UserId = Convert.ToInt16(userId);
+                user.UserName = userName;
+                users.Add(user);
+            }
+            connection.Close();
+            return users;
         }
     }
 }

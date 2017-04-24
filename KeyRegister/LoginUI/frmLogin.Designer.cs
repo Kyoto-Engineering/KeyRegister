@@ -40,7 +40,7 @@
             this.loginButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.loginButton.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginButton.ForeColor = System.Drawing.Color.Fuchsia;
-            this.loginButton.Location = new System.Drawing.Point(477, 234);
+            this.loginButton.Location = new System.Drawing.Point(392, 265);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(154, 68);
             this.loginButton.TabIndex = 0;
@@ -83,6 +83,7 @@
             this.txtPassword.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(275, 149);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(375, 35);
             this.txtPassword.TabIndex = 4;
             // 
@@ -98,6 +99,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.loginButton);
             this.Name = "frmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginUI";
             this.ResumeLayout(false);
             this.PerformLayout();

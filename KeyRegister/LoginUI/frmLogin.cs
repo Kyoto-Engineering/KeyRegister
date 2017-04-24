@@ -55,7 +55,7 @@ namespace KeyRegister.LoginUI
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string qry = "SELECT UserName,Password FROM Registration WHERE UserName = '" + txtPassword.Text + "' AND Password = '" + readyPassword + "'";
+                string qry = "SELECT UserName,Password FROM Registration WHERE UserName = '" + txtUserName.Text + "' AND Password = '" + readyPassword + "'";
                 cmd = new SqlCommand(qry, con);
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read() == true)
@@ -87,13 +87,7 @@ namespace KeyRegister.LoginUI
                         frm.Show();
 
                     }
-                    //if (dbUserName == userNameTextBox.Text && dbPassword == readyPassword && userType.Trim() == "User")
-                    //{
-                    //    this.Hide();
-                    //    MainUI frm = new MainUI();
-                    //    frm.Show();
-
-                    //}
+                   
 
                 }
                 else
