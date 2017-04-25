@@ -22,7 +22,8 @@ namespace KeyRegister.LoginUI
         private SqlDataReader rdr;
         ConnectionString cs = new ConnectionString();
         public int emailBankId, nationalityId, countryId, departmentId, designationId, genderId, maritalStatusId;
-        public string nUserId;
+
+        public string nUserId, divisionIdPA, divisionIdPer, postofficeIdPA, postofficeIdPer, districtIdPA, districtIdPer, thanaIdPA, thanaIdPer;
 
         public registrationByAdmin()
         {
@@ -131,6 +132,27 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void SaveContactNo()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string cb = "insert into Chairman(DerectorId,JoiningDate) VALUES (@d1,@d2)";
+                cmd = new SqlCommand(cb, con);
+                cmd.Parameters.AddWithValue("@d1", listView1.Items[1].SubItems[1].Text);
+                cmd.Parameters.AddWithValue("@d2", listView1.Items[1].SubItems[2].Text);
+                cmd.ExecuteReader();
+                con.Close();
+                MessageBox.Show("Successfully Created", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                                              
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void createUserButton_Click(object sender, EventArgs e)
         {
@@ -276,6 +298,55 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public void FillPermanantDivisionCombo()
+        {
+            try
+            {
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(Divisions.Division) from Divisions  order by Divisions.Division_ID desc ";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    PerADivisionCombo.Items.Add(rdr[0]);
+                }
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void FillPresentDivisionCombo()
+        {
+            try
+            {
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(Divisions.Division) from Divisions  order by Divisions.Division_ID desc";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    PADivisionCombo.Items.Add(rdr[0]);
+                }
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void registrationByAdmin_Load(object sender, EventArgs e)
         {
 
@@ -285,6 +356,7 @@ namespace KeyRegister.LoginUI
             NationalityLoad();
             DesignationLoad();
             MaritalStatusLoad();
+            GetGender();
         }
 
         private void EmailAddress()
@@ -521,7 +593,7 @@ namespace KeyRegister.LoginUI
                         {
                             con = new SqlConnection(cs.DBConn);
                             con.Open();
-                            string query1 = "insert into Designations (Designation, UserId,DateAndTime) values (@d1)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                            string query1 = "insert into Designations(Designation) values (@d1)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
                             cmd = new SqlCommand(query1, con);
                             cmd.Parameters.AddWithValue("@d1", input);                           
                             cmd.ExecuteNonQuery();
@@ -715,6 +787,508 @@ namespace KeyRegister.LoginUI
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void registrationByAdmin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+                this.Hide();
+            UserManagementUI frm=new UserManagementUI();
+               frm.Show();
+        }
+
+        private void PADistrictCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctk = "SELECT  RTRIM(Divisions.Division_ID)  from Divisions WHERE Divisions.Division=@find";
+
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Division"));
+                cmd.Parameters["@find"].Value = PADistrictCombo.Text;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    divisionIdPA = (rdr.GetString(0));
+
+                }
+
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+
+                PADistrictCombo.Text = PADistrictCombo.Text.Trim();
+                PADistrictCombo.Items.Clear();
+                PADistrictCombo.Text = "";
+                PAThanaCombo.SelectedIndex = -1;
+                PAPostOfficeCombo.SelectedIndex = -1;
+                PAPostCodeText.Clear();
+                PADistrictCombo.Enabled = true;
+                PADistrictCombo.Focus();
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(Districts.District) from Districts  Where Districts.Division_ID = '" + divisionIdPA + "' order by Districts.Division_ID desc";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    PADistrictCombo.Items.Add(rdr[0]);
+                }
+                con.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PADivisionCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctk = "SELECT  RTRIM(Districts.D_ID)  from Districts WHERE Districts.District=@find";
+
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "District"));
+                cmd.Parameters["@find"].Value = PADistrictCombo.Text;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    districtIdPA = (rdr.GetString(0));
+
+                }
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                PADistrictCombo.Text = PADistrictCombo.Text.Trim();
+                PAThanaCombo.Items.Clear();
+                PAThanaCombo.Text = "";
+                PAPostOfficeCombo.SelectedIndex = -1;
+                PAPostCodeText.Clear();
+                PAThanaCombo.Enabled = true;
+                PAThanaCombo.Focus();
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(Thanas.Thana) from Thanas  Where Thanas.D_ID = '" + districtIdPA + "' order by Thanas.D_ID desc";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    PAThanaCombo.Items.Add(rdr[0]);
+                }
+                con.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PAThanaCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctk = "SELECT  RTRIM(Thanas.T_ID)  from Thanas WHERE Thanas.Thana=@find and Thanas.D_ID=@d2 ";
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Thana"));
+                cmd.Parameters.Add(new SqlParameter("@d2", System.Data.SqlDbType.NVarChar, 50, "D_ID"));
+                cmd.Parameters["@find"].Value = PAThanaCombo.Text;
+                cmd.Parameters["@d2"].Value = districtIdPA;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    thanaIdPA = (rdr.GetString(0));
+
+                }
+
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+
+                PAThanaCombo.Text = PAThanaCombo.Text.Trim();               
+                PAPostOfficeCombo.SelectedIndex = -1;
+                PAPostOfficeCombo.Items.Clear();
+                PAPostCodeText.Clear();
+                PAPostOfficeCombo.Enabled = true;
+                PAPostOfficeCombo.Focus();
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(PostOffice.PostOfficeName) from PostOffice  Where PostOffice.T_ID = '" + thanaIdPA+ "' order by PostOffice.T_ID desc";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    PAPostOfficeCombo.Items.Add(rdr[0]);
+                }
+                con.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PAPostOfficeCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctk =
+                    "SELECT  RTRIM(PostOffice.PostOfficeId),RTRIM(PostOffice.PostCode) from PostOffice WHERE PostOffice.PostOfficeName=@find";
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "PostOfficeName"));
+                cmd.Parameters["@find"].Value = PerAPostOfficeCombo.Text;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    postofficeIdPA = (rdr.GetString(0));
+                    PAPostCodeText.Text = (rdr.GetString(1));
+
+                }
+
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PerADistrictCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void PerADivisionCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void PerAThanaCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void PerAPostOfficeCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+        public void ResetPermanantAddress()
+        {
+            PerAFlatNoText.Clear();
+            PerAHouseNoText.Clear();
+            PerARoadNoText.Clear();
+            PerABlockText.Clear();
+            PerAareaText.Clear();
+            
+            PerApostCodeText.Clear();
+            PerAPostOfficeCombo.SelectedIndex = -1;
+            PerAThanaCombo.SelectedIndex = -1;
+            PerADistrictCombo.SelectedIndex = -1;
+            PerADivisionCombo.SelectedIndex = -1;
+
+
+
+        }
+        private void SameAsPACheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SameAsPACheckBox.Checked)
+            {
+                ResetPermanantAddress();
+                groupBox5.Enabled = false;
+
+            }
+            else
+            {
+                groupBox5.Enabled = true;
+            }
+        }
+
+        private void PerADivisionCombo_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctk = "SELECT  RTRIM(Divisions.Division_ID)  from Divisions WHERE Divisions.Division=@find";
+
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Division"));
+                cmd.Parameters["@find"].Value = PerADivisionCombo.Text;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    divisionIdPer = (rdr.GetString(0));
+
+                }
+
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+
+                PerADivisionCombo.Text = PerADivisionCombo.Text.Trim();
+
+                PerADistrictCombo.SelectedIndex = -1;
+                PerADistrictCombo.Items.Clear();
+                PerAThanaCombo.SelectedIndex = -1;
+                PerAPostOfficeCombo.SelectedIndex = -1;
+                PerApostCodeText.Clear();
+                PerADistrictCombo.Enabled = true;
+                PerADistrictCombo.Focus();
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(Districts.District) from Districts  Where Districts.Division_ID = '" + divisionIdPer + "' order by Districts.Division_ID desc";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    PerADistrictCombo.Items.Add(rdr[0]);
+                }
+                con.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PerAThanaCombo_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctk = "SELECT  RTRIM(Thanas.T_ID)  from Thanas WHERE Thanas.Thana=@find and  Thanas.D_ID=@d2";
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Thana"));
+                cmd.Parameters.Add(new SqlParameter("@d2", System.Data.SqlDbType.NVarChar, 50, "D_ID"));
+                cmd.Parameters["@find"].Value = PerAThanaCombo.Text;
+                cmd.Parameters["@d2"].Value = districtIdPer;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    thanaIdPer = (rdr.GetString(0));
+
+                }
+
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+                PerAThanaCombo.Text = PerAThanaCombo.Text.Trim();
+                PerAPostOfficeCombo.Items.Clear();
+                PerAPostOfficeCombo.SelectedIndex = -1;
+                PerApostCodeText.Clear();
+                PerAPostOfficeCombo.Enabled = true;
+                PerAPostOfficeCombo.Focus();
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(PostOffice.PostOfficeName) from PostOffice  Where PostOffice.T_ID = '" + thanaIdPer + "' order by PostOffice.T_ID desc";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    PerAPostOfficeCombo.Items.Add(rdr[0]);
+                }
+                con.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PerADistrictCombo_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctk = "SELECT  RTRIM(Districts.D_ID)  from Districts WHERE Districts.District=@find";
+
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "District"));
+                cmd.Parameters["@find"].Value = PerADistrictCombo.Text;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    districtIdPer = (rdr.GetString(0));
+
+                }
+
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+
+                PerADistrictCombo.Text = PerADistrictCombo.Text.Trim();
+
+                PerAThanaCombo.SelectedIndex = -1;
+                PerAThanaCombo.Items.Clear();
+                PerAPostOfficeCombo.SelectedIndex = -1;
+                PerApostCodeText.Clear();
+                PerAThanaCombo.Enabled = true;
+                PerAThanaCombo.Focus();
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(Thanas.Thana) from Thanas  Where Thanas.D_ID = '" + districtIdPer + "' order by Thanas.D_ID desc";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    PerAThanaCombo.Items.Add(rdr[0]);
+                }
+                con.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PerAPostOfficeCombo_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctk = "SELECT  RTRIM(PostOffice.PostOfficeId),RTRIM(PostOffice.PostCode) from PostOffice WHERE PostOffice.PostOfficeName=@find";
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "PostOfficeName"));
+                cmd.Parameters["@find"].Value = PerAPostOfficeCombo.Text;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    postofficeIdPer = (rdr.GetString(0));
+                    PerApostCodeText.Text = (rdr.GetString(1));
+
+                }
+
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            if (listView1.Items.Count == 0)
+            {
+                ListViewItem list = new ListViewItem();
+                list.SubItems.Add(cmbCountryCode.ToString());
+                list.SubItems.Add(txtContactNo.Text);
+               
+                listView1.Items.Add(list);                
+                txtContactNo.Clear();
+                cmbCountryCode.SelectedIndex = -1;
+                return;
+            }
+            
+            ListViewItem list1 = new ListViewItem();
+            list1.SubItems.Add(cmbCountryCode.ToString());
+            list1.SubItems.Add(txtContactNo.Text);
+
+            listView1.Items.Add(list1);
+            txtContactNo.Clear();
+            cmbCountryCode.SelectedIndex = -1;
+            return;            
         }
     }
 }

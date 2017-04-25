@@ -18,7 +18,7 @@ namespace KeyRegister
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CompanyEntry());
+            Application.Run(new frmLogin());
         }
     }
 }

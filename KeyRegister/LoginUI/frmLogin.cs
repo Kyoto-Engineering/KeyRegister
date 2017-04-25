@@ -18,15 +18,134 @@ namespace KeyRegister.LoginUI
     {
         private SqlConnection con;
         private SqlCommand cmd;
-        private SqlDataReader rdr;
+        private SqlDataReader rdr,rdr1;
         ConnectionString cs=new ConnectionString();
-        public string readyPassword, dbUserName, dbPassword, userType;
+        public string readyPassword, dbUserName, dbPassword;
         public static int uId;
+        public static string userType;
+        public string userId;
+        public string userName, password;
         public frmLogin()
         {
             InitializeComponent();
         }
+        private void MaintainTTMAuthorization()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string qry = "SELECT TerritoryId FROM Territory WHERE (UserId = @UI) AND (DefunctDate IS NULL)";
+                cmd = new SqlCommand(qry, con);
+                cmd.Parameters.AddWithValue("@UI", uId);
+                rdr = cmd.ExecuteReader();
+                con.Close();
+                if (rdr.Read())
+                {
+                    if (rdr.HasRows)
+                    {
+                        userType = "TMM";
+                        this.Hide();
+                        MainUI frm = new MainUI();
+                        frm.Show();
+                    }
 
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void MaintainCOOAuthorization()
+        {
+            try
+            {
+                con=new SqlConnection(cs.DBConn);
+                con.Open();
+                string qry = "SELECT COOId FROM  COO WHERE  (UserId = @UI) AND (ResignationDate IS NULL)";
+                cmd=new SqlCommand(qry,con);
+                cmd.Parameters.AddWithValue("@UI", userId);
+                rdr = cmd.ExecuteReader();               
+                if (rdr.Read())
+                {
+                    if (rdr.HasRows)
+                    {
+                        userType = "COO";
+                        this.Hide();
+                        MainUI frm=new MainUI();
+                        frm.Show();
+                    }
+                                
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MaintainLocationInChargeAuthorization()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string qry = "SELECT COOId FROM  COO WHERE  (UserId = @UI) AND (ResignationDate IS NULL)";
+                cmd = new SqlCommand(qry, con);
+                cmd.Parameters.AddWithValue("@UI", uId);
+                rdr = cmd.ExecuteReader();
+                con.Close();
+                if (rdr.Read())
+                {
+                    if (rdr.HasRows)
+                    {
+                        userType = "COO";
+                        this.Hide();
+                        MainUI frm = new MainUI();
+                        frm.Show();
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MaintainLocalUserAuthorization()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string qry = "SELECT COOId FROM  COO WHERE  (UserId = @UI) AND (ResignationDate IS NULL)";
+                cmd = new SqlCommand(qry, con);
+                cmd.Parameters.AddWithValue("@UI", uId);
+                rdr = cmd.ExecuteReader();
+                con.Close();
+                if (rdr.Read())
+                {
+                    if (rdr.HasRows)
+                    {
+                        userType = "COO";
+                        this.Hide();
+                        MainUI frm = new MainUI();
+                        frm.Show();
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void loginButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtUserName.Text))
@@ -55,52 +174,45 @@ namespace KeyRegister.LoginUI
 
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string qry = "SELECT UserName,Password FROM Registration WHERE UserName = '" + txtUserName.Text + "' AND Password = '" + readyPassword + "'";
-                cmd = new SqlCommand(qry, con);
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read() == true)
+                string qry = "SELECT  RTRIM(Users.UserId),RTRIM(Users.UserName),RTRIM(Users.Password) FROM  Users  WHERE Users.UserName = '" + txtUserName.Text + "' AND  Users.Password = '" + readyPassword + "'";
+                cmd = new SqlCommand();
+                cmd.CommandText = qry;
+                cmd.Connection = con;
+                rdr1 = cmd.ExecuteReader();
+                if (rdr1.Read())
                 {
-                    dbUserName = (rdr.GetString(0));
-                    dbPassword = (rdr.GetString(1));
-
-
-                    con = new SqlConnection(cs.DBConn);
-                    con.Open();
-                    string ct = "select UserType,UserId from Registration where UserName='" + txtUserName.Text + "' and Password='" + readyPassword + "'";
-                    cmd = new SqlCommand(ct);
-                    cmd.Connection = con;
-                    rdr = cmd.ExecuteReader();
-                    if (rdr.Read())
-                    {
-                        userType = (rdr.GetString(0));
-                        uId = (rdr.GetInt32(1));
-                    }
-                    if ((rdr != null))
-                    {
-                        rdr.Close();
-                    }
-
-                    if (dbUserName == txtUserName.Text && dbPassword == readyPassword && userType.Trim() == "Admin")
-                    {
-                        this.Hide();
-                        MainUI frm = new MainUI();
-                        frm.Show();
+                        userId = (rdr1.GetString(0));
+                        dbUserName = (rdr1.GetString(1));
+                        dbPassword = (rdr1.GetString(2));
+                        uId = Convert.ToInt32(userId);
+                        int caseSwitch = 1;
+                        switch (caseSwitch)
+                        {
+                            case 1:
+                                MaintainCOOAuthorization();
+                                break;
+                            case 2:
+                               MaintainTTMAuthorization();
+                                break;
+                            case 3:
+                                MaintainLocationInChargeAuthorization();
+                                break;
+                            default:
+                                MaintainLocalUserAuthorization();
+                                break;
+                        }
+                       
 
                     }
-                   
-
-                }
-                else
-                {
-                    MessageBox.Show("Login is Failed...Try again !", "Login Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtUserName.Clear();
-                    txtPassword.Clear();
-                    txtUserName.Focus();
-                }
-
-
-
-            }
+                    else
+                    {
+                        MessageBox.Show("Login is Failed...Try again !", "Login Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtUserName.Clear();
+                        txtPassword.Clear();
+                        txtUserName.Focus();
+                    }                                                      
+                }                
+            
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

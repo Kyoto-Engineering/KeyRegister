@@ -13,6 +13,7 @@ namespace KeyRegister.UI
 {
     public partial class MainUI : Form
     {
+        public string userTypeM;
         public MainUI()
         {
             InitializeComponent();
@@ -98,6 +99,11 @@ namespace KeyRegister.UI
                         this.Hide();
             UserManagementUI frm = new UserManagementUI();
                        frm.Show();
+        }
+
+        private void MainUI_Load(object sender, EventArgs e)
+        {
+            userTypeM = frmLogin.userType;
         }
     }
 }

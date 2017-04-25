@@ -100,8 +100,7 @@ namespace KeyRegister.Gateway
 
         public List<User> GetUserName()
         {
-            connection.Open();
-            //query
+            connection.Open();           
             string query = "select FullName,UserId, UserName  from  Users";
             SqlCommand command = new SqlCommand();
             command.Connection = connection;
