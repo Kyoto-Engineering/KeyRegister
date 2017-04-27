@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using KeyRegister.DAO;
 using KeyRegister.DBGateway;
+using KeyRegister.Gateway;
 using KeyRegister.Manager;
 
 namespace KeyRegister.LoginUI
@@ -24,12 +25,43 @@ namespace KeyRegister.LoginUI
         public int emailBankId, nationalityId, countryId, departmentId, designationId, genderId, maritalStatusId;
 
         public string nUserId, divisionIdPA, divisionIdPer, postofficeIdPA, postofficeIdPer, districtIdPA, districtIdPer, thanaIdPA, thanaIdPer;
+        public int instantUserId;
 
         public registrationByAdmin()
         {
             InitializeComponent();
         }
 
+        private void GetMaxUserId()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctk = "SELECT  MAX(UserId) from Users ";
+                cmd = new SqlCommand(ctk,con);                              
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    instantUserId = (rdr.GetInt32(0));
+
+                }
+
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void SaveOverSeasAddress()
         {
             int fr = 0;
@@ -40,7 +72,8 @@ namespace KeyRegister.LoginUI
                 {
                     Street = txtStreetName.Text,
                     State = txtState.Text,
-                    PostalCode = txtPostalCode.Text
+                    PostalCode = txtPostalCode.Text,
+                    OUserId = instantUserId.ToString()
                 };
                 fr = amanager.SaveOverSeasAddress(ovAddress);
             }
@@ -63,7 +96,9 @@ namespace KeyRegister.LoginUI
                     PerRoadNo = PerARoadNoText.Text,
                     PerBlock = PerABlockText.Text,
                     PerArea = PerAareaText.Text,
-                    PerPostCode = PerApostCodeText.Text
+                    PerPostOfficeId = Convert.ToInt32(postofficeIdPer),
+                    PerUserId = instantUserId.ToString()
+                    
                 };
                 pr = amanager.SavePermanantAddress(aperAddress);
             }
@@ -87,7 +122,8 @@ namespace KeyRegister.LoginUI
                     PreRoadNo = PARoadNoText.Text,
                     PreBlock = PABlockText.Text,
                     PreArea = PAareaText.Text,
-                    PrePostCode = PAPostCodeText.Text
+                    PrePostOfficeId = Convert.ToInt32(postofficeIdPA),
+                    UserId=instantUserId.ToString()
                 };
                 pa = amanager.SavePresentAddress(apresentAddress);
             }
@@ -99,6 +135,7 @@ namespace KeyRegister.LoginUI
 
         private void SaveUserInformation()
         {
+            UserGateway aGateway = new UserGateway();
             int ig = 0;
             UserManager auManager = new UserManager();
             try
@@ -114,7 +151,7 @@ namespace KeyRegister.LoginUI
                     MotherName = txtMotherName.Text,
 
                     EmailBankId = emailBankId,
-                    NationalityId = nationalityId,
+                    NationalId = cmbNationality.Text,
                     CountryId = countryId,
                     PassportNo = txtPassportNo.Text,
                     BirthCertificateNo = txtBirthCertificatNo.Text,
@@ -125,7 +162,7 @@ namespace KeyRegister.LoginUI
                     Password = txtPassword.Text,
                 };
                 ig = auManager.SaveUserDetail(aUser);
-
+                GetMaxUserId();
             }
             catch (Exception ex)
             {
@@ -138,66 +175,176 @@ namespace KeyRegister.LoginUI
         {
             try
             {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string cb = "insert into Chairman(DerectorId,JoiningDate) VALUES (@d1,@d2)";
-                cmd = new SqlCommand(cb, con);
-                cmd.Parameters.AddWithValue("@d1", listView1.Items[1].SubItems[1].Text);
-                cmd.Parameters.AddWithValue("@d2", listView1.Items[1].SubItems[2].Text);
-                cmd.ExecuteReader();
-                con.Close();
-                MessageBox.Show("Successfully Created", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                                                              
+                for (int i = 0; i <= listView1.Items.Count-1; i++)
+                {
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string cb = "insert into ContactNumbers(CountryCode,ContactNo,UserId) VALUES (@d1,@d2,@d3)";
+                    cmd = new SqlCommand(cb, con);
+                    cmd.Parameters.AddWithValue("@d1", listView1.Items[i].SubItems[1].Text);
+                    cmd.Parameters.AddWithValue("@d2",listView1.Items[i].SubItems[1].Text);
+                    cmd.Parameters.AddWithValue("@d3",instantUserId);
+                    cmd.ExecuteReader();
+                    con.Close();
+                }                                                                                            
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void PermanantSameAsPreentAddress()
+        {
+            try
+            {
+                int sag = 0;
+                UserManager amanager = new UserManager();
+                try
+                {
+                    PerManantAddress aperAddress = new PerManantAddress
+                    {
+                       PerFlatNo  = PAFlatNoText.Text,
+                        PerHouseNo = PAHouseNoText.Text,
+                        PerRoadNo = PARoadNoText.Text,
+                        PerBlock = PABlockText.Text,
+                        PerArea = PAareaText.Text,
+                        PerPostOfficeId = Convert.ToInt32(postofficeIdPA),
+                        PerUserId = instantUserId.ToString()
+                    };
+                    sag = amanager.PerManantSameAsPresentAddress(aperAddress);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Reset()
+        {
+            
+        }
         private void createUserButton_Click(object sender, EventArgs e)
         {
             if (txtEmployeeId.Text == "")
             {
-                MessageBox.Show("Please enter employee Id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtEmployeeId.Focus();
+                MessageBox.Show("Please enter employee Id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);               
                 return;
             }
             if (txtUserName.Text == "")
             {
-                MessageBox.Show("Please enter User Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtUserName.Focus();
+                MessageBox.Show("Please enter User Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);               
                 return;
             }
             if (txtFullName.Text == "")
             {
-                MessageBox.Show("Please enter full  Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtFullName.Focus();
+                MessageBox.Show("Please enter full  Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                return;
+            }
+            if (txtNickName.Text == "")
+            {
+                MessageBox.Show("Please enter nick Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (txtFatherName.Text == "")
             {
-                MessageBox.Show("Please enter father Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtFatherName.Focus();
+                MessageBox.Show("Please enter father Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                
                 return;
             }
+           
             if (txtMotherName.Text == "")
             {
-                MessageBox.Show("Please enter mother Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMotherName.Focus();
+                MessageBox.Show("Please enter mother Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                
                 return;
             }
-            if (txtMotherName.Text == "")
+            if (listView1.Items.Count == 0)
             {
-                MessageBox.Show("Please enter mother Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMotherName.Focus();
+                MessageBox.Show("Please add Contact No to Chart,", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            }
+            if (string.IsNullOrWhiteSpace(PADivisionCombo.Text))
+            {
+                MessageBox.Show("Please select Present Address division", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return;
+            }
+            if (string.IsNullOrWhiteSpace(PADistrictCombo.Text))
+            {
+                MessageBox.Show("Please Select Present Address district", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(PAThanaCombo.Text))
+            {
+                MessageBox.Show("Please select Present Address Thana", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(PAPostOfficeCombo.Text))
+            {
+                MessageBox.Show("Please Select Present Address Post Name", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(PAPostCodeText.Text))
+            {
+                MessageBox.Show("Please select Present Address Post Code", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+            if ( SameAsPACheckBox.Checked == false)
+            {
+                if (string.IsNullOrWhiteSpace(PerADivisionCombo.Text))
+                {
+                    MessageBox.Show("Please select Permanant Address division", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(PerADistrictCombo.Text))
+                {
+                    MessageBox.Show("Please Select Permanant Address district", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(PerAThanaCombo.Text))
+                {
+                    MessageBox.Show("Please select Permanant Address Thana", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(PerAPostOfficeCombo.Text))
+                {
+                    MessageBox.Show("Please Select Permanant Address Post Name", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(PerApostCodeText.Text))
+                {
+                    MessageBox.Show("Please select Permanant Address Post Code", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return;
+                }
             }
             try
             {
-                SaveUserInformation();
-                SavePresentAddress();
-                SavePermanantAddress();
-
+                if (SameAsPACheckBox.Checked == true)
+                {
+                    SaveUserInformation();
+                    SavePresentAddress();
+                    PermanantSameAsPreentAddress();
+                    SaveContactNo();
+                }
+                else
+                {
+                    SaveUserInformation();
+                    SavePresentAddress();
+                    SavePermanantAddress();
+                    SaveContactNo();
+                }               
                 if (cmbNationality.Text != "Bangladeshi")
                 {
                     SaveOverSeasAddress();
@@ -277,6 +424,26 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void LoadCountryCode()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctt = "select CountryCode from Countries";
+                cmd = new SqlCommand(ctt);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    cmbCountryCode.Items.Add(rdr.GetValue(0).ToString());
+                }              
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void CountryLoad()
         {
             try
@@ -349,8 +516,11 @@ namespace KeyRegister.LoginUI
         }
         private void registrationByAdmin_Load(object sender, EventArgs e)
         {
-
+            groupBox4.Visible = false;
+            FillPresentDivisionCombo();
+            FillPermanantDivisionCombo();
             nUserId = frmLogin.uId.ToString();
+            LoadCountryCode();
             CountryLoad();
             EmailAddress();
             NationalityLoad();
@@ -802,65 +972,6 @@ namespace KeyRegister.LoginUI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ctk = "SELECT  RTRIM(Divisions.Division_ID)  from Divisions WHERE Divisions.Division=@find";
-
-                cmd = new SqlCommand(ctk);
-                cmd.Connection = con;
-                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Division"));
-                cmd.Parameters["@find"].Value = PADistrictCombo.Text;
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read())
-                {
-                    divisionIdPA = (rdr.GetString(0));
-
-                }
-
-                if ((rdr != null))
-                {
-                    rdr.Close();
-                }
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-
-
-                PADistrictCombo.Text = PADistrictCombo.Text.Trim();
-                PADistrictCombo.Items.Clear();
-                PADistrictCombo.Text = "";
-                PAThanaCombo.SelectedIndex = -1;
-                PAPostOfficeCombo.SelectedIndex = -1;
-                PAPostCodeText.Clear();
-                PADistrictCombo.Enabled = true;
-                PADistrictCombo.Focus();
-
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string ct = "select RTRIM(Districts.District) from Districts  Where Districts.Division_ID = '" + divisionIdPA + "' order by Districts.Division_ID desc";
-                cmd = new SqlCommand(ct);
-                cmd.Connection = con;
-                rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
-                {
-                    PADistrictCombo.Items.Add(rdr[0]);
-                }
-                con.Close();
-
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void PADivisionCombo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
                 string ctk = "SELECT  RTRIM(Districts.D_ID)  from Districts WHERE Districts.District=@find";
 
                 cmd = new SqlCommand(ctk);
@@ -909,6 +1020,63 @@ namespace KeyRegister.LoginUI
             }
         }
 
+        private void PADivisionCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctk = "SELECT  RTRIM(Divisions.Division_ID)  from Divisions WHERE Divisions.Division=@find";
+
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "Division"));
+                cmd.Parameters["@find"].Value = PADivisionCombo.Text;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    divisionIdPA = (rdr.GetString(0));
+
+                }
+
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                PADivisionCombo.Text = PADivisionCombo.Text.Trim();
+                PADistrictCombo.SelectedIndex = -1;
+                PADistrictCombo.Items.Clear();
+                PAThanaCombo.SelectedIndex = -1;
+                PAPostOfficeCombo.SelectedIndex = -1;
+                PAPostCodeText.Clear();
+                PADistrictCombo.Enabled = true;
+                PADistrictCombo.Focus();
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(Districts.District) from Districts  Where Districts.Division_ID = '" + divisionIdPA + "' order by Districts.Division_ID desc";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    PADistrictCombo.Items.Add(rdr[0]);
+                }
+                con.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }           
+        }
+
         private void PAThanaCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -928,7 +1096,6 @@ namespace KeyRegister.LoginUI
                     thanaIdPA = (rdr.GetString(0));
 
                 }
-
                 if ((rdr != null))
                 {
                     rdr.Close();
@@ -937,8 +1104,6 @@ namespace KeyRegister.LoginUI
                 {
                     con.Close();
                 }
-
-
                 PAThanaCombo.Text = PAThanaCombo.Text.Trim();               
                 PAPostOfficeCombo.SelectedIndex = -1;
                 PAPostOfficeCombo.Items.Clear();
@@ -973,12 +1138,11 @@ namespace KeyRegister.LoginUI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ctk =
-                    "SELECT  RTRIM(PostOffice.PostOfficeId),RTRIM(PostOffice.PostCode) from PostOffice WHERE PostOffice.PostOfficeName=@find";
+                string ctk ="SELECT  RTRIM(PostOffice.PostOfficeId),RTRIM(PostOffice.PostCode) from PostOffice WHERE PostOffice.PostOfficeName=@find";
                 cmd = new SqlCommand(ctk);
                 cmd.Connection = con;
                 cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "PostOfficeName"));
-                cmd.Parameters["@find"].Value = PerAPostOfficeCombo.Text;
+                cmd.Parameters["@find"].Value = PAPostOfficeCombo.Text;
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
@@ -995,8 +1159,6 @@ namespace KeyRegister.LoginUI
                 {
                     con.Close();
                 }
-
-
             }
 
             catch (Exception ex)
@@ -1246,9 +1408,7 @@ namespace KeyRegister.LoginUI
                 {
                     postofficeIdPer = (rdr.GetString(0));
                     PerApostCodeText.Text = (rdr.GetString(1));
-
                 }
-
                 if ((rdr != null))
                 {
                     rdr.Close();
@@ -1257,8 +1417,6 @@ namespace KeyRegister.LoginUI
                 {
                     con.Close();
                 }
-
-
             }
 
             catch (Exception ex)
@@ -1272,7 +1430,7 @@ namespace KeyRegister.LoginUI
             if (listView1.Items.Count == 0)
             {
                 ListViewItem list = new ListViewItem();
-                list.SubItems.Add(cmbCountryCode.ToString());
+                list.SubItems.Add(cmbCountryCode.Text);
                 list.SubItems.Add(txtContactNo.Text);
                
                 listView1.Items.Add(list);                
@@ -1282,13 +1440,31 @@ namespace KeyRegister.LoginUI
             }
             
             ListViewItem list1 = new ListViewItem();
-            list1.SubItems.Add(cmbCountryCode.ToString());
+            list1.SubItems.Add(cmbCountryCode.Text);
             list1.SubItems.Add(txtContactNo.Text);
 
             listView1.Items.Add(list1);
             txtContactNo.Clear();
             cmbCountryCode.SelectedIndex = -1;
             return;            
+        }
+
+        private void cmbCountry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCountry.Text =="Bangladesh")
+            {
+                groupBox4.Visible = false;
+            }
+            else
+            {
+                groupBox4.Visible = true;
+            }
+        }
+
+        private void txtContactNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
         }
     }
 }

@@ -16,8 +16,8 @@ namespace KeyRegister.DBGateway
         public ConnectionGateway()
         {
             string connectionString = ConfigurationManager.AppSettings["dbConnectionString"];
-            connection = new SqlConnection();
-            connection.ConnectionString = connectionString;
+            connection = new SqlConnection(connectionString);
+            
         }
       
     }

@@ -57,17 +57,38 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.PerAPostOfficeCombo = new System.Windows.Forms.ComboBox();
+            this.PerAThanaCombo = new System.Windows.Forms.ComboBox();
+            this.PerADivisionCombo = new System.Windows.Forms.ComboBox();
+            this.PerADistrictCombo = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.PerApostCodeText = new System.Windows.Forms.TextBox();
+            this.PerABlockText = new System.Windows.Forms.TextBox();
+            this.PerAareaText = new System.Windows.Forms.TextBox();
+            this.PerARoadNoText = new System.Windows.Forms.TextBox();
+            this.PerAHouseNoText = new System.Windows.Forms.TextBox();
+            this.PerAFlatNoText = new System.Windows.Forms.TextBox();
             this.SameAsPACheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.PAPostOfficeCombo = new System.Windows.Forms.ComboBox();
             this.PAThanaCombo = new System.Windows.Forms.ComboBox();
-            this.PADivisionCombo = new System.Windows.Forms.ComboBox();
             this.PADistrictCombo = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.PADivisionCombo = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -101,32 +122,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.createUserButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.PerAPostOfficeCombo = new System.Windows.Forms.ComboBox();
-            this.PerAThanaCombo = new System.Windows.Forms.ComboBox();
-            this.PerADivisionCombo = new System.Windows.Forms.ComboBox();
-            this.PerADistrictCombo = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.PerApostCodeText = new System.Windows.Forms.TextBox();
-            this.PerABlockText = new System.Windows.Forms.TextBox();
-            this.PerAareaText = new System.Windows.Forms.TextBox();
-            this.PerARoadNoText = new System.Windows.Forms.TextBox();
-            this.PerAHouseNoText = new System.Windows.Forms.TextBox();
-            this.PerAFlatNoText = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -235,7 +235,7 @@
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(116, 386);
+            this.label40.Location = new System.Drawing.Point(112, 386);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(71, 22);
             this.label40.TabIndex = 59;
@@ -245,7 +245,7 @@
             // 
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(77, 105);
+            this.label39.Location = new System.Drawing.Point(74, 105);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(117, 22);
             this.label39.TabIndex = 57;
@@ -287,9 +287,9 @@
             this.columnHeader2});
             this.listView1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(457, 503);
+            this.listView1.Location = new System.Drawing.Point(457, 465);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(364, 96);
+            this.listView1.Size = new System.Drawing.Size(364, 116);
             this.listView1.TabIndex = 54;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -312,7 +312,7 @@
             // 
             this.addButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.addButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addButton.Location = new System.Drawing.Point(835, 463);
+            this.addButton.Location = new System.Drawing.Point(835, 427);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(137, 45);
             this.addButton.TabIndex = 53;
@@ -322,9 +322,11 @@
             // 
             // cmbCountryCode
             // 
+            this.cmbCountryCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbCountryCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCountryCode.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCountryCode.FormattingEnabled = true;
-            this.cmbCountryCode.Location = new System.Drawing.Point(579, 467);
+            this.cmbCountryCode.Location = new System.Drawing.Point(579, 429);
             this.cmbCountryCode.Name = "cmbCountryCode";
             this.cmbCountryCode.Size = new System.Drawing.Size(59, 27);
             this.cmbCountryCode.TabIndex = 52;
@@ -363,6 +365,7 @@
             this.cmbCountry.Name = "cmbCountry";
             this.cmbCountry.Size = new System.Drawing.Size(244, 25);
             this.cmbCountry.TabIndex = 48;
+            this.cmbCountry.SelectedIndexChanged += new System.EventHandler(this.cmbCountry_SelectedIndexChanged);
             // 
             // groupBox4
             // 
@@ -443,10 +446,226 @@
             this.groupBox3.ForeColor = System.Drawing.Color.DarkBlue;
             this.groupBox3.Location = new System.Drawing.Point(461, 203);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(520, 256);
+            this.groupBox3.Size = new System.Drawing.Size(520, 216);
             this.groupBox3.TabIndex = 46;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Permanent Address";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.PerAPostOfficeCombo);
+            this.groupBox5.Controls.Add(this.PerAThanaCombo);
+            this.groupBox5.Controls.Add(this.PerADivisionCombo);
+            this.groupBox5.Controls.Add(this.PerADistrictCombo);
+            this.groupBox5.Controls.Add(this.label3);
+            this.groupBox5.Controls.Add(this.label26);
+            this.groupBox5.Controls.Add(this.label27);
+            this.groupBox5.Controls.Add(this.label28);
+            this.groupBox5.Controls.Add(this.label29);
+            this.groupBox5.Controls.Add(this.label30);
+            this.groupBox5.Controls.Add(this.label31);
+            this.groupBox5.Controls.Add(this.label32);
+            this.groupBox5.Controls.Add(this.label33);
+            this.groupBox5.Controls.Add(this.label34);
+            this.groupBox5.Controls.Add(this.PerApostCodeText);
+            this.groupBox5.Controls.Add(this.PerABlockText);
+            this.groupBox5.Controls.Add(this.PerAareaText);
+            this.groupBox5.Controls.Add(this.PerARoadNoText);
+            this.groupBox5.Controls.Add(this.PerAHouseNoText);
+            this.groupBox5.Controls.Add(this.PerAFlatNoText);
+            this.groupBox5.Location = new System.Drawing.Point(10, 33);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(504, 178);
+            this.groupBox5.TabIndex = 41;
+            this.groupBox5.TabStop = false;
+            // 
+            // PerAPostOfficeCombo
+            // 
+            this.PerAPostOfficeCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PerAPostOfficeCombo.FormattingEnabled = true;
+            this.PerAPostOfficeCombo.Location = new System.Drawing.Point(357, 111);
+            this.PerAPostOfficeCombo.Name = "PerAPostOfficeCombo";
+            this.PerAPostOfficeCombo.Size = new System.Drawing.Size(135, 27);
+            this.PerAPostOfficeCombo.TabIndex = 61;
+            this.PerAPostOfficeCombo.SelectedIndexChanged += new System.EventHandler(this.PerAPostOfficeCombo_SelectedIndexChanged_1);
+            // 
+            // PerAThanaCombo
+            // 
+            this.PerAThanaCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PerAThanaCombo.FormattingEnabled = true;
+            this.PerAThanaCombo.Location = new System.Drawing.Point(355, 78);
+            this.PerAThanaCombo.Name = "PerAThanaCombo";
+            this.PerAThanaCombo.Size = new System.Drawing.Size(137, 27);
+            this.PerAThanaCombo.TabIndex = 60;
+            this.PerAThanaCombo.SelectedIndexChanged += new System.EventHandler(this.PerAThanaCombo_SelectedIndexChanged_1);
+            // 
+            // PerADivisionCombo
+            // 
+            this.PerADivisionCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PerADivisionCombo.FormattingEnabled = true;
+            this.PerADivisionCombo.Location = new System.Drawing.Point(354, 13);
+            this.PerADivisionCombo.Name = "PerADivisionCombo";
+            this.PerADivisionCombo.Size = new System.Drawing.Size(137, 27);
+            this.PerADivisionCombo.TabIndex = 59;
+            this.PerADivisionCombo.SelectedIndexChanged += new System.EventHandler(this.PerADivisionCombo_SelectedIndexChanged_1);
+            // 
+            // PerADistrictCombo
+            // 
+            this.PerADistrictCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PerADistrictCombo.FormattingEnabled = true;
+            this.PerADistrictCombo.Location = new System.Drawing.Point(354, 46);
+            this.PerADistrictCombo.Name = "PerADistrictCombo";
+            this.PerADistrictCombo.Size = new System.Drawing.Size(137, 27);
+            this.PerADistrictCombo.TabIndex = 58;
+            this.PerADistrictCombo.SelectedIndexChanged += new System.EventHandler(this.PerADistrictCombo_SelectedIndexChanged_1);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(264, 149);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 19);
+            this.label3.TabIndex = 57;
+            this.label3.Text = "Post Code :";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(260, 114);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(92, 19);
+            this.label26.TabIndex = 56;
+            this.label26.Text = "Post Office :";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(284, 84);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(64, 19);
+            this.label27.TabIndex = 55;
+            this.label27.Text = "Thana  :";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(276, 18);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(73, 19);
+            this.label28.TabIndex = 54;
+            this.label28.Text = "Division :";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(277, 49);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(72, 19);
+            this.label29.TabIndex = 53;
+            this.label29.Text = "District  :";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(59, 139);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(53, 19);
+            this.label30.TabIndex = 52;
+            this.label30.Text = "Block:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(64, 110);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(51, 19);
+            this.label31.TabIndex = 51;
+            this.label31.Text = "Area :";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(3, 79);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(122, 19);
+            this.label32.TabIndex = 50;
+            this.label32.Text = "Road No/Name :";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(2, 51);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(125, 19);
+            this.label33.TabIndex = 49;
+            this.label33.Text = "House No/Name:";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(7, 21);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(116, 19);
+            this.label34.TabIndex = 48;
+            this.label34.Text = "Flat No/ Name :";
+            // 
+            // PerApostCodeText
+            // 
+            this.PerApostCodeText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PerApostCodeText.Location = new System.Drawing.Point(357, 145);
+            this.PerApostCodeText.Name = "PerApostCodeText";
+            this.PerApostCodeText.Size = new System.Drawing.Size(135, 26);
+            this.PerApostCodeText.TabIndex = 47;
+            // 
+            // PerABlockText
+            // 
+            this.PerABlockText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PerABlockText.Location = new System.Drawing.Point(129, 140);
+            this.PerABlockText.Name = "PerABlockText";
+            this.PerABlockText.Size = new System.Drawing.Size(117, 26);
+            this.PerABlockText.TabIndex = 46;
+            // 
+            // PerAareaText
+            // 
+            this.PerAareaText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PerAareaText.Location = new System.Drawing.Point(129, 110);
+            this.PerAareaText.Name = "PerAareaText";
+            this.PerAareaText.Size = new System.Drawing.Size(115, 26);
+            this.PerAareaText.TabIndex = 45;
+            // 
+            // PerARoadNoText
+            // 
+            this.PerARoadNoText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PerARoadNoText.Location = new System.Drawing.Point(129, 79);
+            this.PerARoadNoText.Name = "PerARoadNoText";
+            this.PerARoadNoText.Size = new System.Drawing.Size(115, 26);
+            this.PerARoadNoText.TabIndex = 44;
+            // 
+            // PerAHouseNoText
+            // 
+            this.PerAHouseNoText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PerAHouseNoText.Location = new System.Drawing.Point(129, 48);
+            this.PerAHouseNoText.Name = "PerAHouseNoText";
+            this.PerAHouseNoText.Size = new System.Drawing.Size(117, 26);
+            this.PerAHouseNoText.TabIndex = 43;
+            // 
+            // PerAFlatNoText
+            // 
+            this.PerAFlatNoText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PerAFlatNoText.Location = new System.Drawing.Point(129, 18);
+            this.PerAFlatNoText.Name = "PerAFlatNoText";
+            this.PerAFlatNoText.Size = new System.Drawing.Size(117, 26);
+            this.PerAFlatNoText.TabIndex = 42;
             // 
             // SameAsPACheckBox
             // 
@@ -464,13 +683,13 @@
             // 
             this.groupBox2.Controls.Add(this.PAPostOfficeCombo);
             this.groupBox2.Controls.Add(this.PAThanaCombo);
-            this.groupBox2.Controls.Add(this.PADivisionCombo);
             this.groupBox2.Controls.Add(this.PADistrictCombo);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.PADivisionCombo);
             this.groupBox2.Controls.Add(this.label25);
             this.groupBox2.Controls.Add(this.label24);
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.label22);
-            this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.label18);
@@ -511,25 +730,35 @@
             this.PAThanaCombo.TabIndex = 20;
             this.PAThanaCombo.SelectedIndexChanged += new System.EventHandler(this.PAThanaCombo_SelectedIndexChanged);
             // 
-            // PADivisionCombo
-            // 
-            this.PADivisionCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PADivisionCombo.FormattingEnabled = true;
-            this.PADivisionCombo.Location = new System.Drawing.Point(365, 50);
-            this.PADivisionCombo.Name = "PADivisionCombo";
-            this.PADivisionCombo.Size = new System.Drawing.Size(130, 27);
-            this.PADivisionCombo.TabIndex = 20;
-            this.PADivisionCombo.SelectedIndexChanged += new System.EventHandler(this.PADivisionCombo_SelectedIndexChanged);
-            // 
             // PADistrictCombo
             // 
             this.PADistrictCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PADistrictCombo.FormattingEnabled = true;
-            this.PADistrictCombo.Location = new System.Drawing.Point(365, 17);
+            this.PADistrictCombo.Location = new System.Drawing.Point(365, 52);
             this.PADistrictCombo.Name = "PADistrictCombo";
             this.PADistrictCombo.Size = new System.Drawing.Size(130, 27);
             this.PADistrictCombo.TabIndex = 20;
             this.PADistrictCombo.SelectedIndexChanged += new System.EventHandler(this.PADistrictCombo_SelectedIndexChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(287, 56);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(72, 19);
+            this.label21.TabIndex = 15;
+            this.label21.Text = "District  :";
+            // 
+            // PADivisionCombo
+            // 
+            this.PADivisionCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PADivisionCombo.FormattingEnabled = true;
+            this.PADivisionCombo.Location = new System.Drawing.Point(365, 20);
+            this.PADivisionCombo.Name = "PADivisionCombo";
+            this.PADivisionCombo.Size = new System.Drawing.Size(130, 27);
+            this.PADivisionCombo.TabIndex = 20;
+            this.PADivisionCombo.SelectedIndexChanged += new System.EventHandler(this.PADivisionCombo_SelectedIndexChanged);
             // 
             // label25
             // 
@@ -565,21 +794,11 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(287, 54);
+            this.label22.Location = new System.Drawing.Point(287, 24);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(73, 19);
             this.label22.TabIndex = 16;
             this.label22.Text = "Division :";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(287, 21);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(72, 19);
-            this.label21.TabIndex = 15;
-            this.label21.Text = "District  :";
             // 
             // label20
             // 
@@ -595,7 +814,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(75, 117);
+            this.label19.Location = new System.Drawing.Point(75, 119);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(59, 19);
             this.label19.TabIndex = 13;
@@ -605,7 +824,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(7, 86);
+            this.label18.Location = new System.Drawing.Point(7, 88);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(130, 19);
             this.label18.TabIndex = 12;
@@ -615,7 +834,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(5, 55);
+            this.label17.Location = new System.Drawing.Point(5, 57);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(133, 19);
             this.label17.TabIndex = 11;
@@ -650,7 +869,7 @@
             // PAareaText
             // 
             this.PAareaText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PAareaText.Location = new System.Drawing.Point(146, 115);
+            this.PAareaText.Location = new System.Drawing.Point(146, 117);
             this.PAareaText.Name = "PAareaText";
             this.PAareaText.Size = new System.Drawing.Size(118, 26);
             this.PAareaText.TabIndex = 3;
@@ -658,7 +877,7 @@
             // PARoadNoText
             // 
             this.PARoadNoText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PARoadNoText.Location = new System.Drawing.Point(146, 83);
+            this.PARoadNoText.Location = new System.Drawing.Point(146, 85);
             this.PARoadNoText.Name = "PARoadNoText";
             this.PARoadNoText.Size = new System.Drawing.Size(118, 26);
             this.PARoadNoText.TabIndex = 2;
@@ -666,7 +885,7 @@
             // PAHouseNoText
             // 
             this.PAHouseNoText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PAHouseNoText.Location = new System.Drawing.Point(146, 51);
+            this.PAHouseNoText.Location = new System.Drawing.Point(146, 53);
             this.PAHouseNoText.Name = "PAHouseNoText";
             this.PAHouseNoText.Size = new System.Drawing.Size(118, 26);
             this.PAHouseNoText.TabIndex = 1;
@@ -691,10 +910,11 @@
             // txtContactNo
             // 
             this.txtContactNo.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContactNo.Location = new System.Drawing.Point(645, 467);
+            this.txtContactNo.Location = new System.Drawing.Point(645, 429);
             this.txtContactNo.Name = "txtContactNo";
-            this.txtContactNo.Size = new System.Drawing.Size(167, 29);
+            this.txtContactNo.Size = new System.Drawing.Size(178, 29);
             this.txtContactNo.TabIndex = 43;
+            this.txtContactNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContactNo_KeyPress);
             // 
             // txtBirthCertificatNo
             // 
@@ -708,7 +928,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(88, 298);
+            this.label12.Location = new System.Drawing.Point(80, 298);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(110, 22);
             this.label12.TabIndex = 25;
@@ -718,7 +938,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(52, 354);
+            this.label15.Location = new System.Drawing.Point(45, 354);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(139, 22);
             this.label15.TabIndex = 38;
@@ -728,7 +948,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(109, 326);
+            this.label14.Location = new System.Drawing.Point(99, 326);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(82, 22);
             this.label14.TabIndex = 37;
@@ -738,7 +958,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(103, 234);
+            this.label13.Location = new System.Drawing.Point(98, 234);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(87, 22);
             this.label13.TabIndex = 36;
@@ -748,7 +968,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(56, 167);
+            this.label11.Location = new System.Drawing.Point(53, 167);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(134, 22);
             this.label11.TabIndex = 35;
@@ -758,7 +978,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(64, 136);
+            this.label10.Location = new System.Drawing.Point(61, 136);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(128, 22);
             this.label10.TabIndex = 35;
@@ -800,7 +1020,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(453, 468);
+            this.label8.Location = new System.Drawing.Point(453, 430);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(114, 22);
             this.label8.TabIndex = 26;
@@ -810,7 +1030,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(116, 202);
+            this.label7.Location = new System.Drawing.Point(113, 202);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 22);
             this.label7.TabIndex = 25;
@@ -820,7 +1040,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(82, 265);
+            this.label5.Location = new System.Drawing.Point(72, 265);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 22);
             this.label5.TabIndex = 23;
@@ -830,7 +1050,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(83, 76);
+            this.label4.Location = new System.Drawing.Point(80, 76);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 22);
             this.label4.TabIndex = 22;
@@ -850,7 +1070,7 @@
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(79, 48);
+            this.label38.Location = new System.Drawing.Point(76, 48);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(116, 22);
             this.label38.TabIndex = 19;
@@ -870,9 +1090,9 @@
             // 
             this.createUserButton.BackColor = System.Drawing.Color.LightYellow;
             this.createUserButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createUserButton.Location = new System.Drawing.Point(835, 531);
+            this.createUserButton.Location = new System.Drawing.Point(838, 495);
             this.createUserButton.Name = "createUserButton";
-            this.createUserButton.Size = new System.Drawing.Size(121, 50);
+            this.createUserButton.Size = new System.Drawing.Size(137, 50);
             this.createUserButton.TabIndex = 18;
             this.createUserButton.Text = "Create User";
             this.createUserButton.UseVisualStyleBackColor = false;
@@ -889,222 +1109,6 @@
             this.label9.TabIndex = 19;
             this.label9.Text = "User Information Details";
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.PerAPostOfficeCombo);
-            this.groupBox5.Controls.Add(this.PerAThanaCombo);
-            this.groupBox5.Controls.Add(this.PerADivisionCombo);
-            this.groupBox5.Controls.Add(this.PerADistrictCombo);
-            this.groupBox5.Controls.Add(this.label3);
-            this.groupBox5.Controls.Add(this.label26);
-            this.groupBox5.Controls.Add(this.label27);
-            this.groupBox5.Controls.Add(this.label28);
-            this.groupBox5.Controls.Add(this.label29);
-            this.groupBox5.Controls.Add(this.label30);
-            this.groupBox5.Controls.Add(this.label31);
-            this.groupBox5.Controls.Add(this.label32);
-            this.groupBox5.Controls.Add(this.label33);
-            this.groupBox5.Controls.Add(this.label34);
-            this.groupBox5.Controls.Add(this.PerApostCodeText);
-            this.groupBox5.Controls.Add(this.PerABlockText);
-            this.groupBox5.Controls.Add(this.PerAareaText);
-            this.groupBox5.Controls.Add(this.PerARoadNoText);
-            this.groupBox5.Controls.Add(this.PerAHouseNoText);
-            this.groupBox5.Controls.Add(this.PerAFlatNoText);
-            this.groupBox5.Location = new System.Drawing.Point(10, 41);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(495, 209);
-            this.groupBox5.TabIndex = 41;
-            this.groupBox5.TabStop = false;
-            // 
-            // PerAPostOfficeCombo
-            // 
-            this.PerAPostOfficeCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PerAPostOfficeCombo.FormattingEnabled = true;
-            this.PerAPostOfficeCombo.Location = new System.Drawing.Point(357, 135);
-            this.PerAPostOfficeCombo.Name = "PerAPostOfficeCombo";
-            this.PerAPostOfficeCombo.Size = new System.Drawing.Size(135, 27);
-            this.PerAPostOfficeCombo.TabIndex = 61;
-            this.PerAPostOfficeCombo.SelectedIndexChanged += new System.EventHandler(this.PerAPostOfficeCombo_SelectedIndexChanged_1);
-            // 
-            // PerAThanaCombo
-            // 
-            this.PerAThanaCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PerAThanaCombo.FormattingEnabled = true;
-            this.PerAThanaCombo.Location = new System.Drawing.Point(355, 102);
-            this.PerAThanaCombo.Name = "PerAThanaCombo";
-            this.PerAThanaCombo.Size = new System.Drawing.Size(137, 27);
-            this.PerAThanaCombo.TabIndex = 60;
-            this.PerAThanaCombo.SelectedIndexChanged += new System.EventHandler(this.PerAThanaCombo_SelectedIndexChanged_1);
-            // 
-            // PerADivisionCombo
-            // 
-            this.PerADivisionCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PerADivisionCombo.FormattingEnabled = true;
-            this.PerADivisionCombo.Location = new System.Drawing.Point(354, 37);
-            this.PerADivisionCombo.Name = "PerADivisionCombo";
-            this.PerADivisionCombo.Size = new System.Drawing.Size(137, 27);
-            this.PerADivisionCombo.TabIndex = 59;
-            this.PerADivisionCombo.SelectedIndexChanged += new System.EventHandler(this.PerADivisionCombo_SelectedIndexChanged_1);
-            // 
-            // PerADistrictCombo
-            // 
-            this.PerADistrictCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PerADistrictCombo.FormattingEnabled = true;
-            this.PerADistrictCombo.Location = new System.Drawing.Point(354, 70);
-            this.PerADistrictCombo.Name = "PerADistrictCombo";
-            this.PerADistrictCombo.Size = new System.Drawing.Size(137, 27);
-            this.PerADistrictCombo.TabIndex = 58;
-            this.PerADistrictCombo.SelectedIndexChanged += new System.EventHandler(this.PerADistrictCombo_SelectedIndexChanged_1);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(264, 173);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 19);
-            this.label3.TabIndex = 57;
-            this.label3.Text = "Post Code :";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(260, 138);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(92, 19);
-            this.label26.TabIndex = 56;
-            this.label26.Text = "Post Office :";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(284, 108);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(64, 19);
-            this.label27.TabIndex = 55;
-            this.label27.Text = "Thana  :";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(276, 42);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(73, 19);
-            this.label28.TabIndex = 54;
-            this.label28.Text = "Division :";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(277, 73);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(72, 19);
-            this.label29.TabIndex = 53;
-            this.label29.Text = "District  :";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(59, 163);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(53, 19);
-            this.label30.TabIndex = 52;
-            this.label30.Text = "Block:";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(64, 134);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(51, 19);
-            this.label31.TabIndex = 51;
-            this.label31.Text = "Area :";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(3, 103);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(122, 19);
-            this.label32.TabIndex = 50;
-            this.label32.Text = "Road No/Name :";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(2, 75);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(125, 19);
-            this.label33.TabIndex = 49;
-            this.label33.Text = "House No/Name:";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(7, 45);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(116, 19);
-            this.label34.TabIndex = 48;
-            this.label34.Text = "Flat No/ Name :";
-            // 
-            // PerApostCodeText
-            // 
-            this.PerApostCodeText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PerApostCodeText.Location = new System.Drawing.Point(357, 169);
-            this.PerApostCodeText.Name = "PerApostCodeText";
-            this.PerApostCodeText.Size = new System.Drawing.Size(135, 26);
-            this.PerApostCodeText.TabIndex = 47;
-            // 
-            // PerABlockText
-            // 
-            this.PerABlockText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PerABlockText.Location = new System.Drawing.Point(129, 164);
-            this.PerABlockText.Name = "PerABlockText";
-            this.PerABlockText.Size = new System.Drawing.Size(117, 26);
-            this.PerABlockText.TabIndex = 46;
-            // 
-            // PerAareaText
-            // 
-            this.PerAareaText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PerAareaText.Location = new System.Drawing.Point(129, 134);
-            this.PerAareaText.Name = "PerAareaText";
-            this.PerAareaText.Size = new System.Drawing.Size(115, 26);
-            this.PerAareaText.TabIndex = 45;
-            // 
-            // PerARoadNoText
-            // 
-            this.PerARoadNoText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PerARoadNoText.Location = new System.Drawing.Point(129, 103);
-            this.PerARoadNoText.Name = "PerARoadNoText";
-            this.PerARoadNoText.Size = new System.Drawing.Size(115, 26);
-            this.PerARoadNoText.TabIndex = 44;
-            // 
-            // PerAHouseNoText
-            // 
-            this.PerAHouseNoText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PerAHouseNoText.Location = new System.Drawing.Point(129, 72);
-            this.PerAHouseNoText.Name = "PerAHouseNoText";
-            this.PerAHouseNoText.Size = new System.Drawing.Size(117, 26);
-            this.PerAHouseNoText.TabIndex = 43;
-            // 
-            // PerAFlatNoText
-            // 
-            this.PerAFlatNoText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PerAFlatNoText.Location = new System.Drawing.Point(129, 42);
-            this.PerAFlatNoText.Name = "PerAFlatNoText";
-            this.PerAFlatNoText.Size = new System.Drawing.Size(117, 26);
-            this.PerAFlatNoText.TabIndex = 42;
-            // 
             // registrationByAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1113,6 +1117,7 @@
             this.ClientSize = new System.Drawing.Size(1003, 676);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.Name = "registrationByAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "registrationByAdmin";
@@ -1124,10 +1129,10 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

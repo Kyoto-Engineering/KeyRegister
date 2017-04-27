@@ -12,7 +12,13 @@ namespace KeyRegister.DAO
         private string street;
         private string state;
         private string postalCode;
+        private string userId;
 
+        public string OUserId
+        {
+            get { return userId; }
+            set { userId = value; }
+        }
         public int ForeignAddressId
         {
             get { return overSeasAddressId; }

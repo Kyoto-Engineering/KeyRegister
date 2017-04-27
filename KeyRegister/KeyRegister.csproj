@@ -51,11 +51,13 @@
     <Compile Include="DAO\Designations.cs" />
     <Compile Include="DAO\Districts.cs" />
     <Compile Include="DAO\Divisions.cs" />
+    <Compile Include="DAO\LocationInCharges.cs" />
     <Compile Include="DAO\ModelCOO.cs" />
     <Compile Include="DAO\OverSeasAddress.cs" />
     <Compile Include="DAO\PerManantAddress.cs" />
     <Compile Include="DAO\PostOffices.cs" />
     <Compile Include="DAO\PresentAddress.cs" />
+    <Compile Include="DAO\TerritoryManagers.cs" />
     <Compile Include="DAO\Thanas.cs" />
     <Compile Include="DAO\User.cs" />
     <Compile Include="DBGateway\ConnectionGateway.cs" />

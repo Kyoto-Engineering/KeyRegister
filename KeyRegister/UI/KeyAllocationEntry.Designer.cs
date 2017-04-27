@@ -52,9 +52,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(279, 12);
+            this.label1.Location = new System.Drawing.Point(293, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(165, 26);
             this.label1.TabIndex = 0;
@@ -64,7 +64,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 69);
+            this.label2.Location = new System.Drawing.Point(83, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(177, 22);
             this.label2.TabIndex = 0;
@@ -74,7 +74,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 120);
+            this.label3.Location = new System.Drawing.Point(83, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(175, 22);
             this.label3.TabIndex = 0;
@@ -84,7 +84,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 164);
+            this.label4.Location = new System.Drawing.Point(83, 164);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(175, 22);
             this.label4.TabIndex = 0;
@@ -93,7 +93,7 @@
             // territoryNameText
             // 
             this.territoryNameText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.territoryNameText.Location = new System.Drawing.Point(210, 70);
+            this.territoryNameText.Location = new System.Drawing.Point(281, 70);
             this.territoryNameText.Name = "territoryNameText";
             this.territoryNameText.Size = new System.Drawing.Size(331, 29);
             this.territoryNameText.TabIndex = 1;
@@ -101,7 +101,7 @@
             // propertyNameText
             // 
             this.propertyNameText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.propertyNameText.Location = new System.Drawing.Point(210, 121);
+            this.propertyNameText.Location = new System.Drawing.Point(281, 121);
             this.propertyNameText.Name = "propertyNameText";
             this.propertyNameText.Size = new System.Drawing.Size(331, 29);
             this.propertyNameText.TabIndex = 2;
@@ -109,7 +109,7 @@
             // locationNameText
             // 
             this.locationNameText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.locationNameText.Location = new System.Drawing.Point(210, 165);
+            this.locationNameText.Location = new System.Drawing.Point(281, 165);
             this.locationNameText.Name = "locationNameText";
             this.locationNameText.Size = new System.Drawing.Size(331, 29);
             this.locationNameText.TabIndex = 3;

@@ -10,12 +10,15 @@ using KeyRegister.DBGateway;
 namespace KeyRegister.Gateway
 {
   public   class CompanyGateway:ConnectionGateway
-    {
+  {
+      private SqlConnection con;
+      ConnectionString cs=new ConnectionString();
         public string SaveCompany(Company aCompany)
         {
-            connection.Open();
+            con=new SqlConnection(cs.DBConn);
+            con.Open();
             string connstring = string.Format("INSERT INTO Company(CompanyName,CreatedDateTime) VALUES('{0}','{1}')", aCompany.CompanyName,aCompany.CreatedDateTime);
-            SqlCommand cmd=new SqlCommand(connstring,connection);
+            SqlCommand cmd=new SqlCommand(connstring,con);
             int affectedRows = cmd.ExecuteNonQuery();
             if (affectedRows > 0)
             {

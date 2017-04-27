@@ -68,9 +68,9 @@
             this.createButton.BackColor = System.Drawing.Color.Plum;
             this.createButton.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.createButton.Location = new System.Drawing.Point(407, 178);
+            this.createButton.Location = new System.Drawing.Point(383, 178);
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(152, 63);
+            this.createButton.Size = new System.Drawing.Size(176, 63);
             this.createButton.TabIndex = 3;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = false;
@@ -90,6 +90,8 @@
             this.Name = "CompanyEntry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Company Entry";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CompanyEntry_FormClosed);
+            this.Load += new System.EventHandler(this.CompanyEntry_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

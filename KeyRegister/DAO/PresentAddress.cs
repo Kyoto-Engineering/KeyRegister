@@ -89,5 +89,7 @@ namespace KeyRegister.DAO
           set { prePostcode = value; }
       }
 
+      public string UserId { set; get; }
+
   }
 }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonUserProfile = new System.Windows.Forms.Button();
             this.resetPasswordButton = new System.Windows.Forms.Button();
             this.createUserButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonUserProfile = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,6 +46,19 @@
             this.groupBox1.Size = new System.Drawing.Size(132, 472);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // buttonUserProfile
+            // 
+            this.buttonUserProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.buttonUserProfile.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUserProfile.ForeColor = System.Drawing.Color.Blue;
+            this.buttonUserProfile.Location = new System.Drawing.Point(12, 94);
+            this.buttonUserProfile.Name = "buttonUserProfile";
+            this.buttonUserProfile.Size = new System.Drawing.Size(107, 54);
+            this.buttonUserProfile.TabIndex = 2;
+            this.buttonUserProfile.Text = "Upload User Profile";
+            this.buttonUserProfile.UseVisualStyleBackColor = false;
+            this.buttonUserProfile.Click += new System.EventHandler(this.buttonUserProfile_Click);
             // 
             // resetPasswordButton
             // 
@@ -84,19 +97,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "User Management UI";
             // 
-            // buttonUserProfile
-            // 
-            this.buttonUserProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.buttonUserProfile.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonUserProfile.ForeColor = System.Drawing.Color.Blue;
-            this.buttonUserProfile.Location = new System.Drawing.Point(12, 94);
-            this.buttonUserProfile.Name = "buttonUserProfile";
-            this.buttonUserProfile.Size = new System.Drawing.Size(107, 54);
-            this.buttonUserProfile.TabIndex = 2;
-            this.buttonUserProfile.Text = "Upload User Profile";
-            this.buttonUserProfile.UseVisualStyleBackColor = false;
-            this.buttonUserProfile.Click += new System.EventHandler(this.buttonUserProfile_Click);
-            // 
             // UserManagementUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -106,6 +106,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "UserManagementUI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserManagementUI";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

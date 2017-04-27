@@ -34,5 +34,11 @@ namespace KeyRegister.Manager
            aUserGateway=new UserGateway();
             return aUserGateway.SaveOverSeasAddress(ovAddress);
         }
+
+        public  int PerManantSameAsPresentAddress(PerManantAddress aperAddress)
+        {
+            aUserGateway=new UserGateway();
+            return aUserGateway.PerManantSameAsPresentAddress(aperAddress);
+        }
  }
 }

@@ -16,5 +16,10 @@ namespace KeyRegister.UI
         {
             InitializeComponent();
         }
+
+        private void createButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
