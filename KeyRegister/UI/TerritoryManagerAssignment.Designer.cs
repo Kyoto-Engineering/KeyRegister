@@ -107,7 +107,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.saveButton);
             this.Name = "TerritoryManagerAssignment";
-            this.Text = "TerritoryManagerAssignment";
+            this.Text = "Territory Manager Assignment";
             this.ResumeLayout(false);
             this.PerformLayout();
 
