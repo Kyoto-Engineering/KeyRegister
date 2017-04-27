@@ -50,7 +50,7 @@
             this.saveButton.BackColor = System.Drawing.Color.DarkMagenta;
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.ForeColor = System.Drawing.Color.Plum;
-            this.saveButton.Location = new System.Drawing.Point(706, 449);
+            this.saveButton.Location = new System.Drawing.Point(715, 456);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(93, 44);
             this.saveButton.TabIndex = 0;
@@ -99,9 +99,9 @@
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(49, 170);
+            this.groupBox1.Location = new System.Drawing.Point(12, 170);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(360, 262);
+            this.groupBox1.Size = new System.Drawing.Size(420, 280);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Location Incharger Name";
@@ -112,7 +112,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(438, 170);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(432, 262);
+            this.groupBox2.Size = new System.Drawing.Size(432, 280);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Location Name";
@@ -143,10 +143,10 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 20);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 20);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(348, 236);
+            this.dataGridView1.Size = new System.Drawing.Size(405, 254);
             this.dataGridView1.TabIndex = 0;
             // 
             // dataGridView2
@@ -157,7 +157,7 @@
             this.dataGridView2.Location = new System.Drawing.Point(6, 20);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(420, 236);
+            this.dataGridView2.Size = new System.Drawing.Size(420, 254);
             this.dataGridView2.TabIndex = 0;
             // 
             // KeyAllocation
