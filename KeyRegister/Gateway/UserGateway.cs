@@ -102,10 +102,11 @@ namespace KeyRegister.Gateway
 
         public List<User> GetUserName()
         {
-            connection.Open();           
+            conn = new SqlConnection(cs.DBConn);
+            conn.Open();         
             string query = "select FullName,UserId, UserName  from  Users";
             SqlCommand command = new SqlCommand();
-            command.Connection = connection;
+            command.Connection = conn;
             command.CommandText = query;
 
             //execution
@@ -124,7 +125,7 @@ namespace KeyRegister.Gateway
                 user.UserName = userName;
                 users.Add(user);
             }
-            connection.Close();
+            conn.Close();
             return users;
         }
         public  int PerManantSameAsPresentAddress(PerManantAddress aperAddress)
