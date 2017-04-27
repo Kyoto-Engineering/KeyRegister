@@ -85,10 +85,7 @@ namespace KeyRegister.LoginUI
                 {
                     cmbUserName.Items.Add(rdr[0]);
                 }
-
-                con.Close();
-                
-
+                con.Close();                
             }
             catch (Exception ex)
             {
@@ -102,7 +99,7 @@ namespace KeyRegister.LoginUI
             List<User> users = aUserGatewate.GetUserName();
             cmbUserName.DataSource = users;
             cmbUserName.DisplayMember = "FullName";
-            cmbUserName.ValueMember = "FullName";
+            cmbUserName.ValueMember = "UserId";
         }
         private void UploadUserImage_Load(object sender, EventArgs e)
         {

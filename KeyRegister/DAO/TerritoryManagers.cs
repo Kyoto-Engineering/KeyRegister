@@ -16,5 +16,6 @@ namespace KeyRegister.DAO
        public DateTime OffDutyTo { set; get; }
        public string AssignedBy { set; get; }
        public DateTime AssignedDate { set; get; }
+       public User Users { set; get; }
     }
 }

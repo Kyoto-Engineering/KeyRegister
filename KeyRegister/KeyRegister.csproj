@@ -51,6 +51,7 @@
     <Compile Include="DAO\Designations.cs" />
     <Compile Include="DAO\Districts.cs" />
     <Compile Include="DAO\Divisions.cs" />
+    <Compile Include="DAO\Locations.cs" />
     <Compile Include="DAO\LocationInCharges.cs" />
     <Compile Include="DAO\ModelCOO.cs" />
     <Compile Include="DAO\OverSeasAddress.cs" />
@@ -64,6 +65,9 @@
     <Compile Include="DBGateway\ConnectionString.cs" />
     <Compile Include="Gateway\CompanyGateway.cs" />
     <Compile Include="Gateway\COOGateway.cs" />
+    <Compile Include="Gateway\LocationGateway.cs" />
+    <Compile Include="Gateway\LocationInChargeGateway.cs" />
+    <Compile Include="Gateway\TerritoryManagerGateway.cs" />
     <Compile Include="Gateway\UserGateway.cs" />
     <Compile Include="LoginUI\frmLogin.cs">
       <SubType>Form</SubType>
@@ -97,6 +101,9 @@
     </Compile>
     <Compile Include="Manager\CompanyManager.cs" />
     <Compile Include="Manager\COOManager.cs" />
+    <Compile Include="Manager\LocationInChargeManager.cs" />
+    <Compile Include="Manager\LocationManager.cs" />
+    <Compile Include="Manager\TerritoryManagerManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
     <Compile Include="UI\COO.cs">
       <SubType>Form</SubType>
@@ -207,6 +214,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UI\LocationAllocation.resx">
       <DependentUpon>LocationAllocation.cs</DependentUpon>
@@ -254,7 +262,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\12.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

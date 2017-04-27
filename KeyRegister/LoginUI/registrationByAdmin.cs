@@ -1167,25 +1167,7 @@ namespace KeyRegister.LoginUI
             }
         }
 
-        private void PerADistrictCombo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void PerADivisionCombo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void PerAThanaCombo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void PerAPostOfficeCombo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+       
         public void ResetPermanantAddress()
         {
             PerAFlatNoText.Clear();
