@@ -33,15 +33,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.keyHolderNameText = new System.Windows.Forms.TextBox();
-            this.locationNameText = new System.Windows.Forms.TextBox();
+            this.locationNameCombo = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // saveButton
             // 
             this.saveButton.BackColor = System.Drawing.Color.Plum;
-            this.saveButton.Location = new System.Drawing.Point(348, 338);
+            this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton.Location = new System.Drawing.Point(345, 191);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(84, 41);
+            this.saveButton.Size = new System.Drawing.Size(121, 52);
             this.saveButton.TabIndex = 0;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
@@ -71,7 +76,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 136);
+            this.label3.Location = new System.Drawing.Point(9, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(219, 20);
             this.label3.TabIndex = 3;
@@ -82,24 +87,45 @@
             this.keyHolderNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.keyHolderNameText.Location = new System.Drawing.Point(228, 83);
             this.keyHolderNameText.Name = "keyHolderNameText";
-            this.keyHolderNameText.Size = new System.Drawing.Size(385, 24);
+            this.keyHolderNameText.Size = new System.Drawing.Size(258, 24);
             this.keyHolderNameText.TabIndex = 4;
             this.keyHolderNameText.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // locationNameText
+            // locationNameCombo
             // 
-            this.locationNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.locationNameText.Location = new System.Drawing.Point(228, 136);
-            this.locationNameText.Name = "locationNameText";
-            this.locationNameText.Size = new System.Drawing.Size(385, 24);
-            this.locationNameText.TabIndex = 5;
+            this.locationNameCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.locationNameCombo.FormattingEnabled = true;
+            this.locationNameCombo.Location = new System.Drawing.Point(228, 122);
+            this.locationNameCombo.Name = "locationNameCombo";
+            this.locationNameCombo.Size = new System.Drawing.Size(258, 26);
+            this.locationNameCombo.TabIndex = 5;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(13, 262);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(643, 246);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Key Holder Information";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(631, 220);
+            this.dataGridView1.TabIndex = 0;
             // 
             // KeyHolderEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 410);
-            this.Controls.Add(this.locationNameText);
+            this.ClientSize = new System.Drawing.Size(762, 519);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.locationNameCombo);
             this.Controls.Add(this.keyHolderNameText);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -107,6 +133,8 @@
             this.Controls.Add(this.saveButton);
             this.Name = "KeyHolderEntry";
             this.Text = "Key Holder Create";
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,6 +147,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox keyHolderNameText;
-        private System.Windows.Forms.TextBox locationNameText;
+        private System.Windows.Forms.ComboBox locationNameCombo;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

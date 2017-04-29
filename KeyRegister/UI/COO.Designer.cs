@@ -36,6 +36,10 @@
             this.cmbUserName = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtJoiningDate = new System.Windows.Forms.DateTimePicker();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -82,9 +86,9 @@
             this.saveButton.BackColor = System.Drawing.Color.Plum;
             this.saveButton.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.ForeColor = System.Drawing.Color.Blue;
-            this.saveButton.Location = new System.Drawing.Point(534, 281);
+            this.saveButton.Location = new System.Drawing.Point(529, 260);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(173, 84);
+            this.saveButton.Size = new System.Drawing.Size(132, 60);
             this.saveButton.TabIndex = 5;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
@@ -120,12 +124,32 @@
             this.txtJoiningDate.Size = new System.Drawing.Size(371, 39);
             this.txtJoiningDate.TabIndex = 8;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(21, 350);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(787, 296);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Chief Operating Officer Information";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(775, 271);
+            this.dataGridView1.TabIndex = 0;
+            // 
             // COO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Olive;
-            this.ClientSize = new System.Drawing.Size(812, 422);
+            this.ClientSize = new System.Drawing.Size(843, 658);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtJoiningDate);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbUserName);
@@ -137,6 +161,8 @@
             this.Name = "COO";
             this.Text = "ChiefOperatingOfficerStation ";
             this.Load += new System.EventHandler(this.COO_Load);
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,5 +178,7 @@
         private System.Windows.Forms.ComboBox cmbUserName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker txtJoiningDate;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
