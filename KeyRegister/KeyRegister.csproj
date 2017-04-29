@@ -58,15 +58,18 @@
     <Compile Include="DAO\PerManantAddress.cs" />
     <Compile Include="DAO\PostOffices.cs" />
     <Compile Include="DAO\PresentAddress.cs" />
+    <Compile Include="DAO\Territory.cs" />
     <Compile Include="DAO\TerritoryManagers.cs" />
     <Compile Include="DAO\Thanas.cs" />
     <Compile Include="DAO\User.cs" />
+    <Compile Include="DAO\Users.cs" />
     <Compile Include="DBGateway\ConnectionGateway.cs" />
     <Compile Include="DBGateway\ConnectionString.cs" />
     <Compile Include="Gateway\CompanyGateway.cs" />
     <Compile Include="Gateway\COOGateway.cs" />
     <Compile Include="Gateway\LocationGateway.cs" />
     <Compile Include="Gateway\LocationInChargeGateway.cs" />
+    <Compile Include="Gateway\TerritoryGateway.cs" />
     <Compile Include="Gateway\TerritoryManagerGateway.cs" />
     <Compile Include="Gateway\UserGateway.cs" />
     <Compile Include="LoginUI\frmLogin.cs">
@@ -103,6 +106,7 @@
     <Compile Include="Manager\COOManager.cs" />
     <Compile Include="Manager\LocationInChargeManager.cs" />
     <Compile Include="Manager\LocationManager.cs" />
+    <Compile Include="Manager\TerritoryManager.cs" />
     <Compile Include="Manager\TerritoryManagerManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
     <Compile Include="UI\COO.cs">

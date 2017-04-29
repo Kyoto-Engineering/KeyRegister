@@ -96,7 +96,7 @@ namespace KeyRegister.LoginUI
         private void GetUsername()
         {
             UserGateway aUserGatewate = new UserGateway();
-            List<User> users = aUserGatewate.GetUserName();
+            List<Users> users = aUserGatewate.GetUserName();
             cmbUserName.DataSource = users;
             cmbUserName.DisplayMember = "FullName";
             cmbUserName.ValueMember = "UserId";

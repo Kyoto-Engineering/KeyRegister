@@ -100,7 +100,7 @@ namespace KeyRegister.Gateway
 
         }
 
-        public List<User> GetUserName()
+        public List<Users> GetUserName()
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();         
@@ -110,7 +110,7 @@ namespace KeyRegister.Gateway
             command.CommandText = query;
 
             //execution
-            List<User> users = new List<User>();
+            List<Users> users = new List<Users>();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -119,7 +119,7 @@ namespace KeyRegister.Gateway
                 string userId = reader[1].ToString();
                 string userName = reader[2].ToString();
 
-                User user = new User();               
+                Users user = new Users();               
                 user.FullName = fName;
                 user.UserId = Convert.ToInt16(userId);
                 user.UserName = userName;
