@@ -76,10 +76,39 @@ namespace KeyRegister.UI
             }
         }
 
+        private void ResetTerritory()
+        {
+            cmbCompany.SelectedIndex = -1;
+            txtTerritoryName.Clear();
+        }
         private void createButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(cmbCompany.Text))
+            {
+                MessageBox.Show("Please Select Company Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtTerritoryName.Text))
+            {
+                MessageBox.Show("Please enter Territory Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct3 = "select Territory.TerritoryName  from Territory where  Territory.TerritoryName='" + txtTerritoryName.Text + "'";
+                cmd = new SqlCommand(ct3, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read() && !rdr.IsDBNull(0))
+                {
+                    MessageBox.Show("This Territory Name Already Exists,Please Input another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close();
+                    return;
+
+                }
+
+
                 int tg = 0;
                 TerritoryManager aManager = new TerritoryManager();
                 Territory aTerritory = new Territory();
@@ -89,11 +118,20 @@ namespace KeyRegister.UI
                 aTerritory.CompanyId = Convert.ToInt32(companyId);
                 tg = aManager.SaveTerritory(aTerritory);
                 MessageBox.Show("Successfully Created", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetTerritory();
+
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void TerritoryEntry_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            MainUI frm=new MainUI();
+            frm.Show();
         }
     }
 }

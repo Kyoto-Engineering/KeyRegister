@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonTerritoryManager = new System.Windows.Forms.Button();
             this.userManagementButton = new System.Windows.Forms.Button();
             this.buttonLocationInCharge = new System.Windows.Forms.Button();
             this.buttonKeyAllocation = new System.Windows.Forms.Button();
@@ -41,13 +42,14 @@
             this.buttonChiefOOS = new System.Windows.Forms.Button();
             this.buttonCompanyCreation = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
+            this.buttonLogOut = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.groupBox1.Controls.Add(this.buttonTerritoryManager);
             this.groupBox1.Controls.Add(this.userManagementButton);
             this.groupBox1.Controls.Add(this.buttonLocationInCharge);
             this.groupBox1.Controls.Add(this.buttonKeyAllocation);
@@ -66,6 +68,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // buttonTerritoryManager
+            // 
+            this.buttonTerritoryManager.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTerritoryManager.ForeColor = System.Drawing.Color.Blue;
+            this.buttonTerritoryManager.Location = new System.Drawing.Point(9, 310);
+            this.buttonTerritoryManager.Name = "buttonTerritoryManager";
+            this.buttonTerritoryManager.Size = new System.Drawing.Size(124, 41);
+            this.buttonTerritoryManager.TabIndex = 11;
+            this.buttonTerritoryManager.Text = "Territory Manager Assignment";
+            this.buttonTerritoryManager.UseVisualStyleBackColor = true;
+            this.buttonTerritoryManager.Click += new System.EventHandler(this.buttonTerritoryManager_Click);
+            // 
             // userManagementButton
             // 
             this.userManagementButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -83,7 +97,7 @@
             // 
             this.buttonLocationInCharge.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLocationInCharge.ForeColor = System.Drawing.Color.Blue;
-            this.buttonLocationInCharge.Location = new System.Drawing.Point(8, 236);
+            this.buttonLocationInCharge.Location = new System.Drawing.Point(6, 229);
             this.buttonLocationInCharge.Name = "buttonLocationInCharge";
             this.buttonLocationInCharge.Size = new System.Drawing.Size(127, 75);
             this.buttonLocationInCharge.TabIndex = 9;
@@ -95,7 +109,7 @@
             // 
             this.buttonKeyAllocation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonKeyAllocation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonKeyAllocation.Location = new System.Drawing.Point(6, 528);
+            this.buttonKeyAllocation.Location = new System.Drawing.Point(9, 569);
             this.buttonKeyAllocation.Name = "buttonKeyAllocation";
             this.buttonKeyAllocation.Size = new System.Drawing.Size(130, 55);
             this.buttonKeyAllocation.TabIndex = 8;
@@ -107,7 +121,7 @@
             // 
             this.buttonKeyCreation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonKeyCreation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonKeyCreation.Location = new System.Drawing.Point(7, 492);
+            this.buttonKeyCreation.Location = new System.Drawing.Point(11, 533);
             this.buttonKeyCreation.Name = "buttonKeyCreation";
             this.buttonKeyCreation.Size = new System.Drawing.Size(128, 32);
             this.buttonKeyCreation.TabIndex = 7;
@@ -119,7 +133,7 @@
             // 
             this.buttonPropertyCreation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPropertyCreation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonPropertyCreation.Location = new System.Drawing.Point(7, 433);
+            this.buttonPropertyCreation.Location = new System.Drawing.Point(11, 472);
             this.buttonPropertyCreation.Name = "buttonPropertyCreation";
             this.buttonPropertyCreation.Size = new System.Drawing.Size(129, 56);
             this.buttonPropertyCreation.TabIndex = 6;
@@ -131,7 +145,7 @@
             // 
             this.buttonLockCreation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLockCreation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonLockCreation.Location = new System.Drawing.Point(9, 376);
+            this.buttonLockCreation.Location = new System.Drawing.Point(11, 414);
             this.buttonLockCreation.Name = "buttonLockCreation";
             this.buttonLockCreation.Size = new System.Drawing.Size(128, 52);
             this.buttonLockCreation.TabIndex = 5;
@@ -143,7 +157,7 @@
             // 
             this.buttonKeyHolderStation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonKeyHolderStation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonKeyHolderStation.Location = new System.Drawing.Point(8, 318);
+            this.buttonKeyHolderStation.Location = new System.Drawing.Point(11, 357);
             this.buttonKeyHolderStation.Name = "buttonKeyHolderStation";
             this.buttonKeyHolderStation.Size = new System.Drawing.Size(127, 52);
             this.buttonKeyHolderStation.TabIndex = 4;
@@ -155,7 +169,7 @@
             // 
             this.buttonLocationCreation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLocationCreation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonLocationCreation.Location = new System.Drawing.Point(10, 179);
+            this.buttonLocationCreation.Location = new System.Drawing.Point(10, 175);
             this.buttonLocationCreation.Name = "buttonLocationCreation";
             this.buttonLocationCreation.Size = new System.Drawing.Size(125, 52);
             this.buttonLocationCreation.TabIndex = 3;
@@ -167,7 +181,7 @@
             // 
             this.buttonTerrytoryCreation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTerrytoryCreation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonTerrytoryCreation.Location = new System.Drawing.Point(11, 121);
+            this.buttonTerrytoryCreation.Location = new System.Drawing.Point(11, 119);
             this.buttonTerrytoryCreation.Name = "buttonTerrytoryCreation";
             this.buttonTerrytoryCreation.Size = new System.Drawing.Size(126, 52);
             this.buttonTerrytoryCreation.TabIndex = 2;
@@ -211,24 +225,25 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Key Register System";
             // 
-            // button11
+            // buttonLogOut
             // 
-            this.button11.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button11.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button11.Location = new System.Drawing.Point(966, 7);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(97, 51);
-            this.button11.TabIndex = 2;
-            this.button11.Text = "Log Out";
-            this.button11.UseVisualStyleBackColor = false;
+            this.buttonLogOut.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.buttonLogOut.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLogOut.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonLogOut.Location = new System.Drawing.Point(966, 7);
+            this.buttonLogOut.Name = "buttonLogOut";
+            this.buttonLogOut.Size = new System.Drawing.Size(97, 51);
+            this.buttonLogOut.TabIndex = 2;
+            this.buttonLogOut.Text = "Log Out";
+            this.buttonLogOut.UseVisualStyleBackColor = false;
+            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
             // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 741);
-            this.Controls.Add(this.button11);
+            this.Controls.Add(this.buttonLogOut);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
@@ -256,7 +271,8 @@
         private System.Windows.Forms.Button buttonCompanyCreation;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonLocationInCharge;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button buttonLogOut;
         private System.Windows.Forms.Button userManagementButton;
+        private System.Windows.Forms.Button buttonTerritoryManager;
     }
 }

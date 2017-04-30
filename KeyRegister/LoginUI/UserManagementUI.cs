@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KeyRegister.UI;
 
 namespace KeyRegister.LoginUI
 {
@@ -37,6 +38,13 @@ namespace KeyRegister.LoginUI
                         this.Hide();
             UploadUserImage frm =new UploadUserImage();
                          frm.Show();
+        }
+
+        private void UserManagementUI_FormClosed(object sender, FormClosedEventArgs e)
+        {
+                this.Hide();
+            MainUI frm=new MainUI();
+               frm.Show();
         } 
     }
 }

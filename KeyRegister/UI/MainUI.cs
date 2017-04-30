@@ -105,5 +105,19 @@ namespace KeyRegister.UI
         {
             userTypeM = frmLogin.userType;
         }
+
+        private void buttonTerritoryManager_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            TerritoryManagerAssignment  frm=new TerritoryManagerAssignment();
+            frm.Show();
+        }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+                this.Hide();
+            frmLogin frm=new frmLogin();
+                  frm.Show();
+        }
     }
 }

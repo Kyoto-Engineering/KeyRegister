@@ -88,21 +88,25 @@
             // 
             // cmbLocationName
             // 
+            this.cmbLocationName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLocationName.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLocationName.FormattingEnabled = true;
             this.cmbLocationName.Location = new System.Drawing.Point(327, 118);
             this.cmbLocationName.Name = "cmbLocationName";
             this.cmbLocationName.Size = new System.Drawing.Size(331, 34);
             this.cmbLocationName.TabIndex = 6;
+            this.cmbLocationName.SelectedIndexChanged += new System.EventHandler(this.cmbLocationName_SelectedIndexChanged);
             // 
             // cmbLocationInCharge
             // 
+            this.cmbLocationInCharge.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLocationInCharge.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLocationInCharge.FormattingEnabled = true;
             this.cmbLocationInCharge.Location = new System.Drawing.Point(327, 68);
             this.cmbLocationInCharge.Name = "cmbLocationInCharge";
             this.cmbLocationInCharge.Size = new System.Drawing.Size(331, 34);
             this.cmbLocationInCharge.TabIndex = 7;
+            this.cmbLocationInCharge.SelectedIndexChanged += new System.EventHandler(this.cmbLocationInCharge_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -160,6 +164,7 @@
             this.Name = "LocationInchargeEntry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Location Incharge Create";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LocationInchargeEntry_FormClosed);
             this.Load += new System.EventHandler(this.LocationInchargeEntry_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

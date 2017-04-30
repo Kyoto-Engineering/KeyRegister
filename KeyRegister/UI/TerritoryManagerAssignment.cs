@@ -22,7 +22,7 @@ namespace KeyRegister.UI
         private SqlConnection con;
         private SqlDataReader rdr;
         ConnectionString cs = new ConnectionString();
-        public int territoryId, userIdAsTM;
+        public int territoryId, userIdAsTM,checkTMUserId;
         public string userId;
         public TerritoryManagerAssignment()
         {
@@ -52,8 +52,40 @@ namespace KeyRegister.UI
         }
         private void SaveTerritoryManagement()
         {
+            if (string.IsNullOrEmpty(cmbTerritoryManagerName.Text))
+            {
+                MessageBox.Show("Please Select Territory Manager Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(cmbTerritoryName.Text))
+            {
+                MessageBox.Show("Please Select Territory Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct2 = "select TerritoryManager.UserId  from TerritoryManager where  TerritoryManager.UserId='" + userIdAsTM + "'";
+                cmd = new SqlCommand(ct2, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read() && !rdr.IsDBNull(0))
+                {
+
+                    checkTMUserId = (rdr.GetInt32(0));
+                }
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct3 = "Select TerritoryManager.TerritoryId  from TerritoryManager where  TerritoryManager.UserId='" + checkTMUserId + "'";
+                cmd = new SqlCommand(ct3, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read() && !rdr.IsDBNull(0))
+                {
+                    MessageBox.Show("This Territory is Already Under  this Territory Manager,Please assign another territory", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close();
+                    return;
+                }
+
                 int tm = 0;
                 TerritoryManagerManager aManager = new TerritoryManagerManager();
                 TerritoryManagers aManagers = new TerritoryManagers();
@@ -88,8 +120,6 @@ namespace KeyRegister.UI
                     userIdAsTM = (rdr.GetInt32(0));
                 }
                 con.Close();
-
-
             }
             catch (Exception ex)
             {
@@ -111,13 +141,18 @@ namespace KeyRegister.UI
                     territoryId = (rdr.GetInt32(0));
                 }
                 con.Close();
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void TerritoryManagerAssignment_FormClosed(object sender, FormClosedEventArgs e)
+        {
+                this.Hide();
+            MainUI frm=new MainUI();
+                 frm.Show();
         }
     }
 }

@@ -51,13 +51,19 @@
     <Compile Include="DAO\Designations.cs" />
     <Compile Include="DAO\Districts.cs" />
     <Compile Include="DAO\Divisions.cs" />
+    <Compile Include="DAO\Key.cs" />
+    <Compile Include="DAO\KeyIss.cs" />
+    <Compile Include="DAO\KeyTypes.cs" />
     <Compile Include="DAO\Locations.cs" />
     <Compile Include="DAO\LocationInCharges.cs" />
+    <Compile Include="DAO\Lock.cs" />
+    <Compile Include="DAO\LockType.cs" />
     <Compile Include="DAO\ModelCOO.cs" />
     <Compile Include="DAO\OverSeasAddress.cs" />
     <Compile Include="DAO\PerManantAddress.cs" />
     <Compile Include="DAO\PostOffices.cs" />
     <Compile Include="DAO\PresentAddress.cs" />
+    <Compile Include="DAO\Property.cs" />
     <Compile Include="DAO\Territory.cs" />
     <Compile Include="DAO\TerritoryManagers.cs" />
     <Compile Include="DAO\Thanas.cs" />
@@ -67,8 +73,11 @@
     <Compile Include="DBGateway\ConnectionString.cs" />
     <Compile Include="Gateway\CompanyGateway.cs" />
     <Compile Include="Gateway\COOGateway.cs" />
+    <Compile Include="Gateway\KeyGateway.cs" />
     <Compile Include="Gateway\LocationGateway.cs" />
     <Compile Include="Gateway\LocationInChargeGateway.cs" />
+    <Compile Include="Gateway\LockGateway.cs" />
+    <Compile Include="Gateway\PropertyGateway.cs" />
     <Compile Include="Gateway\TerritoryGateway.cs" />
     <Compile Include="Gateway\TerritoryManagerGateway.cs" />
     <Compile Include="Gateway\UserGateway.cs" />
@@ -104,8 +113,11 @@
     </Compile>
     <Compile Include="Manager\CompanyManager.cs" />
     <Compile Include="Manager\COOManager.cs" />
+    <Compile Include="Manager\KeyManager.cs" />
     <Compile Include="Manager\LocationInChargeManager.cs" />
     <Compile Include="Manager\LocationManager.cs" />
+    <Compile Include="Manager\LockManager.cs" />
+    <Compile Include="Manager\PropertyManager.cs" />
     <Compile Include="Manager\TerritoryManager.cs" />
     <Compile Include="Manager\TerritoryManagerManager.cs" />
     <Compile Include="Manager\UserManager.cs" />

@@ -48,11 +48,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(248, 13);
+            this.label1.Location = new System.Drawing.Point(464, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(331, 26);
+            this.label1.Size = new System.Drawing.Size(476, 37);
             this.label1.TabIndex = 1;
             this.label1.Text = "Territory Manager Assignment";
             // 
@@ -112,7 +112,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(776, 86);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(533, 256);
+            this.groupBox1.Size = new System.Drawing.Size(551, 256);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Territory List";
@@ -162,9 +162,9 @@
             this.saveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.ForeColor = System.Drawing.Color.Blue;
-            this.saveButton.Location = new System.Drawing.Point(670, 340);
+            this.saveButton.Location = new System.Drawing.Point(530, 355);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(110, 66);
+            this.saveButton.Size = new System.Drawing.Size(168, 66);
             this.saveButton.TabIndex = 10;
             this.saveButton.Text = "Submit";
             this.saveButton.UseVisualStyleBackColor = false;
@@ -186,6 +186,7 @@
             this.Controls.Add(this.label1);
             this.Name = "TerritoryManagerAssignment";
             this.Text = "Territory Manager Assignment";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TerritoryManagerAssignment_FormClosed);
             this.Load += new System.EventHandler(this.TerritoryManagerAssignment_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

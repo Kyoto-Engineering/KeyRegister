@@ -17,15 +17,16 @@ namespace KeyRegister.Gateway
         ConnectionString cs = new ConnectionString();
         public int SaveTerritory(Territory aTerritory)
         {
-            connection.Open();
+            conn=new SqlConnection(cs.DBConn);
+            conn.Open();
             string query = "INSERT INTO Territory(TerritoryName,CompanyId,UserId,CreatedDateTime) VALUES(@d1,@d2,@d3,@d4)";
-            SqlCommand cmd = new SqlCommand(query, connection);
+            SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@d1", aTerritory.TerritoryName);
             cmd.Parameters.AddWithValue("@d2", aTerritory.CompanyId);
             cmd.Parameters.AddWithValue("@d3", aTerritory.TUserId);
             cmd.Parameters.AddWithValue("@d4", aTerritory.CreatedDateTime);
             int affectedRows = cmd.ExecuteNonQuery();
-            connection.Close();
+            conn.Close();
             return affectedRows;
 
 

@@ -103,7 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(705, 411);
+            this.ClientSize = new System.Drawing.Size(762, 411);
             this.Controls.Add(this.cmbCompany);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -112,6 +112,7 @@
             this.Controls.Add(this.createButton);
             this.Name = "TerritoryEntry";
             this.Text = "Territory Creation";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TerritoryEntry_FormClosed);
             this.Load += new System.EventHandler(this.TerritoryEntry_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

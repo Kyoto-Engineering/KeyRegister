@@ -89,6 +89,7 @@
             this.Name = "LocationEntry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Location Create";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LocationEntry_FormClosed);
             this.Load += new System.EventHandler(this.LocationEntry_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
