@@ -44,11 +44,39 @@ namespace KeyRegister.UI
             cmbTerritoryManagerName.DisplayMember = "FullName";
             cmbTerritoryManagerName.ValueMember = "UserId";
         }
+        public void LoadTerritoryManager()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT  TerritoryManager.TMId, Users.FullName, Territory.TerritoryName FROM  Territory INNER JOIN TerritoryManager ON Territory.TerritoryId = TerritoryManager.TerritoryId INNER JOIN  Users ON Territory.UserId = Users.UserId", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void TerritoryManagerAssignment_Load(object sender, EventArgs e)
         {
             userId = frmLogin.uId.ToString();
             GetTerritoryManagerName();
             GetTerritoryName();
+            LoadTerritoryManager();
+        }
+
+        private void Reset()
+        {
+            cmbTerritoryName.SelectedIndex = -1;
+            cmbTerritoryManagerName.SelectedIndex = -1;
+            txtAssignedDate.Value=DateTime.Today;
         }
         private void SaveTerritoryManagement()
         {
@@ -95,6 +123,8 @@ namespace KeyRegister.UI
                 aManagers.AssignedBy = userId;
                 tm = aManager.SaveTerritoryManagement(aManagers);
                 MessageBox.Show("Successfully Created", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Reset();
             }
             catch (Exception ex)
             {

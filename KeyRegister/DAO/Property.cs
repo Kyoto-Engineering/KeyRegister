@@ -14,5 +14,6 @@ namespace KeyRegister.DAO
        public int LocationInChargeId { set; get; }
        public string LocationName { set; get; }
        public int LocationId { set; get; }
+       public DateTime CreatedDateTime { set; get; }
     }
 }

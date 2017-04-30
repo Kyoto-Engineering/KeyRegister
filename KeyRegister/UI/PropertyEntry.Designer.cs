@@ -112,6 +112,7 @@
             this.cmbLocationInChargeName.Name = "cmbLocationInChargeName";
             this.cmbLocationInChargeName.Size = new System.Drawing.Size(349, 37);
             this.cmbLocationInChargeName.TabIndex = 8;
+            this.cmbLocationInChargeName.SelectedIndexChanged += new System.EventHandler(this.cmbLocationInChargeName_SelectedIndexChanged);
             // 
             // cmbLocationName
             // 

@@ -115,11 +115,32 @@ namespace KeyRegister.UI
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public void LoadLocationInCharge()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT LocationIncharge.LcationInchargeId, Users.FullName, Location.LocationName FROM  Location INNER JOIN LocationIncharge ON Location.LocationId = LocationIncharge.LocationId INNER JOIN Users ON Location.UserId = Users.UserId", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void LocationInchargeEntry_Load(object sender, EventArgs e)
         {
             lUserId = frmLogin.uId.ToString();
             GetLocationManagerName();
             GetCompanyName();
+            LoadLocationInCharge();
         }
 
         private void LocationInchargeEntry_FormClosed(object sender, FormClosedEventArgs e)
@@ -135,7 +156,7 @@ namespace KeyRegister.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string query = "Select CompanyId from Company where  Company.CompanyName='" + cmbLocationInCharge.Text + "'";
+                string query = "Select UserId from Users where  Users.FullName='" + cmbLocationInCharge.Text + "'";
                 cmd = new SqlCommand(query, con);
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
@@ -158,7 +179,7 @@ namespace KeyRegister.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string query = "Select CompanyId from Company where  Company.CompanyName='" + cmbLocationName.Text + "'";
+                string query = "Select LocationId from Location where  Location.LocationName='" + cmbLocationName.Text + "'";
                 cmd = new SqlCommand(query, con);
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())

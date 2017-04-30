@@ -66,6 +66,7 @@ namespace KeyRegister.UI
                 aProperty.LocationInChargeId = locationInChargeId;
                 aProperty.LocationId = locationId;
                 aProperty.PropertyName = txtPropertyName.Text;
+                aProperty.CreatedDateTime=DateTime.Today;
                 pt = aManager.SaveProperty(aProperty);
                 MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ResetProperty();
@@ -114,6 +115,29 @@ namespace KeyRegister.UI
         {
             GetLocationInChargeName();
             GetLocationName();
+        }
+
+        private void cmbLocationInChargeName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string query = "Select CompanyId from LocationIncharge where  LocationIncharge.CompanyName='" + cmbLocationInChargeName.Text + "'";
+                cmd = new SqlCommand(query, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    locationInChargeId = (rdr.GetInt32(0));
+                }
+                con.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

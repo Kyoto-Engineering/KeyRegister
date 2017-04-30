@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using KeyRegister.DAO;
 using KeyRegister.DBGateway;
+using KeyRegister.LoginUI;
 using KeyRegister.Manager;
 
 namespace KeyRegister.UI
@@ -70,7 +71,7 @@ namespace KeyRegister.UI
 
         private void LocationEntry_Load(object sender, EventArgs e)
         {
-               
+            userId = frmLogin.uId.ToString();
         }
 
         private void LocationEntry_FormClosed(object sender, FormClosedEventArgs e)

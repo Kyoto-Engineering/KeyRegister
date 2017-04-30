@@ -19,11 +19,12 @@ namespace KeyRegister.Gateway
         {
             con=new SqlConnection(cs.DBConn);
             con.Open();
-            string query = "INSERT INTO Location(PropertyName,LocationId,UserId) VALUES(@d1,@d2,@d3)";
+            string query = "INSERT INTO Property(PropertyName,LocationId,UserId,CreatedDateTime) VALUES(@d1,@d2,@d3,@d4)";
             cmd=new SqlCommand(query,con);
             cmd.Parameters.AddWithValue("@d1", aProperty.PropertyName);
             cmd.Parameters.AddWithValue("@d2", aProperty.LocationId);
             cmd.Parameters.AddWithValue("@d3", aProperty.LocationInChargeId);
+            cmd.Parameters.AddWithValue("@d4", aProperty.CreatedDateTime);
             int affectedRows = cmd.ExecuteNonQuery();
             con.Close();
             return affectedRows;
