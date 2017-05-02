@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.createButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,7 +51,7 @@
             this.createButton.BackColor = System.Drawing.Color.Plum;
             this.createButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createButton.ForeColor = System.Drawing.Color.Blue;
-            this.createButton.Location = new System.Drawing.Point(322, 361);
+            this.createButton.Location = new System.Drawing.Point(349, 315);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(212, 77);
             this.createButton.TabIndex = 0;
@@ -126,8 +127,17 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 74);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Location = new System.Drawing.Point(18, 51);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(515, 261);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -135,17 +145,20 @@
             // 
             this.Column1.HeaderText = "Lock Id";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "PropertyName";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.Width = 180;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "LockName";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             this.Column3.Width = 190;
             // 
             // cmbLockType
@@ -162,11 +175,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(-6, 225);
+            this.label4.Location = new System.Drawing.Point(72, 225);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(250, 33);
+            this.label4.Size = new System.Drawing.Size(168, 33);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Lock Type Name";
+            this.label4.Text = "Lock Type ";
             // 
             // LockEntry
             // 
@@ -183,6 +196,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.createButton);
             this.Name = "LockEntry";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lock Create";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LockEntry_FormClosed);
             this.Load += new System.EventHandler(this.LockEntry_Load);

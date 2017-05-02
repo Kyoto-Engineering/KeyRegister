@@ -111,6 +111,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.createButton);
             this.Name = "TerritoryEntry";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Territory Creation";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TerritoryEntry_FormClosed);
             this.Load += new System.EventHandler(this.TerritoryEntry_Load);

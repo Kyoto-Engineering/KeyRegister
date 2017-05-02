@@ -121,7 +121,7 @@ namespace KeyRegister.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT LocationIncharge.LcationInchargeId, Users.FullName, Location.LocationName FROM  Location INNER JOIN LocationIncharge ON Location.LocationId = LocationIncharge.LocationId INNER JOIN Users ON Location.UserId = Users.UserId", con);
+                cmd = new SqlCommand("SELECT LocationIncharge.LcationInchargeId, Users.FullName, Location.LocationName FROM  LocationIncharge INNER JOIN Users ON LocationIncharge.UserId = Users.UserId INNER JOIN Location ON LocationIncharge.LocationId = Location.LocationId", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)

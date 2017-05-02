@@ -38,6 +38,10 @@
             this.cmbLocationName = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -70,7 +74,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(116, 167);
+            this.label2.Location = new System.Drawing.Point(107, 167);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(195, 29);
             this.label2.TabIndex = 2;
@@ -80,7 +84,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(20, 85);
+            this.label3.Location = new System.Drawing.Point(11, 85);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(296, 29);
             this.label3.TabIndex = 3;
@@ -90,7 +94,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(121, 127);
+            this.label4.Location = new System.Drawing.Point(112, 127);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(195, 29);
             this.label4.TabIndex = 4;
@@ -99,18 +103,18 @@
             // txtPropertyName
             // 
             this.txtPropertyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPropertyName.Location = new System.Drawing.Point(329, 167);
+            this.txtPropertyName.Location = new System.Drawing.Point(309, 176);
             this.txtPropertyName.Name = "txtPropertyName";
-            this.txtPropertyName.Size = new System.Drawing.Size(349, 35);
+            this.txtPropertyName.Size = new System.Drawing.Size(298, 35);
             this.txtPropertyName.TabIndex = 5;
             // 
             // cmbLocationInChargeName
             // 
             this.cmbLocationInChargeName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLocationInChargeName.FormattingEnabled = true;
-            this.cmbLocationInChargeName.Location = new System.Drawing.Point(329, 77);
+            this.cmbLocationInChargeName.Location = new System.Drawing.Point(309, 86);
             this.cmbLocationInChargeName.Name = "cmbLocationInChargeName";
-            this.cmbLocationInChargeName.Size = new System.Drawing.Size(349, 37);
+            this.cmbLocationInChargeName.Size = new System.Drawing.Size(298, 37);
             this.cmbLocationInChargeName.TabIndex = 8;
             this.cmbLocationInChargeName.SelectedIndexChanged += new System.EventHandler(this.cmbLocationInChargeName_SelectedIndexChanged);
             // 
@@ -118,18 +122,19 @@
             // 
             this.cmbLocationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLocationName.FormattingEnabled = true;
-            this.cmbLocationName.Location = new System.Drawing.Point(329, 122);
+            this.cmbLocationName.Location = new System.Drawing.Point(309, 131);
             this.cmbLocationName.Name = "cmbLocationName";
-            this.cmbLocationName.Size = new System.Drawing.Size(349, 37);
+            this.cmbLocationName.Size = new System.Drawing.Size(298, 37);
             this.cmbLocationName.TabIndex = 9;
+            this.cmbLocationName.SelectedIndexChanged += new System.EventHandler(this.cmbLocationName_SelectedIndexChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(698, 69);
+            this.groupBox1.Location = new System.Drawing.Point(624, 69);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(489, 275);
+            this.groupBox1.Size = new System.Drawing.Size(566, 275);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Property List";
@@ -137,10 +142,38 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
             this.dataGridView1.Location = new System.Drawing.Point(14, 22);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(464, 247);
+            this.dataGridView1.Size = new System.Drawing.Size(538, 247);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Property Id";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Location Incharge Name";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 140;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Location Name";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 120;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Property Name";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 140;
             // 
             // PropertyEntry
             // 
@@ -157,6 +190,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.saveButton);
             this.Name = "PropertyEntry";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Property Create";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PropertyEntry_FormClosed);
             this.Load += new System.EventHandler(this.PropertyEntry_Load);
@@ -179,5 +213,9 @@
         private System.Windows.Forms.ComboBox cmbLocationName;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

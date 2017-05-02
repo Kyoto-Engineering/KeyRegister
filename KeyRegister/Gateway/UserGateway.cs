@@ -104,7 +104,8 @@ namespace KeyRegister.Gateway
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();         
-            string query = "select FullName,UserId, UserName  from  Users";
+           // string query = "select FullName,UserId, UserName  from  Users";
+            string query = "SELECT  Users.FullName,Users.UserId,Users.UserName  FROM  LocationIncharge INNER JOIN Users ON LocationIncharge.UserId = Users.UserId";
             SqlCommand command = new SqlCommand();
             command.Connection = conn;
             command.CommandText = query;

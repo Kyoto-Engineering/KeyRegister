@@ -10,10 +10,13 @@ namespace KeyRegister.DAO
     {
      public int KeyId { set; get; }
      public int KeyTypeId { set; get; }
+     public string KeyName { set; get; }
      public int KeyNo { set; get; }
-     public int UserId { set; get; }
+     public int KUserId { set; get; }
      public DateTime CreateddateTime { set; get; }
      public int KLockId { set; get; }
      public int  KeyIsId { set; get; }
+     public int PropertyId { set; get; }
+
     }
 }

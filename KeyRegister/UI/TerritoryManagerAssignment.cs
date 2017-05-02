@@ -50,7 +50,7 @@ namespace KeyRegister.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT  TerritoryManager.TMId, Users.FullName, Territory.TerritoryName FROM  Territory INNER JOIN TerritoryManager ON Territory.TerritoryId = TerritoryManager.TerritoryId INNER JOIN  Users ON Territory.UserId = Users.UserId", con);
+                cmd = new SqlCommand("SELECT TerritoryManager.TMId, Users.FullName, Territory.TerritoryName FROM  TerritoryManager INNER JOIN Users ON TerritoryManager.UserId = Users.UserId INNER JOIN Territory ON TerritoryManager.TerritoryId = Territory.TerritoryId", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)

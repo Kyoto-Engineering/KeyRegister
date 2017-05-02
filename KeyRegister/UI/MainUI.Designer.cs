@@ -52,9 +52,9 @@
             this.groupBox1.Controls.Add(this.buttonTerritoryManager);
             this.groupBox1.Controls.Add(this.userManagementButton);
             this.groupBox1.Controls.Add(this.buttonLocationInCharge);
+            this.groupBox1.Controls.Add(this.buttonPropertyCreation);
             this.groupBox1.Controls.Add(this.buttonKeyAllocation);
             this.groupBox1.Controls.Add(this.buttonKeyCreation);
-            this.groupBox1.Controls.Add(this.buttonPropertyCreation);
             this.groupBox1.Controls.Add(this.buttonLockCreation);
             this.groupBox1.Controls.Add(this.buttonKeyHolderStation);
             this.groupBox1.Controls.Add(this.buttonLocationCreation);
@@ -72,7 +72,7 @@
             // 
             this.buttonTerritoryManager.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTerritoryManager.ForeColor = System.Drawing.Color.Blue;
-            this.buttonTerritoryManager.Location = new System.Drawing.Point(9, 310);
+            this.buttonTerritoryManager.Location = new System.Drawing.Point(11, 173);
             this.buttonTerritoryManager.Name = "buttonTerritoryManager";
             this.buttonTerritoryManager.Size = new System.Drawing.Size(124, 41);
             this.buttonTerritoryManager.TabIndex = 11;
@@ -85,9 +85,9 @@
             this.userManagementButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.userManagementButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userManagementButton.ForeColor = System.Drawing.Color.Blue;
-            this.userManagementButton.Location = new System.Drawing.Point(6, 630);
+            this.userManagementButton.Location = new System.Drawing.Point(6, 646);
             this.userManagementButton.Name = "userManagementButton";
-            this.userManagementButton.Size = new System.Drawing.Size(139, 70);
+            this.userManagementButton.Size = new System.Drawing.Size(139, 59);
             this.userManagementButton.TabIndex = 10;
             this.userManagementButton.Text = "User Management ";
             this.userManagementButton.UseVisualStyleBackColor = false;
@@ -97,7 +97,7 @@
             // 
             this.buttonLocationInCharge.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLocationInCharge.ForeColor = System.Drawing.Color.Blue;
-            this.buttonLocationInCharge.Location = new System.Drawing.Point(6, 229);
+            this.buttonLocationInCharge.Location = new System.Drawing.Point(8, 276);
             this.buttonLocationInCharge.Name = "buttonLocationInCharge";
             this.buttonLocationInCharge.Size = new System.Drawing.Size(127, 75);
             this.buttonLocationInCharge.TabIndex = 9;
@@ -109,7 +109,7 @@
             // 
             this.buttonKeyAllocation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonKeyAllocation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonKeyAllocation.Location = new System.Drawing.Point(9, 569);
+            this.buttonKeyAllocation.Location = new System.Drawing.Point(9, 585);
             this.buttonKeyAllocation.Name = "buttonKeyAllocation";
             this.buttonKeyAllocation.Size = new System.Drawing.Size(130, 55);
             this.buttonKeyAllocation.TabIndex = 8;
@@ -121,7 +121,7 @@
             // 
             this.buttonKeyCreation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonKeyCreation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonKeyCreation.Location = new System.Drawing.Point(11, 533);
+            this.buttonKeyCreation.Location = new System.Drawing.Point(11, 547);
             this.buttonKeyCreation.Name = "buttonKeyCreation";
             this.buttonKeyCreation.Size = new System.Drawing.Size(128, 32);
             this.buttonKeyCreation.TabIndex = 7;
@@ -133,7 +133,7 @@
             // 
             this.buttonPropertyCreation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPropertyCreation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonPropertyCreation.Location = new System.Drawing.Point(11, 472);
+            this.buttonPropertyCreation.Location = new System.Drawing.Point(6, 357);
             this.buttonPropertyCreation.Name = "buttonPropertyCreation";
             this.buttonPropertyCreation.Size = new System.Drawing.Size(129, 56);
             this.buttonPropertyCreation.TabIndex = 6;
@@ -145,7 +145,7 @@
             // 
             this.buttonLockCreation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLockCreation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonLockCreation.Location = new System.Drawing.Point(11, 414);
+            this.buttonLockCreation.Location = new System.Drawing.Point(7, 425);
             this.buttonLockCreation.Name = "buttonLockCreation";
             this.buttonLockCreation.Size = new System.Drawing.Size(128, 52);
             this.buttonLockCreation.TabIndex = 5;
@@ -157,7 +157,7 @@
             // 
             this.buttonKeyHolderStation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonKeyHolderStation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonKeyHolderStation.Location = new System.Drawing.Point(11, 357);
+            this.buttonKeyHolderStation.Location = new System.Drawing.Point(12, 485);
             this.buttonKeyHolderStation.Name = "buttonKeyHolderStation";
             this.buttonKeyHolderStation.Size = new System.Drawing.Size(127, 52);
             this.buttonKeyHolderStation.TabIndex = 4;
@@ -169,7 +169,7 @@
             // 
             this.buttonLocationCreation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLocationCreation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonLocationCreation.Location = new System.Drawing.Point(10, 175);
+            this.buttonLocationCreation.Location = new System.Drawing.Point(12, 218);
             this.buttonLocationCreation.Name = "buttonLocationCreation";
             this.buttonLocationCreation.Size = new System.Drawing.Size(125, 52);
             this.buttonLocationCreation.TabIndex = 3;

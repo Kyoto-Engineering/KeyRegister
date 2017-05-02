@@ -99,6 +99,12 @@
     <Compile Include="LoginUI\ResetPassword.Designer.cs">
       <DependentUpon>ResetPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginUI\UpdateUserStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\UpdateUserStatus.Designer.cs">
+      <DependentUpon>UpdateUserStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginUI\UploadUserImage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginUI\ResetPassword.resx">
       <DependentUpon>ResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\UpdateUserStatus.resx">
+      <DependentUpon>UpdateUserStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginUI\UploadUserImage.resx">
       <DependentUpon>UploadUserImage.cs</DependentUpon>

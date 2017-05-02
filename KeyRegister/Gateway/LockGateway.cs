@@ -32,5 +32,27 @@ namespace KeyRegister.Gateway
            con.Close();
            return affectedrows;
        }
-    }
+
+       public  List<Lock> GetLockName(LockGateway aGateway)
+       {
+           con=new SqlConnection(cs.DBConn);
+           con.Open();
+           string query = "Select LockId, LockName from Lock  order by LockId desc";
+           cmd=new SqlCommand(query,con);
+          
+           List<Lock> locks=new List<Lock>();
+           SqlDataReader reader = cmd.ExecuteReader();
+           while (reader.Read())
+           {
+               string lockId = reader[0].ToString();
+               string lockName = reader[1].ToString();
+               Lock aLock=new Lock();
+               aLock.LockId = Convert.ToInt32(lockId);
+               aLock.LockName = lockName;
+               locks.Add(aLock);
+           }
+           con.Close();
+           return locks;
+       }
+   }
 }

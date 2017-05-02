@@ -27,12 +27,32 @@ namespace KeyRegister.UI
         {
             InitializeComponent();
         }
-
+        public void LoadLock()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT Lock.LockId, Property.PropertyName, Lock.LockName FROM Lock INNER JOIN Property ON Lock.PropertyId = Property.PropertyId ", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void LockEntry_Load(object sender, EventArgs e)
         {
             nUserId = frmLogin.uId.ToString();
             GetLockType();
             GetPropertyName();
+            LoadLock();
         }
 
         private void createButton_Click(object sender, EventArgs e)
@@ -62,7 +82,9 @@ namespace KeyRegister.UI
                 aLock.LockTypeId = lockTypeId;
                 aLock.LUserId = nUserId;
                 aLock.CreatedDateTime=DateTime.UtcNow;
-                ig = aManager.SaveLock(aLock);
+                ig = aManager.SaveLock(aLock);               
+                MessageBox.Show("Suucessfully Saved", "error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadLock();
             }
             catch (Exception ex)
             {
