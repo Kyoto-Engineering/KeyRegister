@@ -21,10 +21,10 @@ namespace KeyRegister.Gateway
        {
            con=new SqlConnection(cs.DBConn);
            con.Open();
-           string query = "INSERT INTO Lock(PropertyId,LockName,LockTypeId,UserId,CreatedDateTime) VALUES(@d1,@d2,@d3,@d4,@d5)";
+           string query = "INSERT INTO Lock(PropertyId,LockNo,LockTypeId,UserId,CreatedDateTime) VALUES(@d1,@d2,@d3,@d4,@d5)";
            cmd=new SqlCommand(query,con);
            cmd.Parameters.AddWithValue("@d1", aLock.PropertyId);
-           cmd.Parameters.AddWithValue("@d2", aLock.LockName);
+           cmd.Parameters.AddWithValue("@d2", aLock.LockNo);
            cmd.Parameters.AddWithValue("@d3", aLock.LockTypeId);
            cmd.Parameters.AddWithValue("@d4", aLock.LUserId);
            cmd.Parameters.AddWithValue("@d5", aLock.CreatedDateTime); 
@@ -37,7 +37,7 @@ namespace KeyRegister.Gateway
        {
            con=new SqlConnection(cs.DBConn);
            con.Open();
-           string query = "Select LockId, LockName from Lock  order by LockId desc";
+           string query = "Select LockId, LockNo from Lock  order by LockId desc";
            cmd=new SqlCommand(query,con);
           
            List<Lock> locks=new List<Lock>();
@@ -45,10 +45,10 @@ namespace KeyRegister.Gateway
            while (reader.Read())
            {
                string lockId = reader[0].ToString();
-               string lockName = reader[1].ToString();
+               string lockNo = reader[1].ToString();
                Lock aLock=new Lock();
                aLock.LockId = Convert.ToInt32(lockId);
-               aLock.LockName = lockName;
+               aLock.LockNo = lockNo;
                locks.Add(aLock);
            }
            con.Close();

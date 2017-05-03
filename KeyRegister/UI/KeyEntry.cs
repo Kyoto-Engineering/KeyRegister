@@ -75,6 +75,13 @@ namespace KeyRegister.UI
 
 
         }
+
+        private void Reset()
+        {
+            cmbPropertyName.SelectedIndex = -1;
+            cmbLockName.SelectedIndex = -1;
+            cmbKeyType.SelectedIndex = -1;
+        }
         private void createButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(cmbPropertyName.Text))
@@ -96,18 +103,15 @@ namespace KeyRegister.UI
             {
                 int ig = 0;
                 KeyManager aManager = new KeyManager();
-                Key aKey = new Key();
-                
-               
+                Key aKey = new Key();                              
                 aKey.PropertyId = propertyId;
                 aKey.KLockId = lockId;
                 aKey.KeyTypeId = keyTypeId;
                 aKey.KUserId = nUserId;
                 aKey.CreateddateTime=DateTime.Today;
-
                 ig = aManager.SaveKey(aKey);
                 MessageBox.Show("Suucessfully Saved", "error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               // LoadLock();
+                Reset();
             }
             catch (Exception ex)
             {

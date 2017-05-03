@@ -95,7 +95,7 @@ namespace KeyRegister.UI
             cmbLocationInCharge.DisplayMember = "FullName";
             cmbLocationInCharge.ValueMember = "UserId";
         }
-        private void GetCompanyName()
+        private void GetLocationName()
         {
             try
             {
@@ -139,14 +139,14 @@ namespace KeyRegister.UI
         {
             lUserId = frmLogin.uId.ToString();
             GetLocationManagerName();
-            GetCompanyName();
+            GetLocationName();
             LoadLocationInCharge();
         }
 
         private void LocationInchargeEntry_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            MainUI frm = new MainUI();
+            LocationManagementUI frm = new LocationManagementUI();
             frm.Show();
         }
 

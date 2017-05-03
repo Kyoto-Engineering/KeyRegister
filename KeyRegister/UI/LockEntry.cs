@@ -33,7 +33,7 @@ namespace KeyRegister.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT Lock.LockId, Property.PropertyName, Lock.LockName FROM Lock INNER JOIN Property ON Lock.PropertyId = Property.PropertyId ", con);
+                cmd = new SqlCommand("SELECT Lock.LockId, Property.PropertyName, Lock.LockNo FROM Lock INNER JOIN Property ON Lock.PropertyId = Property.PropertyId ", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)
@@ -62,7 +62,7 @@ namespace KeyRegister.UI
                 MessageBox.Show("Please Select Property Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (string.IsNullOrEmpty(txtLockName.Text))
+            if (string.IsNullOrEmpty(txtLockNo.Text))
             {
                 MessageBox.Show("Please enter Lock Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -78,7 +78,7 @@ namespace KeyRegister.UI
                 LockManager aManager=new LockManager();
                 Lock aLock=new Lock();
                 aLock.PropertyId = propertyId;
-                aLock.LockName = txtLockName.Text;
+                aLock.LockNo = txtLockNo.Text;
                 aLock.LockTypeId = lockTypeId;
                 aLock.LUserId = nUserId;
                 aLock.CreatedDateTime=DateTime.UtcNow;

@@ -52,8 +52,10 @@
     <Compile Include="DAO\Districts.cs" />
     <Compile Include="DAO\Divisions.cs" />
     <Compile Include="DAO\Key.cs" />
+    <Compile Include="DAO\KeyHolder.cs" />
     <Compile Include="DAO\KeyIss.cs" />
     <Compile Include="DAO\KeyTypes.cs" />
+    <Compile Include="DAO\LocationAllocations.cs" />
     <Compile Include="DAO\Locations.cs" />
     <Compile Include="DAO\LocationInCharges.cs" />
     <Compile Include="DAO\Lock.cs" />
@@ -74,6 +76,8 @@
     <Compile Include="Gateway\CompanyGateway.cs" />
     <Compile Include="Gateway\COOGateway.cs" />
     <Compile Include="Gateway\KeyGateway.cs" />
+    <Compile Include="Gateway\KeyHolderGateway.cs" />
+    <Compile Include="Gateway\LocationAllocationGateway.cs" />
     <Compile Include="Gateway\LocationGateway.cs" />
     <Compile Include="Gateway\LocationInChargeGateway.cs" />
     <Compile Include="Gateway\LockGateway.cs" />
@@ -119,7 +123,9 @@
     </Compile>
     <Compile Include="Manager\CompanyManager.cs" />
     <Compile Include="Manager\COOManager.cs" />
+    <Compile Include="Manager\KeyHolderManager.cs" />
     <Compile Include="Manager\KeyManager.cs" />
+    <Compile Include="Manager\LocationAllocationManager.cs" />
     <Compile Include="Manager\LocationInChargeManager.cs" />
     <Compile Include="Manager\LocationManager.cs" />
     <Compile Include="Manager\LockManager.cs" />
@@ -127,6 +133,12 @@
     <Compile Include="Manager\TerritoryManager.cs" />
     <Compile Include="Manager\TerritoryManagerManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
+    <Compile Include="Reports\ListOfKeyHolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ListOfKeyHolder.Designer.cs">
+      <DependentUpon>ListOfKeyHolder.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\COO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +189,12 @@
     <Compile Include="UI\LocationInchargeEntry.Designer.cs">
       <DependentUpon>LocationInchargeEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\LocationManagementUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LocationManagementUI.Designer.cs">
+      <DependentUpon>LocationManagementUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\LockEntry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +243,9 @@
     <EmbeddedResource Include="LoginUI\UserManagementUI.resx">
       <DependentUpon>UserManagementUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ListOfKeyHolder.resx">
+      <DependentUpon>ListOfKeyHolder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\COO.resx">
       <DependentUpon>COO.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LocationInchargeEntry.resx">
       <DependentUpon>LocationInchargeEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LocationManagementUI.resx">
+      <DependentUpon>LocationManagementUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LockEntry.resx">
       <DependentUpon>LockEntry.cs</DependentUpon>

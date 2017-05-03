@@ -77,7 +77,7 @@ namespace KeyRegister.UI
         private void LocationEntry_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            MainUI frm = new MainUI();
+            LocationManagementUI frm = new LocationManagementUI();
             frm.Show();
         }
     }

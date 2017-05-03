@@ -47,9 +47,9 @@ namespace KeyRegister.UI
 
         private void buttonLocationCreation_Click(object sender, EventArgs e)
         {
-                       this.Hide();
-            LocationEntry frm=new LocationEntry();
-                      frm.Show();
+                            this.Hide();
+            LocationManagementUI frm=new LocationManagementUI();
+                            frm.Show();
         }
 
         private void buttonLocationInCharge_Click(object sender, EventArgs e)
