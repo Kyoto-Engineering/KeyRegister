@@ -53,6 +53,6 @@ namespace KeyRegister.DAO
         public string COOName { set; get; }
         public string CompanyName { set; get; }
 
-
+        public int MUserId { set; get; }
     }
 }

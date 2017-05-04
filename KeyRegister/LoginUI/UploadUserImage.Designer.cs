@@ -35,7 +35,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.profilePicture = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.signaturePicture = new System.Windows.Forms.PictureBox();
+            this.buttonSignature = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.signaturePicture)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -43,7 +47,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(32, 43);
+            this.label1.Location = new System.Drawing.Point(32, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(144, 31);
             this.label1.TabIndex = 0;
@@ -55,7 +59,7 @@
             this.cmbUserName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbUserName.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUserName.FormattingEnabled = true;
-            this.cmbUserName.Location = new System.Drawing.Point(192, 40);
+            this.cmbUserName.Location = new System.Drawing.Point(192, 21);
             this.cmbUserName.Name = "cmbUserName";
             this.cmbUserName.Size = new System.Drawing.Size(328, 39);
             this.cmbUserName.TabIndex = 1;
@@ -66,7 +70,7 @@
             this.buttonUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.buttonUpload.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUpload.ForeColor = System.Drawing.Color.Blue;
-            this.buttonUpload.Location = new System.Drawing.Point(293, 207);
+            this.buttonUpload.Location = new System.Drawing.Point(408, 366);
             this.buttonUpload.Name = "buttonUpload";
             this.buttonUpload.Size = new System.Drawing.Size(147, 72);
             this.buttonUpload.TabIndex = 4;
@@ -79,9 +83,9 @@
             this.buttonBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.buttonBrowse.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBrowse.ForeColor = System.Drawing.Color.Magenta;
-            this.buttonBrowse.Location = new System.Drawing.Point(597, 350);
+            this.buttonBrowse.Location = new System.Drawing.Point(599, 366);
             this.buttonBrowse.Name = "buttonBrowse";
-            this.buttonBrowse.Size = new System.Drawing.Size(226, 35);
+            this.buttonBrowse.Size = new System.Drawing.Size(226, 47);
             this.buttonBrowse.TabIndex = 5;
             this.buttonBrowse.Text = "Browse";
             this.buttonBrowse.UseVisualStyleBackColor = false;
@@ -112,11 +116,48 @@
             this.profilePicture.TabIndex = 10;
             this.profilePicture.TabStop = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Blue;
+            this.label3.Location = new System.Drawing.Point(42, 94);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 29);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Signature";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // signaturePicture
+            // 
+            this.signaturePicture.BackgroundImage = global::KeyRegister.Properties.Resources._12;
+            this.signaturePicture.Location = new System.Drawing.Point(192, 90);
+            this.signaturePicture.Name = "signaturePicture";
+            this.signaturePicture.Size = new System.Drawing.Size(298, 141);
+            this.signaturePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.signaturePicture.TabIndex = 12;
+            this.signaturePicture.TabStop = false;
+            // 
+            // buttonSignature
+            // 
+            this.buttonSignature.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.buttonSignature.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSignature.ForeColor = System.Drawing.Color.Magenta;
+            this.buttonSignature.Location = new System.Drawing.Point(225, 254);
+            this.buttonSignature.Name = "buttonSignature";
+            this.buttonSignature.Size = new System.Drawing.Size(226, 47);
+            this.buttonSignature.TabIndex = 13;
+            this.buttonSignature.Text = "Browse";
+            this.buttonSignature.UseVisualStyleBackColor = false;
+            // 
             // UploadUserImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 450);
+            this.ClientSize = new System.Drawing.Size(1061, 450);
+            this.Controls.Add(this.buttonSignature);
+            this.Controls.Add(this.signaturePicture);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.profilePicture);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonBrowse);
@@ -127,8 +168,10 @@
             this.Name = "UploadUserImage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UploadUserImage";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UploadUserImage_FormClosed);
             this.Load += new System.EventHandler(this.UploadUserImage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.signaturePicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,5 +186,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         public System.Windows.Forms.PictureBox profilePicture;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.PictureBox signaturePicture;
+        private System.Windows.Forms.Button buttonSignature;
     }
 }

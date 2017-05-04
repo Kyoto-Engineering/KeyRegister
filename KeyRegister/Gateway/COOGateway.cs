@@ -37,7 +37,7 @@ namespace KeyRegister.Gateway
         public List<User> GetUserName()
         {
             connection.Open();
-            string query = "select FullName,UserId, UserName  from  Users";
+            string query = "select FullName,UserId, UserName  from  Users where Statuss='Active'";
             SqlCommand command = new SqlCommand(query,connection);
             List<User> users=new List<User>();
             SqlDataReader reader = command.ExecuteReader();

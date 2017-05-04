@@ -73,6 +73,17 @@ namespace KeyRegister.UI
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtLocationInCharge.Text))
+            {
+                MessageBox.Show("Please Select User Name as Location In Charge", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtLocationName.Text))
+            {
+                MessageBox.Show("Please Select Location Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             try
             {
                 int lmg = 0;

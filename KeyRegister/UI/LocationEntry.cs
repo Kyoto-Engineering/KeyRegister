@@ -27,7 +27,8 @@ namespace KeyRegister.UI
             InitializeComponent();
         }
 
-        private void   SaveLocation()
+       
+        private void createButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtLocation.Text))
             {
@@ -63,10 +64,6 @@ namespace KeyRegister.UI
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private void createButton_Click(object sender, EventArgs e)
-        {
-            SaveLocation();
         }
 
         private void LocationEntry_Load(object sender, EventArgs e)

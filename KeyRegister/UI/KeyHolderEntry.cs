@@ -54,6 +54,16 @@ namespace KeyRegister.UI
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(cmbKeyHolderName.Text))
+            {
+                MessageBox.Show("Please Select KeyHolder Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(cmbLocationName.Text))
+            {
+                MessageBox.Show("Please Select Location Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 int kh = 0;
@@ -129,6 +139,13 @@ namespace KeyRegister.UI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void KeyHolderEntry_FormClosed(object sender, FormClosedEventArgs e)
+        {
+              this.Hide();
+            MainUI  frm=new MainUI();
+              frm.Show();
         }
     }
 }

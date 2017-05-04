@@ -35,7 +35,8 @@ namespace KeyRegister.UI
             cmbLocationInCharge.SelectedIndex = -1;
             dateOfAssignDate.Value=DateTime.Today;
         }
-        private void  SaveLocationInCharge()
+       
+        private void createButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(cmbLocationInCharge.Text))
             {
@@ -77,15 +78,7 @@ namespace KeyRegister.UI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
-
-
-        }
-        private void createButton_Click(object sender, EventArgs e)
-        {
-            SaveLocationInCharge();
-
+            }           
         }
         private void GetLocationManagerName()
         {

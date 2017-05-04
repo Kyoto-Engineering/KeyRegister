@@ -52,6 +52,7 @@
     <Compile Include="DAO\Districts.cs" />
     <Compile Include="DAO\Divisions.cs" />
     <Compile Include="DAO\Key.cs" />
+    <Compile Include="DAO\KeyAllocation.cs" />
     <Compile Include="DAO\KeyHolder.cs" />
     <Compile Include="DAO\KeyIss.cs" />
     <Compile Include="DAO\KeyTypes.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="DBGateway\ConnectionString.cs" />
     <Compile Include="Gateway\CompanyGateway.cs" />
     <Compile Include="Gateway\COOGateway.cs" />
+    <Compile Include="Gateway\KeyAllocationGateway.cs" />
     <Compile Include="Gateway\KeyGateway.cs" />
     <Compile Include="Gateway\KeyHolderGateway.cs" />
     <Compile Include="Gateway\LocationAllocationGateway.cs" />
@@ -123,6 +125,7 @@
     </Compile>
     <Compile Include="Manager\CompanyManager.cs" />
     <Compile Include="Manager\COOManager.cs" />
+    <Compile Include="Manager\KeyAllocationManager.cs" />
     <Compile Include="Manager\KeyHolderManager.cs" />
     <Compile Include="Manager\KeyManager.cs" />
     <Compile Include="Manager\LocationAllocationManager.cs" />
