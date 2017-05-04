@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -133,6 +136,12 @@
     <Compile Include="Manager\TerritoryManager.cs" />
     <Compile Include="Manager\TerritoryManagerManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
+    <Compile Include="Reports\KeyHolderListReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KeyHolderListReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\ListOfKeyHolder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +252,10 @@
     <EmbeddedResource Include="LoginUI\UserManagementUI.resx">
       <DependentUpon>UserManagementUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\KeyHolderListReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>KeyHolderListReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\ListOfKeyHolder.resx">
       <DependentUpon>ListOfKeyHolder.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +326,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\12.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
