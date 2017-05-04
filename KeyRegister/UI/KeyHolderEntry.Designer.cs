@@ -159,7 +159,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.saveButton);
             this.Name = "KeyHolderEntry";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Key Holder Create";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.KeyHolderEntry_FormClosed);
             this.Load += new System.EventHandler(this.KeyHolderEntry_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

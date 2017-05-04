@@ -133,5 +133,17 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UploadUserImage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+                        this.Hide();
+            UserManagementUI frm=new UserManagementUI();
+                          frm.Show();
+        }
     }
 }

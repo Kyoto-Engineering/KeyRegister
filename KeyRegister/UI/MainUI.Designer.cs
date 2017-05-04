@@ -61,7 +61,7 @@
             this.groupBox1.Controls.Add(this.buttonCompanyCreation);
             this.groupBox1.Location = new System.Drawing.Point(21, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(155, 711);
+            this.groupBox1.Size = new System.Drawing.Size(155, 654);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -83,7 +83,7 @@
             this.userManagementButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.userManagementButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userManagementButton.ForeColor = System.Drawing.Color.Blue;
-            this.userManagementButton.Location = new System.Drawing.Point(3, 646);
+            this.userManagementButton.Location = new System.Drawing.Point(6, 561);
             this.userManagementButton.Name = "userManagementButton";
             this.userManagementButton.Size = new System.Drawing.Size(139, 59);
             this.userManagementButton.TabIndex = 10;

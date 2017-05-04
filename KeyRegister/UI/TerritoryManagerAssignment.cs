@@ -78,7 +78,8 @@ namespace KeyRegister.UI
             cmbTerritoryManagerName.SelectedIndex = -1;
             txtAssignedDate.Value=DateTime.Today;
         }
-        private void SaveTerritoryManagement()
+        
+        private void saveButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(cmbTerritoryManagerName.Text))
             {
@@ -113,7 +114,6 @@ namespace KeyRegister.UI
                     con.Close();
                     return;
                 }
-
                 int tm = 0;
                 TerritoryManagerManager aManager = new TerritoryManagerManager();
                 TerritoryManagers aManagers = new TerritoryManagers();
@@ -123,17 +123,12 @@ namespace KeyRegister.UI
                 aManagers.AssignedBy = userId;
                 tm = aManager.SaveTerritoryManagement(aManagers);
                 MessageBox.Show("Successfully Created", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 Reset();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private void saveButton_Click(object sender, EventArgs e)
-        {
-            SaveTerritoryManagement();
         }
 
         private void cmbTerritoryManagerName_SelectedIndexChanged(object sender, EventArgs e)
