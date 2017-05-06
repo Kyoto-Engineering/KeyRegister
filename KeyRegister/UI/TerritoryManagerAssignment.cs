@@ -38,7 +38,7 @@ namespace KeyRegister.UI
         }
         private void GetTerritoryManagerName()
         {
-            UserGateway aUserGatewate = new UserGateway();
+            TerritoryManagerGateway aUserGatewate = new TerritoryManagerGateway();
             List<Users> users = aUserGatewate.GetUserName();
             cmbTerritoryManagerName.DataSource = users;
             cmbTerritoryManagerName.DisplayMember = "FullName";
@@ -123,6 +123,7 @@ namespace KeyRegister.UI
                 aManagers.AssignedBy = userId;
                 tm = aManager.SaveTerritoryManagement(aManagers);
                 MessageBox.Show("Successfully Created", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadTerritoryManager();
                 Reset();
             }
             catch (Exception ex)

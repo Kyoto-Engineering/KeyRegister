@@ -27,6 +27,31 @@ namespace KeyRegister.Gateway
            con.Close();
            return affectedRows;
        }
-        
-    }
+       public List<Users> GetUserName()
+       {
+           con=new SqlConnection(cs.DBConn);
+           con.Open();
+           string query = "select FullName,UserId, UserName  from  Users where Statuss='Active'";
+           SqlCommand command = new SqlCommand(query, con);
+           List<Users> users = new List<Users>();
+           SqlDataReader reader = command.ExecuteReader();
+           while (reader.Read())
+           {
+               string fName = reader[0].ToString();
+               int userId = Convert.ToInt32(reader[1].ToString());
+               string userName = reader[2].ToString();
+               Users user = new Users();
+               user.FullName = fName;
+               user.UserId = userId;
+               user.UserName = userName;
+               users.Add(user);
+           }
+           con.Close();
+           return users;
+
+
+       }
+
+      
+   }
 }

@@ -11,7 +11,7 @@ namespace KeyRegister.Manager
  public  class UserManager
  {
      public UserGateway aUserGateway;
-        public  int  SaveUserDetail(DAO.User aUser)
+        public  int  SaveUserDetail(Users aUser)
         {
           aUserGateway=new UserGateway();
             return aUserGateway.SaveUserDetails(aUser);

@@ -74,6 +74,7 @@ namespace KeyRegister.UI
                 aProperty.CreatedDateTime = DateTime.Today;
                 pt = aManager.SaveProperty(aProperty);
                 MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadPropertyGrid();
                 ResetProperty();
             }
             catch (Exception ex)
@@ -105,7 +106,7 @@ namespace KeyRegister.UI
             cmbLocationName.DisplayMember = "LocationName";
             cmbLocationName.ValueMember = "LocationId";
         }
-        public void LoadProperty()
+        public void LoadPropertyGrid()
         {
             try
             {
@@ -129,7 +130,7 @@ namespace KeyRegister.UI
         {
             GetLocationInChargeName();
             GetLocationName();
-            LoadProperty();
+            LoadPropertyGrid();
         }
 
         private void cmbLocationInChargeName_SelectedIndexChanged(object sender, EventArgs e)

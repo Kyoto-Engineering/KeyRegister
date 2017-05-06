@@ -40,7 +40,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbLockName = new System.Windows.Forms.ComboBox();
+            this.cmbLockNo = new System.Windows.Forms.ComboBox();
             this.cmbPropertyName = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -74,7 +74,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(39, 108);
+            this.label2.Location = new System.Drawing.Point(39, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(200, 31);
             this.label2.TabIndex = 2;
@@ -84,7 +84,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(105, 210);
+            this.label3.Location = new System.Drawing.Point(103, 213);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 31);
             this.label3.TabIndex = 3;
@@ -94,7 +94,7 @@
             // 
             this.cmbKeyType.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbKeyType.FormattingEnabled = true;
-            this.cmbKeyType.Location = new System.Drawing.Point(246, 206);
+            this.cmbKeyType.Location = new System.Drawing.Point(246, 209);
             this.cmbKeyType.Name = "cmbKeyType";
             this.cmbKeyType.Size = new System.Drawing.Size(423, 40);
             this.cmbKeyType.TabIndex = 5;
@@ -104,19 +104,19 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(85, 161);
+            this.label4.Location = new System.Drawing.Point(112, 156);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(155, 31);
+            this.label4.Size = new System.Drawing.Size(114, 31);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Lock Name ";
+            this.label4.Text = "Lock No";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(27, 289);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(851, 278);
+            this.groupBox1.Size = new System.Drawing.Size(870, 278);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Key List";
@@ -129,9 +129,9 @@
             this.Column2,
             this.Column3,
             this.Column4});
-            this.dataGridView1.Location = new System.Drawing.Point(25, 22);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 22);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(799, 242);
+            this.dataGridView1.Size = new System.Drawing.Size(801, 242);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
@@ -158,21 +158,21 @@
             this.Column4.Name = "Column4";
             this.Column4.Width = 190;
             // 
-            // cmbLockName
+            // cmbLockNo
             // 
-            this.cmbLockName.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbLockName.FormattingEnabled = true;
-            this.cmbLockName.Location = new System.Drawing.Point(246, 157);
-            this.cmbLockName.Name = "cmbLockName";
-            this.cmbLockName.Size = new System.Drawing.Size(423, 40);
-            this.cmbLockName.TabIndex = 7;
+            this.cmbLockNo.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbLockNo.FormattingEnabled = true;
+            this.cmbLockNo.Location = new System.Drawing.Point(246, 154);
+            this.cmbLockNo.Name = "cmbLockNo";
+            this.cmbLockNo.Size = new System.Drawing.Size(423, 40);
+            this.cmbLockNo.TabIndex = 7;
             // 
             // cmbPropertyName
             // 
             this.cmbPropertyName.BackColor = System.Drawing.Color.Yellow;
             this.cmbPropertyName.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPropertyName.FormattingEnabled = true;
-            this.cmbPropertyName.Location = new System.Drawing.Point(246, 108);
+            this.cmbPropertyName.Location = new System.Drawing.Point(246, 96);
             this.cmbPropertyName.Name = "cmbPropertyName";
             this.cmbPropertyName.Size = new System.Drawing.Size(423, 40);
             this.cmbPropertyName.TabIndex = 8;
@@ -184,7 +184,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(909, 579);
             this.Controls.Add(this.cmbPropertyName);
-            this.Controls.Add(this.cmbLockName);
+            this.Controls.Add(this.cmbLockNo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cmbKeyType);
             this.Controls.Add(this.label3);
@@ -215,7 +215,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox cmbLockName;
+        private System.Windows.Forms.ComboBox cmbLockNo;
         private System.Windows.Forms.ComboBox cmbPropertyName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;

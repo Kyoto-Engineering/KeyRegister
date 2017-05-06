@@ -78,10 +78,10 @@
             // 
             // createButton
             // 
-            this.createButton.BackColor = System.Drawing.Color.Plum;
-            this.createButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.createButton.Location = new System.Drawing.Point(445, 260);
+            this.createButton.BackColor = System.Drawing.Color.Firebrick;
+            this.createButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createButton.ForeColor = System.Drawing.Color.White;
+            this.createButton.Location = new System.Drawing.Point(512, 247);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(173, 70);
             this.createButton.TabIndex = 5;
@@ -96,7 +96,7 @@
             this.cmbLocationName.FormattingEnabled = true;
             this.cmbLocationName.Location = new System.Drawing.Point(327, 118);
             this.cmbLocationName.Name = "cmbLocationName";
-            this.cmbLocationName.Size = new System.Drawing.Size(331, 34);
+            this.cmbLocationName.Size = new System.Drawing.Size(396, 34);
             this.cmbLocationName.TabIndex = 6;
             this.cmbLocationName.SelectedIndexChanged += new System.EventHandler(this.cmbLocationName_SelectedIndexChanged);
             // 
@@ -107,7 +107,7 @@
             this.cmbLocationInCharge.FormattingEnabled = true;
             this.cmbLocationInCharge.Location = new System.Drawing.Point(327, 68);
             this.cmbLocationInCharge.Name = "cmbLocationInCharge";
-            this.cmbLocationInCharge.Size = new System.Drawing.Size(331, 34);
+            this.cmbLocationInCharge.Size = new System.Drawing.Size(396, 34);
             this.cmbLocationInCharge.TabIndex = 7;
             this.cmbLocationInCharge.SelectedIndexChanged += new System.EventHandler(this.cmbLocationInCharge_SelectedIndexChanged);
             // 
@@ -127,7 +127,7 @@
             this.dateOfAssignDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateOfAssignDate.Location = new System.Drawing.Point(327, 178);
             this.dateOfAssignDate.Name = "dateOfAssignDate";
-            this.dateOfAssignDate.Size = new System.Drawing.Size(331, 35);
+            this.dateOfAssignDate.Size = new System.Drawing.Size(396, 35);
             this.dateOfAssignDate.TabIndex = 9;
             // 
             // groupBox1
@@ -136,7 +136,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 349);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(687, 284);
+            this.groupBox1.Size = new System.Drawing.Size(806, 308);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Location Incharge List";
@@ -148,33 +148,34 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView1.Location = new System.Drawing.Point(27, 22);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(640, 259);
+            this.dataGridView1.Size = new System.Drawing.Size(769, 267);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Location In Charge Id";
             this.Column1.Name = "Column1";
+            this.Column1.Width = 180;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Location InChargename";
             this.Column2.Name = "Column2";
-            this.Column2.Width = 200;
+            this.Column2.Width = 280;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "LocationName";
             this.Column3.Name = "Column3";
-            this.Column3.Width = 200;
+            this.Column3.Width = 260;
             // 
             // LocationInchargeEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(866, 645);
+            this.ClientSize = new System.Drawing.Size(820, 660);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dateOfAssignDate);
             this.Controls.Add(this.label4);

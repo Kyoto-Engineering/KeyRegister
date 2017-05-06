@@ -81,7 +81,7 @@ namespace KeyRegister.LoginUI
         private void GetUsername()
         {
             COOGateway aCooGateway = new COOGateway();
-            List<User> users = aCooGateway.GetUserName();
+            List<Users> users = aCooGateway.GetUserName();
             cmbUserName.DataSource = users;
             cmbUserName.DisplayMember = "FullName";
             cmbUserName.ValueMember = "FullName";

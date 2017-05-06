@@ -55,6 +55,12 @@ namespace KeyRegister.UI
             LoadLock();
         }
 
+        private void ResetLock()
+        {
+            cmbPropertyName.SelectedIndex = -1;
+            cmbLockType.SelectedIndex = -1;
+            txtLockNo.Clear();
+        }
         private void createButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(cmbPropertyName.Text))
@@ -85,6 +91,7 @@ namespace KeyRegister.UI
                 ig = aManager.SaveLock(aLock);               
                 MessageBox.Show("Suucessfully Saved", "error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadLock();
+                ResetLock();                
             }
             catch (Exception ex)
             {

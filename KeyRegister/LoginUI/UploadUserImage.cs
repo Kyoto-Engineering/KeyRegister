@@ -53,15 +53,22 @@ namespace KeyRegister.LoginUI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string qry = "UPDATE Users Set UserImage=@d1 where  UserId='" + userId + "'";
+                string qry = "UPDATE Users Set UserImage=@d1,Signature=@d2 where  UserId='" + userId + "'";
                 cmd = new SqlCommand(qry, con);
                 MemoryStream ms = new MemoryStream();
+                MemoryStream ms1 = new MemoryStream();
                 Bitmap bmpImage = new Bitmap(profilePicture.Image);
+                Bitmap bmpImage1 = new Bitmap(signaturePicture.Image);
                 bmpImage.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                bmpImage1.Save(ms1, System.Drawing.Imaging.ImageFormat.Jpeg);
                 byte[] data = ms.GetBuffer();
+                byte[] data1 = ms1.GetBuffer();
                 SqlParameter p = new SqlParameter("@d1", SqlDbType.Image);
+                SqlParameter p1 = new SqlParameter("@d2", SqlDbType.Image);
                 p.Value = data;
+                p1.Value = data1;
                 cmd.Parameters.Add(p);
+                cmd.Parameters.Add(p1);
                 cmd.ExecuteNonQuery();
                 con.Close();
                 MessageBox.Show("Successfully Uploaded", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -144,6 +151,26 @@ namespace KeyRegister.LoginUI
                         this.Hide();
             UserManagementUI frm=new UserManagementUI();
                           frm.Show();
+        }
+
+        private void buttonSignature_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                var _with1 = openFileDialog1;
+                _with1.Filter = ("Image Files |*.png; *.bmp; *.jpg;*.jpeg; *.gif;");
+                _with1.FilterIndex = 4;
+                openFileDialog1.FileName = "";
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    signaturePicture.Image = Image.FromFile(openFileDialog1.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

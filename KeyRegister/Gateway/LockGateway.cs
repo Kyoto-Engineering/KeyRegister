@@ -33,7 +33,7 @@ namespace KeyRegister.Gateway
            return affectedrows;
        }
 
-       public  List<Lock> GetLockName(LockGateway aGateway)
+       public  List<Lock> GetLockNumber(LockGateway aGateway)
        {
            con=new SqlConnection(cs.DBConn);
            con.Open();

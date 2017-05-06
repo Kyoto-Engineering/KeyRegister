@@ -48,21 +48,42 @@ namespace KeyRegister.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public void LoadKeyList()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT Keys.KeyId,Property.PropertyName,Lock.LockNo,KeyType.KeyTypeName FROM  Keys INNER JOIN KeyType ON Keys.KeyTypeId = KeyType.KeyTypeId  INNER JOIN Lock ON Keys.LockId = Lock.LockId  INNER JOIN Property ON Lock.PropertyId = Property.PropertyId", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2],rdr[3],rdr[4]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void KeyEntry_Load(object sender, EventArgs e)
         {
             nUserId = frmLogin.uId;
             GetPropertyName();
             GetKeyType();
-            GetLockName();
+            GetLockNumber();
+            LoadKeyList();
         }
 
-        private void GetLockName()
+        private void GetLockNumber()
         {
             LockGateway aGateway=new LockGateway();
-            List<Lock> locks = aGateway.GetLockName(aGateway);
-            cmbLockName.DataSource = locks;
-            cmbLockName.DisplayMember = "LockName";
-            cmbLockName.ValueMember = "LockId";
+            List<Lock> locks = aGateway.GetLockNumber(aGateway);
+            cmbLockNo.DataSource = locks;
+            cmbLockNo.DisplayMember = "LockNo";
+            cmbLockNo.ValueMember = "LockId";
 
         }
         private void GetPropertyName()
@@ -79,7 +100,7 @@ namespace KeyRegister.UI
         private void Reset()
         {
             cmbPropertyName.SelectedIndex = -1;
-            cmbLockName.SelectedIndex = -1;
+            cmbLockNo.SelectedIndex = -1;
             cmbKeyType.SelectedIndex = -1;
         }
         private void createButton_Click(object sender, EventArgs e)
@@ -89,7 +110,7 @@ namespace KeyRegister.UI
                 MessageBox.Show("Please Select Property Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (string.IsNullOrEmpty(cmbLockName.Text))
+            if (string.IsNullOrEmpty(cmbLockNo.Text))
             {
                 MessageBox.Show("Please enter Lock Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -111,6 +132,7 @@ namespace KeyRegister.UI
                 aKey.CreateddateTime=DateTime.Today;
                 ig = aManager.SaveKey(aKey);
                 MessageBox.Show("Suucessfully Saved", "error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadKeyList();
                 Reset();
             }
             catch (Exception ex)

@@ -23,7 +23,7 @@ namespace KeyRegister.UI
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
         public int propertyId, locationId, territoryId,nUserId,createdDatetime;
-        public string h, g;
+        public string h, g,propertyName,locationName,lockname,keyName;
         public KeyAllocationEntry()
         {
             InitializeComponent();
@@ -54,7 +54,7 @@ namespace KeyRegister.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT PropertyId,PropertyName FROM  Property", con);
+                cmd = new SqlCommand("SELECT PropertyId,PropertyName FROM  Property  where  Property.PropertyName='"+propertyName+"'", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView3.Rows.Clear();
                 while (rdr.Read() == true)
@@ -91,9 +91,9 @@ namespace KeyRegister.UI
         private void KeyAllocationEntry_Load(object sender, EventArgs e)
         {
             nUserId = frmLogin.uId;
-            LoadLocation();
+           LoadLocation();
             LoadTerritory();
-            LoadProperty();
+          // LoadProperty();
         }
 
         private void Reset()
@@ -276,6 +276,24 @@ namespace KeyRegister.UI
                this.Hide();
             MainUI frm=new MainUI();
                 frm.Show();
+        }
+
+        private void dataGridView1_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dr = dataGridView1.CurrentRow;
+                propertyId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+               // propertyId = Convert.ToInt32((dr.Cells[0].ToString()));
+                propertyName = (dr.Cells[1].Value.ToString());
+                h = g;
+                LoadProperty();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

@@ -73,7 +73,6 @@
     <Compile Include="DAO\Territory.cs" />
     <Compile Include="DAO\TerritoryManagers.cs" />
     <Compile Include="DAO\Thanas.cs" />
-    <Compile Include="DAO\User.cs" />
     <Compile Include="DAO\Users.cs" />
     <Compile Include="DBGateway\ConnectionGateway.cs" />
     <Compile Include="DBGateway\ConnectionString.cs" />
@@ -332,6 +331,15 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1213.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\121314.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\121315.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

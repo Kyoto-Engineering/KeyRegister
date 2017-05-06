@@ -141,7 +141,7 @@ namespace KeyRegister.LoginUI
             try
             {
 
-                User aUser = new User
+                Users aUser = new Users
                 {
                     EmployeeId = Convert.ToInt32(txtEmployeeId.Text),
                     UserName = txtUserName.Text,

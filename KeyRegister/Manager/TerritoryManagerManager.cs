@@ -11,8 +11,6 @@ namespace KeyRegister.Manager
   public   class TerritoryManagerManager
     {
       TerritoryManagerGateway aGateway=new TerritoryManagerGateway();
-
-
       public  int SaveTerritoryManagement(TerritoryManagers aManagers)
       {
           return aGateway.SaveTerritoryManagement(aManagers);

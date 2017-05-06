@@ -72,17 +72,17 @@ namespace KeyRegister.UI
                 aLocationInCharges.AssignedBy = lUserId;
                 mgs = aManager.SaveLocationInCharge(aLocationInCharges);
                 MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                GetLocationInChargeName();
                 Reset();
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }           
         }
-        private void GetLocationManagerName()
+        private void GetLocationInChargeName()
         {
-            UserGateway aUserGatewate = new UserGateway();
+            LocationInChargeGateway aUserGatewate = new LocationInChargeGateway();
             List<Users> users = aUserGatewate.GetUserName();
             cmbLocationInCharge.DataSource = users;
             cmbLocationInCharge.DisplayMember = "FullName";
@@ -131,7 +131,7 @@ namespace KeyRegister.UI
         private void LocationInchargeEntry_Load(object sender, EventArgs e)
         {
             lUserId = frmLogin.uId.ToString();
-            GetLocationManagerName();
+            GetLocationInChargeName();
             GetLocationName();
             LoadLocationInCharge();
         }

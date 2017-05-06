@@ -45,5 +45,10 @@ namespace KeyRegister.UI
             MainUI frm=new MainUI();
                  frm.Show();
         }
+
+        private void LocationManagementUI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

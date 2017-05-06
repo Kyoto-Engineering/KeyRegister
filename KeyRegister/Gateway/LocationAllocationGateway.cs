@@ -21,7 +21,7 @@ namespace KeyRegister.Gateway
             con=new SqlConnection(cs.DBConn);
             con.Open();
             string query = "INSERT INTO LocationUser(LocationId,UserId) VALUES(@d1,@d2)";
-            cmd=new SqlCommand(cs.DBConn);
+            cmd=new SqlCommand(query,con);
             cmd.Parameters.AddWithValue("@d1", allocation.LocationId);
             cmd.Parameters.AddWithValue("@d2", allocation.LocationInChargeId);
             int affectedRows = cmd.ExecuteNonQuery();

@@ -34,12 +34,12 @@
             this.buttonBrowse = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.profilePicture = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.signaturePicture = new System.Windows.Forms.PictureBox();
             this.buttonSignature = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
+            this.signaturePicture = new System.Windows.Forms.PictureBox();
+            this.profilePicture = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.signaturePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -106,16 +106,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // profilePicture
-            // 
-            this.profilePicture.BackgroundImage = global::KeyRegister.Properties.Resources._12;
-            this.profilePicture.Location = new System.Drawing.Point(567, 33);
-            this.profilePicture.Name = "profilePicture";
-            this.profilePicture.Size = new System.Drawing.Size(271, 302);
-            this.profilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.profilePicture.TabIndex = 10;
-            this.profilePicture.TabStop = false;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -128,27 +118,38 @@
             this.label3.Text = "Signature";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // signaturePicture
-            // 
-            this.signaturePicture.BackgroundImage = global::KeyRegister.Properties.Resources._12;
-            this.signaturePicture.Location = new System.Drawing.Point(192, 90);
-            this.signaturePicture.Name = "signaturePicture";
-            this.signaturePicture.Size = new System.Drawing.Size(298, 141);
-            this.signaturePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.signaturePicture.TabIndex = 12;
-            this.signaturePicture.TabStop = false;
-            // 
             // buttonSignature
             // 
             this.buttonSignature.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.buttonSignature.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSignature.ForeColor = System.Drawing.Color.Magenta;
-            this.buttonSignature.Location = new System.Drawing.Point(225, 254);
+            this.buttonSignature.Location = new System.Drawing.Point(273, 232);
             this.buttonSignature.Name = "buttonSignature";
-            this.buttonSignature.Size = new System.Drawing.Size(226, 47);
+            this.buttonSignature.Size = new System.Drawing.Size(204, 47);
             this.buttonSignature.TabIndex = 13;
             this.buttonSignature.Text = "Browse";
             this.buttonSignature.UseVisualStyleBackColor = false;
+            this.buttonSignature.Click += new System.EventHandler(this.buttonSignature_Click);
+            // 
+            // signaturePicture
+            // 
+            this.signaturePicture.BackgroundImage = global::KeyRegister.Properties.Resources._121315;
+            this.signaturePicture.Location = new System.Drawing.Point(252, 107);
+            this.signaturePicture.Name = "signaturePicture";
+            this.signaturePicture.Size = new System.Drawing.Size(253, 103);
+            this.signaturePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.signaturePicture.TabIndex = 12;
+            this.signaturePicture.TabStop = false;
+            // 
+            // profilePicture
+            // 
+            this.profilePicture.BackgroundImage = global::KeyRegister.Properties.Resources._12;
+            this.profilePicture.Location = new System.Drawing.Point(567, 33);
+            this.profilePicture.Name = "profilePicture";
+            this.profilePicture.Size = new System.Drawing.Size(271, 302);
+            this.profilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profilePicture.TabIndex = 10;
+            this.profilePicture.TabStop = false;
             // 
             // UploadUserImage
             // 
@@ -170,8 +171,8 @@
             this.Text = "UploadUserImage";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UploadUserImage_FormClosed);
             this.Load += new System.EventHandler(this.UploadUserImage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.signaturePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

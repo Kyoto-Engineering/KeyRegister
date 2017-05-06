@@ -16,7 +16,7 @@ namespace KeyRegister.Gateway
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
         public int affectedRows1, affectedRows2, affectedRows3, affectedRows4, affectedRows5;
-        public  int  SaveUserDetails(User aUser)
+        public  int  SaveUserDetails(Users aUser)
         {
             conn=new SqlConnection(cs.DBConn);
             conn.Open();
@@ -103,14 +103,11 @@ namespace KeyRegister.Gateway
         public List<Users> GetUserName()
         {
             conn = new SqlConnection(cs.DBConn);
-            conn.Open();         
-           // string query = "select FullName,UserId, UserName  from  Users";
+            conn.Open();                   
             string query = "SELECT  Users.FullName,Users.UserId,Users.UserName  FROM  LocationIncharge INNER JOIN Users ON LocationIncharge.UserId = Users.UserId";
             SqlCommand command = new SqlCommand();
             command.Connection = conn;
-            command.CommandText = query;
-
-            //execution
+            command.CommandText = query;          
             List<Users> users = new List<Users>();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
