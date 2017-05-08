@@ -16,16 +16,16 @@ namespace KeyRegister.Gateway
       private SqlDataReader rdr;
       ConnectionString cs=new ConnectionString();
 
-        public  int  SaveLocation(DAO.Locations aLocation)
+        public  int  SaveLocation(Locations aLocation)
         {
            con=new SqlConnection(cs.DBConn);
             con.Open();
-           string query = "INSERT INTO Location(LocationName,UserId,CreatedDateTime) VALUES(@d1,@d2,@d3)";
+            string query = "INSERT INTO Location(LocationName,UserId,CreatedDateTime,TerritoryId) VALUES(@d1,@d2,@d3,@d4)";
             cmd=new SqlCommand(query,con);
             cmd.Parameters.AddWithValue("@d1", aLocation.LocationName);
             cmd.Parameters.AddWithValue("@d2", aLocation.LUserId);
             cmd.Parameters.AddWithValue("@d3", aLocation.CreateddateTime);
-           // cmd.Parameters.AddWithValue("@d4", aLocation.LTerritoryId);
+            cmd.Parameters.AddWithValue("@d4", aLocation.LTerritoryId);
             int affectedRows = cmd.ExecuteNonQuery();
             con.Close();
             return affectedRows;

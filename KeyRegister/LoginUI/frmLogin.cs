@@ -18,7 +18,7 @@ namespace KeyRegister.LoginUI
     {
         private SqlConnection con;
         private SqlCommand cmd;
-        private SqlDataReader rdr,rdr1;
+        private SqlDataReader rdr,rdr1,rdr2;
         ConnectionString cs=new ConnectionString();
         public string readyPassword, dbUserName, dbPassword;
         public static int uId;
@@ -184,33 +184,43 @@ namespace KeyRegister.LoginUI
                         userId = (rdr1.GetString(0));
                         dbUserName = (rdr1.GetString(1));
                         dbPassword = (rdr1.GetString(2));
-                        uId = Convert.ToInt32(userId);
-                        int caseSwitch = 1;
-                        switch (caseSwitch)
-                        {
-                            case 1:
-                                MaintainCOOAuthorization();
-                                break;
-                            case 2:
-                               MaintainTTMAuthorization();
-                                break;
-                            case 3:
-                                MaintainLocationInChargeAuthorization();
-                                break;
-                            default:
-                                MaintainLocalUserAuthorization();
-                                break;
-                        }
-                       
+                        uId = Convert.ToInt32(userId);                                              
+                }
+                con.Close();
 
-                    }
-                    else
+                con=new SqlConnection(cs.DBConn);
+                con.Open();
+                string qry1 = "Select RTRIM(Users.UserType)  from  Users WHERE Users.UserName = '" + dbUserName + "' AND  Users.Password = '" + dbPassword + "'";
+                cmd=new SqlCommand(qry1,con);
+                rdr2 = cmd.ExecuteReader();
+                if (rdr2.Read())
+                {
+                    userType = (rdr2.GetString(0));
+                    string caseSwitch = userType;
+                    switch (caseSwitch)
                     {
-                        MessageBox.Show("Login is Failed...Try again !", "Login Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtUserName.Clear();
-                        txtPassword.Clear();
-                        txtUserName.Focus();
-                    }                                                      
+                        case "COO":
+                            MaintainCOOAuthorization();
+                            break;
+                        case "TTM":
+                            MaintainTTMAuthorization();
+                            break;
+                        case "LIC":
+                            MaintainLocationInChargeAuthorization();
+                            break;
+                        default:
+                            MaintainLocalUserAuthorization();
+                            break;
+                    }
+                }
+
+                else
+                {
+                    MessageBox.Show("Login is Failed...Try again !", "Login Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtUserName.Clear();
+                    txtPassword.Clear();
+                    txtUserName.Focus();
+                }                                                      
                 }                
             
             catch (Exception ex)

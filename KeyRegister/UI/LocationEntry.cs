@@ -21,12 +21,19 @@ namespace KeyRegister.UI
         private SqlCommand cmd;
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
-        public string userId,lTerriToryId;
+        public string userId,lTerriToryId,userType,h,k;
         public LocationEntry()
         {
             InitializeComponent();
         }
 
+        private void ClearText()
+        {
+            txtLocation.Clear();
+            txtTerritoriId.Clear();
+            txtTerritoriName.Clear();
+            
+        }
        
         private void createButton_Click(object sender, EventArgs e)
         {
@@ -55,20 +62,92 @@ namespace KeyRegister.UI
                 aLocation.LocationName = txtLocation.Text;
                 aLocation.LUserId = Convert.ToInt32(userId);
                 aLocation.CreateddateTime = DateTime.Today;
-                // aLocation.LTerritoryId = Convert.ToInt32(lTerriToryId);
+                 aLocation.LTerritoryId = Convert.ToInt32(txtTerritoriId.Text);
                 mgs = aManager.SaveLocation(aLocation);
                 MessageBox.Show("Successfully Submited", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtLocation.Clear();
+                ClearText();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        public void LoadLocation()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT  LocationId, LocationName FROM  Location", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView1.Rows.Add(rdr[0], rdr[1]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void LoadTerritoryForCOO()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT Territory.TerritoryId, Territory.TerritoryName, Users.FullName FROM  TerritoryManager INNER JOIN Territory ON TerritoryManager.TerritoryId = Territory.TerritoryId INNER JOIN Users ON TerritoryManager.UserId = Users.UserId", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void LoadTerritory()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT Territory.TerritoryId, Territory.TerritoryName, Users.FullName FROM  TerritoryManager INNER JOIN Territory ON TerritoryManager.TerritoryId = Territory.TerritoryId INNER JOIN Users ON TerritoryManager.UserId = Users.UserId where TerritoryManager.TMId  in (Select TerritoryManager.TMId from TerritoryManager where TerritoryManager.UserId ='"+userId+"')", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void LocationEntry_Load(object sender, EventArgs e)
         {
             userId = frmLogin.uId.ToString();
+           // LoadTerritory();
+            LoadLocation();
+            userType = frmLogin.userType;
+            if (userType == "COO")
+            {
+                LoadTerritoryForCOO();
+            }
+            else
+            {
+                LoadTerritory();
+            }
+
+
         }
 
         private void LocationEntry_FormClosed(object sender, FormClosedEventArgs e)
@@ -76,6 +155,23 @@ namespace KeyRegister.UI
             this.Hide();
             LocationManagementUI frm = new LocationManagementUI();
             frm.Show();
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dr = dataGridView1.CurrentRow;
+
+               txtTerritoriId .Text = dr.Cells[0].Value.ToString();
+                txtTerritoriName.Text = dr.Cells[1].Value.ToString();
+                h = k;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
