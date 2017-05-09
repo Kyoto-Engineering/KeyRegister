@@ -44,6 +44,26 @@ namespace KeyRegister.UI
         //    cmbTerritoryManagerName.DisplayMember = "FullName";
         //    cmbTerritoryManagerName.ValueMember = "UserId";
         //}
+        public void LoadUserList()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT  UserId, FullName, EmployeeId FROM  Users  where  Users.Statuss='Active' and  UserId not in (Select UserId  from COO) and UserId not in (Select UserId  from LocationUser)", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView2.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         public void LoadTerritoryManager()
         {
             try
@@ -92,6 +112,7 @@ namespace KeyRegister.UI
            // GetTerritoryName();
             LoadUserName();
             LoadTerritoryManager();
+            //LoadUserList();
         }
 
         private void Reset()
@@ -156,31 +177,7 @@ namespace KeyRegister.UI
             }
         }
 
-        private void cmbTerritoryManagerName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    con = new SqlConnection(cs.DBConn);
-            //    con.Open();
-            //    string query = "Select UserId from Users where  Users.FullName='" + cmbTerritoryManagerName.Text + "'";
-            //    cmd = new SqlCommand(query, con);
-            //    rdr = cmd.ExecuteReader();
-            //    if (rdr.Read())
-            //    {
-            //        userIdAsTM = (rdr.GetInt32(0));
-            //    }
-            //    con.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-        }
-
-        private void cmbTerritoryName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
+      
 
         private void TerritoryManagerAssignment_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -234,6 +231,27 @@ namespace KeyRegister.UI
                 txtEmployeeId.Text = dr.Cells[2].Value.ToString();
                 h = k;
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtTerritoryManager_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string query = "Select UserId from Users where  Users.FullName='" + txtTerritoryManager.Text + "'";
+                cmd = new SqlCommand(query, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    userIdAsTM = (rdr.GetInt32(0));
+                }
+                con.Close();
             }
             catch (Exception ex)
             {

@@ -27,54 +27,34 @@ namespace KeyRegister.UI
         {
             InitializeComponent();
         }
-        //private void GetCompanyName()
-        //{
-        //    try
-        //    {
-        //        con = new SqlConnection(cs.DBConn);
-        //        con.Open();
-        //        string qry = "Select  CompanyName from  Company  order  by  Company.CompanyId desc ";
-        //        cmd = new SqlCommand(qry, con);
-        //        rdr = cmd.ExecuteReader();
-        //        while (rdr.Read())
-        //        {
-        //            cmbCompany.Items.Add(rdr[0]);
-        //        }
-        //        con.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
+        private void GetTerritoryList()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string qry = "SELECT TerritoryId,TerritoryName FROM   Territory";
+                cmd = new SqlCommand(qry, con);
+                rdr = cmd.ExecuteReader();
+                dataGridView1.Rows.Clear();
+                while (rdr.Read())
+                {
+                    dataGridView1.Rows.Add(rdr[0],rdr[1]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void TerritoryEntry_Load(object sender, EventArgs e)
         {
             userId = frmLogin.uId.ToString();
-           // GetCompanyName();
+             GetTerritoryList();
         }
 
-        private void cmbCompany_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    con = new SqlConnection(cs.DBConn);
-            //    con.Open();
-            //    string query = "Select CompanyId from Company where  Company.CompanyName='" + cmbCompany.Text + "'";
-            //    cmd = new SqlCommand(query, con);
-            //    rdr = cmd.ExecuteReader();
-            //    if (rdr.Read())
-            //    {
-            //        companyId = (rdr.GetInt32(0));
-            //    }
-            //    con.Close();
-
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-        }
+       
 
         private void ResetTerritory()
         {
@@ -119,7 +99,7 @@ namespace KeyRegister.UI
                 tg = aManager.SaveTerritory(aTerritory);
                 MessageBox.Show("Successfully Created", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetTerritory();
-
+                GetTerritoryList();
             }
             catch (Exception exception)
             {

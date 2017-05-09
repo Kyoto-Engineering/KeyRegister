@@ -23,6 +23,7 @@ namespace KeyRegister.UI
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
         public int  locationInChargeId,locationId,userIdForLoc;
+        public string userType;
         public PropertyEntry()
         {
             InitializeComponent();
@@ -85,9 +86,24 @@ namespace KeyRegister.UI
 
         private void PropertyEntry_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (userType == "COO")
+            {
                 this.Hide();
-            MainUI frm=new MainUI();
-                 frm.Show();
+                MainUI frm = new MainUI();
+                frm.Show();
+            }
+            if (userType == "TTM")
+            {
+                this.Hide();
+                MainUIForTTM frm = new MainUIForTTM();
+                frm.Show();
+            }
+            if (userType == "LIC")
+            {
+                this.Hide();
+                MainUIForLIC frm = new MainUIForLIC();
+                frm.Show();
+            }
         }
         private void GetLocationInChargeName()
         {

@@ -99,6 +99,7 @@
             this.txtTerritoriId.ReadOnly = true;
             this.txtTerritoriId.Size = new System.Drawing.Size(309, 41);
             this.txtTerritoriId.TabIndex = 5;
+            this.txtTerritoriId.TextChanged += new System.EventHandler(this.txtTerritoriId_TextChanged);
             // 
             // label3
             // 

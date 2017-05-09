@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using KeyRegister.DAO;
 using KeyRegister.DBGateway;
 using KeyRegister.Gateway;
+using KeyRegister.LoginUI;
 using KeyRegister.Manager;
 
 namespace KeyRegister.UI
@@ -22,6 +23,7 @@ namespace KeyRegister.UI
         private SqlDataReader rdr;
         ConnectionString cs = new ConnectionString();
         public int locationId,userAsKeyHolderId;
+        public string userType;
         public KeyHolderEntry()
         {
             InitializeComponent();
@@ -48,6 +50,7 @@ namespace KeyRegister.UI
         }
         private void KeyHolderEntry_Load(object sender, EventArgs e)
         {
+            userType = frmLogin.userType;
             GetLocationName();
             GetUserName();
         }
@@ -143,9 +146,24 @@ namespace KeyRegister.UI
 
         private void KeyHolderEntry_FormClosed(object sender, FormClosedEventArgs e)
         {
-              this.Hide();
-            MainUI  frm=new MainUI();
-              frm.Show();
+            if (userType == "COO")
+            {
+                this.Hide();
+                MainUI frm = new MainUI();
+                frm.Show();
+            }
+            if (userType == "TTM")
+            {
+                this.Hide();
+                MainUIForTTM frm = new MainUIForTTM();
+                frm.Show();
+            }
+            if (userType == "LIC")
+            {
+                this.Hide();
+                MainUIForTTM frm = new MainUIForTTM();
+                frm.Show();
+            }
         }
     }
 }

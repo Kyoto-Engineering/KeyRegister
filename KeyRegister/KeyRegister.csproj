@@ -218,6 +218,18 @@
     <Compile Include="UI\MainUI.Designer.cs">
       <DependentUpon>MainUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\MainUIForLIC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainUIForLIC.Designer.cs">
+      <DependentUpon>MainUIForLIC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainUIForTTM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainUIForTTM.Designer.cs">
+      <DependentUpon>MainUIForTTM.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\PropertyEntry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,6 +315,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MainUI.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainUIForLIC.resx">
+      <DependentUpon>MainUIForLIC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainUIForTTM.resx">
+      <DependentUpon>MainUIForTTM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\PropertyEntry.resx">
       <DependentUpon>PropertyEntry.cs</DependentUpon>

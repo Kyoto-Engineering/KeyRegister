@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KeyRegister.LoginUI;
 
 namespace KeyRegister.UI
 {
     public partial class LocationManagementUI : Form
     {
+        public string userTypel,nUserId;
         public LocationManagementUI()
         {
             InitializeComponent();
@@ -41,13 +43,31 @@ namespace KeyRegister.UI
 
         private void LocationManagementUI_FormClosed(object sender, FormClosedEventArgs e)
         {
+
+            if (userTypel == "COO")
+            {
                 this.Hide();
-            MainUI frm=new MainUI();
-                 frm.Show();
+                MainUI frm = new MainUI();
+                frm.Show();
+            }
+            if (userTypel == "TTM")
+            {
+                this.Hide();
+                MainUIForTTM frm = new MainUIForTTM();
+                frm.Show();
+            }
+            if (userTypel == "LIC")
+            {
+                this.Hide();
+                MainUIForLIC frm = new MainUIForLIC();
+                frm.Show();
+            }
         }
 
         private void LocationManagementUI_Load(object sender, EventArgs e)
         {
+            userTypel = frmLogin.userType;
+            nUserId = frmLogin.uId.ToString();
 
         }
     }

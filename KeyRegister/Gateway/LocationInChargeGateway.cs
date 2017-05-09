@@ -19,7 +19,7 @@ namespace KeyRegister.Gateway
         {
             con=new SqlConnection(cs.DBConn);
             con.Open();
-            string q = "select FullName,UserId, UserName  from  Users where Statuss='Active'";
+           // string q = "select FullName,UserId, UserName  from  Users where Statuss='Active'";
             string query = "INSERT INTO  LocationIncharge(UserId,LocationId,AssignDate,Assignedby) VALUES(@d1,@d2,@d3,@d4)";
             cmd=new SqlCommand(query,con);
             cmd.Parameters.AddWithValue("@d1", aLocationInCharges.LUserId);

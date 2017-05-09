@@ -72,18 +72,18 @@ namespace KeyRegister.UI
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void LoadLocation()
+        public void LoadLocationForSelectedTerritory()
         {
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT  LocationId, LocationName FROM  Location", con);
+                cmd = new SqlCommand("SELECT  LocationId, LocationName FROM  Location where Location.TerritoryId ='"+txtTerritoriId.Text+"'", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                dataGridView1.Rows.Clear();
+                dataGridView2.Rows.Clear();
                 while (rdr.Read() == true)
                 {
-                    dataGridView1.Rows.Add(rdr[0], rdr[1]);
+                    dataGridView2.Rows.Add(rdr[0], rdr[1]);
                 }
                 con.Close();
             }
@@ -135,8 +135,8 @@ namespace KeyRegister.UI
         private void LocationEntry_Load(object sender, EventArgs e)
         {
             userId = frmLogin.uId.ToString();
-           // LoadTerritory();
-            LoadLocation();
+           
+            //LoadLocation();
             userType = frmLogin.userType;
             if (userType == "COO")
             {
@@ -152,9 +152,13 @@ namespace KeyRegister.UI
 
         private void LocationEntry_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Hide();
-            LocationManagementUI frm = new LocationManagementUI();
-            frm.Show();
+           
+                this.Hide();
+                LocationManagementUI frm = new LocationManagementUI();
+                frm.Show();
+          
+            
+
         }
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -166,12 +170,17 @@ namespace KeyRegister.UI
                txtTerritoriId .Text = dr.Cells[0].Value.ToString();
                 txtTerritoriName.Text = dr.Cells[1].Value.ToString();
                 h = k;
-
+                LoadLocationForSelectedTerritory();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtTerritoriId_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

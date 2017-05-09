@@ -205,7 +205,7 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(409, 4);
+            this.label1.Location = new System.Drawing.Point(398, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(325, 40);
             this.label1.TabIndex = 1;
@@ -216,7 +216,7 @@
             this.buttonLogOut.BackColor = System.Drawing.Color.CornflowerBlue;
             this.buttonLogOut.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogOut.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonLogOut.Location = new System.Drawing.Point(966, 7);
+            this.buttonLogOut.Location = new System.Drawing.Point(970, 6);
             this.buttonLogOut.Name = "buttonLogOut";
             this.buttonLogOut.Size = new System.Drawing.Size(97, 51);
             this.buttonLogOut.TabIndex = 2;
@@ -228,7 +228,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1070, 741);
+            this.ClientSize = new System.Drawing.Size(1073, 733);
             this.Controls.Add(this.buttonLogOut);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);

@@ -35,22 +35,23 @@ namespace KeyRegister.LoginUI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string qry = "SELECT TerritoryId FROM Territory WHERE (UserId = @UI) AND (DefunctDate IS NULL)";
+                string qry = "SELECT TMId FROM TerritoryManager  WHERE (UserId = @UI) AND (OffDutydate IS NULL)";
                 cmd = new SqlCommand(qry, con);
                 cmd.Parameters.AddWithValue("@UI", uId);
                 rdr = cmd.ExecuteReader();
-                con.Close();
+               
                 if (rdr.Read())
                 {
                     if (rdr.HasRows)
                     {
-                        userType = "TMM";
+                        userType = "TTM";
                         this.Hide();
-                        MainUI frm = new MainUI();
+                    MainUIForTTM frm = new MainUIForTTM();
                         frm.Show();
                     }
 
                 }
+                con.Close();
 
             }
             catch (Exception ex)
@@ -93,23 +94,23 @@ namespace KeyRegister.LoginUI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string qry = "SELECT COOId FROM  COO WHERE  (UserId = @UI) AND (ResignationDate IS NULL)";
+                string qry = "SELECT LcationInchargeId FROM  LocationIncharge  WHERE  (UserId = @UI) AND (RetractDate IS NULL)";
                 cmd = new SqlCommand(qry, con);
                 cmd.Parameters.AddWithValue("@UI", uId);
                 rdr = cmd.ExecuteReader();
-                con.Close();
+                
                 if (rdr.Read())
                 {
                     if (rdr.HasRows)
                     {
-                        userType = "COO";
+                        userType = "LIC";
                         this.Hide();
-                        MainUI frm = new MainUI();
+                        MainUIForLIC frm = new MainUIForLIC();
                         frm.Show();
                     }
 
                 }
-
+                con.Close();
             }
             catch (Exception ex)
             {
@@ -123,7 +124,7 @@ namespace KeyRegister.LoginUI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string qry = "SELECT COOId FROM  COO WHERE  (UserId = @UI) AND (ResignationDate IS NULL)";
+                string qry = "SELECT  LocationUserId  FROM  LocationUser  WHERE  (UserId = @UI) AND (ResignationDate IS NULL)";
                 cmd = new SqlCommand(qry, con);
                 cmd.Parameters.AddWithValue("@UI", uId);
                 rdr = cmd.ExecuteReader();
@@ -132,7 +133,7 @@ namespace KeyRegister.LoginUI
                 {
                     if (rdr.HasRows)
                     {
-                        userType = "COO";
+                        userType = "User";
                         this.Hide();
                         MainUI frm = new MainUI();
                         frm.Show();

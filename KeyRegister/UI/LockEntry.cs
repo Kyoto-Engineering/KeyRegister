@@ -22,7 +22,7 @@ namespace KeyRegister.UI
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
         public int propertyId, lockTypeId;
-        public string nUserId;
+        public string nUserId, userType;
         public LockEntry()
         {
             InitializeComponent();
@@ -50,6 +50,7 @@ namespace KeyRegister.UI
         private void LockEntry_Load(object sender, EventArgs e)
         {
             nUserId = frmLogin.uId.ToString();
+            userType = frmLogin.userType;
             GetLockType();
             GetPropertyName();
             LoadLock();
@@ -238,9 +239,24 @@ namespace KeyRegister.UI
 
         private void LockEntry_FormClosed(object sender, FormClosedEventArgs e)
         {
-               this.Hide();
-            MainUI frm=new MainUI();
+            if (userType == "COO")
+            {
+                this.Hide();
+                MainUI frm = new MainUI();
                 frm.Show();
+            }
+            if (userType == "TTM")
+            {
+                this.Hide();
+                MainUIForTTM frm = new MainUIForTTM();
+                frm.Show();
+            }
+            if (userType == "LIC")
+            {
+                this.Hide();
+                MainUIForLIC frm = new MainUIForLIC();
+                frm.Show();
+            }
         }
     }
 }

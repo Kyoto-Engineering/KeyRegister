@@ -70,7 +70,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 86);
+            this.label2.Location = new System.Drawing.Point(21, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(219, 29);
             this.label2.TabIndex = 2;
@@ -80,7 +80,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(53, 154);
+            this.label3.Location = new System.Drawing.Point(53, 170);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(188, 29);
             this.label3.TabIndex = 3;
@@ -90,7 +90,7 @@
             // 
             this.cmbLocationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLocationName.FormattingEnabled = true;
-            this.cmbLocationName.Location = new System.Drawing.Point(250, 152);
+            this.cmbLocationName.Location = new System.Drawing.Point(250, 168);
             this.cmbLocationName.Name = "cmbLocationName";
             this.cmbLocationName.Size = new System.Drawing.Size(280, 33);
             this.cmbLocationName.TabIndex = 5;
@@ -140,7 +140,7 @@
             // 
             this.cmbKeyHolderName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbKeyHolderName.FormattingEnabled = true;
-            this.cmbKeyHolderName.Location = new System.Drawing.Point(250, 86);
+            this.cmbKeyHolderName.Location = new System.Drawing.Point(250, 102);
             this.cmbKeyHolderName.Name = "cmbKeyHolderName";
             this.cmbKeyHolderName.Size = new System.Drawing.Size(280, 33);
             this.cmbKeyHolderName.TabIndex = 7;

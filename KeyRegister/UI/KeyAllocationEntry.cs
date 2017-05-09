@@ -23,7 +23,7 @@ namespace KeyRegister.UI
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
         public int propertyId, locationId, territoryId,nUserId,createdDatetime;
-        public string h, g,propertyName,locationName,lockname,keyName;
+        public string h, g,propertyName,locationName,lockname,keyName,userType;
         public KeyAllocationEntry()
         {
             InitializeComponent();
@@ -91,6 +91,7 @@ namespace KeyRegister.UI
         private void KeyAllocationEntry_Load(object sender, EventArgs e)
         {
             nUserId = frmLogin.uId;
+
            LoadLocation();
             LoadTerritory();
           // LoadProperty();
@@ -273,9 +274,24 @@ namespace KeyRegister.UI
 
         private void KeyAllocationEntry_FormClosed(object sender, FormClosedEventArgs e)
         {
-               this.Hide();
-            MainUI frm=new MainUI();
+            if (userType == "COO")
+            {
+                this.Hide();
+                MainUI frm = new MainUI();
                 frm.Show();
+            }
+            if (userType == "TTM")
+            {
+                this.Hide();
+                MainUIForTTM frm = new MainUIForTTM();
+                frm.Show();
+            }
+            if (userType == "LIC")
+            {
+                this.Hide();
+                MainUIForLIC frm = new MainUIForLIC();
+                frm.Show();
+            }
         }
 
         private void dataGridView1_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
