@@ -40,5 +40,7 @@ namespace KeyRegister.Manager
             aUserGateway=new UserGateway();
             return aUserGateway.PerManantSameAsPresentAddress(aperAddress);
         }
+
+       
  }
 }

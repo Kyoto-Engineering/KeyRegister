@@ -24,7 +24,7 @@ namespace KeyRegister.LoginUI
         ConnectionString cs = new ConnectionString();
         public int emailBankId, nationalityId, countryId, departmentId, designationId, genderId, maritalStatusId;
 
-        public string nUserId, divisionIdPA, divisionIdPer, postofficeIdPA, postofficeIdPer, districtIdPA, districtIdPer, thanaIdPA, thanaIdPer;
+        public string countryCode, nUserId, divisionIdPA, divisionIdPer, postofficeIdPA, postofficeIdPer, districtIdPA, districtIdPer, thanaIdPA, thanaIdPer;
         public int instantUserId;
 
         public registrationByAdmin()
@@ -269,58 +269,49 @@ namespace KeyRegister.LoginUI
             }
             if (string.IsNullOrWhiteSpace(PADivisionCombo.Text))
             {
-                MessageBox.Show("Please select Present Address division", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Please select Present Address division", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrWhiteSpace(PADistrictCombo.Text))
             {
-                MessageBox.Show("Please Select Present Address district", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Please Select Present Address district", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrWhiteSpace(PAThanaCombo.Text))
             {
-                MessageBox.Show("Please select Present Address Thana", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Please select Present Address Thana", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrWhiteSpace(PAPostOfficeCombo.Text))
             {
-                MessageBox.Show("Please Select Present Address Post Name", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Please Select Present Address Post Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrWhiteSpace(PAPostCodeText.Text))
             {
-                MessageBox.Show("Please select Present Address Post Code", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Please select Present Address Post Code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if ( SameAsPACheckBox.Checked == false)
             {
                 if (string.IsNullOrWhiteSpace(PerADivisionCombo.Text))
                 {
-                    MessageBox.Show("Please select Permanant Address division", "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MessageBox.Show("Please select Permanant Address division", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (string.IsNullOrWhiteSpace(PerADistrictCombo.Text))
                 {
-                    MessageBox.Show("Please Select Permanant Address district", "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MessageBox.Show("Please Select Permanant Address district", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (string.IsNullOrWhiteSpace(PerAThanaCombo.Text))
                 {
-                    MessageBox.Show("Please select Permanant Address Thana", "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MessageBox.Show("Please select Permanant Address Thana", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
                     return;
                 }
                 if (string.IsNullOrWhiteSpace(PerAPostOfficeCombo.Text))
                 {
-                    MessageBox.Show("Please Select Permanant Address Post Name", "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MessageBox.Show("Please Select Permanant Address Post Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (string.IsNullOrWhiteSpace(PerApostCodeText.Text))
@@ -523,7 +514,7 @@ namespace KeyRegister.LoginUI
             LoadCountryCode();
             CountryLoad();
             EmailAddress();
-            NationalityLoad();
+            //NationalityLoad();
             DesignationLoad();
             MaritalStatusLoad();
             GetGender();
@@ -1440,6 +1431,35 @@ namespace KeyRegister.LoginUI
             else
             {
                 groupBox4.Visible = true;
+            }
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctk = "SELECT  RTRIM(Countries.CountryId),RTRIM(Countries.CountryCode) from Countries WHERE Countries.CountryName=@find";
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "CountryName"));
+                cmd.Parameters["@find"].Value = cmbCountry.Text;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    countryId = (rdr.GetInt32(0));
+                    cmbCountryCode.Text = (rdr.GetString(1));
+                }
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

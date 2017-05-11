@@ -54,6 +54,8 @@
     <Compile Include="DAO\Designations.cs" />
     <Compile Include="DAO\Districts.cs" />
     <Compile Include="DAO\Divisions.cs" />
+    <Compile Include="DAO\EmailAddress.cs" />
+    <Compile Include="DAO\Gender.cs" />
     <Compile Include="DAO\Key.cs" />
     <Compile Include="DAO\KeyAllocation.cs" />
     <Compile Include="DAO\KeyHolder.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="DAO\LocationInCharges.cs" />
     <Compile Include="DAO\Lock.cs" />
     <Compile Include="DAO\LockType.cs" />
+    <Compile Include="DAO\MaritalStatus.cs" />
     <Compile Include="DAO\ModelCOO.cs" />
     <Compile Include="DAO\OverSeasAddress.cs" />
     <Compile Include="DAO\PerManantAddress.cs" />
@@ -124,6 +127,12 @@
     </Compile>
     <Compile Include="LoginUI\UserManagementUI.Designer.cs">
       <DependentUpon>UserManagementUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUI\UserUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\UserUpdateForm.Designer.cs">
+      <DependentUpon>UserUpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Manager\CompanyManager.cs" />
     <Compile Include="Manager\COOManager.cs" />
@@ -265,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginUI\UserManagementUI.resx">
       <DependentUpon>UserManagementUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\UserUpdateForm.resx">
+      <DependentUpon>UserUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\KeyHolderListReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

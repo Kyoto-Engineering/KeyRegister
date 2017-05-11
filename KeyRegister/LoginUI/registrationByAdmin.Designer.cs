@@ -176,7 +176,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.DarkBlue;
             this.groupBox1.Location = new System.Drawing.Point(3, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(987, 641);
+            this.groupBox1.Size = new System.Drawing.Size(987, 700);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User Information";
@@ -377,7 +377,7 @@
             this.groupBox4.Controls.Add(this.label35);
             this.groupBox4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.DarkBlue;
-            this.groupBox4.Location = new System.Drawing.Point(96, 503);
+            this.groupBox4.Location = new System.Drawing.Point(96, 555);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(344, 122);
             this.groupBox4.TabIndex = 47;
@@ -958,11 +958,11 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(98, 234);
+            this.label13.Location = new System.Drawing.Point(53, 234);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(87, 22);
+            this.label13.Size = new System.Drawing.Size(135, 22);
             this.label13.TabIndex = 36;
-            this.label13.Text = "Country  ";
+            this.label13.Text = "Country  of NT";
             // 
             // label11
             // 
@@ -1114,7 +1114,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.ClientSize = new System.Drawing.Size(1003, 676);
+            this.ClientSize = new System.Drawing.Size(1003, 711);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
