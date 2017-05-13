@@ -41,6 +41,12 @@ namespace KeyRegister.Manager
             return aUserGateway.PerManantSameAsPresentAddress(aperAddress);
         }
 
-       
+
+
+        public  int SaveEmailAddress(EmailAddress address)
+        {
+            aUserGateway=new UserGateway();
+            return aUserGateway.SaveEmailAddress(address);
+        }
  }
 }

@@ -149,7 +149,7 @@ namespace KeyRegister.Gateway
             return affectedRows3;
         }
 
-        public  Users GetUserDetails(string   employeeId)
+        public  Users GetUserDetails(string  employeeId)
         {
             eAddress=new EmailAddress();
             aCountries=new Countries();
@@ -183,6 +183,21 @@ namespace KeyRegister.Gateway
             reader.Close();
             conn.Close();
             return nUsers;
+        }
+
+        public  int SaveEmailAddress(EmailAddress address)
+        {
+            conn=new SqlConnection(cs.DBConn);
+            conn.Open();
+            string query = "INSERT INTO  EmailBank(Email) VALUES(@d1)";
+           // string query = "INSERT INTO  EmailBank(Email) VALUES(@d1)"+"SELECT CONVERT(int, SCOPE_IDENTITY())";
+            cmd=new SqlCommand(query,conn);
+            cmd.Parameters.AddWithValue("@d1", address.EmailAddressId);
+            int instantId = cmd.ExecuteNonQuery();
+           // int instantId = (int) cmd.ExecuteScalar();
+            conn.Close();
+            return instantId;
+           
         }
     }
 }

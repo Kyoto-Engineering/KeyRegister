@@ -10,5 +10,6 @@ namespace KeyRegister.DAO
     {
      public int EmailBankId { set; get; }
      public string EmailAddressId { set; get; }
+   
     }
 }
