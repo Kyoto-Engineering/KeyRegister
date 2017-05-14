@@ -234,9 +234,74 @@ namespace KeyRegister.LoginUI
             }
         }
 
+        private void PresentAddress()
+        {
+            PAFlatNoText.Clear();
+            PAHouseNoText.Clear();
+            PARoadNoText.Clear();
+            PABlockText.Clear();
+            PAareaText.Clear();
+            PAPostCodeText.Clear();
+            PAPostOfficeCombo.SelectedIndex = -1;
+            PAThanaCombo.SelectedIndex = -1;
+            PADistrictCombo.SelectedIndex = -1;
+            PADivisionCombo.SelectedIndex = -1;
+        }
+        private void ResetPermanantAddress2()
+        {
+            PerAFlatNoText.Clear();
+            PerAHouseNoText.Clear();
+            PerARoadNoText.Clear();
+            PerABlockText.Clear();
+            PerAareaText.Clear();
+            PerApostCodeText.Clear();
+            PerAPostOfficeCombo.SelectedIndex = -1;
+            PerAThanaCombo.SelectedIndex = -1;
+            PerADistrictCombo.SelectedIndex = -1;
+            PerADivisionCombo.SelectedIndex = -1;
+
+            SameAsPACheckBox.CheckedChanged -= SameAsPACheckBox_CheckedChanged;
+            SameAsPACheckBox.Checked = false;
+            SameAsPACheckBox.CheckedChanged += SameAsPACheckBox_CheckedChanged;
+           
+        }
         private void Reset()
         {
-            
+            txtEmployeeId.Clear();
+            txtNewProbableId.Clear();
+            txtFullName.Clear();
+            txtNickName.Clear();
+            txtFatherName.Clear();            
+            txtMotherName.Clear();
+            txtDomainName.Clear();
+            if (cmbCountry.Text != "Bangladesh")
+            {
+                txtStreetName.Clear();
+                txtState.Clear();
+                txtPostalCode.Clear();
+            }
+            cmbCountry.SelectedIndex = -1;
+            cmbDesignation.SelectedIndex = -1;
+
+            cmbGender.SelectedIndex = -1;
+            cmbMaritalStatus.SelectedIndex = -1;
+            dateOfBirth.Value=DateTime.Today;
+
+
+
+            txtBirthCertificatNo.Clear();
+            txtPassportNo.Clear();
+            txtNationalId.Clear();
+            txtDomainName.Clear();
+            cmbEmailHostName.SelectedIndex = -1;
+            txtLogInID.Clear();
+            txtPassword.Clear();
+            txtFormPassword.Clear();                  
+            cmbCountryCode.SelectedIndex = -1;
+
+            PresentAddress();
+            ResetPermanantAddress2();
+            listView1.Items.Clear();
         }
         private void GetMaxEmailBankId()
         {
@@ -372,15 +437,20 @@ namespace KeyRegister.LoginUI
                     MessageBox.Show("Please select Permanant Address Post Code", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
                     return;
                 }
-                string clearText = txtPassword.Text.Trim();
+
+                
+            }
+            try
+            {
+                string clearText = txtPassword.Text;
                 string password = clearText;
                 byte[] bytes = Encoding.Unicode.GetBytes(password);
                 byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);
                 string readyPassword1 = Convert.ToBase64String(inArray);
                 readyPassword = readyPassword1;
-            }
-            try
-            {
+
+
+
                 if (SameAsPACheckBox.Checked == true)
                 {
 
@@ -400,7 +470,8 @@ namespace KeyRegister.LoginUI
                 {
                     SaveOverSeasAddress();
                 }
-
+                MessageBox.Show("Successfully Saved","record",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                Reset();
             }
             catch (Exception ex)
             {
@@ -508,13 +579,13 @@ namespace KeyRegister.LoginUI
                     }
                     SmtpClient smtp = new SmtpClient();
 
-                    smtp.Host = "Yandex.com";
+                    smtp.Host = "smtp.yandex.com";
                     smtp.Credentials = new NetworkCredential(senderEmailAddress, txtFormPassword.Text);
                     smtp.EnableSsl = true;
                     smtp.Send(msg);
 
                 }
-                //MessageBox.Show("Mail Sending Successfully");
+               
             }
 
             catch
@@ -1510,6 +1581,21 @@ namespace KeyRegister.LoginUI
         }
 
         private void txtDomainName_MouseLeave(object sender, EventArgs e)
+        {
+            txtLogInID.Text = txtDomainName.Text;
+        }
+
+        private void txtDomainName_Enter(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void txtDomainName_CursorChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtDomainName_TextChanged(object sender, EventArgs e)
         {
             txtLogInID.Text = txtDomainName.Text;
         }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.txtFormPassword = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.txtNationalId = new System.Windows.Forms.TextBox();
             this.txtBirthCertificatNo = new System.Windows.Forms.TextBox();
@@ -126,8 +128,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.createUserButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtFormPassword = new System.Windows.Forms.TextBox();
-            this.label43 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -188,6 +188,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User Information";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(453, 615);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(216, 20);
+            this.label43.TabIndex = 69;
+            this.label43.Text = "Sender  Emai Password ";
+            // 
+            // txtFormPassword
+            // 
+            this.txtFormPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFormPassword.Location = new System.Drawing.Point(675, 611);
+            this.txtFormPassword.Name = "txtFormPassword";
+            this.txtFormPassword.PasswordChar = '*';
+            this.txtFormPassword.Size = new System.Drawing.Size(185, 31);
+            this.txtFormPassword.TabIndex = 68;
             // 
             // groupBox6
             // 
@@ -265,6 +283,9 @@
             this.txtDomainName.Name = "txtDomainName";
             this.txtDomainName.Size = new System.Drawing.Size(126, 24);
             this.txtDomainName.TabIndex = 62;
+            this.txtDomainName.CursorChanged += new System.EventHandler(this.txtDomainName_CursorChanged);
+            this.txtDomainName.TextChanged += new System.EventHandler(this.txtDomainName_TextChanged);
+            this.txtDomainName.Enter += new System.EventHandler(this.txtDomainName_Enter);
             this.txtDomainName.MouseLeave += new System.EventHandler(this.txtDomainName_MouseLeave);
             // 
             // txtNewProbableId
@@ -1158,23 +1179,6 @@
             this.label9.Size = new System.Drawing.Size(266, 26);
             this.label9.TabIndex = 19;
             this.label9.Text = "User Information Details";
-            // 
-            // txtFormPassword
-            // 
-            this.txtFormPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFormPassword.Location = new System.Drawing.Point(675, 611);
-            this.txtFormPassword.Name = "txtFormPassword";
-            this.txtFormPassword.Size = new System.Drawing.Size(185, 31);
-            this.txtFormPassword.TabIndex = 68;
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(453, 615);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(216, 20);
-            this.label43.TabIndex = 69;
-            this.label43.Text = "Sender  Emai Password ";
             // 
             // registrationByAdmin
             // 
