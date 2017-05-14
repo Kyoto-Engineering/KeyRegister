@@ -28,8 +28,8 @@ namespace KeyRegister.Gateway
             string query = String.Format("insert into Users(UserName,Password,EmployeeId,FullName,NickName,FatherName,MotherName,EmailBankId,CountryId,DesignationId,NationalId,PassportNumber,BirthCertificateNumber,GenderId,MaritalStatusId,DateOfBirth) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12,@d13,@d14,@d15,@d16)") + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd=new SqlCommand(query,conn);
             cmd.Parameters.AddWithValue("@d1", aUser.UserName);
-            cmd.Parameters.AddWithValue("@d2", aUser.EmployeeId);
-            cmd.Parameters.AddWithValue("@d3", aUser.Password);
+            cmd.Parameters.AddWithValue("@d2", aUser.Password);
+            cmd.Parameters.AddWithValue("@d3", aUser.EmployeeId);
             cmd.Parameters.AddWithValue("@d4", aUser.FullName);
             cmd.Parameters.AddWithValue("@d5", aUser.NickName);
             cmd.Parameters.AddWithValue("@d6", aUser.FatherName);
