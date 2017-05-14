@@ -18,34 +18,141 @@ namespace KeyRegister.LoginUI
     public partial class UserUpdateForm : Form
     {
         private Users auser;
+        private PerManantAddress aAddress;
+        private PresentAddress presentAddress;
         private SqlConnection con;
         private SqlCommand cmd;
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
-        public int emailBankId, nationalityId, countryId, departmentId, designationId, genderId, maritalStatusId;
+        public int emailBankId, nationalityId,  departmentId, designationId, genderId, maritalStatusId;
 
-        public string nUserId, divisionIdPA, divisionIdPer, postofficeIdPA, postofficeIdPer, districtIdPA, districtIdPer, thanaIdPA, thanaIdPer;
-        public int instantUserId;
+        public string nUserId, divisionIdPA, divisionIdPer, postofficeIdPA, postofficeIdPer, districtIdPA, districtIdPer, thanaIdPA, thanaIdPer, selectedUserId;
+        public int instantUserId, selectedUserId1;
+        public string countryId;
         public UserUpdateForm()
         {
             InitializeComponent();
         }
 
+        private void UpdatePresentAddress()
+        {
+            UserGateway aGateway=new UserGateway();
+            PresentAddress akAddress=new PresentAddress();
+            akAddress.PreFlatNo = PAFlatNoText.Text;
+            akAddress.PreHouseNo = PAHouseNoText.Text;
+            akAddress.PreRoadNo = PARoadNoText.Text;
+            akAddress.PreBlock = PABlockText.Text;
+            akAddress.PreArea = PAareaText.Text;
+            akAddress.PrePostOfficeId = Convert.ToInt32(postofficeIdPA);
+            akAddress.UserId = selectedUserId1;
+            aGateway.UpdatePresentAddress(akAddress);
+        }
+        private void UpdatePerManantAddress()
+        {
+            UserGateway  apGateway=new UserGateway();
+            PerManantAddress apAddress=new PerManantAddress();
+            apAddress.PerFlatNo = PerAFlatNoText.Text;
+            apAddress.PerHouseNo = PerAHouseNoText.Text;
+            apAddress.PerRoadNo = PerARoadNoText.Text;
+            apAddress.PerBlock = PerABlockText.Text;
+            apAddress.PerArea = PerAareaText.Text;
+            apAddress.PerPostOfficeId = Convert.ToInt32(postofficeIdPer);
+            apAddress.PerUserId = selectedUserId1;
+            apGateway.UpdatePermanantAddress(apAddress);
+        }
+        private void PresentAddress()
+        {
+            PAFlatNoText.Clear();
+            PAHouseNoText.Clear();
+            PARoadNoText.Clear();
+            PABlockText.Clear();
+            PAareaText.Clear();
+            PAPostCodeText.Clear();
+            PAPostOfficeCombo.SelectedIndex = -1;
+            PAThanaCombo.SelectedIndex = -1;
+            PADistrictCombo.SelectedIndex = -1;
+            PADivisionCombo.SelectedIndex = -1;
+        }
+        private void ResetPermanantAddress2()
+        {
+            PerAFlatNoText.Clear();
+            PerAHouseNoText.Clear();
+            PerARoadNoText.Clear();
+            PerABlockText.Clear();
+            PerAareaText.Clear();
+            PerApostCodeText.Clear();
+            PerAPostOfficeCombo.SelectedIndex = -1;
+            PerAThanaCombo.SelectedIndex = -1;
+            PerADistrictCombo.SelectedIndex = -1;
+            PerADivisionCombo.SelectedIndex = -1;
+
+            SameAsPACheckBox.CheckedChanged -= SameAsPACheckBox_CheckedChanged;
+            SameAsPACheckBox.Checked = false;
+            SameAsPACheckBox.CheckedChanged += SameAsPACheckBox_CheckedChanged;
+
+        }
+        private void Reset()
+        {
+           
+            txtFullName.Clear();
+            txtNickName.Clear();
+            txtFatherName.Clear();
+            txtMotherName.Clear();
+            //txtDomainName.Clear();
+            if (cmbCountry.Text != "Bangladesh")
+            {
+                txtStreetName.Clear();
+                txtState.Clear();
+                txtPostalCode.Clear();
+            }
+            cmbCountry.SelectedIndex = -1;
+            cmbDesignation.SelectedIndex = -1;
+
+            cmbGender.SelectedIndex = -1;
+            cmbMaritalStatus.SelectedIndex = -1;
+            dateOfBirth.Value = DateTime.Today;
+
+
+
+            txtBirthCertificatNo.Clear();
+            txtPassportNo.Clear();
+            txtNationalId.Clear();
+            
+
+            PresentAddress();
+            ResetPermanantAddress2();
+           
+        }
         private void createUserButton_Click(object sender, EventArgs e)
         {
 
-            //auser.FullName = txtFullName.Text;
-            //auser.FatherName = txtFatherName.Text;
-            //auser.MotherName = txtMotherName.Text;
-            //auser.NickName = txtNickName.Text;
-            //auser.Countries.CountryName = cmbCountry.Text;
-            //auser.EmailAdd.EmailAddressId = cmbEmailAddress.Text;
-            //auser.passportNumber = txtPassportNo.Text;
-            //auser.BirthCertificateNo = txtBirthCertificatNo.Text;
-            //auser.Genders.GenderName = cmbGender.Text;
-            //auser.MaritalStatusss.MaritalStatuss = cmbMaritalStatus.Text;
-            //auser.DateOfBirth = dateOfBirth.Value;
-            //i = aManager.GetUserDetails(auser);
+            try
+            {
+                UserGateway agGateway = new UserGateway();
+                Users auser = new Users();
+                auser.EmployeeId = Convert.ToInt32(cmbEmployeeId.Text);
+                auser.FullName = txtFullName.Text;
+                auser.FatherName = txtFatherName.Text;
+                auser.MotherName = txtMotherName.Text;
+                auser.NickName = txtNickName.Text;
+                auser.CountryId = Convert.ToInt32(countryId);
+                auser.DesignationId = designationId;
+                auser.EmailBankId = emailBankId;
+                auser.NationalId = txtNationalId.Text;
+                auser.PassportNo = txtPassportNo.Text;
+                auser.BirthCertificateNo = txtBirthCertificatNo.Text;
+                auser.GenderId = genderId;
+                auser.MaritalStatusId = maritalStatusId;
+                auser.DateOfBirth = dateOfBirth.Value;
+                agGateway.UpdateUserInfo(auser);
+                UpdatePerManantAddress();
+                UpdatePresentAddress();
+                MessageBox.Show("Successfully Updated", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public void GetEmployeeId()
         {
@@ -240,12 +347,72 @@ namespace KeyRegister.LoginUI
 
         }
 
+        private void GetUserIdByEmployeeId()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct = "select RTRIM(Users.UserId) from Users  Where Users.EmployeeId = '" + cmbEmployeeId.Text + "'";
+                cmd = new SqlCommand(ct);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+
+                if (rdr.Read())
+                {
+                    selectedUserId = (rdr.GetString(0));
+                    selectedUserId1 = Convert.ToInt32(selectedUserId);
+                }
+                
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void GetPresentAddress(int preUserId)
+        {
+            int pg = 0;
+            UserGateway bGateway=new UserGateway();
+            int n1userId = preUserId;
+            presentAddress = bGateway.GetPresentAddress(n1userId);
+            PAFlatNoText.Text = presentAddress.PreFlatNo;
+            PAHouseNoText.Text = presentAddress.PreHouseNo;
+            PARoadNoText.Text = presentAddress.PreRoadNo;
+            PABlockText.Text = presentAddress.PreBlock;
+            PAareaText.Text = presentAddress.PreArea;
+            PADivisionCombo.Text = presentAddress.PreDivision;
+            PADistrictCombo.Text = presentAddress.PreDistrict;
+            PAThanaCombo.Text = presentAddress.PreThana;
+            PAPostOfficeCombo.Text = presentAddress.PostOfficeName;
+            PAPostCodeText.Text = presentAddress.PrePostCode;
+
+        }
+        private void GetPermanantAddress(int perUserId)
+        {
+            int pi = 0;
+            UserGateway aGateway = new UserGateway();
+            int nUserId = perUserId;
+            aAddress = aGateway.GetPermanantAddress(nUserId);
+            PerAFlatNoText.Text = aAddress.PerFlatNo;
+            PerAHouseNoText.Text = aAddress.PerHouseNo;
+            PerARoadNoText.Text = aAddress.PerRoadNo;
+            PerABlockText.Text = aAddress.PerBlock;
+            PerAareaText.Text = aAddress.PerArea;
+            PerADivisionCombo.Text = aAddress.PerDivision;
+            PerADistrictCombo.Text = aAddress.PerDistrict;
+            PerAThanaCombo.Text = aAddress.PerThana;
+            PerAPostOfficeCombo.Text = aAddress.PostOfficeName;
+            PerApostCodeText.Text = aAddress.PerPostCode;
+
+        }
         private void cmbEmployeeId_SelectedIndexChanged(object sender, EventArgs e)
         {
             int i = 0;
             UserGateway aGateway = new UserGateway();
-            Countries aCountries = new Countries();
-            EmailAddress aEAddress = new EmailAddress();
+           
             string employeeId = cmbEmployeeId.Text;
             auser = aGateway.GetUserDetails(employeeId);
 
@@ -262,7 +429,9 @@ namespace KeyRegister.LoginUI
            
             cmbGender.Text = auser.Genders;
             cmbMaritalStatus.Text = auser.MaritalStatusss;
-
+            GetUserIdByEmployeeId();
+            GetPermanantAddress(selectedUserId1);
+            GetPresentAddress(selectedUserId1);
 
 
         }
@@ -721,35 +890,155 @@ namespace KeyRegister.LoginUI
             {
                 groupBox4.Visible = true;
             }
-            //try
-            //{
-            //    con = new SqlConnection(cs.DBConn);
-            //    con.Open();
-            //    string ctk = "SELECT  RTRIM(Countries.CountryId),RTRIM(Countries.CountryCode) from Countries WHERE Countries.CountryName=@find";
-            //    cmd = new SqlCommand(ctk);
-            //    cmd.Connection = con;
-            //    cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "CountryName"));
-            //    cmd.Parameters["@find"].Value = cmbCountry.Text;
-            //    rdr = cmd.ExecuteReader();
-            //    if (rdr.Read())
-            //    {
-            //        countryId = (rdr.GetInt32(0));
-            //        cmbCountryCode.Text = (rdr.GetString(1));
-            //    }
-            //    if ((rdr != null))
-            //    {
-            //        rdr.Close();
-            //    }
-            //    if (con.State == ConnectionState.Open)
-            //    {
-            //        con.Close();
-            //    }
-            //}
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctk = "SELECT  RTRIM(Countries.CountryId) from Countries WHERE Countries.CountryName=@find";
+                cmd = new SqlCommand(ctk);
+                cmd.Connection = con;
+                cmd.Parameters.Add(new SqlParameter("@find", System.Data.SqlDbType.NVarChar, 50, "CountryName"));
+                cmd.Parameters["@find"].Value = cmbCountry.Text;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    countryId = (rdr.GetString(0));                  
+                }
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
 
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void UserUpdateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+                      this.Hide();
+            UserManagementUI  frm=new UserManagementUI();
+                      frm.Show();
+        }
+
+        private void cmbEmailAddress_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = con.CreateCommand();
+                cmd.CommandText = "SELECT EmailBankId from EmailBank WHERE Email= '" + cmbEmailAddress.Text + "'";
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    emailBankId = rdr.GetInt32(0);
+                }
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbDesignation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = con.CreateCommand();
+                cmd.CommandText = "SELECT DesignationId from Designations WHERE Designation= '" + cmbDesignation.Text + "'";
+
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    designationId = rdr.GetInt32(0);
+                }
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = con.CreateCommand();
+                cmd.CommandText = "SELECT GenderId from Gender WHERE GenderName= '" + cmbGender.Text + "'";
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    genderId = rdr.GetInt32(0);
+                }
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbMaritalStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = con.CreateCommand();
+                cmd.CommandText = "SELECT MaritalStatusId from MaritalStatuss WHERE MaritalStatus= '" + cmbMaritalStatus.Text + "'";
+
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    maritalStatusId = rdr.GetInt32(0);
+                }
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace KeyRegister.DAO
         private string perThana;
         private string perPostOffice;
         private string perPostcode;
-        private string perUserId;
+        private int  perUserId;
         public int PersmanantAddressId
         {
             get { return permanantAddressId; }
@@ -89,10 +89,11 @@ namespace KeyRegister.DAO
             set { perPostcode = value; }
         }
 
-        public string PerUserId
+        public int  PerUserId
         {
             get { return perUserId; }
             set { perUserId = value; }
         }
+        public string PostOfficeName { set; get; }
     }
 }

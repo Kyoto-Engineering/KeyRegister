@@ -103,7 +103,7 @@ namespace KeyRegister.LoginUI
                     PerBlock = PerABlockText.Text,
                     PerArea = PerAareaText.Text,
                     PerPostOfficeId = Convert.ToInt32(postofficeIdPer),
-                    PerUserId = instantUserId.ToString()
+                    PerUserId = instantUserId
                     
                 };
                 pr = amanager.SavePermanantAddress(aperAddress);
@@ -129,7 +129,7 @@ namespace KeyRegister.LoginUI
                     PreBlock = PABlockText.Text,
                     PreArea = PAareaText.Text,
                     PrePostOfficeId = Convert.ToInt32(postofficeIdPA),
-                    UserId=instantUserId.ToString()
+                    UserId=instantUserId
                 };
                 pa = amanager.SavePresentAddress(apresentAddress);
             }
@@ -218,7 +218,7 @@ namespace KeyRegister.LoginUI
                         PerBlock = PABlockText.Text,
                         PerArea = PAareaText.Text,
                         PerPostOfficeId = Convert.ToInt32(postofficeIdPA),
-                        PerUserId = instantUserId.ToString()
+                        PerUserId = instantUserId
                     };
                     sag = amanager.PerManantSameAsPresentAddress(aperAddress);
                 }

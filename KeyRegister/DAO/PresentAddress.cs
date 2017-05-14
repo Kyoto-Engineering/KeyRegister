@@ -20,7 +20,7 @@ namespace KeyRegister.DAO
       private string preThana;
       private string prePostOffice;
       private string prePostcode;
-
+      
       public int PresentAddressId
       {
           get { return presentAddressId; }
@@ -89,7 +89,8 @@ namespace KeyRegister.DAO
           set { prePostcode = value; }
       }
 
-      public string UserId { set; get; }
+      public int  UserId { set; get; }
+      public string PostOfficeName { set; get; }
 
   }
 }
