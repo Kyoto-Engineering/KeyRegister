@@ -57,7 +57,7 @@
             this.textBox2.Location = new System.Drawing.Point(154, 86);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(272, 29);
-            this.textBox2.TabIndex = 4;
+            this.textBox2.TabIndex = 2;
             // 
             // userNameText
             // 
@@ -65,7 +65,7 @@
             this.userNameText.Location = new System.Drawing.Point(154, 36);
             this.userNameText.Name = "userNameText";
             this.userNameText.Size = new System.Drawing.Size(272, 29);
-            this.userNameText.TabIndex = 3;
+            this.userNameText.TabIndex = 1;
             // 
             // label3
             // 
@@ -74,7 +74,7 @@
             this.label3.Location = new System.Drawing.Point(29, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(124, 24);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 0;
             this.label3.Text = "Password   :";
             // 
             // label2
@@ -84,7 +84,7 @@
             this.label2.Location = new System.Drawing.Point(29, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 24);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 0;
             this.label2.Text = "User Name :";
             // 
             // createButton
@@ -95,7 +95,7 @@
             this.createButton.Location = new System.Drawing.Point(310, 170);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(116, 50);
-            this.createButton.TabIndex = 0;
+            this.createButton.TabIndex = 3;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = false;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
@@ -108,7 +108,7 @@
             this.label1.Location = new System.Drawing.Point(230, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(185, 26);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Password Reset";
             // 
             // ResetPassword
