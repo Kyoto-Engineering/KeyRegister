@@ -21,7 +21,7 @@ namespace KeyRegister.Gateway
             cmd.Parameters.AddWithValue("@d2", amCOO.JoiningDate);
             cmd.Parameters.AddWithValue("@d3", amCOO.CreationDate);
             cmd.Parameters.AddWithValue("@d4", amCOO.UserId);
-           int affectedRows=  cmd.ExecuteNonQuery();
+            int affectedRows=  cmd.ExecuteNonQuery();
             if (affectedRows > 0)
             {
                 return "Suucessfully Saved";

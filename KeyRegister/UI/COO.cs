@@ -29,6 +29,13 @@ namespace KeyRegister.UI
             InitializeComponent();
         }
 
+        private void Reset()
+        {
+            cmbUserName.SelectedIndex = -1;
+            cmbCompanyName.SelectedIndex = -1;
+            txtJoiningDate.Value=DateTime.Today;
+
+        }
         private void saveButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(cmbUserName.Text))
@@ -52,6 +59,7 @@ namespace KeyRegister.UI
                 amCOO.UserId = userId;
                 string msg = aManager.SaveCOO(amCOO);
                 MessageBox.Show(msg);
+                Reset();
             }
             catch (Exception ex)
             {

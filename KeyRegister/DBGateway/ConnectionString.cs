@@ -8,6 +8,6 @@ namespace KeyRegister.DBGateway
 {
    public  class ConnectionString
     {
-       public string DBConn = @"Data Source=tcp:KyotoServer,49172;Initial Catalog=KeyRegistar66;User=sa;Password=SystemAdministrator; Persist Security Info=True";
+       public string DBConn = @"Data Source=tcp:KyotoServer,49172;Initial Catalog=KeyRegistar22;User=sa;Password=SystemAdministrator; Persist Security Info=True";
     }
 }

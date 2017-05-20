@@ -66,6 +66,7 @@ namespace KeyRegister.UI
                 mgs = aManager.SaveLocation(aLocation);
                 MessageBox.Show("Successfully Submited", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearText();
+               
             }
             catch (Exception ex)
             {

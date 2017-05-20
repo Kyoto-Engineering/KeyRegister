@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KeyRegister.DAO;
+using KeyRegister.DBGateway;
 using KeyRegister.Gateway;
 using KeyRegister.LoginUI;
 
@@ -15,6 +17,10 @@ namespace KeyRegister.UI
 {
     public partial class CompanyEntry : Form
     {
+        private SqlConnection con;
+        private SqlCommand cmd;
+        private SqlDataReader rdr;
+        ConnectionString cs=new ConnectionString();
         public string userId;
         public CompanyEntry()
         {
@@ -31,6 +37,19 @@ namespace KeyRegister.UI
             }
             try
             {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct3 = "select Company.CompanyName from Company where  Company.CompanyName='" + txtCompanyName.Text + "'";
+                cmd = new SqlCommand(ct3, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read() && !rdr.IsDBNull(0))
+                {
+                    MessageBox.Show("This Company Name Already Exists,Please Input another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close();
+                    return;
+
+                }
+
                 CompanyGateway aComGateway = new CompanyGateway();
                 Company aCompany = new Company();
                 aCompany.CompanyName = txtCompanyName.Text;

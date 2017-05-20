@@ -47,6 +47,12 @@ namespace KeyRegister.LoginUI
             }
         }
 
+        private void Reset()
+        {
+            profilePicture.Image = Properties.Resources._12;
+            signaturePicture.Image = Properties.Resources._12;
+            cmbUserName.SelectedIndex = -1;
+        }
         private void buttonUpload_Click(object sender, EventArgs e)
         {
             try
@@ -72,6 +78,7 @@ namespace KeyRegister.LoginUI
                 cmd.ExecuteNonQuery();
                 con.Close();
                 MessageBox.Show("Successfully Uploaded", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Reset();
             }
             catch (Exception ex)
             {

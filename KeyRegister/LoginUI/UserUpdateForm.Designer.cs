@@ -975,9 +975,9 @@
             this.UpdateUserButton.BackColor = System.Drawing.Color.LightYellow;
             this.UpdateUserButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateUserButton.ForeColor = System.Drawing.Color.Blue;
-            this.UpdateUserButton.Location = new System.Drawing.Point(568, 454);
+            this.UpdateUserButton.Location = new System.Drawing.Point(868, 441);
             this.UpdateUserButton.Name = "UpdateUserButton";
-            this.UpdateUserButton.Size = new System.Drawing.Size(171, 77);
+            this.UpdateUserButton.Size = new System.Drawing.Size(129, 77);
             this.UpdateUserButton.TabIndex = 18;
             this.UpdateUserButton.Text = "UpdateUser";
             this.UpdateUserButton.UseVisualStyleBackColor = false;

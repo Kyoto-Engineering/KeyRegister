@@ -137,7 +137,6 @@
             this.signaturePicture.Location = new System.Drawing.Point(252, 107);
             this.signaturePicture.Name = "signaturePicture";
             this.signaturePicture.Size = new System.Drawing.Size(253, 103);
-            this.signaturePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.signaturePicture.TabIndex = 12;
             this.signaturePicture.TabStop = false;
             // 

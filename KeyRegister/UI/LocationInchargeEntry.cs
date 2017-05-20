@@ -32,8 +32,17 @@ namespace KeyRegister.UI
 
         private void Reset()
         {
+            txtTerritoryId.Clear();
+            txtTerritoryName.Clear();
             
-            dateOfAssignDate.Value=DateTime.Today;
+            txtLocationId.Clear();
+            txtLocationName.Clear();
+            
+            dateOfAssignDate.Value=DateTime.Today;           
+            txtEmployeeId.Clear();
+            txtUserFullName.Clear();
+            
+           
         }
        
         private void createButton_Click(object sender, EventArgs e)

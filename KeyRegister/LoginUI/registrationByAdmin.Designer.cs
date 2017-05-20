@@ -1027,6 +1027,7 @@
             // 
             this.txtContactNo.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContactNo.Location = new System.Drawing.Point(645, 429);
+            this.txtContactNo.MaxLength = 11;
             this.txtContactNo.Name = "txtContactNo";
             this.txtContactNo.Size = new System.Drawing.Size(178, 29);
             this.txtContactNo.TabIndex = 43;

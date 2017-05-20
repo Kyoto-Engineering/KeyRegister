@@ -64,18 +64,18 @@ namespace KeyRegister.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void LoadTerritoryManager()
+        public void LoadTerritory()
         {
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT TerritoryManager.TMId, Users.FullName, Territory.TerritoryName FROM  TerritoryManager INNER JOIN Users ON TerritoryManager.UserId = Users.UserId INNER JOIN Territory ON TerritoryManager.TerritoryId = Territory.TerritoryId", con);
+                cmd = new SqlCommand("SELECT  TerritoryId,TerritoryName FROM Territory", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)
                 {
-                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                    dataGridView1.Rows.Add(rdr[0], rdr[1]);
                 }
                 con.Close();
             }
@@ -111,7 +111,7 @@ namespace KeyRegister.UI
            // GetTerritoryManagerName();
            // GetTerritoryName();
             LoadUserName();
-            LoadTerritoryManager();
+            LoadTerritory();
             //LoadUserList();
         }
 
@@ -168,7 +168,7 @@ namespace KeyRegister.UI
                 aManagers.AssignedBy = userId;
                 tm = aManager.SaveTerritoryManagement(aManagers);
                 MessageBox.Show("Successfully Created", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadTerritoryManager();
+                //LoadTerritoryManager();
                 Reset();
             }
             catch (Exception ex)
@@ -211,9 +211,8 @@ namespace KeyRegister.UI
         {
             try
             {
-                DataGridViewRow dr = dataGridView1.CurrentRow;
-                txtTerritoryManager.Text = dr.Cells[1].Value.ToString();                           
-                txtTerritoryName.Text = dr.Cells[2].Value.ToString();                
+                DataGridViewRow dr = dataGridView1.CurrentRow;                                      
+                txtTerritoryName.Text = dr.Cells[1].Value.ToString();                
                 h=k;
             }
             catch (Exception ex)
@@ -227,7 +226,8 @@ namespace KeyRegister.UI
             try
             {
                 DataGridViewRow dr = dataGridView2.CurrentRow;               
-                txtUserId.Text = dr.Cells[1].Value.ToString();
+                txtUserId.Text = dr.Cells[0].Value.ToString();
+                txtTerritoryManager.Text = dr.Cells[1].Value.ToString();
                 txtEmployeeId.Text = dr.Cells[2].Value.ToString();
                 h = k;
 

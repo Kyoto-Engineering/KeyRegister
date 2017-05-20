@@ -76,7 +76,7 @@ namespace KeyRegister.DAO
             set { motherName = value; }
         }
 
-
+        public int EmailHostId { set; get; }
         public int EmailBankId
         {
             set { emailBankId = value; }

@@ -76,8 +76,7 @@ namespace KeyRegister.Gateway
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
-            string qry22 =
-                "insert into ParmanentAddresses(PaFlatNo,PaHouseNo,PaRoadNo,PaBlock,PaArea,PostOfficeId,UserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7)";
+            string qry22 ="insert into ParmanentAddresses(PaFlatNo,PaHouseNo,PaRoadNo,PaBlock,PaArea,PostOfficeId,UserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7)";
             cmd = new SqlCommand(qry22, conn);
 
             cmd.Parameters.AddWithValue("@d1", aperAddress.PerFlatNo);
@@ -112,7 +111,7 @@ namespace KeyRegister.Gateway
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
-            string query = "SELECT  Users.FullName,Users.UserId,Users.UserName  FROM  LocationIncharge INNER JOIN Users ON LocationIncharge.UserId = Users.UserId";
+            string query = "SELECT  FullName, UserId, UserName FROM   Users where Statuss='Active'";
             SqlCommand command = new SqlCommand();
             command.Connection = conn;
             command.CommandText = query;

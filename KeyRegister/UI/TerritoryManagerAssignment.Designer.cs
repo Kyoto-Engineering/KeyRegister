@@ -34,9 +34,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -51,6 +48,8 @@
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -83,7 +82,7 @@
             // 
             this.txtAssignedDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAssignedDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtAssignedDate.Location = new System.Drawing.Point(262, 191);
+            this.txtAssignedDate.Location = new System.Drawing.Point(262, 293);
             this.txtAssignedDate.Name = "txtAssignedDate";
             this.txtAssignedDate.Size = new System.Drawing.Size(306, 29);
             this.txtAssignedDate.TabIndex = 16;
@@ -92,7 +91,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(101, 193);
+            this.label4.Location = new System.Drawing.Point(101, 295);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(145, 24);
             this.label4.TabIndex = 15;
@@ -104,7 +103,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(655, 57);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(620, 164);
+            this.groupBox1.Size = new System.Drawing.Size(616, 164);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Territory List";
@@ -114,31 +113,12 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column2,
-            this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 23);
+            this.Column2});
+            this.dataGridView1.Location = new System.Drawing.Point(27, 23);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(592, 125);
+            this.dataGridView1.Size = new System.Drawing.Size(564, 125);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "TerritoryManagerId";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 170;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "TerritoryManagerName";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 180;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "TerritoryName";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 200;
             // 
             // label2
             // 
@@ -227,7 +207,7 @@
             // txtEmployeeId
             // 
             this.txtEmployeeId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmployeeId.Location = new System.Drawing.Point(262, 246);
+            this.txtEmployeeId.Location = new System.Drawing.Point(262, 185);
             this.txtEmployeeId.Name = "txtEmployeeId";
             this.txtEmployeeId.ReadOnly = true;
             this.txtEmployeeId.Size = new System.Drawing.Size(306, 29);
@@ -237,7 +217,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(119, 249);
+            this.label6.Location = new System.Drawing.Point(119, 188);
             this.label6.Name = "label6";
             this.label6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label6.Size = new System.Drawing.Size(127, 24);
@@ -247,7 +227,7 @@
             // txtUserId
             // 
             this.txtUserId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserId.Location = new System.Drawing.Point(262, 299);
+            this.txtUserId.Location = new System.Drawing.Point(262, 238);
             this.txtUserId.Name = "txtUserId";
             this.txtUserId.ReadOnly = true;
             this.txtUserId.Size = new System.Drawing.Size(306, 29);
@@ -257,7 +237,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(164, 302);
+            this.label7.Location = new System.Drawing.Point(168, 241);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label7.Size = new System.Drawing.Size(76, 24);
@@ -273,6 +253,18 @@
             this.label5.Size = new System.Drawing.Size(90, 24);
             this.label5.TabIndex = 27;
             this.label5.Text = "User List";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "TerritoryId";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 200;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "TerritoryName";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 320;
             // 
             // TerritoryManagerAssignment
             // 
@@ -317,9 +309,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
@@ -332,5 +321,7 @@
         private System.Windows.Forms.TextBox txtUserId;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

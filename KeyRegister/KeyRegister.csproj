@@ -122,6 +122,12 @@
     <Compile Include="Gateway\TerritoryGateway.cs" />
     <Compile Include="Gateway\TerritoryManagerGateway.cs" />
     <Compile Include="Gateway\UserGateway.cs" />
+    <Compile Include="LoginUI\CreateEmailParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\CreateEmailParameter.Designer.cs">
+      <DependentUpon>CreateEmailParameter.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginUI\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,6 +293,9 @@
     <Compile Include="UI\TerritoryManagerAssignment.Designer.cs">
       <DependentUpon>TerritoryManagerAssignment.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="LoginUI\CreateEmailParameter.resx">
+      <DependentUpon>CreateEmailParameter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginUI\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
