@@ -158,6 +158,12 @@
     <Compile Include="LoginUI\UploadUserImage.Designer.cs">
       <DependentUpon>UploadUserImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginUI\UserDetailsGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUI\UserDetailsGrid.Designer.cs">
+      <DependentUpon>UserDetailsGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginUI\UserManagementUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginUI\UploadUserImage.resx">
       <DependentUpon>UploadUserImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUI\UserDetailsGrid.resx">
+      <DependentUpon>UserDetailsGrid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginUI\UserManagementUI.resx">
       <DependentUpon>UserManagementUI.cs</DependentUpon>
