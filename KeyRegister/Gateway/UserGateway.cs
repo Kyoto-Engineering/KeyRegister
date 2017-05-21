@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using KeyRegister.DAO;
 using KeyRegister.DBGateway;
 
@@ -56,8 +57,7 @@ namespace KeyRegister.Gateway
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
-            string qry2 =
-                "insert into PresentAddresses(PrFlatNo,PrHouseNo,PrRoadNo,PrBlock,PrArea,PostOfficeId,UserId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7)";
+            string qry2 = "insert into PresentAddresses(PrFlatNo,PrHouseNo,PrRoadNo,PrBlock,PrArea,PostOfficeId,UserId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7)";
             cmd = new SqlCommand(qry2, conn);
             cmd.Parameters.AddWithValue("@d1", apresentAddress.PreFlatNo);
             cmd.Parameters.AddWithValue("@d2", apresentAddress.PreHouseNo);
@@ -153,38 +153,34 @@ namespace KeyRegister.Gateway
         }
 
         public Users GetUserDetails(string employeeId)
-        {
-            //eAddress=new EmailAddress();
-            //aCountries=new Countries();
-            //aDesignations=new Designations();
-            //aMaritalStatus=new MaritalStatus();
-            //aGender=new Gender();
-            conn = new SqlConnection(cs.DBConn);
-            conn.Open();
-            string query =string.Format("SELECT Users.FullName, Users.NickName, Users.FatherName, Users.MotherName, EmailBank.Email, Countries.CountryName, Designations.Designation, Users.NationalId, Users.BirthCertificateNumber,Users.PassportNumber, Gender.GenderName, MaritalStatuss.MaritalStatus FROM  Users INNER JOIN EmailBank ON Users.EmailBankId = EmailBank.EmailBankId INNER JOIN Countries ON Users.CountryId = Countries.CountryId INNER JOIN Designations ON Users.DesignationId = Designations.DesignationId INNER JOIN   Gender ON Users.GenderId = Gender.GenderId INNER JOIN MaritalStatuss ON Users.MaritalStatusId = MaritalStatuss.MaritalStatusId where Users.EmployeeId='{0}'",employeeId);
-            cmd = new SqlCommand(query, conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            Users nUsers = new Users();
-            while (reader.Read())
-            {
-                nUsers.FullName = reader[0].ToString();
-                nUsers.NickName = reader[1].ToString();
-                nUsers.FatherName = reader[2].ToString();
-                nUsers.MotherName = reader[3].ToString();
-                nUsers.EmailAdd = reader[4].ToString();
-                nUsers.CountryName = reader[5].ToString();
-                nUsers.DesignationName = reader[6].ToString();
-                nUsers.NationalId = reader[7].ToString();
-                nUsers.BirthCertificateNo = reader[8].ToString();
-                nUsers.passportNumber = reader[9].ToString();
-                nUsers.Genders = reader[10].ToString();
-                nUsers.MaritalStatusss = reader[11].ToString();
+        {           
+                conn = new SqlConnection(cs.DBConn);
+                conn.Open();
+                string query = string.Format("SELECT Users.FullName, Users.NickName, Users.FatherName, Users.MotherName, (Users.UserName+'@'+EmailHostBank.EmailHostName) as Email,Countries.CountryName,Designations.Designation, Users.NationalId, Users.BirthCertificateNumber,Users.PassportNumber, Gender.GenderName,MaritalStatuss.MaritalStatus FROM  Users INNER JOIN EmailHostBank ON Users.EmailHostId = EmailHostBank.EmailHostId INNER JOIN Countries ON Users.CountryId = Countries.CountryId INNER JOIN Designations ON Users.DesignationId = Designations.DesignationId  INNER JOIN   Gender ON Users.GenderId = Gender.GenderId  INNER JOIN MaritalStatuss ON Users.MaritalStatusId = MaritalStatuss.MaritalStatusId where Users.EmployeeId='{0}'", employeeId);
+                cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                Users nUsers = new Users();
+                while (reader.Read())
+                {
+                    nUsers.FullName = reader[0].ToString();
+                    nUsers.NickName = reader[1].ToString();
+                    nUsers.FatherName = reader[2].ToString();
+                    nUsers.MotherName = reader[3].ToString();
+                    nUsers.EmailAdd = reader[4].ToString();
+                    nUsers.CountryName = reader[5].ToString();
+                    nUsers.DesignationName = reader[6].ToString();
+                    nUsers.NationalId = reader[7].ToString();
+                    nUsers.BirthCertificateNo = reader[8].ToString();
+                    nUsers.passportNumber = reader[9].ToString();
+                    nUsers.Genders = reader[10].ToString();
+                    nUsers.MaritalStatusss = reader[11].ToString();
 
-            }
+                }
 
-            reader.Close();
-            conn.Close();
-            return nUsers;
+                reader.Close();
+                conn.Close();
+                return nUsers;
+           
         }
 
         public int SaveEmailAddress(EmailAddress address)

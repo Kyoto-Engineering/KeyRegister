@@ -111,7 +111,7 @@ namespace KeyRegister.LoginUI
             cmbGender.SelectedIndex = -1;
             cmbMaritalStatus.SelectedIndex = -1;
             dateOfBirth.Value = DateTime.Today;
-
+            cmbEmailAddress.SelectedIndex = -1;
 
 
             txtBirthCertificatNo.Clear();
@@ -148,6 +148,7 @@ namespace KeyRegister.LoginUI
                 UpdatePerManantAddress();
                 UpdatePresentAddress();
                 MessageBox.Show("Successfully Updated", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Reset();
             }
             catch (Exception ex)
             {

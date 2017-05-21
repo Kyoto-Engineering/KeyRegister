@@ -205,11 +205,11 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(398, 6);
+            this.label1.Location = new System.Drawing.Point(424, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(325, 40);
+            this.label1.Size = new System.Drawing.Size(248, 40);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Key Register System";
+            this.label1.Text = "Key e-Register ";
             // 
             // buttonLogOut
             // 

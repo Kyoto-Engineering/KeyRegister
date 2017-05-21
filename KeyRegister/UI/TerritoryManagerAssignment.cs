@@ -112,7 +112,7 @@ namespace KeyRegister.UI
            // GetTerritoryName();
             LoadUserName();
             LoadTerritory();
-            //LoadUserList();
+            LoadUserList();
         }
 
         private void Reset()
