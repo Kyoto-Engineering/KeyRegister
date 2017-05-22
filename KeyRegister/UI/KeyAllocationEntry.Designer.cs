@@ -79,7 +79,7 @@
             this.saveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.ForeColor = System.Drawing.Color.Blue;
-            this.saveButton.Location = new System.Drawing.Point(356, 319);
+            this.saveButton.Location = new System.Drawing.Point(324, 466);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(144, 69);
             this.saveButton.TabIndex = 4;
@@ -102,7 +102,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 49);
+            this.label2.Location = new System.Drawing.Point(21, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(204, 31);
             this.label2.TabIndex = 0;
@@ -122,7 +122,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(25, 118);
+            this.label4.Location = new System.Drawing.Point(25, 123);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(193, 31);
             this.label4.TabIndex = 0;
@@ -132,7 +132,7 @@
             // 
             this.txtTerritoryName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.txtTerritoryName.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTerritoryName.Location = new System.Drawing.Point(226, 44);
+            this.txtTerritoryName.Location = new System.Drawing.Point(226, 53);
             this.txtTerritoryName.Name = "txtTerritoryName";
             this.txtTerritoryName.ReadOnly = true;
             this.txtTerritoryName.Size = new System.Drawing.Size(308, 39);
@@ -154,7 +154,7 @@
             // 
             this.txtLocationName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.txtLocationName.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLocationName.Location = new System.Drawing.Point(226, 116);
+            this.txtLocationName.Location = new System.Drawing.Point(226, 121);
             this.txtLocationName.Name = "txtLocationName";
             this.txtLocationName.ReadOnly = true;
             this.txtLocationName.Size = new System.Drawing.Size(308, 39);

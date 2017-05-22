@@ -21,7 +21,7 @@ namespace KeyRegister.UI
         private SqlCommand cmd;
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
-        public string locationId, locationInChargeId, h, g, nUserType, nUserId,territoryId;
+        public string locationId, locationInChargeId, h, g, nUserType, nUserId,territoryId,a,b;
         public int kUserId,numOfTerritory,numOfLocation;
         public LocationAllocation()
         {
@@ -38,7 +38,7 @@ namespace KeyRegister.UI
                 dataGridView3.Rows.Clear();
                 while (rdr.Read() == true)
                 {
-                    dataGridView3.Rows.Add(rdr[0], rdr[1]);
+                    dataGridView3.Rows.Add(rdr[0], rdr[1],rdr[2]);
                 }
                 con.Close();
             }
@@ -47,7 +47,7 @@ namespace KeyRegister.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void LoadLocationForSingleLocationUnderLocationInCharge()
+        public void LoadSingleLocationUnderLocationInCharge()
         {
             try
             {
@@ -257,12 +257,14 @@ namespace KeyRegister.UI
                 GetCountLocationUnderLocationInCharge();
                 if (numOfLocation > 1)
                 {
+                    dataGridView1.Visible = false;
                     LoadMultipleLocationUnderLocationInCharge();
                 }
                 if (numOfLocation == 1)
                 {
+                    dataGridView1.Visible = false;
                     dataGridView2.Visible = false;
-                    LoadLocationForSingleLocationUnderLocationInCharge();
+                    LoadSingleLocationUnderLocationInCharge();
                 }
             }
 
@@ -270,6 +272,14 @@ namespace KeyRegister.UI
             LoadUserList();
         }
 
+        private void Reset()
+        {
+            txtLocationId.Clear();
+            txtLocationName.Clear();
+            txtUserId.Clear();
+            txtUserName.Clear();
+            txtEmpId.Clear();
+        }
         private void saveButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtLocationId.Text))
@@ -293,6 +303,7 @@ namespace KeyRegister.UI
                 allocation.AddedDate=DateTime.UtcNow.ToLocalTime();
                 lmg = amManager.SaveLocationAllocation(allocation);
                 MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Reset();
             }
             catch (Exception ex)
             {
@@ -404,12 +415,11 @@ namespace KeyRegister.UI
         {
             try
             {
-                DataGridViewRow dr = dataGridView3.CurrentRow;
-                txtUserId.Text = dr.Cells[0].Value.ToString();
-                txtUserName.Text = dr.Cells[1].Value.ToString();
-                txtEmployeeId.Text = dr.Cells[2].ToString();
-               
-                g = h;
+                DataGridViewRow dr1 = dataGridView3.CurrentRow;
+                txtUserId.Text = dr1.Cells[0].Value.ToString();
+                txtUserName.Text = dr1.Cells[1].Value.ToString();
+                txtEmpId.Text = dr1.Cells[2].Value.ToString();
+                a = b;
             }
             catch (Exception ex)
             {
