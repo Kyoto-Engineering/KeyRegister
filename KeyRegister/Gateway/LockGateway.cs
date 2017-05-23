@@ -37,7 +37,7 @@ namespace KeyRegister.Gateway
        {
            con=new SqlConnection(cs.DBConn);
            con.Open();
-           string query = "Select LockId, LockNo from Lock  order by LockId desc";
+           string query = "Select LockId,LockNo from Lock  order by LockId desc";
            cmd=new SqlCommand(query,con);
           
            List<Lock> locks=new List<Lock>();

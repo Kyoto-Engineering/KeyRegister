@@ -47,7 +47,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.cmbLockType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtLockNo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -79,6 +78,9 @@
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label16 = new System.Windows.Forms.Label();
             this.cmbKeyIs = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtLockId = new System.Windows.Forms.TextBox();
+            this.txtKeyNo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -91,7 +93,7 @@
             this.createButton.BackColor = System.Drawing.Color.Olive;
             this.createButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createButton.ForeColor = System.Drawing.Color.Yellow;
-            this.createButton.Location = new System.Drawing.Point(299, 601);
+            this.createButton.Location = new System.Drawing.Point(315, 648);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(126, 64);
             this.createButton.TabIndex = 0;
@@ -114,7 +116,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(88, 445);
+            this.label3.Location = new System.Drawing.Point(88, 498);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 26);
             this.label3.TabIndex = 3;
@@ -125,7 +127,7 @@
             this.cmbKeyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKeyType.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbKeyType.FormattingEnabled = true;
-            this.cmbKeyType.Location = new System.Drawing.Point(217, 442);
+            this.cmbKeyType.Location = new System.Drawing.Point(217, 495);
             this.cmbKeyType.Name = "cmbKeyType";
             this.cmbKeyType.Size = new System.Drawing.Size(298, 34);
             this.cmbKeyType.TabIndex = 5;
@@ -245,30 +247,20 @@
             this.label9.TabIndex = 34;
             this.label9.Text = " Property Name";
             // 
-            // cmbLockType
-            // 
-            this.cmbLockType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLockType.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbLockType.FormattingEnabled = true;
-            this.cmbLockType.Location = new System.Drawing.Point(217, 534);
-            this.cmbLockType.Name = "cmbLockType";
-            this.cmbLockType.Size = new System.Drawing.Size(298, 34);
-            this.cmbLockType.TabIndex = 33;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(78, 538);
+            this.label4.Location = new System.Drawing.Point(90, 590);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 26);
+            this.label4.Size = new System.Drawing.Size(109, 26);
             this.label4.TabIndex = 32;
-            this.label4.Text = "Lock Type ";
+            this.label4.Text = "Key Num";
             // 
             // txtLockNo
             // 
             this.txtLockNo.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLockNo.Location = new System.Drawing.Point(217, 392);
+            this.txtLockNo.Location = new System.Drawing.Point(217, 445);
             this.txtLockNo.Name = "txtLockNo";
             this.txtLockNo.ReadOnly = true;
             this.txtLockNo.Size = new System.Drawing.Size(298, 35);
@@ -278,7 +270,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(99, 396);
+            this.label10.Location = new System.Drawing.Point(99, 449);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(105, 26);
             this.label10.TabIndex = 30;
@@ -306,6 +298,7 @@
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.Size = new System.Drawing.Size(367, 191);
             this.dataGridView4.TabIndex = 52;
+            this.dataGridView4.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView4_CellMouseClick);
             // 
             // Column6
             // 
@@ -359,8 +352,9 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView3.Size = new System.Drawing.Size(756, 180);
+            this.dataGridView3.Size = new System.Drawing.Size(755, 180);
             this.dataGridView3.TabIndex = 50;
+            this.dataGridView3.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_CellMouseClick);
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -512,7 +506,7 @@
             this.Column10,
             this.Column11,
             this.Column12});
-            this.dataGridView5.Location = new System.Drawing.Point(920, 529);
+            this.dataGridView5.Location = new System.Drawing.Point(919, 530);
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.Size = new System.Drawing.Size(435, 190);
             this.dataGridView5.TabIndex = 55;
@@ -544,7 +538,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(123, 494);
+            this.label16.Location = new System.Drawing.Point(123, 547);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(72, 26);
             this.label16.TabIndex = 56;
@@ -555,16 +549,47 @@
             this.cmbKeyIs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKeyIs.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbKeyIs.FormattingEnabled = true;
-            this.cmbKeyIs.Location = new System.Drawing.Point(217, 488);
+            this.cmbKeyIs.Location = new System.Drawing.Point(217, 541);
             this.cmbKeyIs.Name = "cmbKeyIs";
             this.cmbKeyIs.Size = new System.Drawing.Size(298, 34);
             this.cmbKeyIs.TabIndex = 57;
+            this.cmbKeyIs.TextChanged += new System.EventHandler(this.cmbKeyIs_TextChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(105, 403);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(90, 29);
+            this.label17.TabIndex = 58;
+            this.label17.Text = "LockId";
+            // 
+            // txtLockId
+            // 
+            this.txtLockId.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLockId.Location = new System.Drawing.Point(217, 397);
+            this.txtLockId.Name = "txtLockId";
+            this.txtLockId.ReadOnly = true;
+            this.txtLockId.Size = new System.Drawing.Size(298, 35);
+            this.txtLockId.TabIndex = 59;
+            // 
+            // txtKeyNo
+            // 
+            this.txtKeyNo.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKeyNo.Location = new System.Drawing.Point(217, 588);
+            this.txtKeyNo.Name = "txtKeyNo";
+            this.txtKeyNo.Size = new System.Drawing.Size(298, 35);
+            this.txtKeyNo.TabIndex = 60;
             // 
             // KeyEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 741);
+            this.Controls.Add(this.txtKeyNo);
+            this.Controls.Add(this.txtLockId);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.cmbKeyIs);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.dataGridView5);
@@ -589,7 +614,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.cmbLockType);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtLockNo);
             this.Controls.Add(this.label10);
@@ -631,7 +655,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cmbLockType;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtLockNo;
         private System.Windows.Forms.Label label10;
@@ -663,5 +686,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtLockId;
+        private System.Windows.Forms.TextBox txtKeyNo;
     }
 }

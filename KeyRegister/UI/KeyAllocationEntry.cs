@@ -22,8 +22,8 @@ namespace KeyRegister.UI
         private SqlCommand cmd;
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
-        public int propertyId, locationId, territoryId,nUserId,createdDatetime;
-        public string h, g,propertyName,locationName,lockname,keyName,userType;
+        public int propertyId, locationId, territoryId, nUserId, createdDatetime, numOfTerritory, numOfLocation;
+        public string h, g,propertyName,locationName,lockname,keyName,nUserType;
         public KeyAllocationEntry()
         {
             InitializeComponent();
@@ -88,13 +88,158 @@ namespace KeyRegister.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void LoadTerritoryForCOO()
+        {
+            try
+            {
+                con=new SqlConnection(cs.DBConn);
+                con.Open();
+                string query = "";
+                cmd=new SqlCommand(query,con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                while (rdr.Read()==true)
+                {
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadTerritoryForTTM()
+        {
+            
+        }
+
+        
+        private void GetCountLocationUnderLocationInCharge()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string query = "Select count(LocationId) from LocationIncharge where  LocationIncharge.UserId='" + nUserId + "'";
+                cmd = new SqlCommand(query, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    numOfLocation = (rdr.GetInt32(0));
+                }
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        
+        public void LoadLocationForSingleTerritory()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT  Location.LocationId,Location.LocationName FROM  Location INNER JOIN Territory ON Location.TerritoryId = Territory.TerritoryId where Location.TerritoryId='" + territoryId + "'", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView2.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView2.Rows.Add(rdr[0], rdr[1]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void LoadSingleLocationUnderLocationInCharge()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT  Location.LocationId,Location.LocationName FROM  Location INNER JOIN Territory ON Location.TerritoryId = Territory.TerritoryId where Location.TerritoryId='" + territoryId + "'", con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    txtLocationId.Text = (rdr.GetString(0));
+                    txtLocationName.Text = (rdr.GetString(1));
+                }
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void LoadMultipleLocationUnderLocationInCharge()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT Location.LocationId, Location.LocationName FROM  LocationIncharge INNER JOIN Location ON LocationIncharge.LocationId = Location.LocationId where LocationIncharge.UserId='" + nUserId + "'", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView2.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView2.Rows.Add(rdr[0], rdr[1]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void KeyAllocationEntry_Load(object sender, EventArgs e)
         {
-            nUserId = frmLogin.uId;
 
-           LoadLocation();
-            LoadTerritory();
-          // LoadProperty();
+
+           // GetKeyIs();
+           // GetKeyType1();
+            nUserId = frmLogin.uId;
+            nUserType = frmLogin.userType;
+            if (nUserType == "COO")
+            {
+                LoadTerritoryForCOO();
+            }
+            else if (nUserType == "TTM")
+            {
+              //  GetCountTerritoryUnderTerritoryManager();
+                if (numOfTerritory > 1)
+                {
+                    LoadTerritoryForTTM();
+                }
+                if (numOfTerritory == 1)
+                {
+                    dataGridView1.Visible = false;
+                    LoadLocationForSingleTerritory();
+
+                }
+            }
+            else if (nUserType == "LIC")
+            {
+             
+                if (numOfLocation > 1)
+                {
+                    dataGridView1.Visible = false;
+                    //LoadMultipleLocationUnderLocationInCharge();
+                }
+                if (numOfLocation == 1)
+                {
+                    dataGridView1.Visible = false;
+                    dataGridView2.Visible = false;
+                 
+                }
+            }
+
         }
 
         private void Reset()
@@ -142,34 +287,12 @@ namespace KeyRegister.UI
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            try
-            {
-                DataGridViewRow dr = dataGridView1.CurrentRow;
-                territoryId = Convert.ToInt32(dr.Cells[0].Value.ToString());
-                txtTerritoryName.Text = dr.Cells[1].Value.ToString();
-                h = g;
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            try
-            {
-                DataGridViewRow dr = dataGridView2.CurrentRow;
-                locationId = Convert.ToInt32(dr.Cells[0].Value.ToString());
-                txtLocationName.Text = dr.Cells[1].Value.ToString();
-                h = g;
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void dataGridView3_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -274,19 +397,19 @@ namespace KeyRegister.UI
 
         private void KeyAllocationEntry_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (userType == "COO")
+            if (nUserType == "COO")
             {
                 this.Hide();
                 MainUI frm = new MainUI();
                 frm.Show();
             }
-            if (userType == "TTM")
+            if (nUserType == "TTM")
             {
                 this.Hide();
                 MainUIForTTM frm = new MainUIForTTM();
                 frm.Show();
             }
-            if (userType == "LIC")
+            if (nUserType == "LIC")
             {
                 this.Hide();
                 MainUIForLIC frm = new MainUIForLIC();
