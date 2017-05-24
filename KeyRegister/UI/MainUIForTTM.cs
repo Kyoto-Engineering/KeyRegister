@@ -27,9 +27,7 @@ namespace KeyRegister.UI
 
         private void buttonKeyHolderStation_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            KeyHolderEntry frm = new KeyHolderEntry();
-            frm.Show();
+            
         }
 
         private void buttonKeyCreation_Click(object sender, EventArgs e)

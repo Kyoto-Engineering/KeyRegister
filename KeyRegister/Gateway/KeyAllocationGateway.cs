@@ -21,13 +21,13 @@ namespace KeyRegister.Gateway
         {
             con=new SqlConnection(cs.DBConn);
             con.Open();
-            string query = "INSERT INTO KeyAllocation(TerritoryId,PeropertyId,LocationId,UserId,CreatedDatetime) VALUES(@d1,@d2,@d3,@d4,@d5)";
+            string query = "INSERT INTO KeyRgisterk(UserId,KeyId,AssignedForm,AssginedBy,AsginedDate) VALUES(@d1,@d2,@d3,@d4,@d5)";
             cmd=new SqlCommand(query,con);
-            cmd.Parameters.AddWithValue("@d1", allocation.TerritoryId);
-            cmd.Parameters.AddWithValue("@d2", allocation.PropertyId);
-            cmd.Parameters.AddWithValue("@d3", allocation.LocationId);
+            cmd.Parameters.AddWithValue("@d1", allocation.KeyHolderId);
+            cmd.Parameters.AddWithValue("@d2", allocation.KeyId);
+            cmd.Parameters.AddWithValue("@d3", allocation.AssignedFrom);
             cmd.Parameters.AddWithValue("@d4", allocation.KAUserId);
-            cmd.Parameters.AddWithValue("@d5", allocation.DateTimeCreated);
+            cmd.Parameters.AddWithValue("@d5", allocation.AssignDate);
             int affectedRows=  cmd.ExecuteNonQuery();
             con.Close();
             return affectedRows;

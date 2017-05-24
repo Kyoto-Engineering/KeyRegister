@@ -22,8 +22,9 @@ namespace KeyRegister.UI
         private SqlCommand cmd;
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
-        public int propertyId, locationId, territoryId, nUserId, createdDatetime, numOfTerritory, numOfLocation;
-        public string h, g,propertyName,locationName,lockname,keyName,nUserType;
+        public int nUserId, createdDatetime, numOfTerritory, numOfLocation;
+        public string h, g, propertyName, locationName, lockname, keyName, nUserType, locationId, a, b, territoryId, propertyId;
+        public string lockId;
         public KeyAllocationEntry()
         {
             InitializeComponent();
@@ -48,18 +49,18 @@ namespace KeyRegister.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void LoadProperty()
+        public void LoadPropertyOnSelectedLocation()
         {
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT PropertyId,PropertyName FROM  Property  where  Property.PropertyName='"+propertyName+"'", con);
+                cmd = new SqlCommand("SELECT Property.PropertyId, Users.FullName, Location.LocationName, Property.PropertyName FROM LocationIncharge INNER JOIN Location ON LocationIncharge.LocationId = Location.LocationId INNER JOIN Property ON Location.LocationId = Property.LocationId INNER JOIN Users ON LocationIncharge.UserId = Users.UserId where Location.LocationId='" + locationId + "'", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView3.Rows.Clear();
                 while (rdr.Read() == true)
                 {
-                    dataGridView3.Rows.Add(rdr[0], rdr[1]);
+                    dataGridView3.Rows.Add(rdr[0],rdr[1],rdr[2],rdr[3]);
                 }
                 con.Close();
             }
@@ -68,53 +69,8 @@ namespace KeyRegister.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void LoadLocation()
-        {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                cmd = new SqlCommand("SELECT LocationId,LocationName FROM  Location", con);
-                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                dataGridView2.Rows.Clear();
-                while (rdr.Read() == true)
-                {
-                    dataGridView2.Rows.Add(rdr[0],rdr[1]);
-                }
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void LoadTerritoryForCOO()
-        {
-            try
-            {
-                con=new SqlConnection(cs.DBConn);
-                con.Open();
-                string query = "";
-                cmd=new SqlCommand(query,con);
-                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (rdr.Read()==true)
-                {
-                    
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void LoadTerritoryForTTM()
-        {
-            
-        }
-
-        
+       
+                     
         private void GetCountLocationUnderLocationInCharge()
         {
             try
@@ -198,12 +154,92 @@ namespace KeyRegister.UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void KeyAllocationEntry_Load(object sender, EventArgs e)
+        private void GetCountTerritoryUnderTerritoryManager()
         {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string query = "Select count(TerritoryId) from TerritoryManager where  TerritoryManager.UserId='" + nUserId + "'";
+                cmd = new SqlCommand(query, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    numOfTerritory = (rdr.GetInt32(0));
+                }
+                con.Close();
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void LoadTerritoryForTTM()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT  Territory.TerritoryId, Territory.TerritoryName, Users.FullName FROM  TerritoryManager INNER JOIN Territory ON TerritoryManager.TerritoryId = Territory.TerritoryId INNER JOIN Users ON TerritoryManager.UserId = Users.UserId where  TerritoryManager.UserId='" + nUserId + "'", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void LoadTerritoryForCOO()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT  Territory.TerritoryId, Territory.TerritoryName,Users.FullName FROM  TerritoryManager INNER JOIN Territory ON TerritoryManager.TerritoryId = Territory.TerritoryId INNER JOIN Users ON TerritoryManager.UserId = Users.UserId", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-           // GetKeyIs();
-           // GetKeyType1();
+        private void LoadLocation()
+        {
+            try
+            {
+                con=new SqlConnection(cs.DBConn);
+                con.Open();
+                string query = "SELECT  Location.LocationId,Location.LocationName FROM  Location INNER JOIN Territory ON Location.TerritoryId = Territory.TerritoryId where Location.TerritoryId='" + territoryId + "'";
+                cmd=new SqlCommand(query,con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView2.Rows.Clear();
+                while (rdr.Read()==true)
+                {
+                    dataGridView2.Rows.Add(rdr[0], rdr[1]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void KeyAllocationEntry_Load(object sender, EventArgs e)
+        {            
             nUserId = frmLogin.uId;
             nUserType = frmLogin.userType;
             if (nUserType == "COO")
@@ -212,7 +248,7 @@ namespace KeyRegister.UI
             }
             else if (nUserType == "TTM")
             {
-              //  GetCountTerritoryUnderTerritoryManager();
+                GetCountTerritoryUnderTerritoryManager();
                 if (numOfTerritory > 1)
                 {
                     LoadTerritoryForTTM();
@@ -226,27 +262,36 @@ namespace KeyRegister.UI
             }
             else if (nUserType == "LIC")
             {
-             
+                GetCountLocationUnderLocationInCharge();
                 if (numOfLocation > 1)
                 {
                     dataGridView1.Visible = false;
-                    //LoadMultipleLocationUnderLocationInCharge();
+                    LoadMultipleLocationUnderLocationInCharge();
                 }
                 if (numOfLocation == 1)
                 {
                     dataGridView1.Visible = false;
                     dataGridView2.Visible = false;
-                 
+                    LoadSingleLocationUnderLocationInCharge();
                 }
-            }
-
+            }                          
         }
 
         private void Reset()
         {
+            txtTerritoryId.Clear();
             txtTerritoryName.Clear();
+            txtLocationId.Clear();
             txtLocationName.Clear();
+            txtPropertyId.Clear();
             txtPropertyName.Clear();
+            txtLockId.Clear();
+            txtLockNo.Clear();
+            txtKeyId.Clear();
+            txtUserId.Clear();
+            txtUserName.Clear();
+            txtEmployeeId.Clear();
+
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
@@ -270,11 +315,11 @@ namespace KeyRegister.UI
                 int ka = 0;
                 KeyAllocationManager amManager = new KeyAllocationManager();
                 KeyAllocation allocation = new KeyAllocation();
-                allocation.PropertyId = propertyId;
-                allocation.LocationId = locationId;
-                allocation.TerritoryId = territoryId;
+                allocation.KeyHolderId = Convert.ToInt32(txtUserId.Text);
+                allocation.KeyId= Convert.ToInt32(txtKeyId.Text);
+                allocation.AssignedFrom = Convert.ToDateTime(txtAssignedDate.Value, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat);               
                 allocation.KAUserId = nUserId;
-                allocation.DateTimeCreated = DateTime.Today;
+                allocation.AssignDate = DateTime.Today;
                 ka = amManager.SaveKeyAllocation(allocation);
                 MessageBox.Show("Successfully Saved", "error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Reset();
@@ -283,118 +328,7 @@ namespace KeyRegister.UI
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-
-        }
-
-        private void dataGridView3_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                DataGridViewRow dr = dataGridView3.CurrentRow;
-                propertyId = Convert.ToInt32(dr.Cells[0].Value.ToString());
-                txtPropertyName.Text = dr.Cells[1].Value.ToString();
-                h = g;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void txtTerritoryName_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT TerritoryId from Territory WHERE TerritoryName= '" + txtTerritoryName.Text + "'";
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read())
-                {
-                    territoryId = rdr.GetInt32(0);
-                }
-                if ((rdr != null))
-                {
-                    rdr.Close();
-                }
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void txtPropertyName_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT PropertyId from Property WHERE PropertyName= '" + txtPropertyName.Text + "'";
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read())
-                {
-                    propertyId = rdr.GetInt32(0);
-                }
-                if ((rdr != null))
-                {
-                    rdr.Close();
-                }
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void txtLocationName_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT LocationId from Location WHERE LocationName= '" + txtLocationName.Text + "'";
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read())
-                {
-                    locationId = rdr.GetInt32(0);
-                }
-                if ((rdr != null))
-                {
-                    rdr.Close();
-                }
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+        }            
         private void KeyAllocationEntry_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (nUserType == "COO")
@@ -417,22 +351,162 @@ namespace KeyRegister.UI
             }
         }
 
-        private void dataGridView1_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        private void LoadUserListOnSelectedLocation()
         {
             try
             {
-                DataGridViewRow dr = dataGridView1.CurrentRow;
-                propertyId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-               // propertyId = Convert.ToInt32((dr.Cells[0].ToString()));
-                propertyName = (dr.Cells[1].Value.ToString());
-                h = g;
-                LoadProperty();
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT Users.UserId, Users.UserName, Users.EmployeeId FROM  LocationUser INNER JOIN Users ON LocationUser.UserId = Users.UserId INNER JOIN Location ON LocationUser.LocationId = Location.LocationId where LocationUser.LocationId='" + locationId + "'", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView6.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView6.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dr = dataGridView2.CurrentRow;
+               locationId= txtLocationId.Text = dr.Cells[0].Value.ToString();
+                txtLocationName.Text = dr.Cells[1].Value.ToString();
+                LoadPropertyOnSelectedLocation();
+                LoadUserListOnSelectedLocation();
+                a = b;
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dr = dataGridView1.CurrentRow;
+               territoryId= txtTerritoryId.Text = dr.Cells[0].Value.ToString();
+                txtTerritoryName.Text = dr.Cells[1].Value.ToString();
+                LoadLocation();
+                h = g;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadLockOnSelectedProperty()
+        {
+            try
+            {
+                con=new SqlConnection(cs.DBConn);
+                con.Open();
+                string query = "SELECT Lock.LockId,Lock.LockNo,Property.PropertyName FROM  Lock INNER JOIN Property ON Lock.PropertyId = Property.PropertyId where Lock.PropertyId='" + propertyId + "'";
+                cmd=new SqlCommand(query,con);
+                rdr = cmd.ExecuteReader();
+                dataGridView4.Rows.Clear();
+                while (rdr.Read()==true)
+                {
+                    dataGridView4.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void dataGridView3_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dr = dataGridView3.CurrentRow;
+                propertyId = txtPropertyId.Text = dr.Cells[0].Value.ToString();
+                txtPropertyName.Text = dr.Cells[1].Value.ToString();
+                LoadLockOnSelectedProperty();
+                a = b;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LoadKeysOnSelectedLock()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string query = "SELECT  Keys.KeyId, Property.PropertyName, Lock.LockNo, KeyType.KeyTypeName FROM  Keys INNER JOIN KeyType ON Keys.KeyTypeId = KeyType.KeyTypeId INNER JOIN Lock ON Keys.LockId = Lock.LockId INNER JOIN Property ON Lock.PropertyId = Property.PropertyId where Keys.LockId='" + lockId + "' ";
+                cmd = new SqlCommand(query, con);
+                rdr = cmd.ExecuteReader();
+                dataGridView5.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView5.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void dataGridView4_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dr = dataGridView4.CurrentRow;
+                lockId = txtLockId.Text = dr.Cells[0].Value.ToString();
+                txtLockNo.Text = dr.Cells[1].Value.ToString();
+                LoadKeysOnSelectedLock();
+                h = g;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridView6_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dr = dataGridView6.CurrentRow;
+                txtUserId.Text = dr.Cells[0].Value.ToString();
+                txtUserName.Text = dr.Cells[1].Value.ToString();
+                txtEmployeeId.Text = dr.Cells[2].Value.ToString();
+                a = b;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridView5_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dr = dataGridView5.CurrentRow;
+                txtKeyId.Text = dr.Cells[0].Value.ToString();
+                g = h;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

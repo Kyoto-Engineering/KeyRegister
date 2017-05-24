@@ -34,7 +34,6 @@
             this.buttonKeyAllocation = new System.Windows.Forms.Button();
             this.buttonKeyCreation = new System.Windows.Forms.Button();
             this.buttonLockCreation = new System.Windows.Forms.Button();
-            this.buttonKeyHolderStation = new System.Windows.Forms.Button();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -48,7 +47,6 @@
             this.groupBox1.Controls.Add(this.buttonKeyAllocation);
             this.groupBox1.Controls.Add(this.buttonKeyCreation);
             this.groupBox1.Controls.Add(this.buttonLockCreation);
-            this.groupBox1.Controls.Add(this.buttonKeyHolderStation);
             this.groupBox1.Location = new System.Drawing.Point(12, 7);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(165, 518);
@@ -84,7 +82,7 @@
             // 
             this.buttonKeyAllocation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonKeyAllocation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonKeyAllocation.Location = new System.Drawing.Point(6, 268);
+            this.buttonKeyAllocation.Location = new System.Drawing.Point(6, 234);
             this.buttonKeyAllocation.Name = "buttonKeyAllocation";
             this.buttonKeyAllocation.Size = new System.Drawing.Size(143, 55);
             this.buttonKeyAllocation.TabIndex = 8;
@@ -115,18 +113,6 @@
             this.buttonLockCreation.Text = "Lock Creation";
             this.buttonLockCreation.UseVisualStyleBackColor = true;
             this.buttonLockCreation.Click += new System.EventHandler(this.buttonLockCreation_Click);
-            // 
-            // buttonKeyHolderStation
-            // 
-            this.buttonKeyHolderStation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonKeyHolderStation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonKeyHolderStation.Location = new System.Drawing.Point(10, 202);
-            this.buttonKeyHolderStation.Name = "buttonKeyHolderStation";
-            this.buttonKeyHolderStation.Size = new System.Drawing.Size(141, 52);
-            this.buttonKeyHolderStation.TabIndex = 4;
-            this.buttonKeyHolderStation.Text = "Key Holder Creation";
-            this.buttonKeyHolderStation.UseVisualStyleBackColor = true;
-            this.buttonKeyHolderStation.Click += new System.EventHandler(this.buttonKeyHolderStation_Click);
             // 
             // buttonLogOut
             // 
@@ -178,7 +164,6 @@
         private System.Windows.Forms.Button buttonKeyAllocation;
         private System.Windows.Forms.Button buttonKeyCreation;
         private System.Windows.Forms.Button buttonLockCreation;
-        private System.Windows.Forms.Button buttonKeyHolderStation;
         private System.Windows.Forms.Button buttonLogOut;
         private System.Windows.Forms.Label label1;
     }

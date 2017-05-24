@@ -239,12 +239,6 @@
     <Compile Include="UI\KeyEntry.Designer.cs">
       <DependentUpon>KeyEntry.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\KeyHolderEntry.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\KeyHolderEntry.Designer.cs">
-      <DependentUpon>KeyHolderEntry.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\LocationEntry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -366,9 +360,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\KeyEntry.resx">
       <DependentUpon>KeyEntry.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\KeyHolderEntry.resx">
-      <DependentUpon>KeyHolderEntry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LocationEntry.resx">
       <DependentUpon>LocationEntry.cs</DependentUpon>

@@ -566,7 +566,7 @@ namespace KeyRegister.UI
                 dataGridView5.Rows.Clear();
                 while (rdr.Read() == true)
                 {
-                    dataGridView5.Rows.Add(rdr[0], rdr[1], rdr[3]);
+                    dataGridView5.Rows.Add(rdr[0], rdr[1], rdr[2],rdr[3]);
                 }
             }
             catch (Exception ex)
