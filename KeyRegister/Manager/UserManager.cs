@@ -48,5 +48,11 @@ namespace KeyRegister.Manager
             aUserGateway=new UserGateway();
             return aUserGateway.SaveEmailAddress(address);
         }
+
+        public  int SaveUserEmail(UserEmail aEmail)
+        {
+            aUserGateway=new UserGateway();
+            return aUserGateway.SaveUserEmail(aEmail);
+        }
  }
 }

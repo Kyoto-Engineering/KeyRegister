@@ -27,7 +27,7 @@ namespace KeyRegister.Gateway
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
-            string query =String.Format( "insert into Users(UserName,Password,EmployeeId,FullName,NickName,FatherName,MotherName,EmailBankId,CountryId,DesignationId,NationalId,PassportNumber,BirthCertificateNumber,GenderId,MaritalStatusId,DateOfBirth) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10,@d11,@d12,@d13,@d14,@d15,@d16)") + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+            string query =String.Format( "insert into Users(UserName,Password,EmployeeId,FullName,NickName,FatherName,MotherName,CountryId,DesignationId,NationalId,PassportNumber,BirthCertificateNumber,GenderId,MaritalStatusId,DateOfBirth) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d9,@d10,@d11,@d12,@d13,@d14,@d15,@d16)") + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@d1", aUser.UserName);
             cmd.Parameters.AddWithValue("@d2", aUser.Password);
@@ -37,7 +37,7 @@ namespace KeyRegister.Gateway
             cmd.Parameters.AddWithValue("@d6", aUser.FatherName);
             cmd.Parameters.AddWithValue("@d7", aUser.MotherName);
 
-            cmd.Parameters.AddWithValue("@d8", aUser.EmailBankId);
+           // cmd.Parameters.AddWithValue("@d8", aUser.EmailBankId);
             cmd.Parameters.AddWithValue("@d9", aUser.CountryId);
             cmd.Parameters.AddWithValue("@d10", aUser.DesignationId);
             cmd.Parameters.AddWithValue("@d11", aUser.NationalId);
@@ -57,15 +57,18 @@ namespace KeyRegister.Gateway
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
-            string qry2 = "insert into PresentAddresses(PrFlatNo,PrHouseNo,PrRoadNo,PrBlock,PrArea,PostOfficeId,UserId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7)";
+            string qry2 = "insert into PresentAddresses(FlatNo,HouseNo,RoadNo,Block,Area,LandMark,RoadName,Building,PostOfficeId,UserId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)";
             cmd = new SqlCommand(qry2, conn);
             cmd.Parameters.AddWithValue("@d1", apresentAddress.PreFlatNo);
             cmd.Parameters.AddWithValue("@d2", apresentAddress.PreHouseNo);
             cmd.Parameters.AddWithValue("@d3", apresentAddress.PreRoadNo);
             cmd.Parameters.AddWithValue("@d4", apresentAddress.PreBlock);
             cmd.Parameters.AddWithValue("@d5", apresentAddress.PreArea);
-            cmd.Parameters.AddWithValue("@d6", apresentAddress.PrePostOfficeId);
-            cmd.Parameters.AddWithValue("@d7", apresentAddress.UserId);
+            cmd.Parameters.AddWithValue("@d6", apresentAddress.PreLandmark);
+            cmd.Parameters.AddWithValue("@d7", apresentAddress.PreRoadName);
+            cmd.Parameters.AddWithValue("@d8", apresentAddress.PreBuilding);
+            cmd.Parameters.AddWithValue("@d9", apresentAddress.PrePostOfficeId);
+            cmd.Parameters.AddWithValue("@d10", apresentAddress.UserId);
             affectedRows2 = cmd.ExecuteNonQuery();
             conn.Close();
             return affectedRows2;
@@ -76,7 +79,7 @@ namespace KeyRegister.Gateway
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
-            string qry22 ="insert into ParmanentAddresses(PaFlatNo,PaHouseNo,PaRoadNo,PaBlock,PaArea,PostOfficeId,UserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7)";
+            string qry22 = "insert into ParmanentAddresses(FlatNo,HouseNo,RoadNo,Block,Area,LandMark,RoadName,Building,PostOfficeId,UserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)";
             cmd = new SqlCommand(qry22, conn);
 
             cmd.Parameters.AddWithValue("@d1", aperAddress.PerFlatNo);
@@ -84,8 +87,11 @@ namespace KeyRegister.Gateway
             cmd.Parameters.AddWithValue("@d3", aperAddress.PerRoadNo);
             cmd.Parameters.AddWithValue("@d4", aperAddress.PerBlock);
             cmd.Parameters.AddWithValue("@d5", aperAddress.PerArea);
-            cmd.Parameters.AddWithValue("@d6", aperAddress.PerPostOfficeId);
-            cmd.Parameters.AddWithValue("@d7", aperAddress.PerUserId);
+            cmd.Parameters.AddWithValue("@d6", aperAddress.PerLandmark);
+            cmd.Parameters.AddWithValue("@d7", aperAddress.PerRoadName);
+            cmd.Parameters.AddWithValue("@d8", aperAddress.PerBuilding);
+            cmd.Parameters.AddWithValue("@d9", aperAddress.PerPostOfficeId);
+            cmd.Parameters.AddWithValue("@d10", aperAddress.PerUserId);
             affectedRows3 = cmd.ExecuteNonQuery();
             conn.Close();
             return affectedRows3;
@@ -138,15 +144,18 @@ namespace KeyRegister.Gateway
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
-            string qry22 = "insert into ParmanentAddresses(PaFlatNo,PaHouseNo,PaRoadNo,PaBlock,PaArea,PostOfficeId,UserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7)";
+            string qry22 = "insert into ParmanentAddresses(FlatNo,HouseNo,RoadNo,Block,Area,LandMark,RoadName,Building,PostOfficeId,UserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)";
             cmd = new SqlCommand(qry22, conn);
             cmd.Parameters.AddWithValue("@d1", aperAddress.PerFlatNo);
             cmd.Parameters.AddWithValue("@d2", aperAddress.PerHouseNo);
             cmd.Parameters.AddWithValue("@d3", aperAddress.PerRoadNo);
             cmd.Parameters.AddWithValue("@d4", aperAddress.PerBlock);
             cmd.Parameters.AddWithValue("@d5", aperAddress.PerArea);
-            cmd.Parameters.AddWithValue("@d6", aperAddress.PerPostOfficeId);
-            cmd.Parameters.AddWithValue("@d7", aperAddress.PerUserId);
+            cmd.Parameters.AddWithValue("@d6", aperAddress.PerLandmark);
+            cmd.Parameters.AddWithValue("@d7", aperAddress.PerRoadName);
+            cmd.Parameters.AddWithValue("@d8", aperAddress.PerBuilding);
+            cmd.Parameters.AddWithValue("@d9", aperAddress.PerPostOfficeId);
+            cmd.Parameters.AddWithValue("@d10", aperAddress.PerUserId);
             affectedRows5 = cmd.ExecuteNonQuery();
             conn.Close();
             return affectedRows3;
@@ -309,5 +318,23 @@ namespace KeyRegister.Gateway
             conn.Close();
 
         }
+
+
+
+        public  int  SaveUserEmail(UserEmail aEmail)
+        {
+            conn = new SqlConnection(cs.DBConn);
+            conn.Open();
+            string query = "INSERT INTO UserEmail(UserPart,EmailHostId,UserId,IsPrimaryKey) VALUES(@d1,@d2,@d3,@d4)";
+            cmd=new SqlCommand(query,conn);
+            cmd.Parameters.AddWithValue("@d1", aEmail.UserPart);
+            cmd.Parameters.AddWithValue("@d2", aEmail.HostEmailId);
+            cmd.Parameters.AddWithValue("@d3", aEmail.UserId);
+            cmd.Parameters.AddWithValue("@d4", aEmail.IsPrimaryStatus);
+            int affectedRows=cmd.ExecuteNonQuery();           
+            conn.Close();
+            return affectedRows;
+        }
+       
     }
 }

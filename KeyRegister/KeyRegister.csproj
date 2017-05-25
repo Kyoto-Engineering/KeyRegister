@@ -106,6 +106,7 @@
     <Compile Include="DAO\Territory.cs" />
     <Compile Include="DAO\TerritoryManagers.cs" />
     <Compile Include="DAO\Thanas.cs" />
+    <Compile Include="DAO\UserEmail.cs" />
     <Compile Include="DAO\Users.cs" />
     <Compile Include="DBGateway\ConnectionGateway.cs" />
     <Compile Include="DBGateway\ConnectionString.cs" />

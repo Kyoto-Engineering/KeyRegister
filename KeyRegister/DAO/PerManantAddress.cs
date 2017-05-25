@@ -21,6 +21,9 @@ namespace KeyRegister.DAO
         private string perPostOffice;
         private string perPostcode;
         private int  perUserId;
+        public string PerLandmark { set; get; }
+        public string PerRoadName { set; get; }
+        public string PerBuilding { set; get; }
         public int PersmanantAddressId
         {
             get { return permanantAddressId; }

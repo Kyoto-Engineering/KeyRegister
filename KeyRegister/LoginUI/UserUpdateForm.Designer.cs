@@ -396,11 +396,11 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(402, -3);
+            this.label9.Location = new System.Drawing.Point(402, 4);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(266, 26);
+            this.label9.Size = new System.Drawing.Size(322, 26);
             this.label9.TabIndex = 21;
-            this.label9.Text = "User Information Details";
+            this.label9.Text = "Edit  User Information Details";
             // 
             // PABlockText
             // 

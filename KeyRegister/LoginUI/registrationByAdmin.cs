@@ -25,7 +25,7 @@ namespace KeyRegister.LoginUI
         private SqlCommand cmd;
         private SqlDataReader rdr;
         ConnectionString cs = new ConnectionString();
-        public int emailHostId, nationalityId, departmentId, designationId, genderId, maritalStatusId;
+        public int emailHostId, nationalityId, departmentId, designationId, genderId, maritalStatusId, emailHostId1;
 
         public string countryCode, nUserId, divisionIdPA, divisionIdPer, postofficeIdPA, postofficeIdPer, districtIdPA, districtIdPer, thanaIdPA, thanaIdPer, countryId,emailAddresTo;
         public int instantUserId, instantUserId1;
@@ -97,11 +97,14 @@ namespace KeyRegister.LoginUI
             {
                 PerManantAddress aperAddress = new PerManantAddress
                 {
-                    PerFlatNo = PerAFlatNoText.Text,
-                    PerHouseNo = PerAHouseNoText.Text,
-                    PerRoadNo = PerARoadNoText.Text,
-                    PerBlock = PerABlockText.Text,
-                    PerArea = PerAareaText.Text,
+                    PerFlatNo = txtPerFlatNo.Text,
+                    PerHouseNo = txtPerHouseNo.Text,
+                    PerRoadNo = txtPerRoadNo.Text,
+                    PerBlock = txtPerBlock.Text,
+                    PerArea = txtPerArea.Text,
+                    PerLandmark = txtPerLandMark.Text,
+                    PerBuilding = txtPerBuilding.Text,
+                    PerRoadName = txtPerRoadName.Text,
                     PerPostOfficeId = Convert.ToInt32(postofficeIdPer),
                     PerUserId = instantUserId
                     
@@ -123,11 +126,14 @@ namespace KeyRegister.LoginUI
             {
                 PresentAddress apresentAddress = new PresentAddress
                 {
-                    PreFlatNo = PAFlatNoText.Text,
-                    PreHouseNo = PAHouseNoText.Text,
-                    PreRoadNo = PARoadNoText.Text,
-                    PreBlock = PABlockText.Text,
-                    PreArea = PAareaText.Text,
+                    PreFlatNo = txtPreFlatNo.Text,                    
+                    PreHouseNo = txtPreHouseNo.Text,                    
+                    PreRoadNo = txtPreRoadNo.Text,                   
+                    PreBlock = txtPreBlock.Text,
+                    PreArea = txtPreArea.Text,
+                    PreLandmark = txtPreLandMark.Text,
+                    PreRoadName = txtPreRoadName.Text,
+                    PreBuilding = txtPreBuildingName.Text,
                     PrePostOfficeId = Convert.ToInt32(postofficeIdPA),
                     UserId=instantUserId
                 };
@@ -139,6 +145,26 @@ namespace KeyRegister.LoginUI
             }
         }
 
+        private void SaveUserEmail(int  emailHostIdK,string emailUser, Boolean  statuss)
+        {
+            try
+            {
+                int ug = 0;
+                UserManager aManager=new UserManager();
+                UserEmail aEmail=new UserEmail();
+                aEmail.UserPart = emailUser;
+                aEmail.HostEmailId = emailHostIdK;
+                aEmail.UserId = instantUserId;
+                aEmail.IsPrimaryStatus = statuss;
+                ug = aManager.SaveUserEmail(aEmail);
+                // aEmail.IsPrimaryKey = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void  SaveUserInformation()
         {
             //SaveEmailAddress();
@@ -157,7 +183,7 @@ namespace KeyRegister.LoginUI
                     FatherName = txtFatherName.Text,
                     MotherName = txtMotherName.Text,
 
-                    EmailHostId = emailHostId,
+                   // EmailHostId = emailHostId,
                     NationalId = txtNationalId.Text,
                     CountryId = Convert.ToInt32(countryId),
                     PassportNo = txtPassportNo.Text,
@@ -170,6 +196,8 @@ namespace KeyRegister.LoginUI
                 };
                 ig = auManager.SaveUserDetail(aUser);
                 GetMaxUserId();
+                SaveUserEmail(emailHostId,txtPrimaryEmailUser.Text,true);
+                SaveUserEmail(emailHostId1,txtSecondaryEmailUser.Text,false);
                 NewMailMessage();
             }
             catch (Exception ex)
@@ -208,24 +236,22 @@ namespace KeyRegister.LoginUI
             {
                 int sag = 0;
                 UserManager amanager = new UserManager();
-                try
-                {
+               
                     PerManantAddress aperAddress = new PerManantAddress
                     {
-                       PerFlatNo  = PAFlatNoText.Text,
-                        PerHouseNo = PAHouseNoText.Text,
-                        PerRoadNo = PARoadNoText.Text,
-                        PerBlock = PABlockText.Text,
-                        PerArea = PAareaText.Text,
+                        PerFlatNo  = txtPreFlatNo.Text,
+                        PerHouseNo = txtPerHouseNo.Text,
+                        PerRoadNo = txtPreRoadName.Text,
+                        PerBlock = txtPreBlock.Text,
+                        PerArea = txtPreArea.Text,
+                        PerLandmark = txtPerLandMark.Text,
+                        PerRoadName = txtPerRoadName.Text,
+                        PerBuilding = txtPerBuilding.Text,
                         PerPostOfficeId = Convert.ToInt32(postofficeIdPA),
                         PerUserId = instantUserId
                     };
                     sag = amanager.PerManantSameAsPresentAddress(aperAddress);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+               
 
             }
             catch (Exception ex)
@@ -236,12 +262,15 @@ namespace KeyRegister.LoginUI
 
         private void PresentAddress()
         {
-            PAFlatNoText.Clear();
-            PAHouseNoText.Clear();
-            PARoadNoText.Clear();
-            PABlockText.Clear();
-            PAareaText.Clear();
-            PAPostCodeText.Clear();
+            txtPreFlatNo.Clear();
+            txtPreHouseNo.Clear();
+            txtPreRoadNo.Clear();           
+            txtPreBlock.Clear();
+            txtPreArea.Clear();
+            txtPrePostCode.Clear();
+            txtPreRoadName.Clear();
+            txtPreBuildingName.Clear();
+            txtPreLandMark.Clear();
             PAPostOfficeCombo.SelectedIndex = -1;
             PAThanaCombo.SelectedIndex = -1;
             PADistrictCombo.SelectedIndex = -1;
@@ -249,12 +278,15 @@ namespace KeyRegister.LoginUI
         }
         private void ResetPermanantAddress2()
         {
-            PerAFlatNoText.Clear();
-            PerAHouseNoText.Clear();
-            PerARoadNoText.Clear();
-            PerABlockText.Clear();
-            PerAareaText.Clear();
-            PerApostCodeText.Clear();
+            txtPerFlatNo.Clear();
+            txtPerHouseNo.Clear();
+            txtPerRoadNo.Clear();           
+            txtPerBlock.Clear();
+            txtPerArea.Clear();
+            txtPerRoadName.Clear();
+            txtPerBuilding.Clear();
+            txtPerLandMark.Clear();
+            txtPerPostCode.Clear();
             PerAPostOfficeCombo.SelectedIndex = -1;
             PerAThanaCombo.SelectedIndex = -1;
             PerADistrictCombo.SelectedIndex = -1;
@@ -273,7 +305,10 @@ namespace KeyRegister.LoginUI
             txtNickName.Clear();
             txtFatherName.Clear();            
             txtMotherName.Clear();
-            txtDomainName.Clear();
+            txtPrimaryEmailUser.Clear();
+            txtSecondaryEmailUser.Clear();
+            cmbPrimaryDomain.SelectedIndex = -1;
+            cmbSecondaryDomain.SelectedIndex = -1;
             if (cmbCountry.Text != "Bangladesh")
             {
                 txtStreetName.Clear();
@@ -292,8 +327,7 @@ namespace KeyRegister.LoginUI
             txtBirthCertificatNo.Clear();
             txtPassportNo.Clear();
             txtNationalId.Clear();
-            txtDomainName.Clear();
-            cmbEmailHostName.SelectedIndex = -1;
+            txtPrimaryEmailUser.Clear();           
             txtLogInID.Clear();
             txtPassword.Clear();
             txtFormPassword.Clear();                  
@@ -343,7 +377,7 @@ namespace KeyRegister.LoginUI
         }
         private void createUserButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtFormPassword.Text))
+            if(string.IsNullOrEmpty(txtFormPassword.Text))
             {
                 MessageBox.Show("Please type your Mail Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtFormPassword.Visible = true;
@@ -405,7 +439,7 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show("Please Select Present Address Post Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(PAPostCodeText.Text))
+            if (string.IsNullOrWhiteSpace(txtPrePostCode.Text))
             {
                 MessageBox.Show("Please select Present Address Post Code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -432,7 +466,7 @@ namespace KeyRegister.LoginUI
                     MessageBox.Show("Please Select Permanant Address Post Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (string.IsNullOrWhiteSpace(PerApostCodeText.Text))
+                if (string.IsNullOrWhiteSpace(txtPerPostCode.Text))
                 {
                     MessageBox.Show("Please select Permanant Address Post Code", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
                     return;
@@ -533,7 +567,7 @@ namespace KeyRegister.LoginUI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct = "select RTRIM(Users.EmailHostId),RTRIM(Users.UserName) from Users  Where Users.UserId = '" + nUserId + "'";
+                string ct = "select RTRIM(UserEmail.EmailHostId),RTRIM(UserEmail.UserPart) from UserEmail  Where UserEmail.UserId = '" + nUserId + "' and  UserEmail.IsPrimaryKey='true'";
                 cmd = new SqlCommand(ct);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
@@ -542,11 +576,11 @@ namespace KeyRegister.LoginUI
                     senderEmailHostId = (rdr.GetString(0));
                     userName = (rdr.GetString(1));
                 }
-                con.Close();
+                con.Close();                
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct2 = "select RTRIM(EmailHostBank.EmailHostName),RTRIM(EmailHostBank.SmtpHostName) from EmailHostBank  Where EmailHostBank.EmailHostId = '" + senderEmailHostId + "'";
-                cmd = new SqlCommand(ct2);
+                string ct3 = "select RTRIM(EmailHostBank.EmailHostName),RTRIM(EmailHostBank.SmtpHostName) from EmailHostBank  Where EmailHostBank.EmailHostId = '" + senderEmailHostId + "'";
+                cmd = new SqlCommand(ct3);
                 cmd.Connection = con;
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
@@ -567,7 +601,7 @@ namespace KeyRegister.LoginUI
             {
                 GetSenderEMailAddress();
                 emailAddressFrom = userName + "@" + senderEmailDomain;
-                emailAddresTo = txtDomainName.Text +"@"+ cmbEmailHostName.Text;
+                emailAddresTo = txtPrimaryEmailUser.Text +"@"+ cmbPrimaryDomain.Text;
                 smtpHost = "smtp." + hostName + ".com";
                 string body = "Your LogIn Id is:'" + txtLogInID.Text + "' and  Password is:'" + txtPassword.Text + "'.Thank you.";
                 MailMessage msg = new MailMessage();
@@ -700,13 +734,34 @@ namespace KeyRegister.LoginUI
             nUserId = frmLogin.uId.ToString();
             LoadCountryCode();
             CountryLoad();
+            HostEmailAddress2();
             HostEmailAddress();
             //NationalityLoad();
             DesignationLoad();
             MaritalStatusLoad();
             GetGender();
         }
-
+        private void HostEmailAddress2()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctt = "select EmailHostName from EmailHostBank";
+                cmd = new SqlCommand(ctt);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    cmbSecondaryDomain.Items.Add(rdr.GetValue(0).ToString());
+                }
+                // cmbEmailHostName.Items.Add("Not In The List");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void HostEmailAddress()
         {
             try
@@ -719,7 +774,7 @@ namespace KeyRegister.LoginUI
                 rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    cmbEmailHostName.Items.Add(rdr.GetValue(0).ToString());
+                    cmbPrimaryDomain.Items.Add(rdr.GetValue(0).ToString());
                 }
                // cmbEmailHostName.Items.Add("Not In The List");
             }
@@ -736,7 +791,7 @@ namespace KeyRegister.LoginUI
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
                 cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT EmailHostId from EmailHostBank WHERE EmailHostName= '" + cmbEmailHostName.Text + "'";
+                cmd.CommandText = "SELECT EmailHostId from EmailHostBank WHERE EmailHostName= '" + cmbPrimaryDomain.Text + "'";
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
@@ -1103,7 +1158,7 @@ namespace KeyRegister.LoginUI
                 PAThanaCombo.Items.Clear();
                 PAThanaCombo.Text = "";
                 PAPostOfficeCombo.SelectedIndex = -1;
-                PAPostCodeText.Clear();
+                txtPrePostCode.Clear();
                 PAThanaCombo.Enabled = true;
                 PAThanaCombo.Focus();
                 con = new SqlConnection(cs.DBConn);
@@ -1159,7 +1214,7 @@ namespace KeyRegister.LoginUI
                 PADistrictCombo.Items.Clear();
                 PAThanaCombo.SelectedIndex = -1;
                 PAPostOfficeCombo.SelectedIndex = -1;
-                PAPostCodeText.Clear();
+                txtPrePostCode.Clear();
                 PADistrictCombo.Enabled = true;
                 PADistrictCombo.Focus();
 
@@ -1214,7 +1269,7 @@ namespace KeyRegister.LoginUI
                 PAThanaCombo.Text = PAThanaCombo.Text.Trim();               
                 PAPostOfficeCombo.SelectedIndex = -1;
                 PAPostOfficeCombo.Items.Clear();
-                PAPostCodeText.Clear();
+                txtPrePostCode.Clear();
                 PAPostOfficeCombo.Enabled = true;
                 PAPostOfficeCombo.Focus();
 
@@ -1254,7 +1309,7 @@ namespace KeyRegister.LoginUI
                 if (rdr.Read())
                 {
                     postofficeIdPA = (rdr.GetString(0));
-                    PAPostCodeText.Text = (rdr.GetString(1));
+                    txtPrePostCode.Text = (rdr.GetString(1));
 
                 }
 
@@ -1277,13 +1332,13 @@ namespace KeyRegister.LoginUI
        
         public void ResetPermanantAddress()
         {
-            PerAFlatNoText.Clear();
-            PerAHouseNoText.Clear();
-            PerARoadNoText.Clear();
-            PerABlockText.Clear();
-            PerAareaText.Clear();
+            txtPerFlatNo.Clear();
+            txtPerRoadNo.Clear();
+            txtPerRoadName.Clear();
+            txtPerBlock.Clear();
+            txtPerArea.Clear();
             
-            PerApostCodeText.Clear();
+            txtPerPostCode.Clear();
             PerAPostOfficeCombo.SelectedIndex = -1;
             PerAThanaCombo.SelectedIndex = -1;
             PerADistrictCombo.SelectedIndex = -1;
@@ -1341,7 +1396,7 @@ namespace KeyRegister.LoginUI
                 PerADistrictCombo.Items.Clear();
                 PerAThanaCombo.SelectedIndex = -1;
                 PerAPostOfficeCombo.SelectedIndex = -1;
-                PerApostCodeText.Clear();
+                txtPerPostCode.Clear();
                 PerADistrictCombo.Enabled = true;
                 PerADistrictCombo.Focus();
 
@@ -1398,7 +1453,7 @@ namespace KeyRegister.LoginUI
                 PerAThanaCombo.Text = PerAThanaCombo.Text.Trim();
                 PerAPostOfficeCombo.Items.Clear();
                 PerAPostOfficeCombo.SelectedIndex = -1;
-                PerApostCodeText.Clear();
+                txtPerPostCode.Clear();
                 PerAPostOfficeCombo.Enabled = true;
                 PerAPostOfficeCombo.Focus();
                 con = new SqlConnection(cs.DBConn);
@@ -1456,7 +1511,7 @@ namespace KeyRegister.LoginUI
                 PerAThanaCombo.SelectedIndex = -1;
                 PerAThanaCombo.Items.Clear();
                 PerAPostOfficeCombo.SelectedIndex = -1;
-                PerApostCodeText.Clear();
+                txtPerPostCode.Clear();
                 PerAThanaCombo.Enabled = true;
                 PerAThanaCombo.Focus();
 
@@ -1496,7 +1551,7 @@ namespace KeyRegister.LoginUI
                 if (rdr.Read())
                 {
                     postofficeIdPer = (rdr.GetString(0));
-                    PerApostCodeText.Text = (rdr.GetString(1));
+                    txtPerPostCode.Text = (rdr.GetString(1));
                 }
                 if ((rdr != null))
                 {
@@ -1587,7 +1642,7 @@ namespace KeyRegister.LoginUI
 
         private void txtDomainName_MouseLeave(object sender, EventArgs e)
         {
-            txtLogInID.Text = txtDomainName.Text;
+            txtLogInID.Text = txtPrimaryEmailUser.Text;
         }
 
         private void txtDomainName_Enter(object sender, EventArgs e)
@@ -1602,7 +1657,35 @@ namespace KeyRegister.LoginUI
 
         private void txtDomainName_TextChanged(object sender, EventArgs e)
         {
-            txtLogInID.Text = txtDomainName.Text;
+            txtLogInID.Text = txtPrimaryEmailUser.Text;
+        }
+
+        private void cmbSecondaryDomain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = con.CreateCommand();
+                cmd.CommandText = "SELECT EmailHostId from EmailHostBank WHERE EmailHostName= '" + cmbSecondaryDomain.Text + "'";
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    emailHostId1 = rdr.GetInt32(0);
+                }
+                if ((rdr != null))
+                {
+                    rdr.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

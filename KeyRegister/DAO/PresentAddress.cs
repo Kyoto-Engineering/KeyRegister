@@ -20,7 +20,11 @@ namespace KeyRegister.DAO
       private string preThana;
       private string prePostOffice;
       private string prePostcode;
-      
+
+      public  string PreLandmark { set; get; }
+      public string PreRoadName { set; get; }
+      public string PreBuilding { set; get; }
+
       public int PresentAddressId
       {
           get { return presentAddressId; }

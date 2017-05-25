@@ -95,11 +95,33 @@ namespace KeyRegister.UI
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void GetCOODetailsInfo()
+        {
+            try
+            {
+                con=new SqlConnection(cs.DBConn);
+                con.Open();
+                string query = "SELECT COO.COOId, Users.FullName, Company.CompanyName FROM  COO INNER JOIN Company ON COO.CompanyId = Company.CompanyId INNER JOIN Users ON COO.UserId = Users.UserId";
+                cmd=new SqlCommand(query,con);
+                rdr = cmd.ExecuteReader();
+                dataGridView1.Rows.Clear();
+                while (rdr.Read()==true)
+                {
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void COO_Load(object sender, EventArgs e)
         {
             userId = frmLogin.uId.ToString();
             GetUsername();
             GetCompanyName();
+            GetCOODetailsInfo();
         }
 
         private void COO_FormClosed(object sender, FormClosedEventArgs e)
@@ -110,6 +132,28 @@ namespace KeyRegister.UI
 
         }
 
+        private void GetCOOInformation()
+        {
+            try
+            {
+                con=new SqlConnection(cs.DBConn);
+                con.Open();
+                string query = "SELECT  COO.COOId, Users.FullName, Company.CompanyName FROM  COO INNER JOIN Company ON COO.CompanyId = Company.CompanyId INNER JOIN Users ON COO.UserId = Users.UserId";
+                cmd=new SqlCommand(query,con);
+                rdr=cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView1.Rows.Clear();
+                while (rdr.Read()==true)
+                {
+                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                }
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void cmbCompanyName_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
