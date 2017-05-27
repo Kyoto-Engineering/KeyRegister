@@ -75,6 +75,9 @@ namespace KeyRegister.LoginUI
             txtPreRoadNo.Clear();
             txtPreBlock.Clear();
             txtPreArea.Clear();
+            txtPreBuildingName.Clear();
+            txtPreRoadName.Clear();
+            txtPreLandMark.Clear();
             PerApostCodeText.Clear();
             PerAPostOfficeCombo.SelectedIndex = -1;
             PerAThanaCombo.SelectedIndex = -1;
@@ -88,6 +91,9 @@ namespace KeyRegister.LoginUI
             txtPerRoadNo.Clear();
             txtPerBlock.Clear();
             txtPerArea.Clear();
+            txtPerBuilding.Clear();
+            txtPerRoadName.Clear();
+            txtPreLandMark.Clear();
             PerApostCodeText.Clear();
             PerAPostOfficeCombo.SelectedIndex = -1;
             PerAThanaCombo.SelectedIndex = -1;
@@ -125,7 +131,10 @@ namespace KeyRegister.LoginUI
             txtBirthCertificatNo.Clear();
             txtPassportNo.Clear();
             txtNationalId.Clear();
-            
+            cmbCountry.SelectedIndex = -1;
+            cmbDesignation.SelectedIndex = -1;
+            cmbGender.SelectedIndex = -1;
+
 
             PresentAddress();
             ResetPermanantAddress2();
