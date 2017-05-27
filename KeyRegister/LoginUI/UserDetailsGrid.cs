@@ -19,6 +19,8 @@ namespace KeyRegister.LoginUI
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
         private SqlDataAdapter sda;
+        public string g,a,a1,b,b1,c,c1,d,d1,x,x1,y,y1;
+        public string userId;
         public UserDetailsGrid()
         {
             InitializeComponent();
@@ -40,7 +42,7 @@ namespace KeyRegister.LoginUI
             {
                 con=new SqlConnection(cs.DBConn);
                 con.Open();
-                string query = "SELECT Users.FullName, Users.NickName, Users.FatherName, Users.MotherName, EmailBank.Email, Countries.CountryName, Designations.Designation, Users.NationalId, Users.BirthCertificateNumber,Users.PassportNumber, Gender.GenderName, MaritalStatuss.MaritalStatus FROM  Users INNER JOIN EmailBank ON Users.EmailBankId = EmailBank.EmailBankId INNER JOIN Countries ON Users.CountryId = Countries.CountryId INNER JOIN Designations ON Users.DesignationId = Designations.DesignationId INNER JOIN   Gender ON Users.GenderId = Gender.GenderId INNER JOIN MaritalStatuss ON Users.MaritalStatusId = MaritalStatuss.MaritalStatusId";
+                string query = "SELECT FU.UserId, FU.FullName, FU.NickName, FU.FatherName, FU.MotherName, FU.CountryName, FU.Designation, FU.NationalId,FU.BirthCertificateNumber, FU.PassportNumber,FU.GenderName, FU.MaritalStatus, FU.ParFlatNo As ParFlatNo,FU.ParHouseNo As ParHouseNo, FU.ParRoadNo As ParRoadNo, FU.ParBlock as ParBlock, FU.ParArea As ParArea,FU.ParLandMark as  ParLandMark, FU.ParRoadName As ParRoadName, FU.ParBuilding As ParBuilding,FU.ParDivision as ParDivision,FU.ParDistrict,FU.ParThana,FU.ParPostOfficeName,FU.ParPostCode, Q2.PreFlatNo as PreFlatNo,Q2.PreHouseNo As PreHouseNo,Q2.PreRoadNo As PreRoadNo,Q2.PreBlock As PreBlock,Q2.PreArea As PreArea,Q2.PreLandMark As PreLandmark,Q2.PreRoadName As PreRoadName,Q2.PrBuilding As PreBuilding,Q2.Division As PreDivision,Q2.District PreDistrict,Q2.Thana PreThana,Q2.PostOfficeName PrePostOfficeName,Q2.PostCode PrePostCode  from (SELECT f1.UserId, f1.FullName, f1.NickName, f1.FatherName, f1.MotherName, Countries.CountryName, Designations.Designation,f1.NationalId, f1.BirthCertificateNumber, f1.PassportNumber,  Gender.GenderName, MaritalStatuss.MaritalStatus,ParmanentAddresses.PaFlatNo As ParFlatNo, ParmanentAddresses.PaHouseNo As ParHouseNo, ParmanentAddresses.PaRoadNo As ParRoadNo,ParmanentAddresses.PaBlock as ParBlock, ParmanentAddresses.PaArea As ParArea,ParmanentAddresses.PaLandMark as  ParLandMark,ParmanentAddresses.PaRoadName As ParRoadName, ParmanentAddresses.PaBuilding As ParBuilding,Divisions.Division As ParDivision,Districts.District as ParDistrict,Thanas.Thana As ParThana,PostOffice.PostOfficeName as ParPostOfficeName,PostOffice.PostCode as ParPostCode FROM  Users f1  INNER JOIN Countries ON f1.CountryId = Countries.CountryId  INNER JOIN Designations ON f1.DesignationId = Designations.DesignationId INNER JOIN Gender ON f1.GenderId = Gender.GenderId INNER JOIN MaritalStatuss ON f1.MaritalStatusId = MaritalStatuss.MaritalStatusId  INNER JOIN ParmanentAddresses ON f1.UserId = ParmanentAddresses.UserId INNER JOIN PostOffice ON ParmanentAddresses.PostOfficeId = PostOffice.PostOfficeId  INNER JOIN Thanas ON PostOffice.T_ID = Thanas.T_ID INNER JOIN  Districts ON Thanas.D_ID = Districts.D_ID  INNER JOIN Divisions ON Districts.Division_ID = Divisions.Division_ID INNER JOIN  PresentAddresses ON f1.UserId = PresentAddresses.UserId)  AS FU  lEFT jOIN ( SELECT   Users.UserId,PresentAddresses.PrFlatNo As PreFlatNo, PresentAddresses.PrHouseNo As PreHouseNo, PresentAddresses.PrRoadNo As PreRoadNo, PresentAddresses.PrBlock As PreBlock,PresentAddresses.PrArea As PreArea, PresentAddresses.PrLandMark As PreLandMark, PresentAddresses.PrRoadName As PreRoadName,PresentAddresses.PrBuilding, Divisions.Division, Districts.District, Thanas.Thana, PostOffice.PostOfficeName, PostOffice.PostCode FROM   Users INNER JOIN PresentAddresses ON Users.UserId = PresentAddresses.UserId INNER JOIN  PostOffice ON PresentAddresses.PostOfficeId = PostOffice.PostOfficeId INNER JOIN Thanas ON PostOffice.T_ID = Thanas.T_ID INNER JOIN  Districts ON Thanas.D_ID = Districts.D_ID INNER JOIN  Divisions ON Districts.Division_ID = Divisions.Division_ID) aS Q2 ON FU.UserId =  Q2.UserId";
                 sda=new SqlDataAdapter(query,con);
                 DataTable dt=new DataTable();
                 sda.Fill(dt);
@@ -56,6 +58,77 @@ namespace KeyRegister.LoginUI
         private void UserDetailsGrid_Load(object sender, EventArgs e)
         {
             GetListOfUser();
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                string k,h;
+                DataGridViewRow dr = dataGridView1.CurrentRow;
+                this.Hide();
+                UserUpdateForm frm=new UserUpdateForm();
+                frm.gUserId = dr.Cells[0].Value.ToString();
+                frm.txtFullName.Text = dr.Cells[1].Value.ToString();
+                frm.txtNickName.Text = dr.Cells[2].Value.ToString();
+                frm.txtFatherName.Text = dr.Cells[3].Value.ToString();
+                frm.txtMotherName.Text = dr.Cells[4].Value.ToString();
+               k= frm.cmbCountry.Text = dr.Cells[5].Value.ToString();
+                frm.cmbDesignation.Text = dr.Cells[6].Value.ToString();
+                frm.txtNationalId.Text = dr.Cells[7].Value.ToString();
+                frm.txtPassportNo.Text = dr.Cells[8].Value.ToString();
+                frm.txtBirthCertificatNo.Text = dr.Cells[9].Value.ToString();
+                frm.cmbGender.Text = dr.Cells[10].Value.ToString();
+                frm.cmbMaritalStatus.Text = dr.Cells[11].Value.ToString();
+               // frm.dateOfBirth.Text = dr.Cells[12].Value.ToString();
+               a= frm.txtPreFlatNo.Text = dr.Cells[12].Value.ToString();
+               b= frm.txtPreHouseNo.Text = dr.Cells[13].Value.ToString();
+               c= frm.txtPreRoadNo.Text = dr.Cells[14].Value.ToString();
+               d= frm.txtPreBlock.Text = dr.Cells[15].Value.ToString();
+                x=frm.txtPreArea.Text = dr.Cells[16].Value.ToString();
+                frm.txtPreLandMark.Text = dr.Cells[17].Value.ToString();
+                frm.txtPreRoadName.Text = dr.Cells[18].Value.ToString();
+                frm.txtPreBuildingName.Text = dr.Cells[19].Value.ToString();
+                frm.PADivisionCombo.Text = dr.Cells[20].Value.ToString();
+                frm.PADistrictCombo.Text = dr.Cells[21].Value.ToString();
+                frm.PAThanaCombo.Text = dr.Cells[22].Value.ToString();
+                frm.PAPostOfficeCombo.Text = dr.Cells[23].Value.ToString();
+               y= frm.PAPostCodeText.Text = dr.Cells[24].Value.ToString();
+
+                a1=frm.txtPerFlatNo.Text = dr.Cells[25].Value.ToString();
+               b1= frm.txtPerHouseNo.Text = dr.Cells[26].Value.ToString();
+               c1= frm.txtPerRoadNo.Text = dr.Cells[27].Value.ToString();
+               d1= frm.txtPerBlock.Text = dr.Cells[28].Value.ToString();
+               x1= frm.txtPerArea.Text = dr.Cells[29].Value.ToString();
+                frm.txtPerLandMark.Text = dr.Cells[30].Value.ToString();
+                frm.txtPerRoadName.Text = dr.Cells[31].Value.ToString();
+                frm.txtPerBuilding.Text = dr.Cells[32].Value.ToString();
+                
+                frm.PerADivisionCombo.Text = dr.Cells[33].Value.ToString();
+                frm.PerADistrictCombo.Text = dr.Cells[34].Value.ToString();
+                frm.PerAThanaCombo.Text = dr.Cells[35].Value.ToString();
+                frm.PerAPostOfficeCombo.Text = dr.Cells[36].Value.ToString();
+                y1=frm.PerApostCodeText.Text = dr.Cells[37].Value.ToString();
+                if (a == a1 && b == b1 && c == c1 && d == d1 && x == x1 && y == y1)
+                {
+                    frm.SameAsPACheckBox.Checked = true;
+                }
+                else
+                {
+                    frm.SameAsPACheckBox.Checked = false;
+                }
+
+                frm.hk = g;
+                if (k=="Bangladesh")
+                {
+                    frm.groupBox4.Visible = false;
+                }
+                frm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

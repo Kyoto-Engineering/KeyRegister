@@ -24,6 +24,7 @@ namespace KeyRegister.LoginUI
         private SqlCommand cmd;
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
+        public string hk,gUserId;
         public int emailBankId, nationalityId,  departmentId, designationId, genderId, maritalStatusId;
 
         public string nUserId, divisionIdPA, divisionIdPer, postofficeIdPA, postofficeIdPer, districtIdPA, districtIdPer, thanaIdPA, thanaIdPer, selectedUserId;
@@ -38,48 +39,55 @@ namespace KeyRegister.LoginUI
         {
             UserGateway aGateway=new UserGateway();
             PresentAddress akAddress=new PresentAddress();
-            akAddress.PreFlatNo = PAFlatNoText.Text;
-            akAddress.PreHouseNo = PAHouseNoText.Text;
-            akAddress.PreRoadNo = PARoadNoText.Text;
-            akAddress.PreBlock = PABlockText.Text;
-            akAddress.PreArea = PAareaText.Text;
+            akAddress.PreFlatNo = txtPreFlatNo.Text;
+            akAddress.PreHouseNo = txtPreHouseNo.Text;
+            akAddress.PreRoadNo = txtPreRoadNo.Text;
+            akAddress.PreBlock = txtPreBlock.Text;
+            akAddress.PreArea = txtPreArea.Text;
+            akAddress.PreLandmark = txtPreLandMark.Text;
+            akAddress.PreRoadName = txtPreRoadName.Text;
+            akAddress.PreBuilding = txtPreBuildingName.Text;
             akAddress.PrePostOfficeId = Convert.ToInt32(postofficeIdPA);
-            akAddress.UserId = selectedUserId1;
+            akAddress.UserId = Convert.ToInt32(gUserId);
             aGateway.UpdatePresentAddress(akAddress);
         }
         private void UpdatePerManantAddress()
         {
             UserGateway  apGateway=new UserGateway();
             PerManantAddress apAddress=new PerManantAddress();
-            apAddress.PerFlatNo = PerAFlatNoText.Text;
-            apAddress.PerHouseNo = PerAHouseNoText.Text;
-            apAddress.PerRoadNo = PerARoadNoText.Text;
-            apAddress.PerBlock = PerABlockText.Text;
-            apAddress.PerArea = PerAareaText.Text;
+
+            apAddress.PerFlatNo = txtPerFlatNo.Text;
+            apAddress.PerHouseNo = txtPerHouseNo.Text;
+            apAddress.PerRoadNo = txtPerRoadNo.Text;
+            apAddress.PerBlock = txtPerBlock.Text;
+            apAddress.PerArea = txtPerArea.Text;
+            apAddress.PerLandmark = txtPerLandMark.Text;
+            apAddress.PerRoadName = txtPerRoadName.Text;
+            apAddress.PerBuilding = txtPerBuilding.Text;
             apAddress.PerPostOfficeId = Convert.ToInt32(postofficeIdPer);
-            apAddress.PerUserId = selectedUserId1;
+            apAddress.PerUserId = Convert.ToInt32(gUserId);
             apGateway.UpdatePermanantAddress(apAddress);
         }
         private void PresentAddress()
         {
-            PAFlatNoText.Clear();
-            PAHouseNoText.Clear();
-            PARoadNoText.Clear();
-            PABlockText.Clear();
-            PAareaText.Clear();
-            PAPostCodeText.Clear();
-            PAPostOfficeCombo.SelectedIndex = -1;
-            PAThanaCombo.SelectedIndex = -1;
-            PADistrictCombo.SelectedIndex = -1;
-            PADivisionCombo.SelectedIndex = -1;
+            txtPreFlatNo.Clear();
+            txtPreHouseNo.Clear();
+            txtPreRoadNo.Clear();
+            txtPreBlock.Clear();
+            txtPreArea.Clear();
+            PerApostCodeText.Clear();
+            PerAPostOfficeCombo.SelectedIndex = -1;
+            PerAThanaCombo.SelectedIndex = -1;
+            PerADistrictCombo.SelectedIndex = -1;
+            PerADivisionCombo.SelectedIndex = -1;
         }
         private void ResetPermanantAddress2()
         {
-            PerAFlatNoText.Clear();
-            PerAHouseNoText.Clear();
-            PerARoadNoText.Clear();
-            PerABlockText.Clear();
-            PerAareaText.Clear();
+            txtPerFlatNo.Clear();
+            txtPerHouseNo.Clear();
+            txtPerRoadNo.Clear();
+            txtPerBlock.Clear();
+            txtPerArea.Clear();
             PerApostCodeText.Clear();
             PerAPostOfficeCombo.SelectedIndex = -1;
             PerAThanaCombo.SelectedIndex = -1;
@@ -111,7 +119,7 @@ namespace KeyRegister.LoginUI
             cmbGender.SelectedIndex = -1;
             cmbMaritalStatus.SelectedIndex = -1;
             dateOfBirth.Value = DateTime.Today;
-            cmbEmailAddress.SelectedIndex = -1;
+            cmbCountry.SelectedIndex = -1;
 
 
             txtBirthCertificatNo.Clear();
@@ -130,7 +138,7 @@ namespace KeyRegister.LoginUI
             {
                 UserGateway agGateway = new UserGateway();
                 Users auser = new Users();
-                auser.EmployeeId = Convert.ToInt32(cmbEmployeeId.Text);
+                auser.UserId = Convert.ToInt32(gUserId);
                 auser.FullName = txtFullName.Text;
                 auser.FatherName = txtFatherName.Text;
                 auser.MotherName = txtMotherName.Text;
@@ -157,24 +165,24 @@ namespace KeyRegister.LoginUI
         }
         public void GetEmployeeId()
         {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string ct = "SELECT EmployeeId FROM Users where Statuss='Active'";
-                cmd = new SqlCommand(ct);
-                cmd.Connection = con;
-                rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-                    cmbEmployeeId.Items.Add(rdr[0]);
-                }
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    con = new SqlConnection(cs.DBConn);
+            //    con.Open();
+            //    string ct = "SELECT EmployeeId FROM Users where Statuss='Active'";
+            //    cmd = new SqlCommand(ct);
+            //    cmd.Connection = con;
+            //    rdr = cmd.ExecuteReader();
+            //    while (rdr.Read())
+            //    {
+            //        cmbEmployeeId.Items.Add(rdr[0]);
+            //    }
+            //    con.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
         public void FillPermanantDivisionCombo()
         {
@@ -246,27 +254,27 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void EmailAddress()
-        {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string ctt = "select Email from EmailBank";
-                cmd = new SqlCommand(ctt);
-                cmd.Connection = con;
-                rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-                    cmbEmailAddress.Items.Add(rdr.GetValue(0).ToString());
-                }
-                cmbEmailAddress.Items.Add("Not In The List");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //private void EmailAddress()
+        //{
+        //    try
+        //    {
+        //        con = new SqlConnection(cs.DBConn);
+        //        con.Open();
+        //        string ctt = "select Email from EmailBank";
+        //        cmd = new SqlCommand(ctt);
+        //        cmd.Connection = con;
+        //        rdr = cmd.ExecuteReader();
+        //        while (rdr.Read())
+        //        {
+        //            cmbEmailAddress.Items.Add(rdr.GetValue(0).ToString());
+        //        }
+        //        cmbEmailAddress.Items.Add("Not In The List");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
         private void DesignationLoad()
         {
             try
@@ -337,7 +345,7 @@ namespace KeyRegister.LoginUI
             FillPresentDivisionCombo();
             FillPermanantDivisionCombo();
             CountryLoad();
-            EmailAddress();
+           // EmailAddress();
             DesignationLoad();
             GetGender();
             MaritalStatusLoad();
@@ -350,63 +358,63 @@ namespace KeyRegister.LoginUI
 
         private void GetUserIdByEmployeeId()
         {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string ct = "select RTRIM(Users.UserId) from Users  Where Users.EmployeeId = '" + cmbEmployeeId.Text + "'";
-                cmd = new SqlCommand(ct);
-                cmd.Connection = con;
-                rdr = cmd.ExecuteReader();
+            //try
+            //{
+            //    con = new SqlConnection(cs.DBConn);
+            //    con.Open();
+            //    string ct = "select RTRIM(Users.UserId) from Users  Where Users.EmployeeId = '" + cmbEmployeeId.Text + "'";
+            //    cmd = new SqlCommand(ct);
+            //    cmd.Connection = con;
+            //    rdr = cmd.ExecuteReader();
 
-                if (rdr.Read())
-                {
-                    selectedUserId = (rdr.GetString(0));
-                    selectedUserId1 = Convert.ToInt32(selectedUserId);
-                }
+            //    if (rdr.Read())
+            //    {
+            //        selectedUserId = (rdr.GetString(0));
+            //        selectedUserId1 = Convert.ToInt32(selectedUserId);
+            //    }
                 
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //    con.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void GetPresentAddress(int preUserId)
         {
-            int pg = 0;
-            UserGateway bGateway=new UserGateway();
-            int n1userId = preUserId;
-            presentAddress = bGateway.GetPresentAddress(n1userId);
-            PAFlatNoText.Text = presentAddress.PreFlatNo;
-            PAHouseNoText.Text = presentAddress.PreHouseNo;
-            PARoadNoText.Text = presentAddress.PreRoadNo;
-            PABlockText.Text = presentAddress.PreBlock;
-            PAareaText.Text = presentAddress.PreArea;
-            PADivisionCombo.Text = presentAddress.PreDivision;
-            PADistrictCombo.Text = presentAddress.PreDistrict;
-            PAThanaCombo.Text = presentAddress.PreThana;
-            PAPostOfficeCombo.Text = presentAddress.PostOfficeName;
-            PAPostCodeText.Text = presentAddress.PrePostCode;
+            //int pg = 0;
+            //UserGateway bGateway=new UserGateway();
+            //int n1userId = preUserId;
+            //presentAddress = bGateway.GetPresentAddress(n1userId);
+            //PAFlatNoText.Text = presentAddress.PreFlatNo;
+            //PAHouseNoText.Text = presentAddress.PreHouseNo;
+            //PARoadNoText.Text = presentAddress.PreRoadNo;
+            //PABlockText.Text = presentAddress.PreBlock;
+            //PAareaText.Text = presentAddress.PreArea;
+            //PADivisionCombo.Text = presentAddress.PreDivision;
+            //PADistrictCombo.Text = presentAddress.PreDistrict;
+            //PAThanaCombo.Text = presentAddress.PreThana;
+            //PAPostOfficeCombo.Text = presentAddress.PostOfficeName;
+            //PAPostCodeText.Text = presentAddress.PrePostCode;
 
         }
         private void GetPermanantAddress(int perUserId)
         {
-            int pi = 0;
-            UserGateway aGateway = new UserGateway();
-            int nUserId = perUserId;
-            aAddress = aGateway.GetPermanantAddress(nUserId);
-            PerAFlatNoText.Text = aAddress.PerFlatNo;
-            PerAHouseNoText.Text = aAddress.PerHouseNo;
-            PerARoadNoText.Text = aAddress.PerRoadNo;
-            PerABlockText.Text = aAddress.PerBlock;
-            PerAareaText.Text = aAddress.PerArea;
-            PerADivisionCombo.Text = aAddress.PerDivision;
-            PerADistrictCombo.Text = aAddress.PerDistrict;
-            PerAThanaCombo.Text = aAddress.PerThana;
-            PerAPostOfficeCombo.Text = aAddress.PostOfficeName;
-            PerApostCodeText.Text = aAddress.PerPostCode;
+            //int pi = 0;
+            //UserGateway aGateway = new UserGateway();
+            //int nUserId = perUserId;
+            //aAddress = aGateway.GetPermanantAddress(nUserId);
+            //PerAFlatNoText.Text = aAddress.PerFlatNo;
+            //PerAHouseNoText.Text = aAddress.PerHouseNo;
+            //PerARoadNoText.Text = aAddress.PerRoadNo;
+            //PerABlockText.Text = aAddress.PerBlock;
+            //PerAareaText.Text = aAddress.PerArea;
+            //PerADivisionCombo.Text = aAddress.PerDivision;
+            //PerADistrictCombo.Text = aAddress.PerDistrict;
+            //PerAThanaCombo.Text = aAddress.PerThana;
+            //PerAPostOfficeCombo.Text = aAddress.PostOfficeName;
+            //PerApostCodeText.Text = aAddress.PerPostCode;
 
         }
         private void cmbEmployeeId_SelectedIndexChanged(object sender, EventArgs e)
@@ -414,14 +422,14 @@ namespace KeyRegister.LoginUI
             int i = 0;
             UserGateway aGateway = new UserGateway();
            
-            string employeeId = cmbEmployeeId.Text;
-            auser = aGateway.GetUserDetails(employeeId);
+           // string employeeId = cmbEmployeeId.Text;
+           // auser = aGateway.GetUserDetails(employeeId);
 
             txtFullName.Text = auser.FullName;
             txtNickName.Text = auser.NickName;
             txtFatherName.Text = auser.FatherName;
             txtMotherName.Text = auser.MotherName;
-            cmbEmailAddress.Text = auser.EmailAdd;
+           // cmbEmailAddress.Text = auser.EmailAdd;
             cmbCountry.Text = auser.CountryName;
             cmbDesignation.Text = auser.DesignationName;
             txtNationalId.Text = auser.NationalId;
@@ -847,20 +855,20 @@ namespace KeyRegister.LoginUI
         }
         public void ResetPermanantAddress()
         {
-            PerAFlatNoText.Clear();
-            PerAHouseNoText.Clear();
-            PerARoadNoText.Clear();
-            PerABlockText.Clear();
-            PerAareaText.Clear();
+            txtPreFlatNo.Clear();
+            txtPreHouseNo.Clear();
+            txtPreRoadNo.Clear();
+            txtPreBlock.Clear();
+            txtPreArea.Clear();
+            txtPreLandMark.Clear();
+            txtPreBuildingName.Clear();
+            txtPreRoadName.Clear();
 
             PerApostCodeText.Clear();
             PerAPostOfficeCombo.SelectedIndex = -1;
             PerAThanaCombo.SelectedIndex = -1;
             PerADistrictCombo.SelectedIndex = -1;
             PerADivisionCombo.SelectedIndex = -1;
-
-
-
         }
         private void SameAsPACheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -930,30 +938,30 @@ namespace KeyRegister.LoginUI
 
         private void cmbEmailAddress_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT EmailBankId from EmailBank WHERE Email= '" + cmbEmailAddress.Text + "'";
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read())
-                {
-                    emailBankId = rdr.GetInt32(0);
-                }
-                if ((rdr != null))
-                {
-                    rdr.Close();
-                }
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    con = new SqlConnection(cs.DBConn);
+            //    con.Open();
+            //    cmd = con.CreateCommand();
+            //    cmd.CommandText = "SELECT EmailBankId from EmailBank WHERE Email= '" + cmbEmailAddress.Text + "'";
+            //    rdr = cmd.ExecuteReader();
+            //    if (rdr.Read())
+            //    {
+            //        emailBankId = rdr.GetInt32(0);
+            //    }
+            //    if ((rdr != null))
+            //    {
+            //        rdr.Close();
+            //    }
+            //    if (con.State == ConnectionState.Open)
+            //    {
+            //        con.Close();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void cmbDesignation_SelectedIndexChanged(object sender, EventArgs e)

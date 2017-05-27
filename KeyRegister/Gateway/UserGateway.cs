@@ -57,7 +57,7 @@ namespace KeyRegister.Gateway
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
-            string qry2 = "insert into PresentAddresses(FlatNo,HouseNo,RoadNo,Block,Area,LandMark,RoadName,Building,PostOfficeId,UserId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)";
+            string qry2 = "insert into PresentAddresses(PrFlatNo,PrHouseNo,PrRoadNo,PrBlock,PrArea,PrLandMark,PrRoadName,PrBuilding,PostOfficeId,UserId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)";
             cmd = new SqlCommand(qry2, conn);
             cmd.Parameters.AddWithValue("@d1", apresentAddress.PreFlatNo);
             cmd.Parameters.AddWithValue("@d2", apresentAddress.PreHouseNo);
@@ -79,7 +79,7 @@ namespace KeyRegister.Gateway
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
-            string qry22 = "insert into ParmanentAddresses(FlatNo,HouseNo,RoadNo,Block,Area,LandMark,RoadName,Building,PostOfficeId,UserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)";
+            string qry22 = "insert into ParmanentAddresses(PaFlatNo,PaHouseNo,PaRoadNo,PaBlock,PaArea,PaLandMark,PaRoadName,PaBuilding,PostOfficeId,UserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)";
             cmd = new SqlCommand(qry22, conn);
 
             cmd.Parameters.AddWithValue("@d1", aperAddress.PerFlatNo);
@@ -266,13 +266,13 @@ namespace KeyRegister.Gateway
         {
             conn=new SqlConnection(cs.DBConn);
             conn.Open();
-            string update = "Update  Users Set FullName=@d1,NickName=@d2,FatherName=@d3,MotherName=@d4,EmailBankId=@d5,CountryId=@d6,DesignationId=@d7,NationalId=@d8,BirthCertificateNumber=@d9,PassportNumber=@d10,GenderId=@d11,MaritalStatusId=@d12 where Users.EmployeeId='"+auser.EmployeeId+"'";
+            string update = "Update  Users Set FullName=@d1,NickName=@d2,FatherName=@d3,MotherName=@d4,CountryId=@d6,DesignationId=@d7,NationalId=@d8,BirthCertificateNumber=@d9,PassportNumber=@d10,GenderId=@d11,MaritalStatusId=@d12 where Users.UserId='" + auser.UserId + "'";
             cmd=new SqlCommand(update,conn);
             cmd.Parameters.AddWithValue("@d1", auser.FullName);
             cmd.Parameters.AddWithValue("@d2", auser.NickName);
             cmd.Parameters.AddWithValue("@d3", auser.FatherName);
             cmd.Parameters.AddWithValue("@d4", auser.MotherName);
-            cmd.Parameters.AddWithValue("@d5", auser.EmailBankId);
+           // cmd.Parameters.AddWithValue("@d5", auser.EmailBankId);
             cmd.Parameters.AddWithValue("@d6", auser.CountryId);
             cmd.Parameters.AddWithValue("@d7", auser.DesignationId);
             cmd.Parameters.AddWithValue("@d8", auser.NationalId);
@@ -288,14 +288,17 @@ namespace KeyRegister.Gateway
         {
             conn=new SqlConnection(cs.DBConn);
             conn.Open();
-            string query = "Update ParmanentAddresses Set PaFlatNo=@d1,PaHouseNo=@d2,PaRoadNo=@d3,PaBlock=@d4,PaArea=@d5,PostOfficeId=@d6 where UserId='" + apAddress.PerUserId + "'";
+            string query = "Update ParmanentAddresses Set PaFlatNo=@d1,PaHouseNo=@d2,PaRoadNo=@d3,PaBlock=@d4,PaArea=@d5,PaLandMark=@d6,PaRoadName=@d7,PaBuilding=@d8,PostOfficeId=@d9 where UserId='" + apAddress.PerUserId + "'";
             cmd=new SqlCommand(query,conn);
             cmd.Parameters.AddWithValue("@d1", apAddress.PerFlatNo);
             cmd.Parameters.AddWithValue("@d2", apAddress.PerHouseNo);
             cmd.Parameters.AddWithValue("@d3", apAddress.PerRoadNo);
             cmd.Parameters.AddWithValue("@d4", apAddress.PerBlock);
             cmd.Parameters.AddWithValue("@d5", apAddress.PerArea);
-            cmd.Parameters.AddWithValue("@d6", apAddress.PerPostOfficeId);           
+            cmd.Parameters.AddWithValue("@d6", apAddress.PerLandmark);
+            cmd.Parameters.AddWithValue("@d7", apAddress.PerRoadName);
+            cmd.Parameters.AddWithValue("@d8", apAddress.PerBuilding);
+            cmd.Parameters.AddWithValue("@d9", apAddress.PerPostOfficeId);           
             cmd.ExecuteReader();
             conn.Close();
 
@@ -313,7 +316,10 @@ namespace KeyRegister.Gateway
             cmd.Parameters.AddWithValue("@d3", akAddress.PreRoadNo);
             cmd.Parameters.AddWithValue("@d4", akAddress.PreBlock);
             cmd.Parameters.AddWithValue("@d5", akAddress.PreArea);
-            cmd.Parameters.AddWithValue("@d6", akAddress.PrePostOfficeId);
+            cmd.Parameters.AddWithValue("@d6", akAddress.PreLandmark);
+            cmd.Parameters.AddWithValue("@d7", akAddress.PreRoadName);
+            cmd.Parameters.AddWithValue("@d8", akAddress.PreBuilding);
+            cmd.Parameters.AddWithValue("@d9", akAddress.PrePostOfficeId);
             cmd.ExecuteReader();
             conn.Close();
 
