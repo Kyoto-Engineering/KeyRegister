@@ -130,5 +130,12 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void UserDetailsGrid_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            UserManagementUI frm =new UserManagementUI();
+            frm.Show();
+        }
     }
 }

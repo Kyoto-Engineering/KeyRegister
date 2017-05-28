@@ -50,7 +50,7 @@ namespace KeyRegister.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT  UserId, FullName, EmployeeId FROM  Users  where  Users.Statuss='Active' and  UserId not in (Select UserId  from COO) and UserId not in (Select UserId  from LocationUser)", con);
+                cmd = new SqlCommand("SELECT  UserId, FullName, EmployeeId FROM  Users  where  Users.Statuss='Active' and UserId not in (Select UserId  from COO) and UserId not in (Select UserId  from LocationUser where LocationUser.RetractDate is not null)", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView2.Rows.Clear();
                 while (rdr.Read() == true)
@@ -140,36 +140,29 @@ namespace KeyRegister.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct2 = "select TerritoryManager.UserId  from TerritoryManager where  TerritoryManager.UserId='" + userIdAsTM + "'";
+                string ct2 = "select TerritoryManager.TerritoryId  from TerritoryManager where  TerritoryManager.TerritoryId='"+territoryId+"' and OffDutydate is null";             
                 cmd = new SqlCommand(ct2, con);
                 rdr = cmd.ExecuteReader();
-                if (rdr.Read() && !rdr.IsDBNull(0))
+                if (!rdr.Read())
                 {
-
-                    checkTMUserId = (rdr.GetInt32(0));
+                    int tm = 0;
+                    TerritoryManagerManager aManager = new TerritoryManagerManager();
+                    TerritoryManagers aManagers = new TerritoryManagers();
+                    aManagers.TMUserId = userIdAsTM.ToString();
+                    aManagers.TerritoryId = territoryId.ToString();
+                    aManagers.OnDutyFrom = txtAssignedDate.Value;
+                    aManagers.AssignedBy = userId;
+                    tm = aManager.SaveTerritoryManagement(aManagers);
+                    MessageBox.Show("Successfully Created", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);                   
+                    Reset();                  
                 }
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string ct3 = "Select TerritoryManager.TerritoryId  from TerritoryManager where  TerritoryManager.UserId='" + checkTMUserId + "'";
-                cmd = new SqlCommand(ct3, con);
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read() && !rdr.IsDBNull(0))
+                else
                 {
-                    MessageBox.Show("This Territory is Already Under  this Territory Manager,Please assign another territory", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    con.Close();
+                    MessageBox.Show("This Territory already under one Territory manager", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                int tm = 0;
-                TerritoryManagerManager aManager = new TerritoryManagerManager();
-                TerritoryManagers aManagers = new TerritoryManagers();
-                aManagers.TMUserId = userIdAsTM.ToString();
-                aManagers.TerritoryId = territoryId.ToString();
-                aManagers.OnDutyFrom = txtAssignedDate.Value;
-                aManagers.AssignedBy = userId;
-                tm = aManager.SaveTerritoryManagement(aManagers);
-                MessageBox.Show("Successfully Created", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //LoadTerritoryManager();
-                Reset();
+               
+                
             }
             catch (Exception ex)
             {

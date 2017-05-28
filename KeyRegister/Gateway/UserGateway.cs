@@ -144,7 +144,7 @@ namespace KeyRegister.Gateway
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
-            string qry22 = "insert into ParmanentAddresses(FlatNo,HouseNo,RoadNo,Block,Area,LandMark,RoadName,Building,PostOfficeId,UserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)";
+            string qry22 = "insert into ParmanentAddresses(PaFlatNo,PaHouseNo,PaRoadNo,PaBlock,PaArea,PaLandMark,PaRoadName,PaBuilding,PostOfficeId,UserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)";
             cmd = new SqlCommand(qry22, conn);
             cmd.Parameters.AddWithValue("@d1", aperAddress.PerFlatNo);
             cmd.Parameters.AddWithValue("@d2", aperAddress.PerHouseNo);

@@ -86,6 +86,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "UserDetailsGrid";
             this.Text = "UserDetailsGrid";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserDetailsGrid_FormClosed);
             this.Load += new System.EventHandler(this.UserDetailsGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

@@ -23,8 +23,8 @@ namespace KeyRegister.UI
         private SqlCommand cmd;
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
-        public string lUserId,nUserType,h,k;
-        public int locationInChargeId, locationId;
+        public string lUserId, nUserType, h, k, locationId;
+        public int locationInChargeId;
         public LocationInchargeEntry()
         {
             InitializeComponent();
@@ -41,6 +41,7 @@ namespace KeyRegister.UI
             dateOfAssignDate.Value=DateTime.Today;           
             txtEmployeeId.Clear();
             txtUserFullName.Clear();
+           
             
            
         }
@@ -57,17 +58,23 @@ namespace KeyRegister.UI
                 MessageBox.Show("Please select Location Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (string.IsNullOrEmpty(txtUserFullName.Text))
+            {
+                MessageBox.Show("Please select User as Location In Charge", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct3 = "select LocationIncharge.UserId  from LocationIncharge where  LocationIncharge.UserId='" + locationInChargeId + "'";
+                string ct3 = "select LocationIncharge.LocationId  from LocationIncharge where  LocationIncharge.LocationId='" + locationId + "' and LocationIncharge.RetractDate is null";
                 cmd = new SqlCommand(ct3, con);
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read() && !rdr.IsDBNull(0))
                 {
-                    MessageBox.Show("This Location InCharge Name Already Exists,Please Input another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("This Location has already under one Location InCharge.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     con.Close();
+                    Reset();
                     return;
 
                 }
@@ -75,14 +82,14 @@ namespace KeyRegister.UI
                 int mgs;
                 LocationInChargeManager aManager = new LocationInChargeManager();
                 LocationInCharges aLocationInCharges = new LocationInCharges();
-                aLocationInCharges.LocationId = locationId.ToString();
+                aLocationInCharges.LocationId = locationId;
                 aLocationInCharges.LUserId = locationInChargeId.ToString();
                 aLocationInCharges.AssignDate = dateOfAssignDate.Text;
                 aLocationInCharges.AssignedBy = lUserId;
                 mgs = aManager.SaveLocationInCharge(aLocationInCharges);
-                MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //GetLocationInChargeName();
+                MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);               
                 Reset();
+                dataGridView2.Rows.Clear();
             }
             catch (Exception ex)
             {
@@ -90,34 +97,7 @@ namespace KeyRegister.UI
             }           
         }
 
-        //private void GetLocationInChargeName()
-        //{
-        //    LocationInChargeGateway aUserGatewate = new LocationInChargeGateway();
-        //    List<Users> users = aUserGatewate.GetUserName();
-        //    cmbLocationInCharge.DataSource = users;
-        //    cmbLocationInCharge.DisplayMember = "FullName";
-        //    cmbLocationInCharge.ValueMember = "UserId";
-        //}
-        //private void GetLocationName()
-        //{
-        //    try
-        //    {
-        //        con = new SqlConnection(cs.DBConn);
-        //        con.Open();
-        //        string qry = "Select  LocationName from  Location  order  by  Location.LocationId desc ";
-        //        cmd = new SqlCommand(qry, con);
-        //        rdr = cmd.ExecuteReader();
-        //        while (rdr.Read())
-        //        {
-        //            cmbLocationName.Items.Add(rdr[0]);
-        //        }
-        //        con.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
+       
         public void LoadLocationInCharge()
         {
             try
@@ -145,7 +125,7 @@ namespace KeyRegister.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT Territory.TerritoryId, Territory.TerritoryName, Users.FullName FROM  Territory INNER JOIN TerritoryManager ON Territory.TerritoryId = TerritoryManager.TerritoryId INNER JOIN Users ON Territory.UserId = Users.UserId", con);
+                cmd = new SqlCommand("SELECT  Territory.TerritoryId, Territory.TerritoryName, Users.FullName FROM  TerritoryManager INNER JOIN Territory ON TerritoryManager.TerritoryId = Territory.TerritoryId INNER JOIN Users ON TerritoryManager.UserId = Users.UserId", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)
@@ -185,7 +165,7 @@ namespace KeyRegister.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT  UserId, FullName, EmployeeId FROM  Users  where  Users.Statuss='Active' and  UserId not in (Select UserId  from COO) and UserId not in (Select UserId  from LocationUser)", con);
+                cmd = new SqlCommand("SELECT  UserId, FullName, EmployeeId FROM  Users where  Users.Statuss='Active' and  UserId not in (Select UserId  from COO where COO.ResignationDate is null) and  UserId not in (Select UserId  from TerritoryManager where TerritoryManager.OffDutydate is null) and UserId not in (Select UserId  from LocationUser where  LocationUser.RetractDate is null)", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView3.Rows.Clear();
                 while (rdr.Read() == true)
@@ -240,7 +220,7 @@ namespace KeyRegister.UI
             try
             {
                 DataGridViewRow dr = dataGridView2.CurrentRow;
-                txtLocationId.Text = dr.Cells[0].Value.ToString();
+               locationId= txtLocationId.Text = dr.Cells[0].Value.ToString();
                 txtLocationName.Text = dr.Cells[1].Value.ToString();
                 h = k;
                

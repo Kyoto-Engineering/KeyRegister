@@ -11,7 +11,7 @@ namespace KeyRegister.DBGateway
   public  class ConnectionGateway
     {
         protected  SqlConnection connection;
-        string connectionString = @"server=tcp:KyotoServer,49172; Integrated Security = SSPI; database =KeyRegistar23;Connect Timeout=30";
+        string connectionString = @"server=tcp:KyotoServer,49172; Integrated Security = SSPI; database =KeyRegistar22;Connect Timeout=30";
        
             
         public ConnectionGateway()

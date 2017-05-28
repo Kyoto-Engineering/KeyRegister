@@ -39,24 +39,28 @@ namespace KeyRegister.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct3 = "select Company.CompanyName from Company where  Company.CompanyName='" + txtCompanyName.Text + "'";
+                string ct3 = "select Company.CompanyName from Company";
                 cmd = new SqlCommand(ct3, con);
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read() && !rdr.IsDBNull(0))
                 {
-                    MessageBox.Show("This Company Name Already Exists,Please Input another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("It is not possible to create more than one company.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     con.Close();
                     return;
 
                 }
+                else
+                {
+                    CompanyGateway aComGateway = new CompanyGateway();
+                    Company aCompany = new Company();
+                    aCompany.CompanyName = txtCompanyName.Text;
+                    aCompany.CreatedDateTime = DateTime.UtcNow;
+                    string msg = aComGateway.SaveCompany(aCompany);
+                    MessageBox.Show(msg);
+                    txtCompanyName.Clear();
+                }
 
-                CompanyGateway aComGateway = new CompanyGateway();
-                Company aCompany = new Company();
-                aCompany.CompanyName = txtCompanyName.Text;
-                aCompany.CreatedDateTime=DateTime.UtcNow;
-                string msg = aComGateway.SaveCompany(aCompany);
-                MessageBox.Show(msg);
-                txtCompanyName.Clear();
+               
             }
             catch (Exception ex)
             {

@@ -22,7 +22,7 @@ namespace KeyRegister.LoginUI
         ConnectionString cs=new ConnectionString();
         public string readyPassword, dbUserName, dbPassword;
         public static int uId;
-        public static string userType;
+        public static string userType,fullName;
         public string userId;
         public string userName, password;
         public frmLogin()
@@ -51,6 +51,14 @@ namespace KeyRegister.LoginUI
                     }
 
                 }
+                //else
+                //{
+                //    MessageBox.Show("This Territory Manager (" + fullName + ") has retired now", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    txtPassword.Clear();
+                //    txtUserName.Clear();
+                //    return;
+
+                //}
                 con.Close();
 
             }
@@ -79,6 +87,14 @@ namespace KeyRegister.LoginUI
                         frm.Show();
                     }
                                 
+                }
+                else
+                {
+                    MessageBox.Show("This COO ("+fullName+") has retired now", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPassword.Clear();
+                    txtUserName.Clear();
+                    return;
+
                 }
                 con.Close();
             }
@@ -187,16 +203,24 @@ namespace KeyRegister.LoginUI
                         dbPassword = (rdr1.GetString(2));
                         uId = Convert.ToInt32(userId);                                              
                 }
+                else
+                {
+                    MessageBox.Show("User Id Or Password does not match", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPassword.Clear();
+                    txtUserName.Clear();
+                    return;
+                }
                 con.Close();
 
                 con=new SqlConnection(cs.DBConn);
                 con.Open();
-                string qry1 = "Select RTRIM(Users.UserType)  from  Users WHERE Users.UserName = '" + dbUserName + "' AND  Users.Password = '" + dbPassword + "'";
+                string qry1 = "Select RTRIM(Users.UserType),RTRIM(Users.FullName)  from  Users WHERE Users.UserName = '" + dbUserName + "' AND  Users.Password = '" + dbPassword + "'";
                 cmd=new SqlCommand(qry1,con);
                 rdr2 = cmd.ExecuteReader();
                 if (rdr2.Read())
                 {
                     userType = (rdr2.GetString(0));
+                    fullName = (rdr2.GetString(1));
                     string caseSwitch = userType;
                     switch (caseSwitch)
                     {

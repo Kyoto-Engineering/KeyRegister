@@ -22,7 +22,7 @@ namespace KeyRegister.UI
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
         public string locationId, locationInChargeId, h, g, nUserType, nUserId,territoryId,a,b;
-        public int kUserId,numOfTerritory,numOfLocation;
+        public int kUserId, numOfTerritory, numOfLocation, dbLocationId, dbUserId;
         public LocationAllocation()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace KeyRegister.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT  UserId, FullName, EmployeeId FROM  Users where  Users.Statuss='Active' and  UserId not in (Select UserId  from COO) and UserId not in (Select UserId  from LocationUser) and UserId not in (Select UserId  from LocationIncharge)", con);
+                cmd = new SqlCommand("SELECT  UserId, FullName, EmployeeId FROM  Users where  Users.Statuss='Active' and UserId not in (Select UserId  from COO where COO.ResignationDate is null) and UserId not in (Select UserId  from TerritoryManager where TerritoryManager.OffDutydate is null) and  UserId not in (Select UserId  from LocationIncharge where  LocationIncharge.RetractDate is null) and UserId not in (Select UserId  from KeyRgisterk where  KeyRgisterk.Assignedto is null)", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView3.Rows.Clear();
                 while (rdr.Read() == true)
@@ -295,23 +295,46 @@ namespace KeyRegister.UI
 
             try
             {
-                int lmg = 0;
-                LocationAllocationManager amManager = new LocationAllocationManager();
-                LocationAllocations allocation = new LocationAllocations();
-                allocation.LocationId = Convert.ToInt32(locationId);
-                allocation.LocationInChargeId = Convert.ToInt32(txtUserId.Text);
-                allocation.AddedDate=DateTime.UtcNow.ToLocalTime();
-                lmg = amManager.SaveLocationAllocation(allocation);
-                MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Reset();
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string query = "SELECT LocationUser.LocationId  FROM  LocationUser  where LocationUser.UserId='" + txtUserId.Text + "' and  LocationUser.RetractDate is null";
+                cmd = new SqlCommand(query, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read() && !rdr.IsDBNull(0))
+                {
+
+                    dbLocationId = (rdr.GetInt32(0));
+                    //dbUserId = (rdr.GetInt32(1));
+                }
+                con.Close();
+                int x = Convert.ToInt32(txtLocationId.Text);
+                //int y = Convert.ToInt32(txtUserId.Text);
+                if (dbLocationId == x)
+                {
+                    MessageBox.Show("This Location has already allocated  for this User.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close();
+                    Reset();
+                    dataGridView2.Rows.Clear();
+                    return;
+                }
+                else
+                {
+                    int lmg = 0;
+                    LocationAllocationManager amManager = new LocationAllocationManager();
+                    LocationAllocations allocation = new LocationAllocations();
+                    allocation.LocationId = Convert.ToInt32(locationId);
+                    allocation.LocationInChargeId = Convert.ToInt32(txtUserId.Text);
+                    allocation.AddedDate = DateTime.UtcNow.ToLocalTime();
+                    lmg = amManager.SaveLocationAllocation(allocation);
+                    MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Reset();
+                  dataGridView2.Rows.Clear();
+                }              
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-
         }
 
         private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
