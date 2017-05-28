@@ -16,6 +16,6 @@ namespace KeyRegister.DAO
        public string RetractDate { set; get; }
        public string AssignedBy { set; get; }
        public string RetractBy { set; get; }
-       public User Users { set; get; }
+       public Users Users { set; get; }
     }
 }

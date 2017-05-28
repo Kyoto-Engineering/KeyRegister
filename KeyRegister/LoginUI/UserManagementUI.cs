@@ -45,6 +45,18 @@ namespace KeyRegister.LoginUI
                 this.Hide();
             MainUI frm=new MainUI();
                frm.Show();
+        }
+
+        private void buttonUpdateUser_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserDetailsGrid frm = new UserDetailsGrid();
+            frm.Show();
+
+            //this.Hide();
+            //UserUpdateForm frm = new UserUpdateForm();
+            //frm.Show();
+
         } 
     }
 }

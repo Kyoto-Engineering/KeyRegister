@@ -23,7 +23,7 @@ namespace KeyRegister.Gateway
             cmd=new SqlCommand(query,con);
             cmd.Parameters.AddWithValue("@d1", aProperty.PropertyName);
             cmd.Parameters.AddWithValue("@d2", aProperty.LocationId);
-            cmd.Parameters.AddWithValue("@d3", aProperty.LocationInChargeId);
+            cmd.Parameters.AddWithValue("@d3", aProperty.PUserId);
             cmd.Parameters.AddWithValue("@d4", aProperty.CreatedDateTime);
             int affectedRows = cmd.ExecuteNonQuery();
             con.Close();

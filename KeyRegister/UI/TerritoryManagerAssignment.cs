@@ -23,39 +23,79 @@ namespace KeyRegister.UI
         private SqlDataReader rdr;
         ConnectionString cs = new ConnectionString();
         public int territoryId, userIdAsTM,checkTMUserId;
-        public string userId;
+        public string userId,h,k,userType;
         public TerritoryManagerAssignment()
         {
             InitializeComponent();
         }
-        private void GetTerritoryName()
-        {
-            TerritoryGateway aGateway = new TerritoryGateway();
-            List<Territory> territories = aGateway.GetTerritoryName();
-            cmbTerritoryName.DataSource = territories;
-            cmbTerritoryName.DisplayMember = "TerritoryName";
-            cmbTerritoryName.ValueMember = "TerritoryId";
-        }
-        private void GetTerritoryManagerName()
-        {
-            UserGateway aUserGatewate = new UserGateway();
-            List<Users> users = aUserGatewate.GetUserName();
-            cmbTerritoryManagerName.DataSource = users;
-            cmbTerritoryManagerName.DisplayMember = "FullName";
-            cmbTerritoryManagerName.ValueMember = "UserId";
-        }
-        public void LoadTerritoryManager()
+        //private void GetTerritoryName()
+        //{
+        //    TerritoryGateway aGateway = new TerritoryGateway();
+        //    List<Territory> territories = aGateway.GetTerritoryName();
+        //    cmbTerritoryName.DataSource = territories;
+        //    cmbTerritoryName.DisplayMember = "TerritoryName";
+        //    cmbTerritoryName.ValueMember = "TerritoryId";
+        //}
+        //private void GetTerritoryManagerName()
+        //{
+        //    TerritoryManagerGateway aUserGatewate = new TerritoryManagerGateway();
+        //    List<Users> users = aUserGatewate.GetUserName();
+        //    cmbTerritoryManagerName.DataSource = users;
+        //    cmbTerritoryManagerName.DisplayMember = "FullName";
+        //    cmbTerritoryManagerName.ValueMember = "UserId";
+        //}
+        public void LoadUserList()
         {
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                cmd = new SqlCommand("SELECT TerritoryManager.TMId, Users.FullName, Territory.TerritoryName FROM  TerritoryManager INNER JOIN Users ON TerritoryManager.UserId = Users.UserId INNER JOIN Territory ON TerritoryManager.TerritoryId = Territory.TerritoryId", con);
+                cmd = new SqlCommand("SELECT  UserId, FullName, EmployeeId FROM  Users  where  Users.Statuss='Active' and  UserId not in (Select UserId  from COO) and UserId not in (Select UserId  from LocationUser)", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView2.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void LoadTerritory()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT  TerritoryId,TerritoryName FROM Territory", con);
                 rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 dataGridView1.Rows.Clear();
                 while (rdr.Read() == true)
                 {
-                    dataGridView1.Rows.Add(rdr[0], rdr[1], rdr[2]);
+                    dataGridView1.Rows.Add(rdr[0], rdr[1]);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void LoadUserName()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = new SqlCommand("SELECT  UserId, FullName, EmployeeId FROM   Users where Statuss='Active' and UserId not in (SELECT  UserId FROM   Location) and UserId not in(SELECT  UserId FROM  COO) and  UserId not in (SELECT  UserId FROM   KeyRgisterk)  and  UserId not in (SELECT  UserId FROM   LocationUser where  RetractDate is null)", con);
+                rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                dataGridView2.Rows.Clear();
+                while (rdr.Read() == true)
+                {
+                    dataGridView2.Rows.Add(rdr[0], rdr[1], rdr[2]);
                 }
                 con.Close();
             }
@@ -67,25 +107,31 @@ namespace KeyRegister.UI
         private void TerritoryManagerAssignment_Load(object sender, EventArgs e)
         {
             userId = frmLogin.uId.ToString();
-            GetTerritoryManagerName();
-            GetTerritoryName();
-            LoadTerritoryManager();
+            userType = frmLogin.userType;
+           // GetTerritoryManagerName();
+           // GetTerritoryName();
+            LoadUserName();
+            LoadTerritory();
+            LoadUserList();
         }
 
         private void Reset()
-        {
-            cmbTerritoryName.SelectedIndex = -1;
-            cmbTerritoryManagerName.SelectedIndex = -1;
+        {            
+            txtTerritoryManager.Clear();
+            txtEmployeeId.Clear();
+            txtUserId.Clear();
+            txtTerritoryName.Clear();
             txtAssignedDate.Value=DateTime.Today;
         }
-        private void SaveTerritoryManagement()
+        
+        private void saveButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(cmbTerritoryManagerName.Text))
+            if (string.IsNullOrEmpty(txtTerritoryManager.Text))
             {
                 MessageBox.Show("Please Select Territory Manager Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (string.IsNullOrEmpty(cmbTerritoryName.Text))
+            if (string.IsNullOrEmpty(txtTerritoryName.Text))
             {
                 MessageBox.Show("Please Select Territory Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -113,7 +159,6 @@ namespace KeyRegister.UI
                     con.Close();
                     return;
                 }
-
                 int tm = 0;
                 TerritoryManagerManager aManager = new TerritoryManagerManager();
                 TerritoryManagers aManagers = new TerritoryManagers();
@@ -123,7 +168,7 @@ namespace KeyRegister.UI
                 aManagers.AssignedBy = userId;
                 tm = aManager.SaveTerritoryManagement(aManagers);
                 MessageBox.Show("Successfully Created", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                //LoadTerritoryManager();
                 Reset();
             }
             catch (Exception ex)
@@ -131,39 +176,23 @@ namespace KeyRegister.UI
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void saveButton_Click(object sender, EventArgs e)
+
+      
+
+        private void TerritoryManagerAssignment_FormClosed(object sender, FormClosedEventArgs e)
         {
-            SaveTerritoryManagement();
+                this.Hide();
+            MainUI frm=new MainUI();
+                 frm.Show();
         }
 
-        private void cmbTerritoryManagerName_SelectedIndexChanged(object sender, EventArgs e)
+        private void txtTerritoryName_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string query = "Select UserId from Users where  Users.FullName='" + cmbTerritoryManagerName.Text + "'";
-                cmd = new SqlCommand(query, con);
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read())
-                {
-                    userIdAsTM = (rdr.GetInt32(0));
-                }
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void cmbTerritoryName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string query = "Select TerritoryId from Territory where  Territory.TerritoryName='" + cmbTerritoryName.Text + "'";
+                string query = "Select TerritoryId from Territory where  Territory.TerritoryName='" + txtTerritoryName.Text + "'";
                 cmd = new SqlCommand(query, con);
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
@@ -178,11 +207,56 @@ namespace KeyRegister.UI
             }
         }
 
-        private void TerritoryManagerAssignment_FormClosed(object sender, FormClosedEventArgs e)
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-                this.Hide();
-            MainUI frm=new MainUI();
-                 frm.Show();
+            try
+            {
+                DataGridViewRow dr = dataGridView1.CurrentRow;                                      
+                txtTerritoryName.Text = dr.Cells[1].Value.ToString();                
+                h=k;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dr = dataGridView2.CurrentRow;               
+                txtUserId.Text = dr.Cells[0].Value.ToString();
+                txtTerritoryManager.Text = dr.Cells[1].Value.ToString();
+                txtEmployeeId.Text = dr.Cells[2].Value.ToString();
+                h = k;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtTerritoryManager_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string query = "Select UserId from Users where  Users.FullName='" + txtTerritoryManager.Text + "'";
+                cmd = new SqlCommand(query, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    userIdAsTM = (rdr.GetInt32(0));
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

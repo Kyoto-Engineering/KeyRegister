@@ -19,6 +19,7 @@ namespace KeyRegister.Gateway
         {
             con=new SqlConnection(cs.DBConn);
             con.Open();
+           // string q = "select FullName,UserId, UserName  from  Users where Statuss='Active'";
             string query = "INSERT INTO  LocationIncharge(UserId,LocationId,AssignDate,Assignedby) VALUES(@d1,@d2,@d3,@d4)";
             cmd=new SqlCommand(query,con);
             cmd.Parameters.AddWithValue("@d1", aLocationInCharges.LUserId);
@@ -32,5 +33,33 @@ namespace KeyRegister.Gateway
 
 
         }
-    }
+
+        public List<Users> GetUserName()
+        {
+            con = new SqlConnection(cs.DBConn);
+            con.Open();
+            string q = "select FullName,UserId, UserName  from  Users where Statuss='Active'";
+          //  string query = "SELECT  Users.FullName,Users.UserId,Users.UserName  FROM  LocationIncharge INNER JOIN Users ON LocationIncharge.UserId = Users.UserId";
+            SqlCommand command = new SqlCommand();
+            command.Connection = con;
+            command.CommandText = q;
+            List<Users> users = new List<Users>();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+
+                string fName = reader[0].ToString();
+                string userId = reader[1].ToString();
+                string userName = reader[2].ToString();
+
+                Users user = new Users();
+                user.FullName = fName;
+                user.UserId = Convert.ToInt16(userId);
+                user.UserName = userName;
+                users.Add(user);
+            }
+            con.Close();
+            return users;
+        }
+  }
 }

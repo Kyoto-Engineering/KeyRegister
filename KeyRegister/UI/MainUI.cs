@@ -61,9 +61,7 @@ namespace KeyRegister.UI
 
         private void buttonKeyHolderStation_Click(object sender, EventArgs e)
         {
-                       this.Hide();
-            KeyHolderEntry frm=new KeyHolderEntry();
-                       frm.Show();
+                       
         }
 
         private void buttonLockCreation_Click(object sender, EventArgs e)
@@ -108,9 +106,18 @@ namespace KeyRegister.UI
 
         private void buttonTerritoryManager_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            TerritoryManagerAssignment  frm=new TerritoryManagerAssignment();
-            frm.Show();
+            if (userTypeM == "COO")
+            {
+                this.Hide();
+                TerritoryManagerAssignment frm = new TerritoryManagerAssignment();
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Only COO can  assign Territory Manager for a Specified Territory", "error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)

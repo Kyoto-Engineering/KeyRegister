@@ -13,10 +13,6 @@ namespace KeyRegister.Manager
 
         TerritoryGateway aGateway = new TerritoryGateway();
 
-
-
-
-
         public int SaveTerritory(Territory aTerritory)
         {
             return aGateway.SaveTerritory(aTerritory);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KeyRegister.DAO
 {
- public   class Users
+ public  class Users
     {
         private int employeeId;
         private int userId;
@@ -23,7 +23,7 @@ namespace KeyRegister.DAO
         private int departmentId;
         private string password;
         private DateTime dateOfBirth;
-        private string nationalId;
+       
         private int nationalityId;
         public string birthCertificateNumber;
         public string passportNumber;
@@ -33,7 +33,11 @@ namespace KeyRegister.DAO
         public int maritalStatusId;
         public DateTime registrationDate;
         public DateTime exitDate;
-
+        public string  CountryName { set; get; }
+        public string  EmailAdd { set; get; }
+        public string  DesignationName { set; get; }
+        public string  Genders { set; get; }
+        public string  MaritalStatusss { set; get; }
         public int EmployeeId
         {
             get { return employeeId; }
@@ -72,7 +76,7 @@ namespace KeyRegister.DAO
             set { motherName = value; }
         }
 
-
+        public int EmailHostId { set; get; }
         public int EmailBankId
         {
             set { emailBankId = value; }
@@ -107,11 +111,7 @@ namespace KeyRegister.DAO
             get { return dateOfBirth; }
         }
 
-        public string NationalId
-        {
-            set { nationalId = value; }
-            get { return nationalId; }
-        }
+        public string NationalId { set; get; }
 
         public int NationalityId
         {

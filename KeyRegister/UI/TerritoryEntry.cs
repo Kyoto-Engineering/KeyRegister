@@ -22,23 +22,24 @@ namespace KeyRegister.UI
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
         public string userId;
-        public int companyId;
+        public int companyId=1;
         public TerritoryEntry()
         {
             InitializeComponent();
         }
-        private void GetCompanyName()
+        private void GetTerritoryList()
         {
             try
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string qry = "Select  CompanyName from  Company  order  by  Company.CompanyId desc ";
+                string qry = "SELECT TerritoryId,TerritoryName FROM   Territory";
                 cmd = new SqlCommand(qry, con);
                 rdr = cmd.ExecuteReader();
+                dataGridView1.Rows.Clear();
                 while (rdr.Read())
                 {
-                    cmbCompany.Items.Add(rdr[0]);
+                    dataGridView1.Rows.Add(rdr[0],rdr[1]);
                 }
                 con.Close();
             }
@@ -50,44 +51,23 @@ namespace KeyRegister.UI
         private void TerritoryEntry_Load(object sender, EventArgs e)
         {
             userId = frmLogin.uId.ToString();
-            GetCompanyName();
+             GetTerritoryList();
         }
 
-        private void cmbCompany_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string query = "Select CompanyId from Company where  Company.CompanyName='" + cmbCompany.Text + "'";
-                cmd = new SqlCommand(query, con);
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read())
-                {
-                    companyId = (rdr.GetInt32(0));
-                }
-                con.Close();
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
 
         private void ResetTerritory()
         {
-            cmbCompany.SelectedIndex = -1;
+          //  cmbCompany.SelectedIndex = -1;
             txtTerritoryName.Clear();
         }
         private void createButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(cmbCompany.Text))
-            {
-                MessageBox.Show("Please Select Company Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (string.IsNullOrEmpty(cmbCompany.Text))
+            //{
+            //    MessageBox.Show("Please Select Company Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
             if (string.IsNullOrEmpty(txtTerritoryName.Text))
             {
                 MessageBox.Show("Please enter Territory Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -119,7 +99,7 @@ namespace KeyRegister.UI
                 tg = aManager.SaveTerritory(aTerritory);
                 MessageBox.Show("Successfully Created", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetTerritory();
-
+                GetTerritoryList();
             }
             catch (Exception exception)
             {

@@ -33,11 +33,11 @@ namespace KeyRegister.Gateway
            return affectedrows;
        }
 
-       public  List<Lock> GetLockName(LockGateway aGateway)
+       public  List<Lock> GetLockNumber(LockGateway aGateway)
        {
            con=new SqlConnection(cs.DBConn);
            con.Open();
-           string query = "Select LockId, LockNo from Lock  order by LockId desc";
+           string query = "Select LockId,LockNo from Lock  order by LockId desc";
            cmd=new SqlCommand(query,con);
           
            List<Lock> locks=new List<Lock>();

@@ -21,7 +21,7 @@ namespace KeyRegister.Gateway
             cmd.Parameters.AddWithValue("@d2", amCOO.JoiningDate);
             cmd.Parameters.AddWithValue("@d3", amCOO.CreationDate);
             cmd.Parameters.AddWithValue("@d4", amCOO.UserId);
-           int affectedRows=  cmd.ExecuteNonQuery();
+            int affectedRows=  cmd.ExecuteNonQuery();
             if (affectedRows > 0)
             {
                 return "Suucessfully Saved";
@@ -34,19 +34,19 @@ namespace KeyRegister.Gateway
         }
 
 
-        public List<User> GetUserName()
+        public List<Users> GetUserName()
         {
             connection.Open();
-            string query = "select FullName,UserId, UserName  from  Users";
+            string query = "select FullName,UserId, UserName  from  Users where Statuss='Active'";
             SqlCommand command = new SqlCommand(query,connection);
-            List<User> users=new List<User>();
+            List<Users> users=new List<Users>();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 string fName = reader[0].ToString();
                 int userId = Convert.ToInt32(reader[1].ToString());
                 string userName = reader[2].ToString();
-                User  user=new User();
+                Users  user=new Users();
                 user.FullName = fName;
                 user.UserId = userId;
                 user.UserName = userName;

@@ -11,7 +11,7 @@ namespace KeyRegister.Manager
  public  class UserManager
  {
      public UserGateway aUserGateway;
-        public  int  SaveUserDetail(DAO.User aUser)
+        public  int  SaveUserDetail(Users aUser)
         {
           aUserGateway=new UserGateway();
             return aUserGateway.SaveUserDetails(aUser);
@@ -39,6 +39,20 @@ namespace KeyRegister.Manager
         {
             aUserGateway=new UserGateway();
             return aUserGateway.PerManantSameAsPresentAddress(aperAddress);
+        }
+
+
+
+        public  int SaveEmailAddress(EmailAddress address)
+        {
+            aUserGateway=new UserGateway();
+            return aUserGateway.SaveEmailAddress(address);
+        }
+
+        public  int SaveUserEmail(UserEmail aEmail)
+        {
+            aUserGateway=new UserGateway();
+            return aUserGateway.SaveUserEmail(aEmail);
         }
  }
 }
