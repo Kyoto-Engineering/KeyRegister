@@ -21,6 +21,8 @@ namespace KeyRegister.UI
         private SqlCommand cmd;
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
+        private SqlDataAdapter sda;
+        private DataTable dt;
         public string locationId, locationInChargeId, h, g, nUserType, nUserId,territoryId,a,b;
         public int kUserId, numOfTerritory, numOfLocation, dbLocationId, dbUserId;
         public LocationAllocation()
@@ -209,6 +211,25 @@ namespace KeyRegister.UI
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void SetLocationByUserList()
+        {
+            listView1.View = View.Details;
+            con = new SqlConnection(cs.DBConn);
+            string qry = "Select LocationUser.LocationId,LocationUser.UserId  from LocationUser  where LocationUser.LocationId=4 and RetractDate is null";
+            sda = new SqlDataAdapter(qry, con);
+            dt = new DataTable();
+            sda.Fill(dt);
+
+            for (int b = 0; b < dt.Rows.Count; b++)
+            {
+                DataRow dr = dt.Rows[b];
+                //ListViewItem listitem1 = new ListViewItem(dr[0].ToString());
+                ListViewItem listitem1 = new ListViewItem();
+                listitem1.SubItems.Add(dr[0].ToString());
+                listitem1.SubItems.Add(dr[1].ToString());
+                listView1.Items.Add(listitem1);
+            }
+        }
         private void GetCountTerritoryUnderTerritoryManager()
         {
             try
@@ -268,7 +289,7 @@ namespace KeyRegister.UI
                 }
             }
 
-
+            SetLocationByUserList();
             LoadUserList();
         }
 
@@ -279,6 +300,20 @@ namespace KeyRegister.UI
             txtUserId.Clear();
             txtUserName.Clear();
             txtEmpId.Clear();
+        }
+
+        private void SaveLocationForUser()
+        {
+            int lmg = 0;
+            LocationAllocationManager amManager = new LocationAllocationManager();
+            LocationAllocations allocation = new LocationAllocations();
+            allocation.LocationId = Convert.ToInt32(locationId);
+            allocation.LocationInChargeId = Convert.ToInt32(txtUserId.Text);
+            allocation.AddedDate = DateTime.UtcNow.ToLocalTime();
+            lmg = amManager.SaveLocationAllocation(allocation);
+            MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Reset();
+            dataGridView2.Rows.Clear();
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
@@ -295,41 +330,31 @@ namespace KeyRegister.UI
 
             try
             {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                string query = "SELECT LocationUser.LocationId  FROM  LocationUser  where LocationUser.UserId='" + txtUserId.Text + "' and  LocationUser.RetractDate is null";
-                cmd = new SqlCommand(query, con);
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read() && !rdr.IsDBNull(0))
-                {
 
-                    dbLocationId = (rdr.GetInt32(0));
-                    //dbUserId = (rdr.GetInt32(1));
-                }
-                con.Close();
-                int x = Convert.ToInt32(txtLocationId.Text);
-                //int y = Convert.ToInt32(txtUserId.Text);
-                if (dbLocationId == x)
+                if (listView1.Items.Count == 0)
                 {
-                    MessageBox.Show("This Location has already allocated  for this User.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    con.Close();
-                    Reset();
-                    dataGridView2.Rows.Clear();
-                    return;
+                    SaveLocationForUser();
                 }
                 else
                 {
-                    int lmg = 0;
-                    LocationAllocationManager amManager = new LocationAllocationManager();
-                    LocationAllocations allocation = new LocationAllocations();
-                    allocation.LocationId = Convert.ToInt32(locationId);
-                    allocation.LocationInChargeId = Convert.ToInt32(txtUserId.Text);
-                    allocation.AddedDate = DateTime.UtcNow.ToLocalTime();
-                    lmg = amManager.SaveLocationAllocation(allocation);
-                    MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Reset();
-                  dataGridView2.Rows.Clear();
-                }              
+                    for (int i = 1; i <= listView1.Items.Count - 1; i++)
+                    {
+                        int xk = Convert.ToInt32(txtUserId.Text);
+                        int y = Convert.ToInt32(Convert.ToInt32(listView1.Items[i].SubItems[2].Text));
+                        if (xk == y)
+                        {
+                            MessageBox.Show("This Location has already allocated  for this User.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            con.Close();
+                            Reset();
+                            dataGridView2.Rows.Clear();
+                            return;
+                        }
+
+                    }
+                    SaveLocationForUser();
+                }
+                
+
             }
             catch (Exception ex)
             {

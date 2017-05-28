@@ -55,11 +55,11 @@
             // cmbUserName
             // 
 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(154, 86);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(272, 29);
-            this.textBox2.TabIndex = 4;
+            //this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.textBox2.Location = new System.Drawing.Point(154, 86);
+            //this.textBox2.Name = "textBox2";
+            //this.textBox2.Size = new System.Drawing.Size(272, 29);
+            //this.textBox2.TabIndex = 4;
             this.cmbUserName.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUserName.FormattingEnabled = true;
             this.cmbUserName.Location = new System.Drawing.Point(204, 43);
@@ -70,11 +70,11 @@
             // txtPassword
             // 
 
-            this.userNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameText.Location = new System.Drawing.Point(154, 36);
-            this.userNameText.Name = "userNameText";
-            this.userNameText.Size = new System.Drawing.Size(272, 29);
-            this.userNameText.TabIndex = 3;
+            //this.userNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.userNameText.Location = new System.Drawing.Point(154, 36);
+            //this.userNameText.Name = "userNameText";
+            //this.userNameText.Size = new System.Drawing.Size(272, 29);
+            //this.userNameText.TabIndex = 3;
             this.txtPassword.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(204, 100);
             this.txtPassword.Name = "txtPassword";
