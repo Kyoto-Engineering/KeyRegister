@@ -54,6 +54,12 @@
             // 
             // cmbUserName
             // 
+
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(154, 86);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(272, 29);
+            this.textBox2.TabIndex = 4;
             this.cmbUserName.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUserName.FormattingEnabled = true;
             this.cmbUserName.Location = new System.Drawing.Point(204, 43);
@@ -63,6 +69,12 @@
             // 
             // txtPassword
             // 
+
+            this.userNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNameText.Location = new System.Drawing.Point(154, 36);
+            this.userNameText.Name = "userNameText";
+            this.userNameText.Size = new System.Drawing.Size(272, 29);
+            this.userNameText.TabIndex = 3;
             this.txtPassword.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(204, 100);
             this.txtPassword.Name = "txtPassword";
@@ -76,9 +88,10 @@
             this.label3.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(67, 103);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(131, 32);
+            this.label3.Size = new System.Drawing.Size(124, 24);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Password";
+            this.label3.Text = "Password   :";
+
             // 
             // label2
             // 
@@ -111,7 +124,7 @@
             this.label1.Location = new System.Drawing.Point(230, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(185, 26);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Password Reset";
             // 
             // ResetPassword
