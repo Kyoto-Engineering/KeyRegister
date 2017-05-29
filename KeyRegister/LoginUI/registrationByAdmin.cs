@@ -156,9 +156,7 @@ namespace KeyRegister.LoginUI
                 aEmail.HostEmailId = emailHostIdK;
                 aEmail.UserId = instantUserId;
                 aEmail.IsPrimaryStatus = statuss;
-                ug = aManager.SaveUserEmail(aEmail);
-                // aEmail.IsPrimaryKey = true;
-
+                ug = aManager.SaveUserEmail(aEmail);               
             }
             catch (Exception ex)
             {
@@ -166,9 +164,7 @@ namespace KeyRegister.LoginUI
             }
         }
         private void  SaveUserInformation()
-        {
-            //SaveEmailAddress();
-          //  UserGateway aGateway = new UserGateway();
+        {           
             int ig = 0;
             UserManager auManager = new UserManager();
             try
@@ -181,9 +177,7 @@ namespace KeyRegister.LoginUI
                     FullName = txtFullName.Text,
                     NickName = txtNickName.Text,
                     FatherName = txtFatherName.Text,
-                    MotherName = txtMotherName.Text,
-
-                   // EmailHostId = emailHostId,
+                    MotherName = txtMotherName.Text,                   
                     NationalId = txtNationalId.Text,
                     CountryId = Convert.ToInt32(countryId),
                     PassportNo = txtPassportNo.Text,
@@ -505,6 +499,7 @@ namespace KeyRegister.LoginUI
                     SaveOverSeasAddress();
                 }
                 MessageBox.Show("Successfully Saved","record",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                GetMaxUserId();
                 Reset();
             }
             catch (Exception ex)
@@ -629,7 +624,8 @@ namespace KeyRegister.LoginUI
 
             catch
             {
-                MessageBox.Show("Please check your UserName & Password");
+                MessageBox.Show("Invalid EmailAddress or Password.Please check your EmailAddress & Password", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -667,7 +663,7 @@ namespace KeyRegister.LoginUI
                 {
                     cmbCountry.Items.Add(rdr.GetValue(0).ToString());
                 }
-                //cmbCountry.Items.Add("Not In The List");
+               
             }
             catch (Exception ex)
             {
@@ -736,7 +732,7 @@ namespace KeyRegister.LoginUI
             CountryLoad();
             HostEmailAddress2();
             HostEmailAddress();
-            //NationalityLoad();
+        
             DesignationLoad();
             MaritalStatusLoad();
             GetGender();
@@ -755,7 +751,7 @@ namespace KeyRegister.LoginUI
                 {
                     cmbSecondaryDomain.Items.Add(rdr.GetValue(0).ToString());
                 }
-                // cmbEmailHostName.Items.Add("Not In The List");
+               
             }
             catch (Exception ex)
             {
@@ -776,7 +772,7 @@ namespace KeyRegister.LoginUI
                 {
                     cmbPrimaryDomain.Items.Add(rdr.GetValue(0).ToString());
                 }
-               // cmbEmailHostName.Items.Add("Not In The List");
+              
             }
             catch (Exception ex)
             {
@@ -809,67 +805,7 @@ namespace KeyRegister.LoginUI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-            //if (cmbEmailHostName.Text == "Not In The List")
-            //{
-            //    string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Host Name  Here", "Input Here", "", -1, -1);
-            //    if (string.IsNullOrWhiteSpace(input))
-            //    {
-            //        cmbEmailHostName.SelectedIndex = -1;
-            //    }
-
-            //    else
-            //    {
-            //        //if (!string.IsNullOrWhiteSpace(input))
-            //        //{
-            //        //    string emailId = input.Trim();
-            //        //    Regex mRegxExpression;
-            //        //    mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
-            //        //    if (!mRegxExpression.IsMatch(emailId))
-            //        //    {
-            //        //        MessageBox.Show("Please type a valid email Address.", "MojoCRM", MessageBoxButtons.OK,MessageBoxIcon.Error);
-            //        //        return;
-            //        //    }
-            //        //}
-
-            //        con = new SqlConnection(cs.DBConn);
-            //        con.Open();
-            //        string ct2 = "select EmailHostName from EmailHostBank where EmailHostName='" + input + "'";
-            //        cmd = new SqlCommand(ct2, con);
-            //        rdr = cmd.ExecuteReader();
-            //        if (rdr.Read() && !rdr.IsDBNull(0))
-            //        {
-            //            MessageBox.Show("This Host Name  Already Exists,Please Select From List", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //            con.Close();
-            //            cmbEmailHostName.SelectedIndex = -1;
-            //        }
-            //        else
-            //        {
-            //            try
-            //            {
-            //                con = new SqlConnection(cs.DBConn);
-            //                con.Open();
-            //                string query1 = "insert into EmailHostBank (EmailHostName) values (@d1)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
-            //                cmd = new SqlCommand(query1, con);
-            //                cmd.Parameters.AddWithValue("@d1", input);
-            //                //cmd.Parameters.AddWithValue("@d2", nUserId);
-            //                //cmd.Parameters.AddWithValue("@d3", DateTime.UtcNow.ToLocalTime());
-            //                cmd.ExecuteNonQuery();
-            //                con.Close();
-            //                cmbEmailHostName.Items.Clear();
-            //                EmailAddress();
-            //                cmbEmailHostName.SelectedText = input;
-            //            }
-            //            catch (Exception ex)
-            //            {
-            //                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //            }
-            //        }
-            //    }
-            //}
-            
+            }                       
         }
         private void GetGender()
         {
@@ -1039,13 +975,7 @@ namespace KeyRegister.LoginUI
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-
-        private void cmbNationality_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
+        }      
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbMaritalStatus.Text == "Not In The List")

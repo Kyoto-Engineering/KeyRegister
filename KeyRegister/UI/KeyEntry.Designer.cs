@@ -81,6 +81,11 @@
             this.label17 = new System.Windows.Forms.Label();
             this.txtLockId = new System.Windows.Forms.TextBox();
             this.txtKeyNo = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -281,7 +286,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Blue;
-            this.label13.Location = new System.Drawing.Point(543, 446);
+            this.label13.Location = new System.Drawing.Point(603, 446);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(291, 24);
             this.label13.TabIndex = 53;
@@ -323,7 +328,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Blue;
-            this.label11.Location = new System.Drawing.Point(547, 263);
+            this.label11.Location = new System.Drawing.Point(589, 265);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(370, 26);
             this.label11.TabIndex = 51;
@@ -352,7 +357,7 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView3.Size = new System.Drawing.Size(755, 139);
+            this.dataGridView3.Size = new System.Drawing.Size(755, 127);
             this.dataGridView3.TabIndex = 50;
             this.dataGridView3.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_CellMouseClick);
             // 
@@ -388,7 +393,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Blue;
-            this.label12.Location = new System.Drawing.Point(979, 65);
+            this.label12.Location = new System.Drawing.Point(1021, 65);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(334, 26);
             this.label12.TabIndex = 49;
@@ -399,7 +404,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Blue;
-            this.label14.Location = new System.Drawing.Point(545, 62);
+            this.label14.Location = new System.Drawing.Point(601, 61);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(175, 31);
             this.label14.TabIndex = 48;
@@ -492,7 +497,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Blue;
-            this.label15.Location = new System.Drawing.Point(923, 447);
+            this.label15.Location = new System.Drawing.Point(966, 447);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(205, 22);
             this.label15.TabIndex = 54;
@@ -582,11 +587,71 @@
             this.txtKeyNo.Size = new System.Drawing.Size(298, 35);
             this.txtKeyNo.TabIndex = 60;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Red;
+            this.label18.Location = new System.Drawing.Point(550, 62);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(45, 29);
+            this.label18.TabIndex = 61;
+            this.label18.Text = "(1)";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Red;
+            this.label19.Location = new System.Drawing.Point(976, 63);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(45, 29);
+            this.label19.TabIndex = 62;
+            this.label19.Text = "(2)";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Red;
+            this.label20.Location = new System.Drawing.Point(545, 263);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(45, 29);
+            this.label20.TabIndex = 63;
+            this.label20.Text = "(3)";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Red;
+            this.label21.Location = new System.Drawing.Point(552, 442);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(45, 29);
+            this.label21.TabIndex = 64;
+            this.label21.Text = "(4)";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(924, 442);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(45, 29);
+            this.label22.TabIndex = 65;
+            this.label22.Text = "(5)";
+            // 
             // KeyEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 681);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.txtKeyNo);
             this.Controls.Add(this.txtLockId);
             this.Controls.Add(this.label17);
@@ -689,5 +754,10 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtLockId;
         private System.Windows.Forms.TextBox txtKeyNo;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
     }
 }

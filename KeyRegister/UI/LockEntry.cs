@@ -284,6 +284,16 @@ namespace KeyRegister.UI
         }
         private void createButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtTerritoryName.Text))
+            {
+                MessageBox.Show("Please Select Territory Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtLocationName.Text))
+            {
+                MessageBox.Show("Please Select Location Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (string.IsNullOrEmpty(txtPropertyName.Text))
             {
                 MessageBox.Show("Please Select Property Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -291,7 +301,7 @@ namespace KeyRegister.UI
             }
             if (string.IsNullOrEmpty(txtLockNo.Text))
             {
-                MessageBox.Show("Please enter Lock Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter Lock Num", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrEmpty(cmbLockType.Text))
@@ -311,7 +321,9 @@ namespace KeyRegister.UI
                 aLock.CreatedDateTime=DateTime.UtcNow;
                 ig = aManager.SaveLock(aLock);               
                 MessageBox.Show("Suucessfully Saved", "error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //LoadLock();
+                dataGridView2.Rows.Clear();
+                dataGridView3.Rows.Clear();
+                dataGridView4.Rows.Clear();
                 ResetLock();                
             }
             catch (Exception ex)

@@ -305,9 +305,23 @@ namespace KeyRegister.UI
             cmbKeyType.SelectedIndex = -1;
             cmbKeyIs.SelectedIndex = -1;
             txtKeyNo.Clear();
+            dataGridView2.Rows.Clear();
+            dataGridView3.Rows.Clear();
+            dataGridView4.Rows.Clear();
+            dataGridView5.Rows.Clear();
         }
         private void createButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtTerritoryName.Text))
+            {
+                MessageBox.Show("Please Select Territory Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtLocationName.Text))
+            {
+                MessageBox.Show("Please Select Location Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (string.IsNullOrEmpty(txtPropertyName.Text))
             {
                 MessageBox.Show("Please Select Property Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -315,12 +329,22 @@ namespace KeyRegister.UI
             }
             if (string.IsNullOrEmpty(txtLockNo.Text))
             {
-                MessageBox.Show("Please enter Lock Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter Lock No", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrEmpty(cmbKeyType.Text))
             {
-                MessageBox.Show("Please Select Lock Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please Select Key Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(cmbKeyIs.Text))
+            {
+                MessageBox.Show("Please select Key Is or Not", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtKeyNo.Text))
+            {
+                MessageBox.Show("Please enter key No Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
@@ -335,8 +359,7 @@ namespace KeyRegister.UI
                 aKey.KUserId = Convert.ToInt32(nUserId);
                 aKey.CreateddateTime=DateTime.Today;
                 ig = aManager.SaveKey(aKey);
-                MessageBox.Show("Suucessfully Saved", "error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               // LoadKeyList();
+                MessageBox.Show("Suucessfully Saved", "error", MessageBoxButtons.OK, MessageBoxIcon.Information);                            
                 Reset();
             }
             catch (Exception ex)

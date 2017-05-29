@@ -291,6 +291,11 @@ namespace KeyRegister.UI
             txtUserId.Clear();
             txtUserName.Clear();
             txtEmployeeId.Clear();
+            dataGridView2.Rows.Clear();
+            dataGridView3.Rows.Clear();
+            dataGridView4.Rows.Clear();
+            dataGridView5.Rows.Clear();
+            dataGridView6.Rows.Clear();
 
         }
         private void saveButton_Click(object sender, EventArgs e)

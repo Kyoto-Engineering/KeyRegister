@@ -66,9 +66,7 @@ namespace KeyRegister.UI
                     MessageBox.Show("This Property Name Already Exists,Please Input another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     con.Close();
                     return;
-
                 }
-
                 int pt = 0;
                 PropertyManager aManager = new PropertyManager();
                 Property aProperty = new Property();
@@ -79,6 +77,8 @@ namespace KeyRegister.UI
                 pt = aManager.SaveProperty(aProperty);
                 MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);                
                 ResetProperty();
+                dataGridView2.Rows.Clear();
+                dataGridView3.Rows.Clear();
             }
             catch (Exception ex)
             {

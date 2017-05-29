@@ -112,7 +112,7 @@ namespace KeyRegister.LoginUI
             txtNickName.Clear();
             txtFatherName.Clear();
             txtMotherName.Clear();
-            //txtDomainName.Clear();
+           
             if (cmbCountry.Text != "Bangladesh")
             {
                 txtStreetName.Clear();
@@ -172,27 +172,7 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void GetEmployeeId()
-        {
-            //try
-            //{
-            //    con = new SqlConnection(cs.DBConn);
-            //    con.Open();
-            //    string ct = "SELECT EmployeeId FROM Users where Statuss='Active'";
-            //    cmd = new SqlCommand(ct);
-            //    cmd.Connection = con;
-            //    rdr = cmd.ExecuteReader();
-            //    while (rdr.Read())
-            //    {
-            //        cmbEmployeeId.Items.Add(rdr[0]);
-            //    }
-            //    con.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-        }
+       
         public void FillPermanantDivisionCombo()
         {
             try
@@ -350,7 +330,7 @@ namespace KeyRegister.LoginUI
 
         private void UserUpdateForm_Load(object sender, EventArgs e)
         {
-            GetEmployeeId();
+           
             FillPresentDivisionCombo();
             FillPermanantDivisionCombo();
             CountryLoad();
@@ -864,19 +844,23 @@ namespace KeyRegister.LoginUI
         }
         public void ResetPermanantAddress()
         {
-            txtPreFlatNo.Clear();
-            txtPreHouseNo.Clear();
-            txtPreRoadNo.Clear();
-            txtPreBlock.Clear();
-            txtPreArea.Clear();
-            txtPreLandMark.Clear();
-            txtPreBuildingName.Clear();
-            txtPreRoadName.Clear();
+            txtPerFlatNo.Clear();
+            txtPerHouseNo.Clear();
+            txtPerRoadNo.Clear();
+            txtPerBlock.Clear();
+            txtPerArea.Clear();
+            txtPerLandMark.Clear();
+            txtPerBuilding.Clear();
+            txtPerRoadName.Clear();
 
             PerApostCodeText.Clear();
+            PerAPostOfficeCombo.Items.Clear();
             PerAPostOfficeCombo.SelectedIndex = -1;
+            PerAThanaCombo.Items.Clear();
             PerAThanaCombo.SelectedIndex = -1;
+            PerADistrictCombo.Items.Clear();
             PerADistrictCombo.SelectedIndex = -1;
+            PerADivisionCombo.Items.Clear();
             PerADivisionCombo.SelectedIndex = -1;
         }
         private void SameAsPACheckBox_CheckedChanged(object sender, EventArgs e)

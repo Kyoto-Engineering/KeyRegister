@@ -46,12 +46,12 @@ namespace KeyRegister.UI
             {
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
-                string ct3 = "select Location.LocationName from Location where  Location.LocationName='" + txtLocation.Text + "'";
+                string ct3 = "select Location.LocationName from Location where  Location.LocationName='" + txtLocation.Text + "' and  Location.TerritoryId='"+lTerriToryId+"'";
                 cmd = new SqlCommand(ct3, con);
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read() && !rdr.IsDBNull(0))
                 {
-                    MessageBox.Show("This Location Name Already Exists,Please Input another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("This Location Name Already Exists for this Territory,Please Input another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     con.Close();
                     return;
 
@@ -168,7 +168,7 @@ namespace KeyRegister.UI
             {
                 DataGridViewRow dr = dataGridView1.CurrentRow;
 
-               txtTerritoriId .Text = dr.Cells[0].Value.ToString();
+             lTerriToryId=  txtTerritoriId .Text = dr.Cells[0].Value.ToString();
                 txtTerritoriName.Text = dr.Cells[1].Value.ToString();
                 h = k;
                 LoadLocationForSelectedTerritory();

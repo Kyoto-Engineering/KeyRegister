@@ -211,25 +211,42 @@ namespace KeyRegister.UI
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void SetLocationByUserList()
-        {
-            listView1.View = View.Details;
-            con = new SqlConnection(cs.DBConn);
-            string qry = "Select LocationUser.LocationId,LocationUser.UserId  from LocationUser  where LocationUser.LocationId=4 and RetractDate is null";
-            sda = new SqlDataAdapter(qry, con);
-            dt = new DataTable();
-            sda.Fill(dt);
+        //private void SetUserByList()
+        //{
+        //    listView2.View = View.Details;
+        //    con = new SqlConnection(cs.DBConn);
+        //    string qry = "Select LocationUser.UserId  from LocationUser  where LocationUser.LocationId=4 and RetractDate is null";
+        //    sda = new SqlDataAdapter(qry, con);
+        //    dt = new DataTable();
+        //    sda.Fill(dt);
 
-            for (int b = 0; b < dt.Rows.Count; b++)
-            {
-                DataRow dr = dt.Rows[b];
-                //ListViewItem listitem1 = new ListViewItem(dr[0].ToString());
-                ListViewItem listitem1 = new ListViewItem();
-                listitem1.SubItems.Add(dr[0].ToString());
-                listitem1.SubItems.Add(dr[1].ToString());
-                listView1.Items.Add(listitem1);
-            }
-        }
+        //    for (int b = 0; b < dt.Rows.Count; b++)
+        //    {
+        //        DataRow dr = dt.Rows[b];                
+        //        ListViewItem listitem1 = new ListViewItem();
+        //        listitem1.SubItems.Add(dr[0].ToString());              
+        //        listView1.Items.Add(listitem1);
+        //    }
+        //}
+        //private void SetLocationByList()
+        //{
+        //    listView1.View = View.Details;
+        //    con = new SqlConnection(cs.DBConn);
+        //    string qry = "Select LocationUser.LocationId  from LocationUser  where LocationUser.LocationId=4 and RetractDate is null";
+        //    sda = new SqlDataAdapter(qry, con);
+        //    dt = new DataTable();
+        //    sda.Fill(dt);
+
+        //    for (int b = 0; b < dt.Rows.Count; b++)
+        //    {
+        //        DataRow dr = dt.Rows[b];
+        //        //ListViewItem listitem1 = new ListViewItem(dr[0].ToString());
+        //        ListViewItem listitem1 = new ListViewItem();
+        //        listitem1.SubItems.Add(dr[0].ToString());
+        //        //listitem1.SubItems.Add(dr[1].ToString());
+        //        listView1.Items.Add(listitem1);
+        //    }
+        //}
         private void GetCountTerritoryUnderTerritoryManager()
         {
             try
@@ -288,8 +305,8 @@ namespace KeyRegister.UI
                     LoadSingleLocationUnderLocationInCharge();
                 }
             }
-
-            SetLocationByUserList();
+           // SetUserByList();
+            //SetLocationByList();
             LoadUserList();
         }
 
@@ -312,6 +329,8 @@ namespace KeyRegister.UI
             allocation.AddedDate = DateTime.UtcNow.ToLocalTime();
             lmg = amManager.SaveLocationAllocation(allocation);
             MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+           // SetUserByList();
+           // SetLocationByList();
             Reset();
             dataGridView2.Rows.Clear();
         }
@@ -330,36 +349,74 @@ namespace KeyRegister.UI
 
             try
             {
-
-                if (listView1.Items.Count == 0)
+                con=new SqlConnection(cs.DBConn);
+                con.Open();
+                string query = "SELECT  LocationUser.UserId  FROM   LocationUser where LocationUser.UserId= " + txtUserId.Text + "  and LocationUser.RetractDate is null";
+               // string query = "SELECT  LocationUser.LocationId,LocationUser.UserId  FROM   LocationUser where LocationUser.UserId="+txtUserId.Text+" and LocationUser.LocationId="+txtLocationId.Text+"  and LocationUser.RetractDate is null";
+                cmd=new SqlCommand(query,con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
                 {
-                    SaveLocationForUser();
+                    MessageBox.Show("One User can not be allocated for more than one location at a time,you need to retract him from current location.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close();
+                    Reset();
+                    dataGridView2.Rows.Clear();
+                    return;                                    
                 }
                 else
                 {
-                    for (int i = 1; i <= listView1.Items.Count - 1; i++)
-                    {
-                        int xk = Convert.ToInt32(txtUserId.Text);
-                        int y = Convert.ToInt32(Convert.ToInt32(listView1.Items[i].SubItems[2].Text));
-                        if (xk == y)
-                        {
-                            MessageBox.Show("This Location has already allocated  for this User.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            con.Close();
-                            Reset();
-                            dataGridView2.Rows.Clear();
-                            return;
-                        }
-
-                    }
                     SaveLocationForUser();
                 }
-                
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
+
+            //try
+            //{
+
+            //    if (listView1.Items.Count >0)
+            //    {
+            //        for (int i = 0; i < listView1.Items.Count; i++)
+            //        {
+            //            int testLocationId = Convert.ToInt32(txtLocationId.Text);
+            //            int locationIdFromList = Convert.ToInt32(listView1.Items[i].SubItems[1].Text);
+            //            if (testLocationId == locationIdFromList)
+            //            {
+            //                for (int j = 0; j < listView2.Items.Count; j++)
+            //                {
+            //                    int testUserId = Convert.ToInt32(txtUserId.Text);
+
+            //                    int userIdFromList = Convert.ToInt32(Convert.ToInt32(listView2.Items[j].SubItems[1].Text));
+            //                    if (testUserId == userIdFromList)
+            //                    {
+            //                        MessageBox.Show("This Location has already allocated  for this User.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //                        con.Close();
+            //                        Reset();
+            //                        dataGridView2.Rows.Clear();
+            //                        return;
+            //                    }
+            //                }
+            //            }
+
+            //        }
+            //        SaveLocationForUser();
+                   
+            //    }
+            //    else
+            //    {
+            //        SaveLocationForUser();
+            //    }
+               
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
