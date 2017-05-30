@@ -127,7 +127,8 @@ namespace KeyRegister.LoginUI
             {
                 PresentAddress apresentAddress = new PresentAddress
                 {
-                    PreFlatNo = txtPreFlatNo.Text,                    
+                   PreFlatNo = txtPreFlatNo.Text,
+                   // PreFlatNo=string.IsNullOrEmpty(txtPreFlatNo.Text) ? (object)DBNull.Value : txtPreFlatNo.Text),
                     PreHouseNo = txtPreHouseNo.Text,                    
                     PreRoadNo = txtPreRoadNo.Text,                   
                     PreBlock = txtPreBlock.Text,
@@ -416,7 +417,8 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show("Please select domain of primary email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!string.IsNullOrWhiteSpace(txtSecondaryEmailUser.Text))
+            
+            if (!string.IsNullOrWhiteSpace(txtSecondaryEmailUser.Text) && string.IsNullOrWhiteSpace(cmbSecondaryDomain.Text))
             {
                 MessageBox.Show("You  must select domain of secondary email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
