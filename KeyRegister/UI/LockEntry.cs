@@ -309,8 +309,23 @@ namespace KeyRegister.UI
                 MessageBox.Show("Please Select Lock Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             try
             {
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct3 = "select Lock.LockNo from Lock where  Lock.LockNo='" + txtLockNo.Text + "' and Lock.PropertyId='"+txtPropertyId.Text+"'";
+                cmd = new SqlCommand(ct3, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read() && !rdr.IsDBNull(0))
+                {
+                    MessageBox.Show("This Lock Number Already Exists For this Property,Please Input another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close();
+                    return;
+                }
+
+
                 int ig = 0;
                 LockManager aManager=new LockManager();
                 Lock aLock=new Lock();

@@ -53,6 +53,8 @@ namespace KeyRegister.UI
                 {
                     MessageBox.Show("This Location Name Already Exists for this Territory,Please Input another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     con.Close();
+                    ClearText();
+                    dataGridView2.Rows.Clear();
                     return;
 
                 }
@@ -66,7 +68,7 @@ namespace KeyRegister.UI
                 mgs = aManager.SaveLocation(aLocation);
                 MessageBox.Show("Successfully Submited", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearText();
-               
+                dataGridView2.Rows.Clear();
             }
             catch (Exception ex)
             {

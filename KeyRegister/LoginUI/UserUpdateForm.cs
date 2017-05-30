@@ -24,12 +24,12 @@ namespace KeyRegister.LoginUI
         private SqlCommand cmd;
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
-        public string hk,gUserId;
-        public int emailBankId, nationalityId,  departmentId, designationId, genderId, maritalStatusId;
+        public string hk;
+        public int emailBankId, nationalityId, departmentId, designationId, genderId, maritalStatusId, userHostIdForSecondaryEmail, userHostIdForPrimaryEmail;
 
         public string nUserId, divisionIdPA, divisionIdPer, postofficeIdPA, postofficeIdPer, districtIdPA, districtIdPer, thanaIdPA, thanaIdPer, selectedUserId;
-        public int instantUserId, selectedUserId1;
-        public string countryId;
+        public int instantUserId, selectedUserId1, gUserId;
+        public string countryId,hostPart,domainPart;
         public UserUpdateForm()
         {
             InitializeComponent();
@@ -140,9 +140,26 @@ namespace KeyRegister.LoginUI
             ResetPermanantAddress2();
            
         }
+
+        private void UpdateUserEmail(int userEmailHostId,int userId,Boolean statuss)
+        {
+            try
+            {
+                UserGateway aGateway=new UserGateway();
+                UserEmail aUserEmail=new UserEmail();
+                aUserEmail.HostEmailId = userEmailHostId;
+                aUserEmail.UserId = userId;
+                aUserEmail.IsPrimaryStatus = statuss;
+                aGateway.UpdateUserEmail();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void createUserButton_Click(object sender, EventArgs e)
         {
-
+          
             try
             {
                 UserGateway agGateway = new UserGateway();
@@ -164,6 +181,8 @@ namespace KeyRegister.LoginUI
                 agGateway.UpdateUserInfo(auser);
                 UpdatePerManantAddress();
                 UpdatePresentAddress();
+                UpdateUserEmail(userHostIdForPrimaryEmail,gUserId,false);
+                UpdateUserEmail(userHostIdForSecondaryEmail, gUserId, true);
                 MessageBox.Show("Successfully Updated", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Reset();
             }
@@ -327,10 +346,52 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void LoadSecondaryEmail()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctt = "SELECT (UserEmail.UserPart+'@'+EmailHostBank.EmailHostName) As EmailAdd FROM  UserEmail INNER JOIN  EmailHostBank ON UserEmail.EmailHostId = EmailHostBank.EmailHostId INNER JOIN  Users ON UserEmail.UserId = Users.UserId where UserEmail.UserId='" + gUserId + "'";
+                cmd = new SqlCommand(ctt);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    cmbSecondaryEmail.Items.Add(rdr.GetValue(0).ToString());
+                }
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LoadPrimaryEmail()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctt = "SELECT (UserEmail.UserPart+'@'+EmailHostBank.EmailHostName) As EmailAdd FROM  UserEmail INNER JOIN  EmailHostBank ON UserEmail.EmailHostId = EmailHostBank.EmailHostId INNER JOIN  Users ON UserEmail.UserId = Users.UserId where UserEmail.UserId='"+gUserId+"'";
+                cmd = new SqlCommand(ctt);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    cmbPrimaryEmail.Items.Add(rdr.GetValue(0).ToString());
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void UserUpdateForm_Load(object sender, EventArgs e)
         {
-           
+            LoadSecondaryEmail();
+            LoadPrimaryEmail();
             FillPresentDivisionCombo();
             FillPermanantDivisionCombo();
             CountryLoad();
@@ -1022,7 +1083,6 @@ namespace KeyRegister.LoginUI
                 con.Open();
                 cmd = con.CreateCommand();
                 cmd.CommandText = "SELECT MaritalStatusId from MaritalStatuss WHERE MaritalStatus= '" + cmbMaritalStatus.Text + "'";
-
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
@@ -1040,6 +1100,77 @@ namespace KeyRegister.LoginUI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+       
+        private void cmbPrimaryEmail_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+                //string s = cmbPrimaryEmail.Text;
+                //string[] words = s.Split('@');
+                //hostPart = words[0];
+                //domainPart = words[1];
+
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctt = "SELECT (UserEmail.UserPart+'@'+EmailHostBank.EmailHostName) As EmailAdd FROM  UserEmail INNER JOIN  EmailHostBank ON UserEmail.EmailHostId = EmailHostBank.EmailHostId INNER JOIN  Users ON UserEmail.UserId = Users.UserId where UserEmail.UserId='"+gUserId+"' and UserEmail.IsPrimaryKey='false'";
+                cmd = new SqlCommand(ctt);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    cmbSecondaryEmail.Text = (rdr.GetString(0));
+                }
+                con.Close();
+               
+               con = new SqlConnection(cs.DBConn);
+               con.Open();
+               cmd = con.CreateCommand();
+               cmd.CommandText = "SELECT UserEmail.EmailHostId from UserEmail WHERE UserEmail.UserId= '" + gUserId + "' and  UserEmail.IsPrimaryKey= 'false' ";
+               rdr = cmd.ExecuteReader();
+               if (rdr.Read())
+               {
+                   userHostIdForPrimaryEmail = rdr.GetInt32(0);
+               }
+               con.Close();
+               con = new SqlConnection(cs.DBConn);
+               con.Open();
+               cmd = con.CreateCommand();
+               cmd.CommandText = "SELECT UserEmail.EmailHostId from UserEmail WHERE UserEmail.UserId= '" + gUserId + "' and  UserEmail.IsPrimaryKey= 'true' ";
+               rdr = cmd.ExecuteReader();
+               if (rdr.Read())
+               {
+                   userHostIdForSecondaryEmail = rdr.GetInt32(0);
+               }
+               con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbSecondaryEmail_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                cmd = con.CreateCommand();
+                cmd.CommandText = "SELECT UserEmail.EmailHostId from UserEmail WHERE UserEmail.UserId= '" + gUserId + "' and  UserEmail.IsPrimaryKey= 'true' ";
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    userHostIdForSecondaryEmail = rdr.GetInt32(0);
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

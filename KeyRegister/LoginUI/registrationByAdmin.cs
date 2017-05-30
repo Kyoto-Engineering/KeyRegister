@@ -50,6 +50,7 @@ namespace KeyRegister.LoginUI
                     instantUserId = (rdr.GetInt32(0));
                     instantUserId1 = instantUserId + 1;
                     txtNewProbableId.Text = Convert.ToString(instantUserId1);
+                    txtLogInID.Text = Convert.ToString(instantUserId1);
 
                 }
 
@@ -172,7 +173,7 @@ namespace KeyRegister.LoginUI
 
                 Users aUser = new Users
                 {
-                    EmployeeId = Convert.ToInt32(txtEmployeeId.Text),
+                    EmployeeId = txtEmployeeId.Text,
                     UserName = txtLogInID.Text,
                     FullName = txtFullName.Text,
                     NickName = txtNickName.Text,
@@ -191,7 +192,11 @@ namespace KeyRegister.LoginUI
                 ig = auManager.SaveUserDetail(aUser);
                 GetMaxUserId();
                 SaveUserEmail(emailHostId,txtPrimaryEmailUser.Text,true);
-                SaveUserEmail(emailHostId1,txtSecondaryEmailUser.Text,false);
+                if (!string.IsNullOrWhiteSpace(txtSecondaryEmailUser.Text) || !string.IsNullOrWhiteSpace(cmbSecondaryDomain.Text))
+                {
+                    SaveUserEmail(emailHostId1, txtSecondaryEmailUser.Text, false);
+                }
+               
                 NewMailMessage();
             }
             catch (Exception ex)
@@ -376,43 +381,91 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show("Please type your Mail Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtFormPassword.Visible = true;
                 label43.Visible = true;
-                return;
+               return;
             }
-            if (txtEmployeeId.Text == "")
+             if (string.IsNullOrWhiteSpace(txtEmployeeId.Text))
             {
                 MessageBox.Show("Please enter employee Id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);               
                 return;
             }
-            if (txtLogInID.Text == "")
-            {
-                MessageBox.Show("Please enter User Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);               
-                return;
-            }
-            if (txtFullName.Text == "")
+
+            if (string.IsNullOrWhiteSpace(txtFullName.Text))
             {
                 MessageBox.Show("Please enter full  Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                
                 return;
             }
-            if (txtNickName.Text == "")
-            {
-                MessageBox.Show("Please enter nick Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (txtFatherName.Text == "")
+
+            if (string.IsNullOrWhiteSpace(txtFatherName.Text))
             {
                 MessageBox.Show("Please enter father Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                
                 return;
             }
-           
-            if (txtMotherName.Text == "")
+
+            if (string.IsNullOrWhiteSpace(txtMotherName.Text))
             {
                 MessageBox.Show("Please enter mother Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                
                 return;
             }
-            if (listView1.Items.Count == 0)
+            if (string.IsNullOrWhiteSpace(txtPrimaryEmailUser.Text))
             {
-                MessageBox.Show("Please add Contact No to Chart,", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                MessageBox.Show("Please enter user part of primary email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+            if (string.IsNullOrWhiteSpace(cmbPrimaryDomain.Text))
+            {
+                MessageBox.Show("Please select domain of primary email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!string.IsNullOrWhiteSpace(txtSecondaryEmailUser.Text))
+            {
+                MessageBox.Show("You  must select domain of secondary email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cmbCountry.Text))
+            {
+                MessageBox.Show("Please select Country Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cmbGender.Text))
+            {
+                MessageBox.Show("Please select Gender", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cmbMaritalStatus.Text))
+            {
+                MessageBox.Show("Please select MaritalStatus", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtLogInID.Text))
+            {
+                MessageBox.Show("Please enter User Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show("Please type user password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cmbCountry.Text != "Bangladesh")
+            {
+                if (string.IsNullOrWhiteSpace(txtStreetName.Text))
+                {
+                    MessageBox.Show("Please enter Street Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(txtState.Text))
+                {
+                    MessageBox.Show("Please enter state Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(txtPostalCode.Text))
+                {
+                    MessageBox.Show("Please enter Postal Code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+
             if (string.IsNullOrWhiteSpace(PADivisionCombo.Text))
             {
                 MessageBox.Show("Please select Present Address division", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -464,9 +517,14 @@ namespace KeyRegister.LoginUI
                 {
                     MessageBox.Show("Please select Permanant Address Post Code", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
                     return;
-                }
+                }                              
+            }
 
-                
+            if (listView1.Items.Count == 0)
+            {
+                MessageBox.Show("Please add Contact No to Chart,", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
             }
             try
             {
@@ -476,12 +534,8 @@ namespace KeyRegister.LoginUI
                 byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);
                 string readyPassword1 = Convert.ToBase64String(inArray);
                 readyPassword = readyPassword1;
-
-
-
                 if (SameAsPACheckBox.Checked == true)
                 {
-
                     SaveUserInformation();
                     SavePresentAddress();
                     PermanantSameAsPreentAddress();
@@ -499,8 +553,10 @@ namespace KeyRegister.LoginUI
                     SaveOverSeasAddress();
                 }
                 MessageBox.Show("Successfully Saved","record",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                GetMaxUserId();
                 Reset();
+                groupBox4.Visible = false;
+                GetMaxUserId();
+                
             }
             catch (Exception ex)
             {
@@ -751,7 +807,8 @@ namespace KeyRegister.LoginUI
                 {
                     cmbSecondaryDomain.Items.Add(rdr.GetValue(0).ToString());
                 }
-               
+               // cmbSecondaryDomain.Items.Add("Not In the list");
+                cmbSecondaryDomain.Items.Add("Not In The List");
             }
             catch (Exception ex)
             {
@@ -772,7 +829,7 @@ namespace KeyRegister.LoginUI
                 {
                     cmbPrimaryDomain.Items.Add(rdr.GetValue(0).ToString());
                 }
-              
+                cmbPrimaryDomain.Items.Add("Not In The List");
             }
             catch (Exception ex)
             {
@@ -782,30 +839,81 @@ namespace KeyRegister.LoginUI
 
         private void cmbEmailAddress_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            if (cmbPrimaryDomain.Text == "Not In The List")
             {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT EmailHostId from EmailHostBank WHERE EmailHostName= '" + cmbPrimaryDomain.Text + "'";
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read())
+                string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Email Host Name Here", "Input Here", "", -1, -1);
+                string input1 = Microsoft.VisualBasic.Interaction.InputBox("Please Input SMTP Host Name Here", "Input Here", "", -1, -1);
+                if (string.IsNullOrWhiteSpace(input))
                 {
-                    emailHostId = rdr.GetInt32(0);
+                    cmbPrimaryDomain.SelectedIndex = -1;
                 }
-                if ((rdr != null))
+                else
                 {
-                    rdr.Close();
-                }
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string ct2 = "select EmailHostName from EmailHostBank where EmailHostName='" + input + "'";
+                    cmd = new SqlCommand(ct2, con);
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read() && !rdr.IsDBNull(0))
+                    {
+                        MessageBox.Show("This EmailHost  Already Exists,Please Select From List", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        con.Close();
+                        cmbPrimaryDomain.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            con = new SqlConnection(cs.DBConn);
+                            con.Open();
+                            string query1 = "insert into EmailHostBank (EmailHostName,SmtpHostName) values (@d1,@d2)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                            cmd = new SqlCommand(query1, con);
+                            cmd.Parameters.AddWithValue("@d1", input);
+                            cmd.Parameters.AddWithValue("@d2", input1);
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+                            cmbPrimaryDomain.Items.Clear();
+                            HostEmailAddress();
+                            cmbSecondaryDomain.Items.Clear();
+                            HostEmailAddress2();
+                            cmbPrimaryDomain.SelectedText = input;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }                       
+                try
+                {
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    cmd = con.CreateCommand();
+                    cmd.CommandText = "SELECT EmailHostId from EmailHostBank WHERE EmailHostName= '" + cmbPrimaryDomain.Text + "'";
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read())
+                    {
+                        emailHostId = rdr.GetInt32(0);
+                    }
+                    if ((rdr != null))
+                    {
+                        rdr.Close();
+                    }
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }          
+            }
+                       
         }
         private void GetGender()
         {
@@ -821,7 +929,7 @@ namespace KeyRegister.LoginUI
                 {
                     cmbGender.Items.Add(rdr.GetValue(0).ToString());
                 }
-                cmbGender.Items.Add("Not In The List");
+              //  cmbGender.Items.Add("Not In The List");
             }
             catch (Exception ex)
             {
@@ -830,76 +938,31 @@ namespace KeyRegister.LoginUI
         }
         private void cmbGender_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbGender.Text == "Not In The List")
-            {
-                string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Gender Here", "Input Here", "", -1, -1);
-                if (string.IsNullOrWhiteSpace(input))
-                {
-                    cmbGender.SelectedIndex = -1;
-                }
-
-                else
-                {
-                    con = new SqlConnection(cs.DBConn);
-                    con.Open();
-                    string ct2 = "select GenderName from Gender where GenderName='" + input + "'";
-                    cmd = new SqlCommand(ct2, con);
-                    rdr = cmd.ExecuteReader();
-                    if (rdr.Read() && !rdr.IsDBNull(0))
-                    {
-                        MessageBox.Show("This Gender  Already Exists,Please Select From List", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        con.Close();
-                        cmbGender.SelectedIndex = -1;
-                    }
-                    else
-                    {
-                        try
-                        {
-                            con = new SqlConnection(cs.DBConn);
-                            con.Open();
-                            string query1 = "insert into  Gender(GenderName) values (@d1)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
-                            cmd = new SqlCommand(query1, con);
-                            cmd.Parameters.AddWithValue("@d1", input);
-                            cmd.ExecuteNonQuery();
-                            con.Close();
-                            cmbGender.Items.Clear();
-                            GetGender();
-                            cmbGender.SelectedText = input;
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-            }
-            else
-            {
-                try
-                {
-                    con = new SqlConnection(cs.DBConn);
-                    con.Open();
-                    cmd = con.CreateCommand();
-                    cmd.CommandText = "SELECT GenderId from Gender WHERE GenderName= '" + cmbGender.Text + "'";
-                    rdr = cmd.ExecuteReader();
-                    if (rdr.Read())
-                    {
-                        genderId = rdr.GetInt32(0);
-                    }
-                    if ((rdr != null))
-                    {
-                        rdr.Close();
-                    }
-                    if (con.State == ConnectionState.Open)
-                    {
-                        con.Close();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+             try
+             {
+                 con = new SqlConnection(cs.DBConn);
+                 con.Open();
+                 cmd = con.CreateCommand();
+                 cmd.CommandText = "SELECT GenderId from Gender WHERE GenderName= '" + cmbGender.Text + "'";
+                 rdr = cmd.ExecuteReader();
+                 if (rdr.Read())
+                 {
+                     genderId = rdr.GetInt32(0);
+                 }
+                 if ((rdr != null))
+                 {
+                     rdr.Close();
+                 }
+                 if (con.State == ConnectionState.Open)
+                 {
+                     con.Close();
+                 }
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
+          
         }
 
         private void cmbDesignation_SelectedIndexChanged(object sender, EventArgs e)
@@ -1572,7 +1635,7 @@ namespace KeyRegister.LoginUI
 
         private void txtDomainName_MouseLeave(object sender, EventArgs e)
         {
-            txtLogInID.Text = txtPrimaryEmailUser.Text;
+            //txtLogInID.Text = txtPrimaryEmailUser.Text;
         }
 
         private void txtDomainName_Enter(object sender, EventArgs e)
@@ -1587,35 +1650,90 @@ namespace KeyRegister.LoginUI
 
         private void txtDomainName_TextChanged(object sender, EventArgs e)
         {
-            txtLogInID.Text = txtPrimaryEmailUser.Text;
+            //txtLogInID.Text = txtPrimaryEmailUser.Text;
         }
 
         private void cmbSecondaryDomain_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            if (cmbSecondaryDomain.Text == "Not In The List")
             {
-                con = new SqlConnection(cs.DBConn);
-                con.Open();
-                cmd = con.CreateCommand();
-                cmd.CommandText = "SELECT EmailHostId from EmailHostBank WHERE EmailHostName= '" + cmbSecondaryDomain.Text + "'";
-                rdr = cmd.ExecuteReader();
-                if (rdr.Read())
+                string input = Microsoft.VisualBasic.Interaction.InputBox("Please Input Email Host Name Here", "Input Here", "", -1, -1);
+                string input1 = Microsoft.VisualBasic.Interaction.InputBox("Please Input SMTP Host Name Here", "Input Here", "", -1, -1);
+                if (string.IsNullOrWhiteSpace(input))
                 {
-                    emailHostId1 = rdr.GetInt32(0);
+                    cmbSecondaryDomain.SelectedIndex = -1;
                 }
-                if ((rdr != null))
+                else
                 {
-                    rdr.Close();
-                }
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    string ct2 = "select EmailHostName from EmailHostBank where EmailHostName='" + input + "'";
+                    cmd = new SqlCommand(ct2, con);
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read() && !rdr.IsDBNull(0))
+                    {
+                        MessageBox.Show("This EmailHost  Already Exists,Please Select From List", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        con.Close();
+                        cmbSecondaryDomain.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            con = new SqlConnection(cs.DBConn);
+                            con.Open();
+                            string query1 = "insert into EmailHostBank (EmailHostName,SmtpHostName) values (@d1,@d2)" + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+                            cmd = new SqlCommand(query1, con);
+                            cmd.Parameters.AddWithValue("@d1", input);
+                            cmd.Parameters.AddWithValue("@d2", input1);
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+                            cmbSecondaryDomain.Items.Clear();
+                            HostEmailAddress2();
+                            cmbPrimaryDomain.Items.Clear();
+                            HostEmailAddress();
+                           
+                            cmbSecondaryDomain.SelectedText = input;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    con = new SqlConnection(cs.DBConn);
+                    con.Open();
+                    cmd = con.CreateCommand();
+                    cmd.CommandText = "SELECT EmailHostId from EmailHostBank WHERE EmailHostName= '" + cmbSecondaryDomain.Text + "'";
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.Read())
+                    {
+                        emailHostId1 = rdr.GetInt32(0);
+                    }
+                    if ((rdr != null))
+                    {
+                        rdr.Close();
+                    }
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+
+
+
+           
         }
     }
 }

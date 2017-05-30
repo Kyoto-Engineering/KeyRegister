@@ -8,7 +8,7 @@ namespace KeyRegister.DAO
 {
  public  class Users
     {
-        private int employeeId;
+        private string employeeId;
         private int userId;
         private string userName;
         private string fullName;
@@ -38,7 +38,7 @@ namespace KeyRegister.DAO
         public string  DesignationName { set; get; }
         public string  Genders { set; get; }
         public string  MaritalStatusss { set; get; }
-        public int EmployeeId
+        public string EmployeeId
         {
             get { return employeeId; }
             set { employeeId = value; }

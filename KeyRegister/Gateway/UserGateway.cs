@@ -35,9 +35,7 @@ namespace KeyRegister.Gateway
             cmd.Parameters.AddWithValue("@d4", aUser.FullName);
             cmd.Parameters.AddWithValue("@d5", aUser.NickName);
             cmd.Parameters.AddWithValue("@d6", aUser.FatherName);
-            cmd.Parameters.AddWithValue("@d7", aUser.MotherName);
-
-           // cmd.Parameters.AddWithValue("@d8", aUser.EmailBankId);
+            cmd.Parameters.AddWithValue("@d7", aUser.MotherName);          
             cmd.Parameters.AddWithValue("@d9", aUser.CountryId);
             cmd.Parameters.AddWithValue("@d10", aUser.DesignationId);
             cmd.Parameters.AddWithValue("@d11", aUser.NationalId);
@@ -183,9 +181,7 @@ namespace KeyRegister.Gateway
                     nUsers.passportNumber = reader[9].ToString();
                     nUsers.Genders = reader[10].ToString();
                     nUsers.MaritalStatusss = reader[11].ToString();
-
                 }
-
                 reader.Close();
                 conn.Close();
                 return nUsers;
@@ -196,12 +192,10 @@ namespace KeyRegister.Gateway
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
-            string query = "INSERT INTO  EmailBank(Email) VALUES(@d1)";
-            // string query = "INSERT INTO  EmailBank(Email) VALUES(@d1)"+"SELECT CONVERT(int, SCOPE_IDENTITY())";
+            string query = "INSERT INTO  EmailBank(Email) VALUES(@d1)";            
             cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@d1", address.EmailAddressId);
-            int instantId = cmd.ExecuteNonQuery();
-            // int instantId = (int) cmd.ExecuteScalar();
+            int instantId = cmd.ExecuteNonQuery();           
             conn.Close();
             return instantId;
 
@@ -271,8 +265,7 @@ namespace KeyRegister.Gateway
             cmd.Parameters.AddWithValue("@d1", auser.FullName);
             cmd.Parameters.AddWithValue("@d2", auser.NickName);
             cmd.Parameters.AddWithValue("@d3", auser.FatherName);
-            cmd.Parameters.AddWithValue("@d4", auser.MotherName);
-           // cmd.Parameters.AddWithValue("@d5", auser.EmailBankId);
+            cmd.Parameters.AddWithValue("@d4", auser.MotherName);          
             cmd.Parameters.AddWithValue("@d6", auser.CountryId);
             cmd.Parameters.AddWithValue("@d7", auser.DesignationId);
             cmd.Parameters.AddWithValue("@d8", auser.NationalId);
@@ -341,6 +334,20 @@ namespace KeyRegister.Gateway
             conn.Close();
             return affectedRows;
         }
-       
+
+
+
+
+        public  void UpdateUserEmail()
+        {
+            UserEmail aEmail=new UserEmail();
+            conn = new SqlConnection(cs.DBConn);
+            conn.Open();
+            string qry = "Update UserEmail Set EmailHostId=@d1 where UserEmail.UserId='" + aEmail.UserId + "' ";            
+            cmd = new SqlCommand(qry, conn);
+            cmd.Parameters.AddWithValue("@d1", aEmail.HostEmailId);                       
+            cmd.ExecuteReader();
+            conn.Close();
+        }
     }
 }

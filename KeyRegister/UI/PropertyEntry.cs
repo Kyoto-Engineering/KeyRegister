@@ -63,8 +63,11 @@ namespace KeyRegister.UI
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read() && !rdr.IsDBNull(0))
                 {
-                    MessageBox.Show("This Property Name Already Exists,Please Input another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("The Same Property Name Already Exists in this Location,Please Input another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     con.Close();
+                    ResetProperty();
+                    dataGridView2.Rows.Clear();
+                    dataGridView3.Rows.Clear();
                     return;
                 }
                 int pt = 0;

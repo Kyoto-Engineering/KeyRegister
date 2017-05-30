@@ -349,6 +349,20 @@ namespace KeyRegister.UI
             }
             try
             {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ct3 = "select Keys.KeyNo from Keys where  Keys.KeyNo='" + txtKeyNo.Text + "' and Keys.LockId='" + txtLockId.Text + "'";
+                cmd = new SqlCommand(ct3, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read() && !rdr.IsDBNull(0))
+                {
+                    MessageBox.Show("This Key Number Already Exists For this Lock,Please Input another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close();
+                    return;
+                }
+
+
+
                 int ig = 0;
                 KeyManager aManager = new KeyManager();
                 Key aKey = new Key();
