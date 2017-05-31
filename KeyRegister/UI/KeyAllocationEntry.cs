@@ -438,7 +438,7 @@ namespace KeyRegister.UI
             {
                 DataGridViewRow dr = dataGridView3.CurrentRow;
                 propertyId = txtPropertyId.Text = dr.Cells[0].Value.ToString();
-                txtPropertyName.Text = dr.Cells[1].Value.ToString();
+                txtPropertyName.Text = dr.Cells[3].Value.ToString();
                 LoadLockOnSelectedProperty();
                 a = b;
             }

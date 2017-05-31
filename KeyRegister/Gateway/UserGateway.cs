@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -33,17 +34,25 @@ namespace KeyRegister.Gateway
             cmd.Parameters.AddWithValue("@d2", aUser.Password);
             cmd.Parameters.AddWithValue("@d3", aUser.EmployeeId);
             cmd.Parameters.AddWithValue("@d4", aUser.FullName);
-            cmd.Parameters.AddWithValue("@d5", aUser.NickName);
+            cmd.Parameters.AddWithValue("@d5", string.IsNullOrWhiteSpace(aUser.NickName) ? (object)DBNull.Value : aUser.NickName);           
             cmd.Parameters.AddWithValue("@d6", aUser.FatherName);
             cmd.Parameters.AddWithValue("@d7", aUser.MotherName);          
-            cmd.Parameters.AddWithValue("@d9", aUser.CountryId);
-            cmd.Parameters.AddWithValue("@d10", aUser.DesignationId);
-            cmd.Parameters.AddWithValue("@d11", aUser.NationalId);
-            cmd.Parameters.AddWithValue("@d12", aUser.PassportNo);
-            cmd.Parameters.AddWithValue("@d13", aUser.BirthCertificateNo);
+            cmd.Parameters.AddWithValue("@d9", aUser.CountryId);                    
+            cmd.Parameters.AddWithValue("@d10",aUser.DesignationId == null ? (int?)null : Convert.ToInt32(aUser.DesignationId));           
+            cmd.Parameters.AddWithValue("@d11", string.IsNullOrWhiteSpace(aUser.NationalId) ? (object)DBNull.Value : aUser.NationalId);            
+            cmd.Parameters.AddWithValue("@d12", string.IsNullOrWhiteSpace(aUser.PassportNo) ? (object)DBNull.Value : aUser.PassportNo);            
+            cmd.Parameters.AddWithValue("@d13", string.IsNullOrWhiteSpace(aUser.BirthCertificateNo) ? (object)DBNull.Value : aUser.BirthCertificateNo);
             cmd.Parameters.AddWithValue("@d14", aUser.GenderId);
-            cmd.Parameters.AddWithValue("@d15", aUser.MaritalStatusId);
-            cmd.Parameters.AddWithValue("@d16", aUser.DateOfBirth);
+            cmd.Parameters.AddWithValue("@d15", aUser.MaritalStatusId);          
+            DateTime dt = DateTime.Now;
+            DateTime dt1 = aUser.DateOfBirth.Value;
+            string date = dt.ToShortDateString();
+            string date1 = dt1.ToShortDateString();
+            if (date == date1)
+            {
+                cmd.Parameters.AddWithValue("@d16", aUser.DateOfBirth).Value = DBNull.Value;
+                
+            }                                   
             affectedRows1 = (int) cmd.ExecuteScalar();
             conn.Close();
             return affectedRows1;
@@ -56,30 +65,29 @@ namespace KeyRegister.Gateway
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
             string qry2 = "insert into PresentAddresses(PrFlatNo,PrHouseNo,PrRoadNo,PrBlock,PrArea,PrLandMark,PrRoadName,PrBuilding,PostOfficeId,UserId) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)";
-            cmd = new SqlCommand(qry2, conn);
-          //  cmd.Parameters.AddWithValue("@d1", apresentAddress.PreFlatNo);
-           
-            cmd.Parameters.AddWithValue("@d1",string.IsNullOrEmpty(apresentAddress.PreFlatNo) ? (object) DBNull.Value : apresentAddress.PreFlatNo);
-            //cmd.Parameters.AddWithValue("@d2", apresentAddress.PreHouseNo);
+            cmd = new SqlCommand(qry2, conn);                     
+            cmd.Parameters.AddWithValue("@d1",string.IsNullOrEmpty(apresentAddress.PreFlatNo) ? (object) DBNull.Value : apresentAddress.PreFlatNo);            
             cmd.Parameters.AddWithValue("@d2", string.IsNullOrWhiteSpace(apresentAddress.PreHouseNo)?(object)DBNull.Value:apresentAddress.PreHouseNo);
-            cmd.Parameters.AddWithValue("@d3", string.IsNullOrWhiteSpace(apresentAddress.PreRoadNo) ? (object)DBNull.Value : apresentAddress.PreHouseNo);
-            cmd.Parameters.AddWithValue("@d4", string.IsNullOrWhiteSpace(apresentAddress.PreBlock) ? (object)DBNull.Value : apresentAddress.PreHouseNo);
-            cmd.Parameters.AddWithValue("@d5", string.IsNullOrWhiteSpace(apresentAddress.PreArea) ? (object)DBNull.Value : apresentAddress.PreHouseNo);
-            cmd.Parameters.AddWithValue("@d6", string.IsNullOrWhiteSpace(apresentAddress.PreLandmark) ? (object)DBNull.Value : apresentAddress.PreHouseNo);
-            cmd.Parameters.AddWithValue("@d7", string.IsNullOrWhiteSpace(apresentAddress.PreRoadName) ? (object)DBNull.Value : apresentAddress.PreHouseNo);
-            cmd.Parameters.AddWithValue("@d8", string.IsNullOrWhiteSpace(apresentAddress.PreBuilding) ? (object)DBNull.Value : apresentAddress.PreHouseNo);
-           // cmd.Parameters.AddWithValue("@d3", apresentAddress.PreRoadNo);
-            //cmd.Parameters.AddWithValue("@d4", apresentAddress.PreBlock);
-            //cmd.Parameters.AddWithValue("@d5", apresentAddress.PreArea);
-            //cmd.Parameters.AddWithValue("@d6", apresentAddress.PreLandmark);
-            //cmd.Parameters.AddWithValue("@d7", apresentAddress.PreRoadName);
-            //cmd.Parameters.AddWithValue("@d8", apresentAddress.PreBuilding);
+            cmd.Parameters.AddWithValue("@d3", string.IsNullOrWhiteSpace(apresentAddress.PreRoadNo) ? (object)DBNull.Value : apresentAddress.PreRoadNo);
+            cmd.Parameters.AddWithValue("@d4", string.IsNullOrWhiteSpace(apresentAddress.PreBlock) ? (object)DBNull.Value : apresentAddress.PreBlock);
+            cmd.Parameters.AddWithValue("@d5", string.IsNullOrWhiteSpace(apresentAddress.PreArea) ? (object)DBNull.Value : apresentAddress.PreArea);
+            cmd.Parameters.AddWithValue("@d6", string.IsNullOrWhiteSpace(apresentAddress.PreLandmark) ? (object)DBNull.Value : apresentAddress.PreLandmark);
+            cmd.Parameters.AddWithValue("@d7", string.IsNullOrWhiteSpace(apresentAddress.PreRoadName) ? (object)DBNull.Value : apresentAddress.PreRoadName);
+            cmd.Parameters.AddWithValue("@d8", string.IsNullOrWhiteSpace(apresentAddress.PreBuilding) ? (object)DBNull.Value : apresentAddress.PreBuilding);          
             cmd.Parameters.AddWithValue("@d9", apresentAddress.PrePostOfficeId);
             cmd.Parameters.AddWithValue("@d10", apresentAddress.UserId);
             affectedRows2 = cmd.ExecuteNonQuery();
             conn.Close();
             return affectedRows2;
-
+           
+            //  cmd.Parameters.AddWithValue("@d1", apresentAddress.PreFlatNo);
+            //cmd.Parameters.AddWithValue("@d2", apresentAddress.PreHouseNo);
+            // cmd.Parameters.AddWithValue("@d3", apresentAddress.PreRoadNo);
+            //cmd.Parameters.AddWithValue("@d4", apresentAddress.PreBlock);
+            //cmd.Parameters.AddWithValue("@d5", apresentAddress.PreArea);
+            //cmd.Parameters.AddWithValue("@d6", apresentAddress.PreLandmark);
+            //cmd.Parameters.AddWithValue("@d7", apresentAddress.PreRoadName);
+            //cmd.Parameters.AddWithValue("@d8", apresentAddress.PreBuilding);
         }
 
         public int SavePermanantAddress(PerManantAddress aperAddress)
@@ -88,20 +96,29 @@ namespace KeyRegister.Gateway
             conn.Open();
             string qry22 = "insert into ParmanentAddresses(PaFlatNo,PaHouseNo,PaRoadNo,PaBlock,PaArea,PaLandMark,PaRoadName,PaBuilding,PostOfficeId,UserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)";
             cmd = new SqlCommand(qry22, conn);
-
-            cmd.Parameters.AddWithValue("@d1", aperAddress.PerFlatNo);
-            cmd.Parameters.AddWithValue("@d2", aperAddress.PerHouseNo);
-            cmd.Parameters.AddWithValue("@d3", aperAddress.PerRoadNo);
-            cmd.Parameters.AddWithValue("@d4", aperAddress.PerBlock);
-            cmd.Parameters.AddWithValue("@d5", aperAddress.PerArea);
-            cmd.Parameters.AddWithValue("@d6", aperAddress.PerLandmark);
-            cmd.Parameters.AddWithValue("@d7", aperAddress.PerRoadName);
-            cmd.Parameters.AddWithValue("@d8", aperAddress.PerBuilding);
+            cmd.Parameters.AddWithValue("@d1", string.IsNullOrEmpty(aperAddress.PerFlatNo) ? (object)DBNull.Value : aperAddress.PerFlatNo);
+            cmd.Parameters.AddWithValue("@d2", string.IsNullOrWhiteSpace(aperAddress.PerHouseNo) ? (object)DBNull.Value : aperAddress.PerHouseNo);
+            cmd.Parameters.AddWithValue("@d3", string.IsNullOrWhiteSpace(aperAddress.PerRoadNo) ? (object)DBNull.Value : aperAddress.PerRoadNo);
+            cmd.Parameters.AddWithValue("@d4", string.IsNullOrWhiteSpace(aperAddress.PerBlock) ? (object)DBNull.Value : aperAddress.PerBlock);
+            cmd.Parameters.AddWithValue("@d5", string.IsNullOrWhiteSpace(aperAddress.PerArea) ? (object)DBNull.Value : aperAddress.PerArea);
+            cmd.Parameters.AddWithValue("@d6", string.IsNullOrWhiteSpace(aperAddress.PerLandmark) ? (object)DBNull.Value : aperAddress.PerLandmark);
+            cmd.Parameters.AddWithValue("@d7", string.IsNullOrWhiteSpace(aperAddress.PerRoadName) ? (object)DBNull.Value : aperAddress.PerRoadName);
+            cmd.Parameters.AddWithValue("@d8", string.IsNullOrWhiteSpace(aperAddress.PerBuilding) ? (object)DBNull.Value : aperAddress.PerBuilding);                      
             cmd.Parameters.AddWithValue("@d9", aperAddress.PerPostOfficeId);
             cmd.Parameters.AddWithValue("@d10", aperAddress.PerUserId);
             affectedRows3 = cmd.ExecuteNonQuery();
             conn.Close();
             return affectedRows3;
+
+
+            //cmd.Parameters.AddWithValue("@d1", aperAddress.PerFlatNo);
+            //cmd.Parameters.AddWithValue("@d2", aperAddress.PerHouseNo);
+            //cmd.Parameters.AddWithValue("@d3", aperAddress.PerRoadNo);
+            //cmd.Parameters.AddWithValue("@d4", aperAddress.PerBlock);
+            //cmd.Parameters.AddWithValue("@d5", aperAddress.PerArea);
+            //cmd.Parameters.AddWithValue("@d6", aperAddress.PerLandmark);
+            //cmd.Parameters.AddWithValue("@d7", aperAddress.PerRoadName);
+            //cmd.Parameters.AddWithValue("@d8", aperAddress.PerBuilding);
         }
 
         public int SaveOverSeasAddress(OverSeasAddress ovAddress)
@@ -147,25 +164,33 @@ namespace KeyRegister.Gateway
             return users;
         }
 
-        public int PerManantSameAsPresentAddress(PerManantAddress aperAddress)
+        public int PerManantSameAsPresentAddress(PresentAddress apresentAddress)
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
             string qry22 = "insert into ParmanentAddresses(PaFlatNo,PaHouseNo,PaRoadNo,PaBlock,PaArea,PaLandMark,PaRoadName,PaBuilding,PostOfficeId,UserId) values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d8,@d9,@d10)";
             cmd = new SqlCommand(qry22, conn);
-            cmd.Parameters.AddWithValue("@d1", aperAddress.PerFlatNo);
-            cmd.Parameters.AddWithValue("@d2", aperAddress.PerHouseNo);
-            cmd.Parameters.AddWithValue("@d3", aperAddress.PerRoadNo);
-            cmd.Parameters.AddWithValue("@d4", aperAddress.PerBlock);
-            cmd.Parameters.AddWithValue("@d5", aperAddress.PerArea);
-            cmd.Parameters.AddWithValue("@d6", aperAddress.PerLandmark);
-            cmd.Parameters.AddWithValue("@d7", aperAddress.PerRoadName);
-            cmd.Parameters.AddWithValue("@d8", aperAddress.PerBuilding);
-            cmd.Parameters.AddWithValue("@d9", aperAddress.PerPostOfficeId);
-            cmd.Parameters.AddWithValue("@d10", aperAddress.PerUserId);
+            cmd.Parameters.AddWithValue("@d1", string.IsNullOrEmpty(apresentAddress.PreFlatNo) ? (object)DBNull.Value : apresentAddress.PreFlatNo);
+            cmd.Parameters.AddWithValue("@d2", string.IsNullOrWhiteSpace(apresentAddress.PreHouseNo) ? (object)DBNull.Value : apresentAddress.PreHouseNo);
+            cmd.Parameters.AddWithValue("@d3", string.IsNullOrWhiteSpace(apresentAddress.PreRoadNo) ? (object)DBNull.Value : apresentAddress.PreRoadNo);
+            cmd.Parameters.AddWithValue("@d4", string.IsNullOrWhiteSpace(apresentAddress.PreBlock) ? (object)DBNull.Value : apresentAddress.PreBlock);
+            cmd.Parameters.AddWithValue("@d5", string.IsNullOrWhiteSpace(apresentAddress.PreArea) ? (object)DBNull.Value : apresentAddress.PreArea);
+            cmd.Parameters.AddWithValue("@d6", string.IsNullOrWhiteSpace(apresentAddress.PreLandmark) ? (object)DBNull.Value : apresentAddress.PreLandmark);
+            cmd.Parameters.AddWithValue("@d7", string.IsNullOrWhiteSpace(apresentAddress.PreRoadName) ? (object)DBNull.Value : apresentAddress.PreRoadName);
+            cmd.Parameters.AddWithValue("@d8", string.IsNullOrWhiteSpace(apresentAddress.PreBuilding) ? (object)DBNull.Value : apresentAddress.PreBuilding);
+            cmd.Parameters.AddWithValue("@d9", apresentAddress.PrePostOfficeId);
+            cmd.Parameters.AddWithValue("@d10", apresentAddress.UserId);
             affectedRows5 = cmd.ExecuteNonQuery();
             conn.Close();
             return affectedRows3;
+            //cmd.Parameters.AddWithValue("@d1", aperAddress.PerFlatNo);
+            //cmd.Parameters.AddWithValue("@d2", aperAddress.PerHouseNo);
+            //cmd.Parameters.AddWithValue("@d3", aperAddress.PerRoadNo);
+            //cmd.Parameters.AddWithValue("@d4", aperAddress.PerBlock);
+            //cmd.Parameters.AddWithValue("@d5", aperAddress.PerArea);
+            //cmd.Parameters.AddWithValue("@d6", aperAddress.PerLandmark);
+            //cmd.Parameters.AddWithValue("@d7", aperAddress.PerRoadName);
+            //cmd.Parameters.AddWithValue("@d8", aperAddress.PerBuilding);
         }
 
         public Users GetUserDetails(string employeeId)

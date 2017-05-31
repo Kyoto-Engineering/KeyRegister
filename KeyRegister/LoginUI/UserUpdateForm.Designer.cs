@@ -122,6 +122,7 @@
             this.PAPostOfficeCombo = new System.Windows.Forms.ComboBox();
             this.PAThanaCombo = new System.Windows.Forms.ComboBox();
             this.UpdateUserButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -234,6 +235,7 @@
             this.PerApostCodeText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PerApostCodeText.Location = new System.Drawing.Point(357, 130);
             this.PerApostCodeText.Name = "PerApostCodeText";
+            this.PerApostCodeText.ReadOnly = true;
             this.PerApostCodeText.Size = new System.Drawing.Size(138, 26);
             this.PerApostCodeText.TabIndex = 47;
             // 
@@ -292,6 +294,7 @@
             this.PAPostCodeText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PAPostCodeText.Location = new System.Drawing.Point(374, 133);
             this.PAPostCodeText.Name = "PAPostCodeText";
+            this.PAPostCodeText.ReadOnly = true;
             this.PAPostCodeText.Size = new System.Drawing.Size(164, 26);
             this.PAPostCodeText.TabIndex = 9;
             // 
@@ -497,6 +500,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.backButton);
             this.groupBox1.Controls.Add(this.cmbSecondaryEmail);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.cmbPrimaryEmail);
@@ -1113,6 +1117,18 @@
             this.UpdateUserButton.UseVisualStyleBackColor = false;
             this.UpdateUserButton.Click += new System.EventHandler(this.createUserButton_Click);
             // 
+            // backButton
+            // 
+            this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.backButton.ForeColor = System.Drawing.Color.Yellow;
+            this.backButton.Location = new System.Drawing.Point(623, 517);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(148, 51);
+            this.backButton.TabIndex = 72;
+            this.backButton.Text = "Back to Grid";
+            this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // UserUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1238,5 +1254,6 @@
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.ComboBox cmbPrimaryEmail;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button backButton;
     }
 }

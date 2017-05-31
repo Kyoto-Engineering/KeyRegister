@@ -505,7 +505,7 @@ namespace KeyRegister.UI
             {
                 DataGridViewRow dr1 = dataGridView3.CurrentRow;
                 propertyId = txtPropertyId.Text = dr1.Cells[0].Value.ToString();
-                txtPropertyName.Text = dr1.Cells[1].Value.ToString();
+                txtPropertyName.Text = dr1.Cells[3].Value.ToString();
                 LoadLockOnSelectedProperty();
                 a = b;
 

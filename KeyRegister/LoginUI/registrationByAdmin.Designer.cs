@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtPrimaryUserPart = new System.Windows.Forms.TextBox();
             this.txtSecondaryEmailUser = new System.Windows.Forms.TextBox();
             this.cmbSecondaryDomain = new System.Windows.Forms.ComboBox();
             this.label48 = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txtPassportNo = new System.Windows.Forms.TextBox();
-            this.txtPrimaryEmailUser = new System.Windows.Forms.TextBox();
             this.txtNewProbableId = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dateOfBirth = new System.Windows.Forms.DateTimePicker();
@@ -153,13 +153,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtPrimaryUserPart);
             this.groupBox1.Controls.Add(this.txtSecondaryEmailUser);
             this.groupBox1.Controls.Add(this.cmbSecondaryDomain);
             this.groupBox1.Controls.Add(this.label48);
             this.groupBox1.Controls.Add(this.label43);
             this.groupBox1.Controls.Add(this.txtFormPassword);
             this.groupBox1.Controls.Add(this.groupBox6);
-            this.groupBox1.Controls.Add(this.txtPrimaryEmailUser);
             this.groupBox1.Controls.Add(this.txtNewProbableId);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.dateOfBirth);
@@ -199,13 +199,20 @@
             this.groupBox1.Controls.Add(this.createUserButton);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.DarkBlue;
-            this.groupBox1.Location = new System.Drawing.Point(3, 19);
+            this.groupBox1.Location = new System.Drawing.Point(3, 28);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(998, 667);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User Information";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // txtPrimaryUserPart
+            // 
+            this.txtPrimaryUserPart.Location = new System.Drawing.Point(198, 183);
+            this.txtPrimaryUserPart.Name = "txtPrimaryUserPart";
+            this.txtPrimaryUserPart.Size = new System.Drawing.Size(124, 26);
+            this.txtPrimaryUserPart.TabIndex = 73;
             // 
             // txtSecondaryEmailUser
             // 
@@ -238,7 +245,7 @@
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(447, 614);
+            this.label43.Location = new System.Drawing.Point(447, 621);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(216, 20);
             this.label43.TabIndex = 69;
@@ -247,7 +254,7 @@
             // txtFormPassword
             // 
             this.txtFormPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFormPassword.Location = new System.Drawing.Point(671, 606);
+            this.txtFormPassword.Location = new System.Drawing.Point(671, 613);
             this.txtFormPassword.Name = "txtFormPassword";
             this.txtFormPassword.PasswordChar = '*';
             this.txtFormPassword.Size = new System.Drawing.Size(168, 31);
@@ -271,7 +278,7 @@
             // txtNationalId
             // 
             this.txtNationalId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNationalId.Location = new System.Drawing.Point(189, 19);
+            this.txtNationalId.Location = new System.Drawing.Point(191, 19);
             this.txtNationalId.Name = "txtNationalId";
             this.txtNationalId.Size = new System.Drawing.Size(242, 23);
             this.txtNationalId.TabIndex = 61;
@@ -279,7 +286,7 @@
             // txtBirthCertificatNo
             // 
             this.txtBirthCertificatNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBirthCertificatNo.Location = new System.Drawing.Point(189, 72);
+            this.txtBirthCertificatNo.Location = new System.Drawing.Point(191, 72);
             this.txtBirthCertificatNo.Name = "txtBirthCertificatNo";
             this.txtBirthCertificatNo.Size = new System.Drawing.Size(242, 23);
             this.txtBirthCertificatNo.TabIndex = 60;
@@ -317,22 +324,10 @@
             // txtPassportNo
             // 
             this.txtPassportNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassportNo.Location = new System.Drawing.Point(189, 46);
+            this.txtPassportNo.Location = new System.Drawing.Point(191, 46);
             this.txtPassportNo.Name = "txtPassportNo";
             this.txtPassportNo.Size = new System.Drawing.Size(242, 23);
             this.txtPassportNo.TabIndex = 57;
-            // 
-            // txtPrimaryEmailUser
-            // 
-            this.txtPrimaryEmailUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrimaryEmailUser.Location = new System.Drawing.Point(198, 182);
-            this.txtPrimaryEmailUser.Name = "txtPrimaryEmailUser";
-            this.txtPrimaryEmailUser.Size = new System.Drawing.Size(126, 24);
-            this.txtPrimaryEmailUser.TabIndex = 62;
-            this.txtPrimaryEmailUser.CursorChanged += new System.EventHandler(this.txtDomainName_CursorChanged);
-            this.txtPrimaryEmailUser.TextChanged += new System.EventHandler(this.txtDomainName_TextChanged);
-            this.txtPrimaryEmailUser.Enter += new System.EventHandler(this.txtDomainName_Enter);
-            this.txtPrimaryEmailUser.MouseLeave += new System.EventHandler(this.txtDomainName_MouseLeave);
             // 
             // txtNewProbableId
             // 
@@ -366,7 +361,7 @@
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(54, 465);
+            this.label42.Location = new System.Drawing.Point(54, 466);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(127, 22);
             this.label42.TabIndex = 63;
@@ -448,7 +443,7 @@
             this.columnHeader2});
             this.listView1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(457, 527);
+            this.listView1.Location = new System.Drawing.Point(457, 534);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(378, 76);
             this.listView1.TabIndex = 54;
@@ -473,7 +468,7 @@
             // 
             this.addButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.addButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addButton.Location = new System.Drawing.Point(848, 502);
+            this.addButton.Location = new System.Drawing.Point(848, 509);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(121, 45);
             this.addButton.TabIndex = 53;
@@ -488,7 +483,7 @@
             this.cmbCountryCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCountryCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCountryCode.FormattingEnabled = true;
-            this.cmbCountryCode.Location = new System.Drawing.Point(564, 499);
+            this.cmbCountryCode.Location = new System.Drawing.Point(564, 506);
             this.cmbCountryCode.Name = "cmbCountryCode";
             this.cmbCountryCode.Size = new System.Drawing.Size(74, 24);
             this.cmbCountryCode.TabIndex = 52;
@@ -688,7 +683,7 @@
             this.txtPerLandMark.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPerLandMark.Location = new System.Drawing.Point(358, 194);
             this.txtPerLandMark.Name = "txtPerLandMark";
-            this.txtPerLandMark.Size = new System.Drawing.Size(139, 26);
+            this.txtPerLandMark.Size = new System.Drawing.Size(134, 26);
             this.txtPerLandMark.TabIndex = 90;
             // 
             // label45
@@ -846,6 +841,7 @@
             this.txtPerPostCode.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPerPostCode.Location = new System.Drawing.Point(357, 135);
             this.txtPerPostCode.Name = "txtPerPostCode";
+            this.txtPerPostCode.ReadOnly = true;
             this.txtPerPostCode.Size = new System.Drawing.Size(135, 26);
             this.txtPerPostCode.TabIndex = 47;
             // 
@@ -862,7 +858,7 @@
             this.txtPerArea.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPerArea.Location = new System.Drawing.Point(357, 165);
             this.txtPerArea.Name = "txtPerArea";
-            this.txtPerArea.Size = new System.Drawing.Size(140, 26);
+            this.txtPerArea.Size = new System.Drawing.Size(135, 26);
             this.txtPerArea.TabIndex = 45;
             // 
             // txtPerRoadName
@@ -1137,6 +1133,7 @@
             this.txtPrePostCode.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrePostCode.Location = new System.Drawing.Point(387, 134);
             this.txtPrePostCode.Name = "txtPrePostCode";
+            this.txtPrePostCode.ReadOnly = true;
             this.txtPrePostCode.Size = new System.Drawing.Size(128, 26);
             this.txtPrePostCode.TabIndex = 9;
             // 
@@ -1192,7 +1189,7 @@
             // txtContactNo
             // 
             this.txtContactNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContactNo.Location = new System.Drawing.Point(645, 499);
+            this.txtContactNo.Location = new System.Drawing.Point(645, 506);
             this.txtContactNo.MaxLength = 11;
             this.txtContactNo.Name = "txtContactNo";
             this.txtContactNo.Size = new System.Drawing.Size(190, 22);
@@ -1258,7 +1255,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(462, 502);
+            this.label8.Location = new System.Drawing.Point(462, 509);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(84, 16);
             this.label8.TabIndex = 26;
@@ -1328,7 +1325,7 @@
             // 
             this.createUserButton.BackColor = System.Drawing.Color.LightYellow;
             this.createUserButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createUserButton.Location = new System.Drawing.Point(848, 553);
+            this.createUserButton.Location = new System.Drawing.Point(848, 560);
             this.createUserButton.Name = "createUserButton";
             this.createUserButton.Size = new System.Drawing.Size(121, 50);
             this.createUserButton.TabIndex = 18;
@@ -1469,7 +1466,6 @@
         private System.Windows.Forms.TextBox txtPerFlatNo;
         private System.Windows.Forms.TextBox txtNewProbableId;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtPrimaryEmailUser;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox txtBirthCertificatNo;
         private System.Windows.Forms.Label label12;
@@ -1495,6 +1491,7 @@
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.TextBox txtPreHouseNo;
         private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox txtPrimaryUserPart;
 
     }
 }

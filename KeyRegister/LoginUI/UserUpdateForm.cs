@@ -113,12 +113,7 @@ namespace KeyRegister.LoginUI
             txtFatherName.Clear();
             txtMotherName.Clear();
            
-            if (cmbCountry.Text != "Bangladesh")
-            {
-                txtStreetName.Clear();
-                txtState.Clear();
-                txtPostalCode.Clear();
-            }
+          
             cmbCountry.SelectedIndex = -1;
             cmbDesignation.SelectedIndex = -1;
 
@@ -127,7 +122,8 @@ namespace KeyRegister.LoginUI
             dateOfBirth.Value = DateTime.Today;
             cmbCountry.SelectedIndex = -1;
 
-
+            cmbPrimaryEmail.SelectedIndex = -1;
+            cmbSecondaryEmail.SelectedIndex = -1;
             txtBirthCertificatNo.Clear();
             txtPassportNo.Clear();
             txtNationalId.Clear();
@@ -138,6 +134,12 @@ namespace KeyRegister.LoginUI
 
             PresentAddress();
             ResetPermanantAddress2();
+            if (cmbCountry.Text != "Bangladesh")
+            {
+                txtStreetName.Clear();
+                txtState.Clear();
+                txtPostalCode.Clear();
+            }
            
         }
 
@@ -1172,6 +1174,13 @@ namespace KeyRegister.LoginUI
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserDetailsGrid frm=new UserDetailsGrid();
+            frm.Show();
         }
     }
 }

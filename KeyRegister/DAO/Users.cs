@@ -19,10 +19,11 @@ namespace KeyRegister.DAO
 
         private int emailBankId;
         private int countryId;
-        private int designationId;
+        private  int? designationId;
+       // private int designationId;
         private int departmentId;
         private string password;
-        private DateTime dateOfBirth;
+        private Nullable<DateTime> dateOfBirth;
        
         private int nationalityId;
         public string birthCertificateNumber;
@@ -94,7 +95,8 @@ namespace KeyRegister.DAO
             set { departmentId = value; }
             get { return departmentId; }
         }
-        public int DesignationId
+       
+        public  int? DesignationId
         {
             set { designationId = value; }
             get { return designationId; }
@@ -104,8 +106,8 @@ namespace KeyRegister.DAO
             set { password = value; }
             get { return password; }
         }
-
-        public DateTime DateOfBirth
+       // DateTime? MyDateTime { get; set; }
+        public  Nullable<DateTime> DateOfBirth
         {
             set { dateOfBirth = value; }
             get { return dateOfBirth; }
