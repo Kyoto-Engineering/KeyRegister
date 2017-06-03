@@ -362,7 +362,6 @@ namespace KeyRegister.LoginUI
                     con.Close();
                 }
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

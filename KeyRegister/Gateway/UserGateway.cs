@@ -37,8 +37,21 @@ namespace KeyRegister.Gateway
             cmd.Parameters.AddWithValue("@d5", string.IsNullOrWhiteSpace(aUser.NickName) ? (object)DBNull.Value : aUser.NickName);           
             cmd.Parameters.AddWithValue("@d6", aUser.FatherName);
             cmd.Parameters.AddWithValue("@d7", aUser.MotherName);          
-            cmd.Parameters.AddWithValue("@d9", aUser.CountryId);                    
-            cmd.Parameters.AddWithValue("@d10",aUser.DesignationId == null ? (int?)null : Convert.ToInt32(aUser.DesignationId));           
+            cmd.Parameters.AddWithValue("@d9", aUser.CountryId);
+            cmd.Parameters.AddWithValue("@d10", aUser.DesignationId == null ? (int?)null : Convert.ToInt32(aUser.DesignationId));
+           // cmd.Parameters.AddWithValue( "@d10",!int.Parse(aUser.DesignationId)? Convert.ToInt32(aUser.DesignationId) : DBNull.Value);
+            //int value;
+            //if (int.TryParse(aUser.DesignationId, out value))
+            //{
+            //    DR["CustomerID"] = value;
+            //}
+            //else
+            //{
+            //    DR["CustomerID"] = DBNull.Value;
+            //}    
+           // cmd.Parameters.AddWithValue("@d10",aUser.DesignationId == null ? (int?)null : Convert.ToInt32(aUser.DesignationId));
+           // cmd.Parameters.AddWithValue("@@d10", aUser.DesignationId ?? DBNull.Value);
+            //cmd.Parameters.AddWithValue("@d10",aUser.DesignationId.HasValue ? aUser.DesignationId.Value : DBNull.Value;)
             cmd.Parameters.AddWithValue("@d11", string.IsNullOrWhiteSpace(aUser.NationalId) ? (object)DBNull.Value : aUser.NationalId);            
             cmd.Parameters.AddWithValue("@d12", string.IsNullOrWhiteSpace(aUser.PassportNo) ? (object)DBNull.Value : aUser.PassportNo);            
             cmd.Parameters.AddWithValue("@d13", string.IsNullOrWhiteSpace(aUser.BirthCertificateNo) ? (object)DBNull.Value : aUser.BirthCertificateNo);
@@ -294,19 +307,29 @@ namespace KeyRegister.Gateway
         {
             conn=new SqlConnection(cs.DBConn);
             conn.Open();
-            string update = "Update  Users Set FullName=@d1,NickName=@d2,FatherName=@d3,MotherName=@d4,CountryId=@d6,DesignationId=@d7,NationalId=@d8,BirthCertificateNumber=@d9,PassportNumber=@d10,GenderId=@d11,MaritalStatusId=@d12 where Users.UserId='" + auser.UserId + "'";
+            string update = "Update  Users Set FullName=@d1,NickName=@d2,FatherName=@d3,MotherName=@d4,CountryId=@d5,DesignationId=@d6,NationalId=@d7,BirthCertificateNumber=@d8,PassportNumber=@d9,GenderId=@d10,MaritalStatusId=@d11,DateOfBirth=@d12  where Users.UserId='" + auser.UserId + "'";
             cmd=new SqlCommand(update,conn);
             cmd.Parameters.AddWithValue("@d1", auser.FullName);
-            cmd.Parameters.AddWithValue("@d2", auser.NickName);
+            cmd.Parameters.AddWithValue("@d2", string.IsNullOrWhiteSpace(auser.NickName) ? (object)DBNull.Value : auser.NickName);                      
             cmd.Parameters.AddWithValue("@d3", auser.FatherName);
             cmd.Parameters.AddWithValue("@d4", auser.MotherName);          
-            cmd.Parameters.AddWithValue("@d6", auser.CountryId);
-            cmd.Parameters.AddWithValue("@d7", auser.DesignationId);
-            cmd.Parameters.AddWithValue("@d8", auser.NationalId);
-            cmd.Parameters.AddWithValue("@d9", auser.BirthCertificateNo);
-            cmd.Parameters.AddWithValue("@d10", auser.PassportNo);
-            cmd.Parameters.AddWithValue("@d11", auser.GenderId);
-            cmd.Parameters.AddWithValue("@d12", auser.MaritalStatusId);            
+            cmd.Parameters.AddWithValue("@d5", auser.CountryId);
+            //cmd.Parameters.AddWithValue("@d6", auser.DesignationId);
+            cmd.Parameters.AddWithValue("@d6", auser.DesignationId == null ? (int?)null : Convert.ToInt32(auser.DesignationId));
+            cmd.Parameters.AddWithValue("@d7", string.IsNullOrWhiteSpace(auser.NationalId) ? (object)DBNull.Value : auser.NationalId);
+            cmd.Parameters.AddWithValue("@d8", string.IsNullOrWhiteSpace(auser.PassportNo) ? (object)DBNull.Value : auser.PassportNo);
+            cmd.Parameters.AddWithValue("@d9", string.IsNullOrWhiteSpace(auser.BirthCertificateNo) ? (object)DBNull.Value : auser.BirthCertificateNo);
+            cmd.Parameters.AddWithValue("@d10", auser.GenderId);
+            cmd.Parameters.AddWithValue("@d11", auser.MaritalStatusId);
+            DateTime dt = DateTime.Now;
+            DateTime dt1 = auser.DateOfBirth.Value;
+            string date = dt.ToShortDateString();
+            string date1 = dt1.ToShortDateString();
+            if (date == date1)
+            {
+                cmd.Parameters.AddWithValue("@d12", auser.DateOfBirth).Value = DBNull.Value;
+
+            }                     
             cmd.ExecuteReader();
             conn.Close();
         }
@@ -315,17 +338,17 @@ namespace KeyRegister.Gateway
         {
             conn=new SqlConnection(cs.DBConn);
             conn.Open();
-            string query = "Update ParmanentAddresses Set PaFlatNo=@d1,PaHouseNo=@d2,PaRoadNo=@d3,PaBlock=@d4,PaArea=@d5,PaLandMark=@d6,PaRoadName=@d7,PaBuilding=@d8,PostOfficeId=@d9 where UserId='" + apAddress.PerUserId + "'";
+            string query = "Update ParmanentAddresses Set PaFlatNo=@d1,PaHouseNo=@d2,PaRoadNo=@d3,PaBlock=@d4,PaArea=@d5,PaLandMark=@d6,PaRoadName=@d7,PaBuilding=@d8,PostOfficeId=@d9 where ParmanentAddresses.UserId='" + apAddress.PerUserId + "'";
             cmd=new SqlCommand(query,conn);
-            cmd.Parameters.AddWithValue("@d1", apAddress.PerFlatNo);
-            cmd.Parameters.AddWithValue("@d2", apAddress.PerHouseNo);
-            cmd.Parameters.AddWithValue("@d3", apAddress.PerRoadNo);
-            cmd.Parameters.AddWithValue("@d4", apAddress.PerBlock);
-            cmd.Parameters.AddWithValue("@d5", apAddress.PerArea);
-            cmd.Parameters.AddWithValue("@d6", apAddress.PerLandmark);
-            cmd.Parameters.AddWithValue("@d7", apAddress.PerRoadName);
-            cmd.Parameters.AddWithValue("@d8", apAddress.PerBuilding);
-            cmd.Parameters.AddWithValue("@d9", apAddress.PerPostOfficeId);           
+            cmd.Parameters.AddWithValue("@d1",string.IsNullOrEmpty(apAddress.PerFlatNo) ? (object)DBNull.Value : apAddress.PerFlatNo);
+            cmd.Parameters.AddWithValue("@d2",string.IsNullOrWhiteSpace(apAddress.PerHouseNo) ? (object)DBNull.Value : apAddress.PerHouseNo);
+            cmd.Parameters.AddWithValue("@d3",string.IsNullOrWhiteSpace(apAddress.PerRoadNo) ? (object)DBNull.Value : apAddress.PerRoadNo);
+            cmd.Parameters.AddWithValue("@d4",string.IsNullOrWhiteSpace(apAddress.PerBlock) ? (object)DBNull.Value : apAddress.PerBlock);
+            cmd.Parameters.AddWithValue("@d5",string.IsNullOrWhiteSpace(apAddress.PerArea) ? (object)DBNull.Value : apAddress.PerArea);
+            cmd.Parameters.AddWithValue("@d6",string.IsNullOrWhiteSpace(apAddress.PerLandmark) ? (object)DBNull.Value : apAddress.PerLandmark);
+            cmd.Parameters.AddWithValue("@d7",string.IsNullOrWhiteSpace(apAddress.PerRoadName) ? (object)DBNull.Value : apAddress.PerRoadName);
+            cmd.Parameters.AddWithValue("@d8",string.IsNullOrWhiteSpace(apAddress.PerBuilding) ? (object)DBNull.Value : apAddress.PerBuilding);                                  
+            cmd.Parameters.AddWithValue("@d9",apAddress.PerPostOfficeId);           
             cmd.ExecuteReader();
             conn.Close();
 
@@ -335,25 +358,20 @@ namespace KeyRegister.Gateway
         {
             conn=new SqlConnection(cs.DBConn);
             conn.Open();
-            string qry = "Update PresentAddresses Set PrFlatNo=@d1,PrHouseNo=@d2,PrRoadNo=@d3,PrBlock=@d4,PrArea=@d5,PostOfficeId=@d6 where UserId='" + akAddress.UserId + "' ";
-           // string query = "Update  PresentAddresses  Set PaFlatNo=@d1,PaHouseNo=@d2,PaRoadNo=@d3,PaBlock=@d4,PaArea=@d5,PostOfficeId=@d6 where  PresentAddresses.UserId='"+akAddress.UserId+"' ";
+            string qry = "Update PresentAddresses Set PrFlatNo=@d1,PrHouseNo=@d2,PrRoadNo=@d3,PrBlock=@d4,PrArea=@d5,PrLandMark=@d6,PrRoadName=@d7,PrBuilding=@d8,PostOfficeId=@d9 where UserId='" + akAddress.UserId + "' ";           
             cmd=new SqlCommand(qry,conn);
-            cmd.Parameters.AddWithValue("@d1", akAddress.PreFlatNo);
-            cmd.Parameters.AddWithValue("@d2", akAddress.PreHouseNo);
-            cmd.Parameters.AddWithValue("@d3", akAddress.PreRoadNo);
-            cmd.Parameters.AddWithValue("@d4", akAddress.PreBlock);
-            cmd.Parameters.AddWithValue("@d5", akAddress.PreArea);
-            cmd.Parameters.AddWithValue("@d6", akAddress.PreLandmark);
-            cmd.Parameters.AddWithValue("@d7", akAddress.PreRoadName);
-            cmd.Parameters.AddWithValue("@d8", akAddress.PreBuilding);
+            cmd.Parameters.AddWithValue("@d1", string.IsNullOrEmpty(akAddress.PreFlatNo) ? (object)DBNull.Value : akAddress.PreFlatNo);
+            cmd.Parameters.AddWithValue("@d2", string.IsNullOrWhiteSpace(akAddress.PreHouseNo) ? (object)DBNull.Value : akAddress.PreHouseNo);
+            cmd.Parameters.AddWithValue("@d3", string.IsNullOrWhiteSpace(akAddress.PreRoadNo) ? (object)DBNull.Value : akAddress.PreRoadNo);
+            cmd.Parameters.AddWithValue("@d4", string.IsNullOrWhiteSpace(akAddress.PreBlock) ? (object)DBNull.Value : akAddress.PreBlock);
+            cmd.Parameters.AddWithValue("@d5", string.IsNullOrWhiteSpace(akAddress.PreArea) ? (object)DBNull.Value : akAddress.PreArea);
+            cmd.Parameters.AddWithValue("@d6", string.IsNullOrWhiteSpace(akAddress.PreLandmark) ? (object)DBNull.Value : akAddress.PreLandmark);
+            cmd.Parameters.AddWithValue("@d7", string.IsNullOrWhiteSpace(akAddress.PreRoadName) ? (object)DBNull.Value : akAddress.PreRoadName);
+            cmd.Parameters.AddWithValue("@d8", string.IsNullOrWhiteSpace(akAddress.PreBuilding) ? (object)DBNull.Value : akAddress.PreBuilding);          
             cmd.Parameters.AddWithValue("@d9", akAddress.PrePostOfficeId);
             cmd.ExecuteReader();
             conn.Close();
-
         }
-
-
-
         public  int  SaveUserEmail(UserEmail aEmail)
         {
             conn = new SqlConnection(cs.DBConn);
@@ -377,7 +395,7 @@ namespace KeyRegister.Gateway
             UserEmail aEmail=new UserEmail();
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
-            string qry = "Update UserEmail Set EmailHostId=@d1 where UserEmail.UserId='" + aEmail.UserId + "' ";            
+            string qry = "Update UserEmail Set EmailHostId=@d1 where UserEmail.UserId='" + aEmail.UserId + "' and UserEmail.IsPrimaryKey='"+aEmail.IsPrimaryStatus+"'";            
             cmd = new SqlCommand(qry, conn);
             cmd.Parameters.AddWithValue("@d1", aEmail.HostEmailId);                       
             cmd.ExecuteReader();

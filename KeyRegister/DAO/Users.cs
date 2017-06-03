@@ -19,6 +19,7 @@ namespace KeyRegister.DAO
 
         private int emailBankId;
         private int countryId;
+       // private Nullable<int> designationId;
         private  int? designationId;
        // private int designationId;
         private int departmentId;
@@ -95,12 +96,16 @@ namespace KeyRegister.DAO
             set { departmentId = value; }
             get { return departmentId; }
         }
-       
-        public  int? DesignationId
+        public int? DesignationId
         {
             set { designationId = value; }
             get { return designationId; }
         }
+        //public  Nullable<int> DesignationId
+        //{
+        //    set { designationId = value; }
+        //    get { return designationId; }
+        //}
         public string Password
         {
             set { password = value; }

@@ -67,6 +67,7 @@
             this.txtNickName = new System.Windows.Forms.TextBox();
             this.txtFatherName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.backButton = new System.Windows.Forms.Button();
             this.cmbSecondaryEmail = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbPrimaryEmail = new System.Windows.Forms.ComboBox();
@@ -122,7 +123,6 @@
             this.PAPostOfficeCombo = new System.Windows.Forms.ComboBox();
             this.PAThanaCombo = new System.Windows.Forms.ComboBox();
             this.UpdateUserButton = new System.Windows.Forms.Button();
-            this.backButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -543,11 +543,23 @@
             this.groupBox1.Text = "User Information";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // backButton
+            // 
+            this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.backButton.ForeColor = System.Drawing.Color.Yellow;
+            this.backButton.Location = new System.Drawing.Point(623, 517);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(148, 51);
+            this.backButton.TabIndex = 72;
+            this.backButton.Text = "Back to Grid";
+            this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // cmbSecondaryEmail
             // 
             this.cmbSecondaryEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSecondaryEmail.FormattingEnabled = true;
-            this.cmbSecondaryEmail.Location = new System.Drawing.Point(233, 176);
+            this.cmbSecondaryEmail.Location = new System.Drawing.Point(233, 177);
             this.cmbSecondaryEmail.Name = "cmbSecondaryEmail";
             this.cmbSecondaryEmail.Size = new System.Drawing.Size(209, 25);
             this.cmbSecondaryEmail.TabIndex = 71;
@@ -1116,18 +1128,6 @@
             this.UpdateUserButton.Text = "UpdateUser";
             this.UpdateUserButton.UseVisualStyleBackColor = false;
             this.UpdateUserButton.Click += new System.EventHandler(this.createUserButton_Click);
-            // 
-            // backButton
-            // 
-            this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.backButton.ForeColor = System.Drawing.Color.Yellow;
-            this.backButton.Location = new System.Drawing.Point(623, 517);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(148, 51);
-            this.backButton.TabIndex = 72;
-            this.backButton.Text = "Back to Grid";
-            this.backButton.UseVisualStyleBackColor = false;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // UserUpdateForm
             // 

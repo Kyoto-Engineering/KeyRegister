@@ -25,11 +25,12 @@ namespace KeyRegister.LoginUI
         private SqlDataReader rdr;
         ConnectionString cs=new ConnectionString();
         public string hk;
-        public int emailBankId, nationalityId, departmentId, designationId, genderId, maritalStatusId, userHostIdForSecondaryEmail, userHostIdForPrimaryEmail;
+        public int emailBankId, nationalityId, departmentId, designationId, genderId, maritalStatusId, userHostIdForSecondaryEmail1, userHostIdForPrimaryEmail;
 
-        public string nUserId, divisionIdPA, divisionIdPer, postofficeIdPA, postofficeIdPer, districtIdPA, districtIdPer, thanaIdPA, thanaIdPer, selectedUserId;
+        public string nUserId, divisionIdPA, divisionIdPer, postofficeIdPr, postofficeIdPer, districtIdPA, districtIdPer, thanaIdPA, thanaIdPer, selectedUserId;
         public int instantUserId, selectedUserId1, gUserId;
-        public string countryId,hostPart,domainPart;
+        public string countryId,hostPart,domainPart,primaryEmailForCheck;
+
         public UserUpdateForm()
         {
             InitializeComponent();
@@ -47,7 +48,7 @@ namespace KeyRegister.LoginUI
             akAddress.PreLandmark = txtPreLandMark.Text;
             akAddress.PreRoadName = txtPreRoadName.Text;
             akAddress.PreBuilding = txtPreBuildingName.Text;
-            akAddress.PrePostOfficeId = Convert.ToInt32(postofficeIdPA);
+            akAddress.PrePostOfficeId = Convert.ToInt32(postofficeIdPr);
             akAddress.UserId = Convert.ToInt32(gUserId);
             aGateway.UpdatePresentAddress(akAddress);
         }
@@ -159,6 +160,28 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void CheckStatusForUpdateEmail()
+        {
+            try
+            {
+                con = new SqlConnection(cs.DBConn);
+                con.Open();
+                string ctt = "SELECT (UserEmail.UserPart+'@'+EmailHostBank.EmailHostName) As EmailAdd FROM  UserEmail INNER JOIN  EmailHostBank ON UserEmail.EmailHostId = EmailHostBank.EmailHostId INNER JOIN  Users ON UserEmail.UserId = Users.UserId where UserEmail.UserId='" + gUserId + "'";
+                cmd = new SqlCommand(ctt);
+                cmd.Connection = con;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    primaryEmailForCheck = (rdr.GetString(0));
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void createUserButton_Click(object sender, EventArgs e)
         {
           
@@ -168,23 +191,32 @@ namespace KeyRegister.LoginUI
                 Users auser = new Users();
                 auser.UserId = Convert.ToInt32(gUserId);
                 auser.FullName = txtFullName.Text;
-                auser.FatherName = txtFatherName.Text;
-                auser.MotherName = txtMotherName.Text;
                 auser.NickName = txtNickName.Text;
+                auser.FatherName = txtFatherName.Text;
+                auser.MotherName = txtMotherName.Text;                
                 auser.CountryId = Convert.ToInt32(countryId);
                 auser.DesignationId = designationId;
-                auser.EmailBankId = emailBankId;
+               // auser.EmailBankId = emailBankId;
                 auser.NationalId = txtNationalId.Text;
                 auser.PassportNo = txtPassportNo.Text;
                 auser.BirthCertificateNo = txtBirthCertificatNo.Text;
                 auser.GenderId = genderId;
                 auser.MaritalStatusId = maritalStatusId;
-                auser.DateOfBirth = dateOfBirth.Value;
+                auser.DateOfBirth = Convert.ToDateTime(dateOfBirth.Value,System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat);
+               // auser.DateOfBirth = dateOfBirth.Value;
                 agGateway.UpdateUserInfo(auser);
-                UpdatePerManantAddress();
                 UpdatePresentAddress();
-                UpdateUserEmail(userHostIdForPrimaryEmail,gUserId,false);
-                UpdateUserEmail(userHostIdForSecondaryEmail, gUserId, true);
+                UpdatePerManantAddress();
+                if (primaryEmailForCheck != cmbPrimaryEmail.Text)
+                {
+                    UpdateUserEmail(userHostIdForPrimaryEmail, gUserId, true);
+                    UpdateUserEmail(userHostIdForSecondaryEmail1, gUserId, false);
+                }
+                else
+                {
+                    UpdateUserEmail(userHostIdForPrimaryEmail, gUserId, false);
+                    UpdateUserEmail(userHostIdForSecondaryEmail1, gUserId, true);
+                }               
                 MessageBox.Show("Successfully Updated", "Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Reset();
             }
@@ -264,27 +296,7 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        //private void EmailAddress()
-        //{
-        //    try
-        //    {
-        //        con = new SqlConnection(cs.DBConn);
-        //        con.Open();
-        //        string ctt = "select Email from EmailBank";
-        //        cmd = new SqlCommand(ctt);
-        //        cmd.Connection = con;
-        //        rdr = cmd.ExecuteReader();
-        //        while (rdr.Read())
-        //        {
-        //            cmbEmailAddress.Items.Add(rdr.GetValue(0).ToString());
-        //        }
-        //        cmbEmailAddress.Items.Add("Not In The List");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
+       
         private void DesignationLoad()
         {
             try
@@ -382,8 +394,7 @@ namespace KeyRegister.LoginUI
                 while (rdr.Read())
                 {
                     cmbPrimaryEmail.Items.Add(rdr.GetValue(0).ToString());
-                }
-                
+                }                
             }
             catch (Exception ex)
             {
@@ -396,8 +407,7 @@ namespace KeyRegister.LoginUI
             LoadPrimaryEmail();
             FillPresentDivisionCombo();
             FillPermanantDivisionCombo();
-            CountryLoad();
-           // EmailAddress();
+            CountryLoad();          
             DesignationLoad();
             GetGender();
             MaritalStatusLoad();
@@ -677,7 +687,7 @@ namespace KeyRegister.LoginUI
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
-                    postofficeIdPA = (rdr.GetString(0));
+                    postofficeIdPr = (rdr.GetString(0));
                     PAPostCodeText.Text = (rdr.GetString(1));
 
                 }
@@ -946,17 +956,17 @@ namespace KeyRegister.LoginUI
         }
 
         private void cmbCountry_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbCountry.Text == "Bangladesh")
-            {
-                groupBox4.Visible = false;
-            }
-            else
-            {
-                groupBox4.Visible = true;
-            }
+        {            
             try
             {
+                if (cmbCountry.Text == "Bangladesh")
+                {
+                    groupBox4.Visible = false;
+                }
+                else
+                {
+                    groupBox4.Visible = true;
+                }
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
                 string ctk = "SELECT  RTRIM(Countries.CountryId) from Countries WHERE Countries.CountryName=@find";
@@ -978,7 +988,6 @@ namespace KeyRegister.LoginUI
                     con.Close();
                 }
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1028,7 +1037,6 @@ namespace KeyRegister.LoginUI
                 con.Open();
                 cmd = con.CreateCommand();
                 cmd.CommandText = "SELECT DesignationId from Designations WHERE Designation= '" + cmbDesignation.Text + "'";
-
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
@@ -1110,12 +1118,7 @@ namespace KeyRegister.LoginUI
         {
 
             try
-            {
-                //string s = cmbPrimaryEmail.Text;
-                //string[] words = s.Split('@');
-                //hostPart = words[0];
-                //domainPart = words[1];
-
+            {                
                 con = new SqlConnection(cs.DBConn);
                 con.Open();
                 string ctt = "SELECT (UserEmail.UserPart+'@'+EmailHostBank.EmailHostName) As EmailAdd FROM  UserEmail INNER JOIN  EmailHostBank ON UserEmail.EmailHostId = EmailHostBank.EmailHostId INNER JOIN  Users ON UserEmail.UserId = Users.UserId where UserEmail.UserId='"+gUserId+"' and UserEmail.IsPrimaryKey='false'";
@@ -1145,7 +1148,7 @@ namespace KeyRegister.LoginUI
                rdr = cmd.ExecuteReader();
                if (rdr.Read())
                {
-                   userHostIdForSecondaryEmail = rdr.GetInt32(0);
+                   userHostIdForSecondaryEmail1 = rdr.GetInt32(0);
                }
                con.Close();
             }
@@ -1166,7 +1169,7 @@ namespace KeyRegister.LoginUI
                 rdr = cmd.ExecuteReader();
                 if (rdr.Read())
                 {
-                    userHostIdForSecondaryEmail = rdr.GetInt32(0);
+                    userHostIdForSecondaryEmail1 = rdr.GetInt32(0);
                 }
                 con.Close();
             }
