@@ -198,9 +198,8 @@ namespace KeyRegister.LoginUI
                 SaveUserEmail(emailHostId,txtPrimaryUserPart.Text,true);
                 if (!string.IsNullOrWhiteSpace(txtSecondaryEmailUser.Text) || !string.IsNullOrWhiteSpace(cmbSecondaryDomain.Text))
                 {
-                    SaveUserEmail(emailHostId1, txtSecondaryEmailUser.Text, false);
-                }
-               
+                    SaveUserEmail(emailHostId1, txtSecondaryEmailUser.Text,false);
+                }               
                 NewMailMessage();
             }
             catch (Exception ex)
@@ -339,6 +338,20 @@ namespace KeyRegister.LoginUI
             PresentAddress();
             ResetPermanantAddress2();
             listView1.Items.Clear();
+
+            dbUserId = 0;
+           
+            
+            senderEmailHostId=emailAddressFrom=senderEmailDomain= readyPassword=hostName=userName=smtpHost = "";
+            emailHostId = nationalityId = departmentId = designationId = genderId = maritalStatusId = emailHostId1 = 0;
+            countryCode =               
+                    divisionIdPA =
+                        divisionIdPer =
+                            postofficeIdPre =
+                                postofficeIdPer =
+                                    districtIdPA =
+                                        districtIdPer = thanaIdPA = thanaIdPer = countryId = emailAddresTo = "";
+           
         }
         private void GetMaxEmailBankId()
         {
@@ -600,7 +613,9 @@ namespace KeyRegister.LoginUI
                     Reset();
                     groupBox3.Visible = true;
                     groupBox4.Visible = true;
-                    groupBox4.Enabled = true;
+                    groupBox5.Enabled = true;
+                    label43.Visible = false;
+                    txtFormPassword.Visible = false;
                     GetMaxUserId();
                 }
                 
@@ -1779,10 +1794,11 @@ namespace KeyRegister.LoginUI
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
+            }           
+        }
 
-
-
+        private void cmbPrimaryDomain_MouseLeave(object sender, EventArgs e)
+       {
            
         }
     }

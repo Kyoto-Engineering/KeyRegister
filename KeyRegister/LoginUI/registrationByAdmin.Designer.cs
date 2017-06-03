@@ -224,6 +224,8 @@
             // 
             // cmbSecondaryDomain
             // 
+            this.cmbSecondaryDomain.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbSecondaryDomain.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbSecondaryDomain.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSecondaryDomain.FormattingEnabled = true;
             this.cmbSecondaryDomain.Location = new System.Drawing.Point(327, 214);
@@ -369,6 +371,8 @@
             // 
             // cmbMaritalStatus
             // 
+            this.cmbMaritalStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbMaritalStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbMaritalStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMaritalStatus.FormattingEnabled = true;
             this.cmbMaritalStatus.Location = new System.Drawing.Point(198, 435);
@@ -389,6 +393,8 @@
             // 
             // cmbGender
             // 
+            this.cmbGender.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbGender.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbGender.FormattingEnabled = true;
             this.cmbGender.Location = new System.Drawing.Point(198, 406);
@@ -427,6 +433,8 @@
             // 
             // cmbPrimaryDomain
             // 
+            this.cmbPrimaryDomain.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbPrimaryDomain.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbPrimaryDomain.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPrimaryDomain.FormattingEnabled = true;
             this.cmbPrimaryDomain.Location = new System.Drawing.Point(328, 182);
@@ -434,6 +442,7 @@
             this.cmbPrimaryDomain.Size = new System.Drawing.Size(116, 25);
             this.cmbPrimaryDomain.TabIndex = 56;
             this.cmbPrimaryDomain.SelectedIndexChanged += new System.EventHandler(this.cmbEmailAddress_SelectedIndexChanged);
+            this.cmbPrimaryDomain.MouseLeave += new System.EventHandler(this.cmbPrimaryDomain_MouseLeave);
             // 
             // listView1
             // 
@@ -506,6 +515,8 @@
             // 
             // cmbDesignation
             // 
+            this.cmbDesignation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDesignation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbDesignation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDesignation.FormattingEnabled = true;
             this.cmbDesignation.Location = new System.Drawing.Point(200, 275);
@@ -516,6 +527,8 @@
             // 
             // cmbCountry
             // 
+            this.cmbCountry.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbCountry.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCountry.FormattingEnabled = true;
             this.cmbCountry.Location = new System.Drawing.Point(199, 243);
@@ -698,6 +711,7 @@
             // 
             // PerAPostOfficeCombo
             // 
+            this.PerAPostOfficeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PerAPostOfficeCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PerAPostOfficeCombo.FormattingEnabled = true;
             this.PerAPostOfficeCombo.Location = new System.Drawing.Point(357, 104);
@@ -708,6 +722,7 @@
             // 
             // PerAThanaCombo
             // 
+            this.PerAThanaCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PerAThanaCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PerAThanaCombo.FormattingEnabled = true;
             this.PerAThanaCombo.Location = new System.Drawing.Point(355, 74);
@@ -718,6 +733,7 @@
             // 
             // PerADivisionCombo
             // 
+            this.PerADivisionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PerADivisionCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PerADivisionCombo.FormattingEnabled = true;
             this.PerADivisionCombo.Location = new System.Drawing.Point(354, 13);
@@ -728,6 +744,7 @@
             // 
             // PerADistrictCombo
             // 
+            this.PerADistrictCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PerADistrictCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PerADistrictCombo.FormattingEnabled = true;
             this.PerADistrictCombo.Location = new System.Drawing.Point(354, 44);
@@ -990,6 +1007,7 @@
             // 
             // PAPostOfficeCombo
             // 
+            this.PAPostOfficeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PAPostOfficeCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PAPostOfficeCombo.FormattingEnabled = true;
             this.PAPostOfficeCombo.Location = new System.Drawing.Point(386, 104);
@@ -1000,6 +1018,7 @@
             // 
             // PAThanaCombo
             // 
+            this.PAThanaCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PAThanaCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PAThanaCombo.FormattingEnabled = true;
             this.PAThanaCombo.Location = new System.Drawing.Point(386, 74);
@@ -1010,6 +1029,7 @@
             // 
             // PADistrictCombo
             // 
+            this.PADistrictCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PADistrictCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PADistrictCombo.FormattingEnabled = true;
             this.PADistrictCombo.Location = new System.Drawing.Point(385, 45);
@@ -1030,6 +1050,7 @@
             // 
             // PADivisionCombo
             // 
+            this.PADivisionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PADivisionCombo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PADivisionCombo.FormattingEnabled = true;
             this.PADivisionCombo.Location = new System.Drawing.Point(385, 15);

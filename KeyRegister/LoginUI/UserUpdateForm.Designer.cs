@@ -434,6 +434,8 @@
             // 
             // cmbMaritalStatus
             // 
+            this.cmbMaritalStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbMaritalStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbMaritalStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMaritalStatus.FormattingEnabled = true;
             this.cmbMaritalStatus.Location = new System.Drawing.Point(203, 390);
@@ -454,6 +456,8 @@
             // 
             // cmbGender
             // 
+            this.cmbGender.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbGender.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbGender.FormattingEnabled = true;
             this.cmbGender.Location = new System.Drawing.Point(202, 361);
@@ -547,7 +551,7 @@
             // 
             this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.backButton.ForeColor = System.Drawing.Color.Yellow;
-            this.backButton.Location = new System.Drawing.Point(623, 517);
+            this.backButton.Location = new System.Drawing.Point(650, 517);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(148, 51);
             this.backButton.TabIndex = 72;
@@ -557,6 +561,8 @@
             // 
             // cmbSecondaryEmail
             // 
+            this.cmbSecondaryEmail.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbSecondaryEmail.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbSecondaryEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSecondaryEmail.FormattingEnabled = true;
             this.cmbSecondaryEmail.Location = new System.Drawing.Point(233, 177);
@@ -577,6 +583,8 @@
             // 
             // cmbPrimaryEmail
             // 
+            this.cmbPrimaryEmail.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbPrimaryEmail.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbPrimaryEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPrimaryEmail.FormattingEnabled = true;
             this.cmbPrimaryEmail.Location = new System.Drawing.Point(233, 143);
@@ -623,6 +631,8 @@
             // 
             // cmbDesignation
             // 
+            this.cmbDesignation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDesignation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbDesignation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDesignation.FormattingEnabled = true;
             this.cmbDesignation.Location = new System.Drawing.Point(200, 243);
@@ -633,6 +643,8 @@
             // 
             // cmbCountry
             // 
+            this.cmbCountry.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbCountry.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCountry.FormattingEnabled = true;
             this.cmbCountry.Location = new System.Drawing.Point(199, 212);
@@ -1121,9 +1133,9 @@
             this.UpdateUserButton.BackColor = System.Drawing.Color.LightYellow;
             this.UpdateUserButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateUserButton.ForeColor = System.Drawing.Color.Blue;
-            this.UpdateUserButton.Location = new System.Drawing.Point(471, 517);
+            this.UpdateUserButton.Location = new System.Drawing.Point(488, 517);
             this.UpdateUserButton.Name = "UpdateUserButton";
-            this.UpdateUserButton.Size = new System.Drawing.Size(129, 53);
+            this.UpdateUserButton.Size = new System.Drawing.Size(146, 53);
             this.UpdateUserButton.TabIndex = 18;
             this.UpdateUserButton.Text = "UpdateUser";
             this.UpdateUserButton.UseVisualStyleBackColor = false;

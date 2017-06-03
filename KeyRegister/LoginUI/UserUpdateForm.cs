@@ -69,7 +69,7 @@ namespace KeyRegister.LoginUI
             apAddress.PerUserId = Convert.ToInt32(gUserId);
             apGateway.UpdatePermanantAddress(apAddress);
         }
-        private void PresentAddress()
+        private void ResetPresentAddress()
         {
             txtPreFlatNo.Clear();
             txtPreHouseNo.Clear();
@@ -85,27 +85,32 @@ namespace KeyRegister.LoginUI
             PerADistrictCombo.SelectedIndex = -1;
             PerADivisionCombo.SelectedIndex = -1;
         }
-        private void ResetPermanantAddress2()
+        public void ResetPermanantAddress()
         {
             txtPerFlatNo.Clear();
             txtPerHouseNo.Clear();
             txtPerRoadNo.Clear();
             txtPerBlock.Clear();
             txtPerArea.Clear();
+            txtPerLandMark.Clear();
             txtPerBuilding.Clear();
             txtPerRoadName.Clear();
-            txtPreLandMark.Clear();
+
             PerApostCodeText.Clear();
+            PerAPostOfficeCombo.Items.Clear();
             PerAPostOfficeCombo.SelectedIndex = -1;
+            PerAThanaCombo.Items.Clear();
             PerAThanaCombo.SelectedIndex = -1;
+            PerADistrictCombo.Items.Clear();
             PerADistrictCombo.SelectedIndex = -1;
+            PerADivisionCombo.Items.Clear();
             PerADivisionCombo.SelectedIndex = -1;
 
             SameAsPACheckBox.CheckedChanged -= SameAsPACheckBox_CheckedChanged;
             SameAsPACheckBox.Checked = false;
             SameAsPACheckBox.CheckedChanged += SameAsPACheckBox_CheckedChanged;
-
         }
+       
         private void Reset()
         {
            
@@ -113,28 +118,24 @@ namespace KeyRegister.LoginUI
             txtNickName.Clear();
             txtFatherName.Clear();
             txtMotherName.Clear();
-           
+            cmbPrimaryEmail.SelectedIndex = -1;
+            cmbSecondaryEmail.SelectedIndex = -1;
           
             cmbCountry.SelectedIndex = -1;
+            cmbCountry.Items.Clear();
             cmbDesignation.SelectedIndex = -1;
+            cmbDesignation.Items.Clear();
 
             cmbGender.SelectedIndex = -1;
             cmbMaritalStatus.SelectedIndex = -1;
             dateOfBirth.Value = DateTime.Today;
-            cmbCountry.SelectedIndex = -1;
 
-            cmbPrimaryEmail.SelectedIndex = -1;
-            cmbSecondaryEmail.SelectedIndex = -1;
-            txtBirthCertificatNo.Clear();
-            txtPassportNo.Clear();
+
             txtNationalId.Clear();
-            cmbCountry.SelectedIndex = -1;
-            cmbDesignation.SelectedIndex = -1;
-            cmbGender.SelectedIndex = -1;
-
-
-            PresentAddress();
-            ResetPermanantAddress2();
+            txtPassportNo.Clear();
+            txtBirthCertificatNo.Clear();                                 
+            ResetPresentAddress();
+            ResetPermanantAddress();
             if (cmbCountry.Text != "Bangladesh")
             {
                 txtStreetName.Clear();
@@ -195,18 +196,17 @@ namespace KeyRegister.LoginUI
                 auser.FatherName = txtFatherName.Text;
                 auser.MotherName = txtMotherName.Text;                
                 auser.CountryId = Convert.ToInt32(countryId);
-                auser.DesignationId = designationId;
-               // auser.EmailBankId = emailBankId;
+                auser.DesignationId = designationId;              
                 auser.NationalId = txtNationalId.Text;
                 auser.PassportNo = txtPassportNo.Text;
                 auser.BirthCertificateNo = txtBirthCertificatNo.Text;
                 auser.GenderId = genderId;
                 auser.MaritalStatusId = maritalStatusId;
-                auser.DateOfBirth = Convert.ToDateTime(dateOfBirth.Value,System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat);
-               // auser.DateOfBirth = dateOfBirth.Value;
+                auser.DateOfBirth = Convert.ToDateTime(dateOfBirth.Value,System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat);               
                 agGateway.UpdateUserInfo(auser);
                 UpdatePresentAddress();
                 UpdatePerManantAddress();
+                CheckStatusForUpdateEmail();
                 if (primaryEmailForCheck != cmbPrimaryEmail.Text)
                 {
                     UpdateUserEmail(userHostIdForPrimaryEmail, gUserId, true);
@@ -289,7 +289,7 @@ namespace KeyRegister.LoginUI
                 {
                     cmbCountry.Items.Add(rdr.GetValue(0).ToString());
                 }
-                //cmbCountry.Items.Add("Not In The List");
+                
             }
             catch (Exception ex)
             {
@@ -538,8 +538,10 @@ namespace KeyRegister.LoginUI
                 PADistrictCombo.SelectedIndex = -1;
                 PADistrictCombo.Items.Clear();
                 PAThanaCombo.SelectedIndex = -1;
+                PAThanaCombo.Items.Clear();
                 PAPostOfficeCombo.SelectedIndex = -1;
-                PAPostCodeText.Clear();
+                PAPostOfficeCombo.Items.Clear();
+                PAPostCodeText.Clear();                
                 PADistrictCombo.Enabled = true;
                 PADistrictCombo.Focus();
 
@@ -590,10 +592,11 @@ namespace KeyRegister.LoginUI
                 {
                     con.Close();
                 }
-                PADistrictCombo.Text = PADistrictCombo.Text.Trim();
+                PADistrictCombo.Text = PADistrictCombo.Text.Trim();                
+                PAThanaCombo.SelectedIndex = -1;
                 PAThanaCombo.Items.Clear();
-                PAThanaCombo.Text = "";
                 PAPostOfficeCombo.SelectedIndex = -1;
+                PAPostOfficeCombo.Items.Clear();
                 PAPostCodeText.Clear();
                 PAThanaCombo.Enabled = true;
                 PAThanaCombo.Focus();
@@ -742,7 +745,9 @@ namespace KeyRegister.LoginUI
                 PerADistrictCombo.SelectedIndex = -1;
                 PerADistrictCombo.Items.Clear();
                 PerAThanaCombo.SelectedIndex = -1;
+                PerAThanaCombo.Items.Clear();
                 PerAPostOfficeCombo.SelectedIndex = -1;
+                PerAPostOfficeCombo.Items.Clear();
                 PerApostCodeText.Clear();
                 PerADistrictCombo.Enabled = true;
                 PerADistrictCombo.Focus();
@@ -803,6 +808,7 @@ namespace KeyRegister.LoginUI
                 PerAThanaCombo.SelectedIndex = -1;
                 PerAThanaCombo.Items.Clear();
                 PerAPostOfficeCombo.SelectedIndex = -1;
+                PerAPostOfficeCombo.Items.Clear();
                 PerApostCodeText.Clear();
                 PerAThanaCombo.Enabled = true;
                 PerAThanaCombo.Focus();
@@ -857,9 +863,9 @@ namespace KeyRegister.LoginUI
                     con.Close();
                 }
 
-                PerAThanaCombo.Text = PerAThanaCombo.Text.Trim();
-                PerAPostOfficeCombo.Items.Clear();
+                PerAThanaCombo.Text = PerAThanaCombo.Text.Trim();               
                 PerAPostOfficeCombo.SelectedIndex = -1;
+                PerAPostOfficeCombo.Items.Clear();
                 PerApostCodeText.Clear();
                 PerAPostOfficeCombo.Enabled = true;
                 PerAPostOfficeCombo.Focus();
@@ -915,27 +921,7 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void ResetPermanantAddress()
-        {
-            txtPerFlatNo.Clear();
-            txtPerHouseNo.Clear();
-            txtPerRoadNo.Clear();
-            txtPerBlock.Clear();
-            txtPerArea.Clear();
-            txtPerLandMark.Clear();
-            txtPerBuilding.Clear();
-            txtPerRoadName.Clear();
-
-            PerApostCodeText.Clear();
-            PerAPostOfficeCombo.Items.Clear();
-            PerAPostOfficeCombo.SelectedIndex = -1;
-            PerAThanaCombo.Items.Clear();
-            PerAThanaCombo.SelectedIndex = -1;
-            PerADistrictCombo.Items.Clear();
-            PerADistrictCombo.SelectedIndex = -1;
-            PerADivisionCombo.Items.Clear();
-            PerADivisionCombo.SelectedIndex = -1;
-        }
+       
         private void SameAsPACheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (SameAsPACheckBox.Checked)
