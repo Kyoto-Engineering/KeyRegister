@@ -21,6 +21,8 @@ namespace KeyRegister.LoginUI
 {
     public partial class registrationByAdmin : Form
     {
+        const int kSplashUpdateInterval_ms = 50;
+        const int kMinAmountOfSplashTime_ms = 800;
         private SqlConnection con;
         private SqlCommand cmd;
         private SqlDataReader rdr,rdr1,rdr2;
@@ -33,7 +35,7 @@ namespace KeyRegister.LoginUI
         public DateTime myDate;
         public string dbUserFullName,dbEmailAddress,currentEmailAddress;
         public int dbUserId;
-
+        private delegate void ChangeFocusDelegate(Control ctl);
         public registrationByAdmin()
         {
             InitializeComponent();
@@ -1801,6 +1803,16 @@ namespace KeyRegister.LoginUI
         private void cmbPrimaryDomain_MouseLeave(object sender, EventArgs e)
        {
            
+        }
+
+        private void cmbPrimaryDomain_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(cmbPrimaryDomain.Text) && !cmbPrimaryDomain.Items.Contains(cmbPrimaryDomain.Text))
+            {
+                MessageBox.Show("Please Select A Valid Voucher No", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbPrimaryDomain.ResetText();
+               // this.BeginInvoke(new ChangeFocusDelegate(changeFocus), cmbPrimaryDomain);
+            }
         }
     }
 }

@@ -442,6 +442,7 @@
             this.cmbPrimaryDomain.Size = new System.Drawing.Size(116, 25);
             this.cmbPrimaryDomain.TabIndex = 56;
             this.cmbPrimaryDomain.SelectedIndexChanged += new System.EventHandler(this.cmbEmailAddress_SelectedIndexChanged);
+            this.cmbPrimaryDomain.Leave += new System.EventHandler(this.cmbPrimaryDomain_Leave);
             this.cmbPrimaryDomain.MouseLeave += new System.EventHandler(this.cmbPrimaryDomain_MouseLeave);
             // 
             // listView1
