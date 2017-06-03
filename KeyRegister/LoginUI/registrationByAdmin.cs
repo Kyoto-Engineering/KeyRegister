@@ -191,7 +191,8 @@ namespace KeyRegister.LoginUI
                     MaritalStatusId = maritalStatusId,
                     
                     DateOfBirth = Convert.ToDateTime(dateOfBirth.Value, System.Globalization.CultureInfo.GetCultureInfo("hi-IN").DateTimeFormat),
-                    Password = readyPassword
+                    Password = readyPassword,
+                    EmpStatus ="Active"
                 };
                 ig = auManager.SaveUserDetail(aUser);
                 GetMaxUserId();

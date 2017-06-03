@@ -168,5 +168,6 @@ namespace KeyRegister.DAO
             get { return exitDate; }
             set { exitDate = value; }
         }
+        public string EmpStatus { set; get; }
     }
 }

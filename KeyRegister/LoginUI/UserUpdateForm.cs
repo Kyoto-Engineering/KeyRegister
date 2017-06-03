@@ -119,7 +119,9 @@ namespace KeyRegister.LoginUI
             txtFatherName.Clear();
             txtMotherName.Clear();
             cmbPrimaryEmail.SelectedIndex = -1;
+            cmbPrimaryEmail.Items.Clear();
             cmbSecondaryEmail.SelectedIndex = -1;
+            cmbSecondaryEmail.Items.Clear();
           
             cmbCountry.SelectedIndex = -1;
             cmbCountry.Items.Clear();

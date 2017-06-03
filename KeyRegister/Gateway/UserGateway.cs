@@ -28,7 +28,7 @@ namespace KeyRegister.Gateway
         {
             conn = new SqlConnection(cs.DBConn);
             conn.Open();
-            string query =String.Format( "insert into Users(UserName,Password,EmployeeId,FullName,NickName,FatherName,MotherName,CountryId,DesignationId,NationalId,PassportNumber,BirthCertificateNumber,GenderId,MaritalStatusId,DateOfBirth) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d9,@d10,@d11,@d12,@d13,@d14,@d15,@d16)") + "SELECT CONVERT(int, SCOPE_IDENTITY())";
+            string query = String.Format("insert into Users(UserName,Password,EmployeeId,FullName,NickName,FatherName,MotherName,CountryId,DesignationId,NationalId,PassportNumber,BirthCertificateNumber,GenderId,MaritalStatusId,DateOfBirth,Statuss) Values(@d1,@d2,@d3,@d4,@d5,@d6,@d7,@d9,@d10,@d11,@d12,@d13,@d14,@d15,@d16,@d17)") + "SELECT CONVERT(int, SCOPE_IDENTITY())";
             cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@d1", aUser.UserName);
             cmd.Parameters.AddWithValue("@d2", aUser.Password);
@@ -65,7 +65,8 @@ namespace KeyRegister.Gateway
             {
                 cmd.Parameters.AddWithValue("@d16", aUser.DateOfBirth).Value = DBNull.Value;
                 
-            }                                   
+            }
+            cmd.Parameters.AddWithValue("@d17", aUser.EmpStatus);                     
             affectedRows1 = (int) cmd.ExecuteScalar();
             conn.Close();
             return affectedRows1;
