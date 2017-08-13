@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UploadUserImage));
             this.label1 = new System.Windows.Forms.Label();
             this.cmbUserName = new System.Windows.Forms.ComboBox();
             this.buttonUpload = new System.Windows.Forms.Button();
@@ -164,6 +165,7 @@
             this.Controls.Add(this.buttonUpload);
             this.Controls.Add(this.cmbUserName);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "UploadUserImage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

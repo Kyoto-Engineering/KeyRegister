@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserUpdateForm));
             this.PADivisionCombo = new System.Windows.Forms.ComboBox();
             this.PerAPostOfficeCombo = new System.Windows.Forms.ComboBox();
             this.PerAThanaCombo = new System.Windows.Forms.ComboBox();
@@ -1150,6 +1151,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.Color.White;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UserUpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserUpdateForm";

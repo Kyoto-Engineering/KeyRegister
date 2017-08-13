@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LocationManagementUI));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonLocationAllocation = new System.Windows.Forms.Button();
             this.buttonLocationInChargeCreation = new System.Windows.Forms.Button();
@@ -104,6 +105,7 @@
             this.ClientSize = new System.Drawing.Size(984, 611);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "LocationManagementUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

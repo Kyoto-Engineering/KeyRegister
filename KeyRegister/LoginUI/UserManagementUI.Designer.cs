@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserManagementUI));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonUpdateUser = new System.Windows.Forms.Button();
             this.buttonUserProfile = new System.Windows.Forms.Button();
             this.resetPasswordButton = new System.Windows.Forms.Button();
             this.createUserButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonUpdateUser = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +49,19 @@
             this.groupBox1.Size = new System.Drawing.Size(132, 472);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // buttonUpdateUser
+            // 
+            this.buttonUpdateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.buttonUpdateUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUpdateUser.ForeColor = System.Drawing.Color.Blue;
+            this.buttonUpdateUser.Location = new System.Drawing.Point(12, 188);
+            this.buttonUpdateUser.Name = "buttonUpdateUser";
+            this.buttonUpdateUser.Size = new System.Drawing.Size(107, 77);
+            this.buttonUpdateUser.TabIndex = 2;
+            this.buttonUpdateUser.Text = "Update  User";
+            this.buttonUpdateUser.UseVisualStyleBackColor = false;
+            this.buttonUpdateUser.Click += new System.EventHandler(this.buttonUpdateUser_Click);
             // 
             // buttonUserProfile
             // 
@@ -99,19 +113,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "User Management UI";
             // 
-            // buttonUpdateUser
-            // 
-            this.buttonUpdateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.buttonUpdateUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonUpdateUser.ForeColor = System.Drawing.Color.Blue;
-            this.buttonUpdateUser.Location = new System.Drawing.Point(12, 188);
-            this.buttonUpdateUser.Name = "buttonUpdateUser";
-            this.buttonUpdateUser.Size = new System.Drawing.Size(107, 77);
-            this.buttonUpdateUser.TabIndex = 2;
-            this.buttonUpdateUser.Text = "Update  User";
-            this.buttonUpdateUser.UseVisualStyleBackColor = false;
-            this.buttonUpdateUser.Click += new System.EventHandler(this.buttonUpdateUser_Click);
-            // 
             // UserManagementUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -120,6 +121,7 @@
             this.ClientSize = new System.Drawing.Size(931, 564);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UserManagementUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserManagementUI";
