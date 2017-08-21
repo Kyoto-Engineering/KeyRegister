@@ -196,6 +196,11 @@
       <DependentUpon>KeyHolderListReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\ListOfEmployees.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListOfEmployees.rpt</DependentUpon>
+    </Compile>
     <Compile Include="Reports\ListOfKeyHolder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -330,6 +335,10 @@
     <EmbeddedResource Include="Reports\KeyHolderListReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>KeyHolderListReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ListOfEmployees.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ListOfEmployees.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ListOfKeyHolder.resx">
       <DependentUpon>ListOfKeyHolder.cs</DependentUpon>
