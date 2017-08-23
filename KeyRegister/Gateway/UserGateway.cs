@@ -64,7 +64,11 @@ namespace KeyRegister.Gateway
             if (date == date1)
             {
                 cmd.Parameters.AddWithValue("@d16", aUser.DateOfBirth).Value = DBNull.Value;
-                
+
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@d16", aUser.DateOfBirth).Value = aUser.DateOfBirth.Value;
             }
             cmd.Parameters.AddWithValue("@d17", aUser.EmpStatus);                     
             affectedRows1 = (int) cmd.ExecuteScalar();
