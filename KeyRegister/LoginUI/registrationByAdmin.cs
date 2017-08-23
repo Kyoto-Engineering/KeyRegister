@@ -603,6 +603,14 @@ namespace KeyRegister.LoginUI
                             SavePresentAddress();
                             PermanantSameAsPreentAddress();
                             SaveContactNo();
+                            MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Reset();
+                            groupBox3.Visible = true;
+                            groupBox4.Visible = true;
+                            groupBox5.Enabled = true;
+                            label43.Visible = false;
+                            txtFormPassword.Visible = false;
+                            GetMaxUserId();
                         }
                         else
                         {
@@ -610,16 +618,17 @@ namespace KeyRegister.LoginUI
                             SavePresentAddress();
                             SavePermanantAddress();
                             SaveContactNo();
+                            MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Reset();
+                            groupBox3.Visible = true;
+                            groupBox4.Visible = true;
+                            groupBox5.Enabled = true;
+                            label43.Visible = false;
+                            txtFormPassword.Visible = false;
+                            GetMaxUserId();
                         }
                     }
-                    MessageBox.Show("Successfully Saved", "record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Reset();
-                    groupBox3.Visible = true;
-                    groupBox4.Visible = true;
-                    groupBox5.Enabled = true;
-                    label43.Visible = false;
-                    txtFormPassword.Visible = false;
-                    GetMaxUserId();
+                   
                 }
                 
                 
