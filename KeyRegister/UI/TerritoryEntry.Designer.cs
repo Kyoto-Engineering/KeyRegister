@@ -48,7 +48,7 @@
             this.label2.Location = new System.Drawing.Point(293, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(261, 33);
-            this.label2.TabIndex = 9;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Territory Creation";
             // 
             // txtTerritoryName
@@ -57,7 +57,7 @@
             this.txtTerritoryName.Location = new System.Drawing.Point(235, 136);
             this.txtTerritoryName.Name = "txtTerritoryName";
             this.txtTerritoryName.Size = new System.Drawing.Size(357, 31);
-            this.txtTerritoryName.TabIndex = 8;
+            this.txtTerritoryName.TabIndex = 1;
             // 
             // label1
             // 
@@ -77,7 +77,7 @@
             this.createButton.Location = new System.Drawing.Point(344, 255);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(175, 63);
-            this.createButton.TabIndex = 6;
+            this.createButton.TabIndex = 2;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = false;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
