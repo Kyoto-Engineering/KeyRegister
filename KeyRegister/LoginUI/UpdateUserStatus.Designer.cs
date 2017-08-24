@@ -99,6 +99,7 @@
             this.Name = "UpdateUserStatus";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateUserStatus";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UpdateUserStatus_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
