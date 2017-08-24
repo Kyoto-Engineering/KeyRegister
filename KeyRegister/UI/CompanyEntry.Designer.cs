@@ -63,7 +63,7 @@
             this.txtCompanyName.Location = new System.Drawing.Point(249, 104);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(340, 35);
-            this.txtCompanyName.TabIndex = 2;
+            this.txtCompanyName.TabIndex = 0;
             // 
             // createButton
             // 
@@ -73,7 +73,7 @@
             this.createButton.Location = new System.Drawing.Point(353, 165);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(176, 63);
-            this.createButton.TabIndex = 3;
+            this.createButton.TabIndex = 1;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = false;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
