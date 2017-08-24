@@ -49,7 +49,7 @@
             this.groupBox1.Location = new System.Drawing.Point(49, 59);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(541, 247);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
@@ -60,7 +60,7 @@
             this.cmbUserName.Location = new System.Drawing.Point(204, 43);
             this.cmbUserName.Name = "cmbUserName";
             this.cmbUserName.Size = new System.Drawing.Size(320, 40);
-            this.cmbUserName.TabIndex = 5;
+            this.cmbUserName.TabIndex = 0;
             // 
             // txtPassword
             // 
@@ -69,7 +69,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(320, 41);
-            this.txtPassword.TabIndex = 4;
+            this.txtPassword.TabIndex = 1;
             // 
             // label3
             // 
@@ -78,7 +78,7 @@
             this.label3.Location = new System.Drawing.Point(67, 103);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(162, 32);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 4;
             this.label3.Text = "Password   :";
             // 
             // label2
@@ -88,7 +88,7 @@
             this.label2.Location = new System.Drawing.Point(45, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(150, 32);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 3;
             this.label2.Text = "User Name";
             // 
             // createButton
@@ -99,7 +99,7 @@
             this.createButton.Location = new System.Drawing.Point(280, 159);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(179, 69);
-            this.createButton.TabIndex = 0;
+            this.createButton.TabIndex = 2;
             this.createButton.Text = "Reset";
             this.createButton.UseVisualStyleBackColor = false;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
