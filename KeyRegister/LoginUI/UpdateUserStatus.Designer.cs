@@ -72,7 +72,7 @@
             this.cmbStatus.Location = new System.Drawing.Point(192, 120);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(355, 41);
-            this.cmbStatus.TabIndex = 3;
+            this.cmbStatus.TabIndex = 1;
             // 
             // updateButton
             // 
@@ -80,7 +80,7 @@
             this.updateButton.Location = new System.Drawing.Point(292, 232);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(149, 61);
-            this.updateButton.TabIndex = 4;
+            this.updateButton.TabIndex = 2;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
