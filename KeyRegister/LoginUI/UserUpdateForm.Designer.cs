@@ -138,7 +138,7 @@
             this.PADivisionCombo.Location = new System.Drawing.Point(372, 16);
             this.PADivisionCombo.Name = "PADivisionCombo";
             this.PADivisionCombo.Size = new System.Drawing.Size(166, 27);
-            this.PADivisionCombo.TabIndex = 20;
+            this.PADivisionCombo.TabIndex = 6;
             this.PADivisionCombo.SelectedIndexChanged += new System.EventHandler(this.PADivisionCombo_SelectedIndexChanged);
             // 
             // PerAPostOfficeCombo
@@ -148,7 +148,7 @@
             this.PerAPostOfficeCombo.Location = new System.Drawing.Point(356, 101);
             this.PerAPostOfficeCombo.Name = "PerAPostOfficeCombo";
             this.PerAPostOfficeCombo.Size = new System.Drawing.Size(138, 27);
-            this.PerAPostOfficeCombo.TabIndex = 61;
+            this.PerAPostOfficeCombo.TabIndex = 9;
             this.PerAPostOfficeCombo.SelectedIndexChanged += new System.EventHandler(this.PerAPostOfficeCombo_SelectedIndexChanged);
             // 
             // PerAThanaCombo
@@ -158,7 +158,7 @@
             this.PerAThanaCombo.Location = new System.Drawing.Point(355, 71);
             this.PerAThanaCombo.Name = "PerAThanaCombo";
             this.PerAThanaCombo.Size = new System.Drawing.Size(140, 27);
-            this.PerAThanaCombo.TabIndex = 60;
+            this.PerAThanaCombo.TabIndex = 8;
             this.PerAThanaCombo.SelectedIndexChanged += new System.EventHandler(this.PerAThanaCombo_SelectedIndexChanged);
             // 
             // PerADivisionCombo
@@ -168,7 +168,7 @@
             this.PerADivisionCombo.Location = new System.Drawing.Point(354, 13);
             this.PerADivisionCombo.Name = "PerADivisionCombo";
             this.PerADivisionCombo.Size = new System.Drawing.Size(141, 27);
-            this.PerADivisionCombo.TabIndex = 59;
+            this.PerADivisionCombo.TabIndex = 6;
             this.PerADivisionCombo.SelectedIndexChanged += new System.EventHandler(this.PerADivisionCombo_SelectedIndexChanged);
             // 
             // PerADistrictCombo
@@ -178,7 +178,7 @@
             this.PerADistrictCombo.Location = new System.Drawing.Point(354, 42);
             this.PerADistrictCombo.Name = "PerADistrictCombo";
             this.PerADistrictCombo.Size = new System.Drawing.Size(141, 27);
-            this.PerADistrictCombo.TabIndex = 58;
+            this.PerADistrictCombo.TabIndex = 7;
             this.PerADistrictCombo.SelectedIndexChanged += new System.EventHandler(this.PerADistrictCombo_SelectedIndexChanged);
             // 
             // label3
@@ -238,7 +238,7 @@
             this.PerApostCodeText.Name = "PerApostCodeText";
             this.PerApostCodeText.ReadOnly = true;
             this.PerApostCodeText.Size = new System.Drawing.Size(138, 26);
-            this.PerApostCodeText.TabIndex = 47;
+            this.PerApostCodeText.TabIndex = 10;
             // 
             // label25
             // 
@@ -297,7 +297,7 @@
             this.PAPostCodeText.Name = "PAPostCodeText";
             this.PAPostCodeText.ReadOnly = true;
             this.PAPostCodeText.Size = new System.Drawing.Size(164, 26);
-            this.PAPostCodeText.TabIndex = 9;
+            this.PAPostCodeText.TabIndex = 10;
             // 
             // label9
             // 
@@ -307,7 +307,7 @@
             this.label9.Location = new System.Drawing.Point(402, 4);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(322, 26);
-            this.label9.TabIndex = 21;
+            this.label9.TabIndex = 0;
             this.label9.Text = "Edit  User Information Details";
             // 
             // txtBirthCertificatNo
@@ -316,7 +316,7 @@
             this.txtBirthCertificatNo.Location = new System.Drawing.Point(202, 332);
             this.txtBirthCertificatNo.Name = "txtBirthCertificatNo";
             this.txtBirthCertificatNo.Size = new System.Drawing.Size(242, 23);
-            this.txtBirthCertificatNo.TabIndex = 39;
+            this.txtBirthCertificatNo.TabIndex = 10;
             // 
             // label15
             // 
@@ -374,7 +374,7 @@
             this.txtPassportNo.Location = new System.Drawing.Point(202, 303);
             this.txtPassportNo.Name = "txtPassportNo";
             this.txtPassportNo.Size = new System.Drawing.Size(242, 23);
-            this.txtPassportNo.TabIndex = 33;
+            this.txtPassportNo.TabIndex = 9;
             // 
             // txtMotherName
             // 
@@ -382,7 +382,7 @@
             this.txtMotherName.Location = new System.Drawing.Point(199, 112);
             this.txtMotherName.Name = "txtMotherName";
             this.txtMotherName.Size = new System.Drawing.Size(244, 24);
-            this.txtMotherName.TabIndex = 29;
+            this.txtMotherName.TabIndex = 3;
             // 
             // label5
             // 
@@ -411,7 +411,7 @@
             this.PADistrictCombo.Location = new System.Drawing.Point(372, 45);
             this.PADistrictCombo.Name = "PADistrictCombo";
             this.PADistrictCombo.Size = new System.Drawing.Size(166, 27);
-            this.PADistrictCombo.TabIndex = 20;
+            this.PADistrictCombo.TabIndex = 7;
             this.PADistrictCombo.SelectedIndexChanged += new System.EventHandler(this.PADistrictCombo_SelectedIndexChanged);
             // 
             // dateOfBirth
@@ -421,7 +421,7 @@
             this.dateOfBirth.Location = new System.Drawing.Point(203, 421);
             this.dateOfBirth.Name = "dateOfBirth";
             this.dateOfBirth.Size = new System.Drawing.Size(241, 26);
-            this.dateOfBirth.TabIndex = 64;
+            this.dateOfBirth.TabIndex = 13;
             // 
             // label42
             // 
@@ -442,7 +442,7 @@
             this.cmbMaritalStatus.Location = new System.Drawing.Point(203, 390);
             this.cmbMaritalStatus.Name = "cmbMaritalStatus";
             this.cmbMaritalStatus.Size = new System.Drawing.Size(241, 25);
-            this.cmbMaritalStatus.TabIndex = 62;
+            this.cmbMaritalStatus.TabIndex = 12;
             this.cmbMaritalStatus.SelectedIndexChanged += new System.EventHandler(this.cmbMaritalStatus_SelectedIndexChanged);
             // 
             // label41
@@ -464,7 +464,7 @@
             this.cmbGender.Location = new System.Drawing.Point(202, 361);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(241, 25);
-            this.cmbGender.TabIndex = 60;
+            this.cmbGender.TabIndex = 11;
             this.cmbGender.SelectedIndexChanged += new System.EventHandler(this.cmbGender_SelectedIndexChanged);
             // 
             // label40
@@ -493,7 +493,7 @@
             this.txtNickName.Location = new System.Drawing.Point(198, 52);
             this.txtNickName.Name = "txtNickName";
             this.txtNickName.Size = new System.Drawing.Size(244, 23);
-            this.txtNickName.TabIndex = 58;
+            this.txtNickName.TabIndex = 1;
             // 
             // txtFatherName
             // 
@@ -501,7 +501,7 @@
             this.txtFatherName.Location = new System.Drawing.Point(198, 82);
             this.txtFatherName.Name = "txtFatherName";
             this.txtFatherName.Size = new System.Drawing.Size(245, 23);
-            this.txtFatherName.TabIndex = 51;
+            this.txtFatherName.TabIndex = 2;
             // 
             // groupBox1
             // 
@@ -543,7 +543,7 @@
             this.groupBox1.Location = new System.Drawing.Point(13, 29);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1012, 584);
-            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User Information";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -555,7 +555,7 @@
             this.backButton.Location = new System.Drawing.Point(650, 517);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(148, 51);
-            this.backButton.TabIndex = 72;
+            this.backButton.TabIndex = 18;
             this.backButton.Text = "Back to Grid";
             this.backButton.UseVisualStyleBackColor = false;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
@@ -569,7 +569,7 @@
             this.cmbSecondaryEmail.Location = new System.Drawing.Point(233, 177);
             this.cmbSecondaryEmail.Name = "cmbSecondaryEmail";
             this.cmbSecondaryEmail.Size = new System.Drawing.Size(209, 25);
-            this.cmbSecondaryEmail.TabIndex = 71;
+            this.cmbSecondaryEmail.TabIndex = 5;
             this.cmbSecondaryEmail.SelectedIndexChanged += new System.EventHandler(this.cmbSecondaryEmail_SelectedIndexChanged);
             // 
             // label6
@@ -591,7 +591,7 @@
             this.cmbPrimaryEmail.Location = new System.Drawing.Point(233, 143);
             this.cmbPrimaryEmail.Name = "cmbPrimaryEmail";
             this.cmbPrimaryEmail.Size = new System.Drawing.Size(209, 25);
-            this.cmbPrimaryEmail.TabIndex = 69;
+            this.cmbPrimaryEmail.TabIndex = 4;
             this.cmbPrimaryEmail.SelectedIndexChanged += new System.EventHandler(this.cmbPrimaryEmail_SelectedIndexChanged);
             // 
             // label1
@@ -620,7 +620,7 @@
             this.txtNationalId.Location = new System.Drawing.Point(201, 274);
             this.txtNationalId.Name = "txtNationalId";
             this.txtNationalId.Size = new System.Drawing.Size(242, 23);
-            this.txtNationalId.TabIndex = 66;
+            this.txtNationalId.TabIndex = 8;
             // 
             // txtFullName
             // 
@@ -628,7 +628,7 @@
             this.txtFullName.Location = new System.Drawing.Point(199, 22);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(244, 23);
-            this.txtFullName.TabIndex = 50;
+            this.txtFullName.TabIndex = 0;
             // 
             // cmbDesignation
             // 
@@ -639,7 +639,7 @@
             this.cmbDesignation.Location = new System.Drawing.Point(200, 243);
             this.cmbDesignation.Name = "cmbDesignation";
             this.cmbDesignation.Size = new System.Drawing.Size(244, 25);
-            this.cmbDesignation.TabIndex = 49;
+            this.cmbDesignation.TabIndex = 7;
             this.cmbDesignation.SelectedIndexChanged += new System.EventHandler(this.cmbDesignation_SelectedIndexChanged);
             // 
             // cmbCountry
@@ -651,7 +651,7 @@
             this.cmbCountry.Location = new System.Drawing.Point(199, 212);
             this.cmbCountry.Name = "cmbCountry";
             this.cmbCountry.Size = new System.Drawing.Size(244, 25);
-            this.cmbCountry.TabIndex = 48;
+            this.cmbCountry.TabIndex = 6;
             this.cmbCountry.SelectedIndexChanged += new System.EventHandler(this.cmbCountry_SelectedIndexChanged);
             // 
             // groupBox4
@@ -667,7 +667,7 @@
             this.groupBox4.Location = new System.Drawing.Point(49, 449);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(406, 122);
-            this.groupBox4.TabIndex = 47;
+            this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Overseas Address";
             // 
@@ -677,7 +677,7 @@
             this.txtPostalCode.Location = new System.Drawing.Point(150, 81);
             this.txtPostalCode.Name = "txtPostalCode";
             this.txtPostalCode.Size = new System.Drawing.Size(243, 29);
-            this.txtPostalCode.TabIndex = 8;
+            this.txtPostalCode.TabIndex = 2;
             // 
             // txtState
             // 
@@ -685,7 +685,7 @@
             this.txtState.Location = new System.Drawing.Point(150, 47);
             this.txtState.Name = "txtState";
             this.txtState.Size = new System.Drawing.Size(243, 29);
-            this.txtState.TabIndex = 7;
+            this.txtState.TabIndex = 1;
             // 
             // txtStreetName
             // 
@@ -693,7 +693,7 @@
             this.txtStreetName.Location = new System.Drawing.Point(150, 15);
             this.txtStreetName.Name = "txtStreetName";
             this.txtStreetName.Size = new System.Drawing.Size(243, 29);
-            this.txtStreetName.TabIndex = 6;
+            this.txtStreetName.TabIndex = 0;
             // 
             // label37
             // 
@@ -734,7 +734,7 @@
             this.groupBox3.Location = new System.Drawing.Point(461, 248);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(536, 263);
-            this.groupBox3.TabIndex = 46;
+            this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Permanent Address";
             // 
@@ -769,7 +769,7 @@
             this.groupBox5.Location = new System.Drawing.Point(10, 35);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(520, 219);
-            this.groupBox5.TabIndex = 41;
+            this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             // 
             // txtPerLandMark
@@ -778,7 +778,7 @@
             this.txtPerLandMark.Location = new System.Drawing.Point(357, 186);
             this.txtPerLandMark.Name = "txtPerLandMark";
             this.txtPerLandMark.Size = new System.Drawing.Size(138, 26);
-            this.txtPerLandMark.TabIndex = 112;
+            this.txtPerLandMark.TabIndex = 12;
             // 
             // label45
             // 
@@ -806,7 +806,7 @@
             this.txtPerArea.Location = new System.Drawing.Point(357, 157);
             this.txtPerArea.Name = "txtPerArea";
             this.txtPerArea.Size = new System.Drawing.Size(138, 26);
-            this.txtPerArea.TabIndex = 110;
+            this.txtPerArea.TabIndex = 11;
             // 
             // txtPerBuilding
             // 
@@ -814,7 +814,7 @@
             this.txtPerBuilding.Location = new System.Drawing.Point(116, 74);
             this.txtPerBuilding.Name = "txtPerBuilding";
             this.txtPerBuilding.Size = new System.Drawing.Size(152, 26);
-            this.txtPerBuilding.TabIndex = 108;
+            this.txtPerBuilding.TabIndex = 2;
             // 
             // label46
             // 
@@ -832,7 +832,7 @@
             this.txtPerHouseNo.Location = new System.Drawing.Point(116, 45);
             this.txtPerHouseNo.Name = "txtPerHouseNo";
             this.txtPerHouseNo.Size = new System.Drawing.Size(152, 26);
-            this.txtPerHouseNo.TabIndex = 106;
+            this.txtPerHouseNo.TabIndex = 1;
             // 
             // label47
             // 
@@ -890,7 +890,7 @@
             this.txtPerBlock.Location = new System.Drawing.Point(118, 162);
             this.txtPerBlock.Name = "txtPerBlock";
             this.txtPerBlock.Size = new System.Drawing.Size(150, 26);
-            this.txtPerBlock.TabIndex = 101;
+            this.txtPerBlock.TabIndex = 5;
             // 
             // txtPerRoadName
             // 
@@ -898,7 +898,7 @@
             this.txtPerRoadName.Location = new System.Drawing.Point(118, 132);
             this.txtPerRoadName.Name = "txtPerRoadName";
             this.txtPerRoadName.Size = new System.Drawing.Size(150, 26);
-            this.txtPerRoadName.TabIndex = 100;
+            this.txtPerRoadName.TabIndex = 4;
             // 
             // txtPerRoadNo
             // 
@@ -906,7 +906,7 @@
             this.txtPerRoadNo.Location = new System.Drawing.Point(117, 102);
             this.txtPerRoadNo.Name = "txtPerRoadNo";
             this.txtPerRoadNo.Size = new System.Drawing.Size(151, 26);
-            this.txtPerRoadNo.TabIndex = 99;
+            this.txtPerRoadNo.TabIndex = 3;
             // 
             // txtPerFlatNo
             // 
@@ -914,7 +914,7 @@
             this.txtPerFlatNo.Location = new System.Drawing.Point(116, 16);
             this.txtPerFlatNo.Name = "txtPerFlatNo";
             this.txtPerFlatNo.Size = new System.Drawing.Size(151, 26);
-            this.txtPerFlatNo.TabIndex = 98;
+            this.txtPerFlatNo.TabIndex = 0;
             // 
             // SameAsPACheckBox
             // 
@@ -923,7 +923,7 @@
             this.SameAsPACheckBox.Location = new System.Drawing.Point(237, 12);
             this.SameAsPACheckBox.Name = "SameAsPACheckBox";
             this.SameAsPACheckBox.Size = new System.Drawing.Size(199, 23);
-            this.SameAsPACheckBox.TabIndex = 40;
+            this.SameAsPACheckBox.TabIndex = 0;
             this.SameAsPACheckBox.Text = "Same As Present Address";
             this.SameAsPACheckBox.UseVisualStyleBackColor = true;
             this.SameAsPACheckBox.CheckedChanged += new System.EventHandler(this.SameAsPACheckBox_CheckedChanged);
@@ -961,7 +961,7 @@
             this.groupBox2.Location = new System.Drawing.Point(450, 10);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(547, 232);
-            this.groupBox2.TabIndex = 45;
+            this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Present Address";
             // 
@@ -971,7 +971,7 @@
             this.txtPreLandMark.Location = new System.Drawing.Point(374, 196);
             this.txtPreLandMark.Name = "txtPreLandMark";
             this.txtPreLandMark.Size = new System.Drawing.Size(164, 26);
-            this.txtPreLandMark.TabIndex = 108;
+            this.txtPreLandMark.TabIndex = 12;
             // 
             // label64
             // 
@@ -999,7 +999,7 @@
             this.txtPreArea.Location = new System.Drawing.Point(373, 165);
             this.txtPreArea.Name = "txtPreArea";
             this.txtPreArea.Size = new System.Drawing.Size(165, 26);
-            this.txtPreArea.TabIndex = 106;
+            this.txtPreArea.TabIndex = 11;
             // 
             // txtPreBuildingName
             // 
@@ -1007,7 +1007,7 @@
             this.txtPreBuildingName.Location = new System.Drawing.Point(112, 77);
             this.txtPreBuildingName.Name = "txtPreBuildingName";
             this.txtPreBuildingName.Size = new System.Drawing.Size(162, 26);
-            this.txtPreBuildingName.TabIndex = 104;
+            this.txtPreBuildingName.TabIndex = 2;
             // 
             // label62
             // 
@@ -1025,7 +1025,7 @@
             this.txtPreHouseNo.Location = new System.Drawing.Point(112, 49);
             this.txtPreHouseNo.Name = "txtPreHouseNo";
             this.txtPreHouseNo.Size = new System.Drawing.Size(162, 26);
-            this.txtPreHouseNo.TabIndex = 102;
+            this.txtPreHouseNo.TabIndex = 1;
             // 
             // label44
             // 
@@ -1083,7 +1083,7 @@
             this.txtPreBlock.Location = new System.Drawing.Point(112, 165);
             this.txtPreBlock.Name = "txtPreBlock";
             this.txtPreBlock.Size = new System.Drawing.Size(162, 26);
-            this.txtPreBlock.TabIndex = 97;
+            this.txtPreBlock.TabIndex = 5;
             // 
             // txtPreRoadName
             // 
@@ -1091,7 +1091,7 @@
             this.txtPreRoadName.Location = new System.Drawing.Point(112, 135);
             this.txtPreRoadName.Name = "txtPreRoadName";
             this.txtPreRoadName.Size = new System.Drawing.Size(163, 26);
-            this.txtPreRoadName.TabIndex = 96;
+            this.txtPreRoadName.TabIndex = 4;
             // 
             // txtPreRoadNo
             // 
@@ -1099,7 +1099,7 @@
             this.txtPreRoadNo.Location = new System.Drawing.Point(112, 106);
             this.txtPreRoadNo.Name = "txtPreRoadNo";
             this.txtPreRoadNo.Size = new System.Drawing.Size(163, 26);
-            this.txtPreRoadNo.TabIndex = 95;
+            this.txtPreRoadNo.TabIndex = 3;
             // 
             // txtPreFlatNo
             // 
@@ -1107,7 +1107,7 @@
             this.txtPreFlatNo.Location = new System.Drawing.Point(112, 20);
             this.txtPreFlatNo.Name = "txtPreFlatNo";
             this.txtPreFlatNo.Size = new System.Drawing.Size(162, 26);
-            this.txtPreFlatNo.TabIndex = 94;
+            this.txtPreFlatNo.TabIndex = 0;
             // 
             // PAPostOfficeCombo
             // 
@@ -1116,7 +1116,7 @@
             this.PAPostOfficeCombo.Location = new System.Drawing.Point(373, 103);
             this.PAPostOfficeCombo.Name = "PAPostOfficeCombo";
             this.PAPostOfficeCombo.Size = new System.Drawing.Size(165, 27);
-            this.PAPostOfficeCombo.TabIndex = 20;
+            this.PAPostOfficeCombo.TabIndex = 9;
             this.PAPostOfficeCombo.SelectedIndexChanged += new System.EventHandler(this.PAPostOfficeCombo_SelectedIndexChanged);
             // 
             // PAThanaCombo
@@ -1126,7 +1126,7 @@
             this.PAThanaCombo.Location = new System.Drawing.Point(373, 74);
             this.PAThanaCombo.Name = "PAThanaCombo";
             this.PAThanaCombo.Size = new System.Drawing.Size(165, 27);
-            this.PAThanaCombo.TabIndex = 20;
+            this.PAThanaCombo.TabIndex = 8;
             this.PAThanaCombo.SelectedIndexChanged += new System.EventHandler(this.PAThanaCombo_SelectedIndexChanged);
             // 
             // UpdateUserButton
@@ -1137,7 +1137,7 @@
             this.UpdateUserButton.Location = new System.Drawing.Point(488, 517);
             this.UpdateUserButton.Name = "UpdateUserButton";
             this.UpdateUserButton.Size = new System.Drawing.Size(146, 53);
-            this.UpdateUserButton.TabIndex = 18;
+            this.UpdateUserButton.TabIndex = 17;
             this.UpdateUserButton.Text = "UpdateUser";
             this.UpdateUserButton.UseVisualStyleBackColor = false;
             this.UpdateUserButton.Click += new System.EventHandler(this.createUserButton_Click);
