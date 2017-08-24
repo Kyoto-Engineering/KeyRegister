@@ -42,5 +42,11 @@ namespace KeyRegister.LoginUI
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void UpdateUserStatus_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            updateButton_Click(this, new EventArgs());
+        }
     }
 }
