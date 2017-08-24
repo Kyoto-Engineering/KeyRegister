@@ -128,7 +128,7 @@
             this.saveButton.Location = new System.Drawing.Point(544, 591);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(99, 55);
-            this.saveButton.TabIndex = 4;
+            this.saveButton.TabIndex = 14;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -141,7 +141,7 @@
             this.label1.Location = new System.Drawing.Point(570, -2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(217, 36);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 13;
             this.label1.Text = "Key Allocation";
             // 
             // txtUserId
@@ -151,7 +151,7 @@
             this.txtUserId.Name = "txtUserId";
             this.txtUserId.ReadOnly = true;
             this.txtUserId.Size = new System.Drawing.Size(249, 29);
-            this.txtUserId.TabIndex = 82;
+            this.txtUserId.TabIndex = 10;
             // 
             // txtLockId
             // 
@@ -160,7 +160,7 @@
             this.txtLockId.Name = "txtLockId";
             this.txtLockId.ReadOnly = true;
             this.txtLockId.Size = new System.Drawing.Size(249, 29);
-            this.txtLockId.TabIndex = 81;
+            this.txtLockId.TabIndex = 7;
             // 
             // label17
             // 
@@ -179,7 +179,7 @@
             this.txtPropertyId.Name = "txtPropertyId";
             this.txtPropertyId.ReadOnly = true;
             this.txtPropertyId.Size = new System.Drawing.Size(249, 29);
-            this.txtPropertyId.TabIndex = 77;
+            this.txtPropertyId.TabIndex = 5;
             // 
             // label2
             // 
@@ -198,7 +198,7 @@
             this.label7.Location = new System.Drawing.Point(49, 75);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(111, 24);
-            this.label7.TabIndex = 75;
+            this.label7.TabIndex = 15;
             this.label7.Text = "Territory Id";
             // 
             // label6
@@ -218,7 +218,7 @@
             this.txtTerritoryName.Name = "txtTerritoryName";
             this.txtTerritoryName.ReadOnly = true;
             this.txtTerritoryName.Size = new System.Drawing.Size(249, 29);
-            this.txtTerritoryName.TabIndex = 73;
+            this.txtTerritoryName.TabIndex = 2;
             // 
             // txtTerritoryId
             // 
@@ -227,7 +227,7 @@
             this.txtTerritoryId.Name = "txtTerritoryId";
             this.txtTerritoryId.ReadOnly = true;
             this.txtTerritoryId.Size = new System.Drawing.Size(249, 29);
-            this.txtTerritoryId.TabIndex = 72;
+            this.txtTerritoryId.TabIndex = 1;
             // 
             // txtLocationName
             // 
@@ -236,7 +236,7 @@
             this.txtLocationName.Name = "txtLocationName";
             this.txtLocationName.ReadOnly = true;
             this.txtLocationName.Size = new System.Drawing.Size(249, 29);
-            this.txtLocationName.TabIndex = 71;
+            this.txtLocationName.TabIndex = 4;
             // 
             // txtLocationId
             // 
@@ -245,7 +245,7 @@
             this.txtLocationId.Name = "txtLocationId";
             this.txtLocationId.ReadOnly = true;
             this.txtLocationId.Size = new System.Drawing.Size(249, 29);
-            this.txtLocationId.TabIndex = 70;
+            this.txtLocationId.TabIndex = 3;
             // 
             // txtPropertyName
             // 
@@ -254,7 +254,7 @@
             this.txtPropertyName.Name = "txtPropertyName";
             this.txtPropertyName.ReadOnly = true;
             this.txtPropertyName.Size = new System.Drawing.Size(249, 29);
-            this.txtPropertyName.TabIndex = 69;
+            this.txtPropertyName.TabIndex = 6;
             // 
             // label5
             // 
@@ -303,7 +303,7 @@
             this.txtLockNo.Name = "txtLockNo";
             this.txtLockNo.ReadOnly = true;
             this.txtLockNo.Size = new System.Drawing.Size(249, 29);
-            this.txtLockNo.TabIndex = 64;
+            this.txtLockNo.TabIndex = 8;
             // 
             // label10
             // 
@@ -322,7 +322,7 @@
             this.txtKeyId.Name = "txtKeyId";
             this.txtKeyId.ReadOnly = true;
             this.txtKeyId.Size = new System.Drawing.Size(249, 29);
-            this.txtKeyId.TabIndex = 83;
+            this.txtKeyId.TabIndex = 9;
             // 
             // label3
             // 
@@ -751,7 +751,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.ReadOnly = true;
             this.txtUserName.Size = new System.Drawing.Size(249, 29);
-            this.txtUserName.TabIndex = 97;
+            this.txtUserName.TabIndex = 11;
             // 
             // label16
             // 
@@ -770,7 +770,7 @@
             this.txtEmployeeId.Name = "txtEmployeeId";
             this.txtEmployeeId.ReadOnly = true;
             this.txtEmployeeId.Size = new System.Drawing.Size(249, 29);
-            this.txtEmployeeId.TabIndex = 99;
+            this.txtEmployeeId.TabIndex = 12;
             // 
             // label18
             // 
@@ -810,7 +810,7 @@
             this.txtAssignedDate.Location = new System.Drawing.Point(185, 499);
             this.txtAssignedDate.Name = "txtAssignedDate";
             this.txtAssignedDate.Size = new System.Drawing.Size(249, 31);
-            this.txtAssignedDate.TabIndex = 102;
+            this.txtAssignedDate.TabIndex = 13;
             // 
             // label21
             // 

@@ -71,7 +71,7 @@
             this.buttonUserProfile.Location = new System.Drawing.Point(12, 98);
             this.buttonUserProfile.Name = "buttonUserProfile";
             this.buttonUserProfile.Size = new System.Drawing.Size(107, 84);
-            this.buttonUserProfile.TabIndex = 2;
+            this.buttonUserProfile.TabIndex = 1;
             this.buttonUserProfile.Text = "Upload User Profile";
             this.buttonUserProfile.UseVisualStyleBackColor = false;
             this.buttonUserProfile.Click += new System.EventHandler(this.buttonUserProfile_Click);
@@ -84,7 +84,7 @@
             this.resetPasswordButton.Location = new System.Drawing.Point(12, 281);
             this.resetPasswordButton.Name = "resetPasswordButton";
             this.resetPasswordButton.Size = new System.Drawing.Size(107, 72);
-            this.resetPasswordButton.TabIndex = 1;
+            this.resetPasswordButton.TabIndex = 3;
             this.resetPasswordButton.Text = "Reset Password";
             this.resetPasswordButton.UseVisualStyleBackColor = false;
             this.resetPasswordButton.Click += new System.EventHandler(this.resetPasswordButton_Click);

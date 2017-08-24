@@ -63,7 +63,7 @@
             this.cmbUserName.Location = new System.Drawing.Point(192, 21);
             this.cmbUserName.Name = "cmbUserName";
             this.cmbUserName.Size = new System.Drawing.Size(328, 39);
-            this.cmbUserName.TabIndex = 1;
+            this.cmbUserName.TabIndex = 0;
             this.cmbUserName.SelectedIndexChanged += new System.EventHandler(this.cmbUserName_SelectedIndexChanged);
             // 
             // buttonUpload
@@ -74,7 +74,7 @@
             this.buttonUpload.Location = new System.Drawing.Point(408, 366);
             this.buttonUpload.Name = "buttonUpload";
             this.buttonUpload.Size = new System.Drawing.Size(147, 72);
-            this.buttonUpload.TabIndex = 4;
+            this.buttonUpload.TabIndex = 3;
             this.buttonUpload.Text = "Upload";
             this.buttonUpload.UseVisualStyleBackColor = false;
             this.buttonUpload.Click += new System.EventHandler(this.buttonUpload_Click);
@@ -87,7 +87,7 @@
             this.buttonBrowse.Location = new System.Drawing.Point(599, 366);
             this.buttonBrowse.Name = "buttonBrowse";
             this.buttonBrowse.Size = new System.Drawing.Size(226, 47);
-            this.buttonBrowse.TabIndex = 5;
+            this.buttonBrowse.TabIndex = 2;
             this.buttonBrowse.Text = "Browse";
             this.buttonBrowse.UseVisualStyleBackColor = false;
             this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
@@ -127,7 +127,7 @@
             this.buttonSignature.Location = new System.Drawing.Point(273, 232);
             this.buttonSignature.Name = "buttonSignature";
             this.buttonSignature.Size = new System.Drawing.Size(204, 47);
-            this.buttonSignature.TabIndex = 13;
+            this.buttonSignature.TabIndex = 1;
             this.buttonSignature.Text = "Browse";
             this.buttonSignature.UseVisualStyleBackColor = false;
             this.buttonSignature.Click += new System.EventHandler(this.buttonSignature_Click);

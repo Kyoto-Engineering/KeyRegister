@@ -65,7 +65,7 @@
             this.label1.Location = new System.Drawing.Point(464, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(476, 37);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Territory Manager Assignment";
             // 
             // label3
@@ -86,7 +86,7 @@
             this.txtAssignedDate.Location = new System.Drawing.Point(262, 293);
             this.txtAssignedDate.Name = "txtAssignedDate";
             this.txtAssignedDate.Size = new System.Drawing.Size(306, 29);
-            this.txtAssignedDate.TabIndex = 16;
+            this.txtAssignedDate.TabIndex = 5;
             // 
             // label4
             // 
@@ -152,7 +152,7 @@
             this.saveButton.Location = new System.Drawing.Point(397, 371);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(171, 69);
-            this.saveButton.TabIndex = 10;
+            this.saveButton.TabIndex = 6;
             this.saveButton.Text = "Submit";
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -204,7 +204,7 @@
             this.txtTerritoryManager.Name = "txtTerritoryManager";
             this.txtTerritoryManager.ReadOnly = true;
             this.txtTerritoryManager.Size = new System.Drawing.Size(306, 29);
-            this.txtTerritoryManager.TabIndex = 19;
+            this.txtTerritoryManager.TabIndex = 2;
             this.txtTerritoryManager.TextChanged += new System.EventHandler(this.txtTerritoryManager_TextChanged);
             // 
             // txtTerritoryName
@@ -214,7 +214,7 @@
             this.txtTerritoryName.Name = "txtTerritoryName";
             this.txtTerritoryName.ReadOnly = true;
             this.txtTerritoryName.Size = new System.Drawing.Size(306, 29);
-            this.txtTerritoryName.TabIndex = 20;
+            this.txtTerritoryName.TabIndex = 1;
             this.txtTerritoryName.TextChanged += new System.EventHandler(this.txtTerritoryName_TextChanged);
             // 
             // txtEmployeeId
@@ -224,7 +224,7 @@
             this.txtEmployeeId.Name = "txtEmployeeId";
             this.txtEmployeeId.ReadOnly = true;
             this.txtEmployeeId.Size = new System.Drawing.Size(306, 29);
-            this.txtEmployeeId.TabIndex = 24;
+            this.txtEmployeeId.TabIndex = 3;
             // 
             // label6
             // 
@@ -244,7 +244,7 @@
             this.txtUserId.Name = "txtUserId";
             this.txtUserId.ReadOnly = true;
             this.txtUserId.Size = new System.Drawing.Size(306, 29);
-            this.txtUserId.TabIndex = 26;
+            this.txtUserId.TabIndex = 4;
             // 
             // label7
             // 

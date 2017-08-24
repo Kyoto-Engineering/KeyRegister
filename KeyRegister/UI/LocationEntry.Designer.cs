@@ -77,7 +77,7 @@
             this.txtLocation.Location = new System.Drawing.Point(225, 201);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(309, 41);
-            this.txtLocation.TabIndex = 2;
+            this.txtLocation.TabIndex = 3;
             // 
             // createButton
             // 
@@ -87,7 +87,7 @@
             this.createButton.Location = new System.Drawing.Point(395, 305);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(154, 62);
-            this.createButton.TabIndex = 3;
+            this.createButton.TabIndex = 4;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = false;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
@@ -99,7 +99,7 @@
             this.txtTerritoriId.Name = "txtTerritoriId";
             this.txtTerritoriId.ReadOnly = true;
             this.txtTerritoriId.Size = new System.Drawing.Size(309, 41);
-            this.txtTerritoriId.TabIndex = 5;
+            this.txtTerritoriId.TabIndex = 1;
             this.txtTerritoriId.TextChanged += new System.EventHandler(this.txtTerritoriId_TextChanged);
             // 
             // label3
@@ -119,7 +119,7 @@
             this.txtTerritoriName.Name = "txtTerritoriName";
             this.txtTerritoriName.ReadOnly = true;
             this.txtTerritoriName.Size = new System.Drawing.Size(309, 41);
-            this.txtTerritoriName.TabIndex = 7;
+            this.txtTerritoriName.TabIndex = 2;
             // 
             // label4
             // 

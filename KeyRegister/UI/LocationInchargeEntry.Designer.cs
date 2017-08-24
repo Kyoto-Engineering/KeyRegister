@@ -104,7 +104,7 @@
             this.createButton.Location = new System.Drawing.Point(499, 498);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(173, 70);
-            this.createButton.TabIndex = 5;
+            this.createButton.TabIndex = 8;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = false;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
@@ -126,7 +126,7 @@
             this.dateOfAssignDate.Location = new System.Drawing.Point(291, 250);
             this.dateOfAssignDate.Name = "dateOfAssignDate";
             this.dateOfAssignDate.Size = new System.Drawing.Size(303, 35);
-            this.dateOfAssignDate.TabIndex = 9;
+            this.dateOfAssignDate.TabIndex = 5;
             // 
             // groupBox1
             // 
@@ -272,7 +272,7 @@
             this.txtTerritoryId.Name = "txtTerritoryId";
             this.txtTerritoryId.ReadOnly = true;
             this.txtTerritoryId.Size = new System.Drawing.Size(303, 29);
-            this.txtTerritoryId.TabIndex = 17;
+            this.txtTerritoryId.TabIndex = 1;
             // 
             // txtTerritoryName
             // 
@@ -281,7 +281,7 @@
             this.txtTerritoryName.Name = "txtTerritoryName";
             this.txtTerritoryName.ReadOnly = true;
             this.txtTerritoryName.Size = new System.Drawing.Size(303, 29);
-            this.txtTerritoryName.TabIndex = 18;
+            this.txtTerritoryName.TabIndex = 2;
             // 
             // txtLocationId
             // 
@@ -290,7 +290,7 @@
             this.txtLocationId.Name = "txtLocationId";
             this.txtLocationId.ReadOnly = true;
             this.txtLocationId.Size = new System.Drawing.Size(303, 29);
-            this.txtLocationId.TabIndex = 19;
+            this.txtLocationId.TabIndex = 3;
             // 
             // txtLocationName
             // 
@@ -299,7 +299,7 @@
             this.txtLocationName.Name = "txtLocationName";
             this.txtLocationName.ReadOnly = true;
             this.txtLocationName.Size = new System.Drawing.Size(303, 29);
-            this.txtLocationName.TabIndex = 20;
+            this.txtLocationName.TabIndex = 4;
             // 
             // txtUserFullName
             // 
@@ -308,7 +308,7 @@
             this.txtUserFullName.Name = "txtUserFullName";
             this.txtUserFullName.ReadOnly = true;
             this.txtUserFullName.Size = new System.Drawing.Size(303, 29);
-            this.txtUserFullName.TabIndex = 24;
+            this.txtUserFullName.TabIndex = 7;
             this.txtUserFullName.TextChanged += new System.EventHandler(this.txtUserFullName_TextChanged);
             // 
             // txtEmployeeId
@@ -318,7 +318,7 @@
             this.txtEmployeeId.Name = "txtEmployeeId";
             this.txtEmployeeId.ReadOnly = true;
             this.txtEmployeeId.Size = new System.Drawing.Size(303, 29);
-            this.txtEmployeeId.TabIndex = 23;
+            this.txtEmployeeId.TabIndex = 6;
             // 
             // label9
             // 
