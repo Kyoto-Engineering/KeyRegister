@@ -83,7 +83,7 @@
             this.txtPropertyId.Name = "txtPropertyId";
             this.txtPropertyId.ReadOnly = true;
             this.txtPropertyId.Size = new System.Drawing.Size(298, 35);
-            this.txtPropertyId.TabIndex = 45;
+            this.txtPropertyId.TabIndex = 4;
             // 
             // label3
             // 
@@ -122,7 +122,7 @@
             this.txtTerritoryName.Name = "txtTerritoryName";
             this.txtTerritoryName.ReadOnly = true;
             this.txtTerritoryName.Size = new System.Drawing.Size(298, 35);
-            this.txtTerritoryName.TabIndex = 41;
+            this.txtTerritoryName.TabIndex = 1;
             // 
             // txtTerritoryId
             // 
@@ -131,7 +131,7 @@
             this.txtTerritoryId.Name = "txtTerritoryId";
             this.txtTerritoryId.ReadOnly = true;
             this.txtTerritoryId.Size = new System.Drawing.Size(298, 35);
-            this.txtTerritoryId.TabIndex = 40;
+            this.txtTerritoryId.TabIndex = 0;
             // 
             // txtLocationName
             // 
@@ -140,7 +140,7 @@
             this.txtLocationName.Name = "txtLocationName";
             this.txtLocationName.ReadOnly = true;
             this.txtLocationName.Size = new System.Drawing.Size(298, 35);
-            this.txtLocationName.TabIndex = 39;
+            this.txtLocationName.TabIndex = 3;
             // 
             // txtLocationId
             // 
@@ -149,7 +149,7 @@
             this.txtLocationId.Name = "txtLocationId";
             this.txtLocationId.ReadOnly = true;
             this.txtLocationId.Size = new System.Drawing.Size(298, 35);
-            this.txtLocationId.TabIndex = 38;
+            this.txtLocationId.TabIndex = 2;
             // 
             // txtPropertyName
             // 
@@ -158,7 +158,7 @@
             this.txtPropertyName.Name = "txtPropertyName";
             this.txtPropertyName.ReadOnly = true;
             this.txtPropertyName.Size = new System.Drawing.Size(298, 35);
-            this.txtPropertyName.TabIndex = 37;
+            this.txtPropertyName.TabIndex = 5;
             // 
             // label5
             // 
@@ -197,7 +197,7 @@
             this.cmbLockType.Location = new System.Drawing.Point(234, 405);
             this.cmbLockType.Name = "cmbLockType";
             this.cmbLockType.Size = new System.Drawing.Size(298, 34);
-            this.cmbLockType.TabIndex = 33;
+            this.cmbLockType.TabIndex = 7;
             // 
             // label4
             // 
@@ -215,7 +215,7 @@
             this.txtLockNo.Location = new System.Drawing.Point(234, 360);
             this.txtLockNo.Name = "txtLockNo";
             this.txtLockNo.Size = new System.Drawing.Size(298, 35);
-            this.txtLockNo.TabIndex = 31;
+            this.txtLockNo.TabIndex = 6;
             // 
             // label2
             // 
@@ -453,7 +453,7 @@
             this.buttonLockDelete.Location = new System.Drawing.Point(311, 510);
             this.buttonLockDelete.Name = "buttonLockDelete";
             this.buttonLockDelete.Size = new System.Drawing.Size(149, 60);
-            this.buttonLockDelete.TabIndex = 55;
+            this.buttonLockDelete.TabIndex = 8;
             this.buttonLockDelete.Text = "Delete";
             this.buttonLockDelete.UseVisualStyleBackColor = true;
             // 
