@@ -102,7 +102,7 @@
             this.createButton.Location = new System.Drawing.Point(389, 610);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(126, 55);
-            this.createButton.TabIndex = 0;
+            this.createButton.TabIndex = 12;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = false;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
@@ -115,7 +115,7 @@
             this.label1.Location = new System.Drawing.Point(444, -3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(246, 42);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Key Creation";
             // 
             // label3
@@ -136,7 +136,7 @@
             this.cmbKeyType.Location = new System.Drawing.Point(217, 469);
             this.cmbKeyType.Name = "cmbKeyType";
             this.cmbKeyType.Size = new System.Drawing.Size(298, 34);
-            this.cmbKeyType.TabIndex = 5;
+            this.cmbKeyType.TabIndex = 9;
             this.cmbKeyType.SelectedIndexChanged += new System.EventHandler(this.cmbKeyType_SelectedIndexChanged);
             // 
             // txtPropertyId
@@ -146,7 +146,7 @@
             this.txtPropertyId.Name = "txtPropertyId";
             this.txtPropertyId.ReadOnly = true;
             this.txtPropertyId.Size = new System.Drawing.Size(298, 35);
-            this.txtPropertyId.TabIndex = 45;
+            this.txtPropertyId.TabIndex = 5;
             // 
             // label2
             // 
@@ -185,7 +185,7 @@
             this.txtTerritoryName.Name = "txtTerritoryName";
             this.txtTerritoryName.ReadOnly = true;
             this.txtTerritoryName.Size = new System.Drawing.Size(298, 35);
-            this.txtTerritoryName.TabIndex = 41;
+            this.txtTerritoryName.TabIndex = 2;
             // 
             // txtTerritoryId
             // 
@@ -194,7 +194,7 @@
             this.txtTerritoryId.Name = "txtTerritoryId";
             this.txtTerritoryId.ReadOnly = true;
             this.txtTerritoryId.Size = new System.Drawing.Size(298, 35);
-            this.txtTerritoryId.TabIndex = 40;
+            this.txtTerritoryId.TabIndex = 1;
             // 
             // txtLocationName
             // 
@@ -203,7 +203,7 @@
             this.txtLocationName.Name = "txtLocationName";
             this.txtLocationName.ReadOnly = true;
             this.txtLocationName.Size = new System.Drawing.Size(298, 35);
-            this.txtLocationName.TabIndex = 39;
+            this.txtLocationName.TabIndex = 4;
             // 
             // txtLocationId
             // 
@@ -212,7 +212,7 @@
             this.txtLocationId.Name = "txtLocationId";
             this.txtLocationId.ReadOnly = true;
             this.txtLocationId.Size = new System.Drawing.Size(298, 35);
-            this.txtLocationId.TabIndex = 38;
+            this.txtLocationId.TabIndex = 3;
             // 
             // txtPropertyName
             // 
@@ -221,7 +221,7 @@
             this.txtPropertyName.Name = "txtPropertyName";
             this.txtPropertyName.ReadOnly = true;
             this.txtPropertyName.Size = new System.Drawing.Size(298, 35);
-            this.txtPropertyName.TabIndex = 37;
+            this.txtPropertyName.TabIndex = 6;
             // 
             // label5
             // 
@@ -270,7 +270,7 @@
             this.txtLockNo.Name = "txtLockNo";
             this.txtLockNo.ReadOnly = true;
             this.txtLockNo.Size = new System.Drawing.Size(298, 35);
-            this.txtLockNo.TabIndex = 31;
+            this.txtLockNo.TabIndex = 8;
             // 
             // label10
             // 
@@ -558,7 +558,7 @@
             this.cmbKeyIs.Location = new System.Drawing.Point(217, 511);
             this.cmbKeyIs.Name = "cmbKeyIs";
             this.cmbKeyIs.Size = new System.Drawing.Size(298, 34);
-            this.cmbKeyIs.TabIndex = 57;
+            this.cmbKeyIs.TabIndex = 10;
             this.cmbKeyIs.TextChanged += new System.EventHandler(this.cmbKeyIs_TextChanged);
             // 
             // label17
@@ -578,7 +578,7 @@
             this.txtLockId.Name = "txtLockId";
             this.txtLockId.ReadOnly = true;
             this.txtLockId.Size = new System.Drawing.Size(298, 35);
-            this.txtLockId.TabIndex = 59;
+            this.txtLockId.TabIndex = 7;
             // 
             // txtKeyNo
             // 
@@ -586,7 +586,7 @@
             this.txtKeyNo.Location = new System.Drawing.Point(217, 553);
             this.txtKeyNo.Name = "txtKeyNo";
             this.txtKeyNo.Size = new System.Drawing.Size(298, 35);
-            this.txtKeyNo.TabIndex = 60;
+            this.txtKeyNo.TabIndex = 11;
             // 
             // label18
             // 
