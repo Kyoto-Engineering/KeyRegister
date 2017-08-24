@@ -71,7 +71,7 @@
             this.saveButton.Location = new System.Drawing.Point(447, 372);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(179, 68);
-            this.saveButton.TabIndex = 0;
+            this.saveButton.TabIndex = 6;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -103,7 +103,7 @@
             this.txtLocationId.Name = "txtLocationId";
             this.txtLocationId.ReadOnly = true;
             this.txtLocationId.Size = new System.Drawing.Size(339, 31);
-            this.txtLocationId.TabIndex = 3;
+            this.txtLocationId.TabIndex = 1;
             // 
             // txtLocationName
             // 
@@ -112,7 +112,7 @@
             this.txtLocationName.Name = "txtLocationName";
             this.txtLocationName.ReadOnly = true;
             this.txtLocationName.Size = new System.Drawing.Size(339, 31);
-            this.txtLocationName.TabIndex = 4;
+            this.txtLocationName.TabIndex = 2;
             // 
             // dataGridView2
             // 
@@ -160,7 +160,7 @@
             this.label3.Location = new System.Drawing.Point(371, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(327, 39);
-            this.label3.TabIndex = 7;
+            this.label3.TabIndex = 0;
             this.label3.Text = "Location Allocation";
             // 
             // dataGridView1
@@ -316,7 +316,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.ReadOnly = true;
             this.txtUserName.Size = new System.Drawing.Size(339, 31);
-            this.txtUserName.TabIndex = 17;
+            this.txtUserName.TabIndex = 4;
             // 
             // txtUserId
             // 
@@ -325,7 +325,7 @@
             this.txtUserId.Name = "txtUserId";
             this.txtUserId.ReadOnly = true;
             this.txtUserId.Size = new System.Drawing.Size(339, 31);
-            this.txtUserId.TabIndex = 16;
+            this.txtUserId.TabIndex = 3;
             // 
             // label9
             // 
@@ -344,7 +344,7 @@
             this.txtEmpId.Name = "txtEmpId";
             this.txtEmpId.ReadOnly = true;
             this.txtEmpId.Size = new System.Drawing.Size(339, 29);
-            this.txtEmpId.TabIndex = 18;
+            this.txtEmpId.TabIndex = 5;
             // 
             // LocationAllocation
             // 
