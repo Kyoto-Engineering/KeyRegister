@@ -90,5 +90,11 @@ namespace KeyRegister.LoginUI
         {
             GetUsername();
         }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            createButton_Click(this, new EventArgs());
+        }
     }
 }
