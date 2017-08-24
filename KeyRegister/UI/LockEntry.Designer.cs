@@ -84,7 +84,7 @@
             this.createButton.Location = new System.Drawing.Point(361, 600);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(167, 64);
-            this.createButton.TabIndex = 0;
+            this.createButton.TabIndex = 9;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = false;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
@@ -97,7 +97,7 @@
             this.label1.Location = new System.Drawing.Point(449, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(244, 39);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Lock Creation";
             // 
             // label2
@@ -116,7 +116,7 @@
             this.txtLockNo.Location = new System.Drawing.Point(242, 434);
             this.txtLockNo.Name = "txtLockNo";
             this.txtLockNo.Size = new System.Drawing.Size(298, 35);
-            this.txtLockNo.TabIndex = 3;
+            this.txtLockNo.TabIndex = 7;
             // 
             // cmbLockType
             // 
@@ -125,7 +125,7 @@
             this.cmbLockType.Location = new System.Drawing.Point(242, 479);
             this.cmbLockType.Name = "cmbLockType";
             this.cmbLockType.Size = new System.Drawing.Size(298, 34);
-            this.cmbLockType.TabIndex = 7;
+            this.cmbLockType.TabIndex = 8;
             this.cmbLockType.SelectedIndexChanged += new System.EventHandler(this.cmbLockType_SelectedIndexChanged);
             // 
             // label4
@@ -165,7 +165,7 @@
             this.txtTerritoryName.Name = "txtTerritoryName";
             this.txtTerritoryName.ReadOnly = true;
             this.txtTerritoryName.Size = new System.Drawing.Size(298, 35);
-            this.txtTerritoryName.TabIndex = 25;
+            this.txtTerritoryName.TabIndex = 2;
             // 
             // txtTerritoryId
             // 
@@ -174,7 +174,7 @@
             this.txtTerritoryId.Name = "txtTerritoryId";
             this.txtTerritoryId.ReadOnly = true;
             this.txtTerritoryId.Size = new System.Drawing.Size(298, 35);
-            this.txtTerritoryId.TabIndex = 24;
+            this.txtTerritoryId.TabIndex = 1;
             // 
             // txtLocationName
             // 
@@ -183,7 +183,7 @@
             this.txtLocationName.Name = "txtLocationName";
             this.txtLocationName.ReadOnly = true;
             this.txtLocationName.Size = new System.Drawing.Size(298, 35);
-            this.txtLocationName.TabIndex = 23;
+            this.txtLocationName.TabIndex = 4;
             // 
             // txtLocationId
             // 
@@ -192,7 +192,7 @@
             this.txtLocationId.Name = "txtLocationId";
             this.txtLocationId.ReadOnly = true;
             this.txtLocationId.Size = new System.Drawing.Size(298, 35);
-            this.txtLocationId.TabIndex = 22;
+            this.txtLocationId.TabIndex = 3;
             // 
             // txtPropertyName
             // 
@@ -201,7 +201,7 @@
             this.txtPropertyName.Name = "txtPropertyName";
             this.txtPropertyName.ReadOnly = true;
             this.txtPropertyName.Size = new System.Drawing.Size(298, 35);
-            this.txtPropertyName.TabIndex = 21;
+            this.txtPropertyName.TabIndex = 6;
             // 
             // label5
             // 
@@ -250,7 +250,7 @@
             this.txtPropertyId.Name = "txtPropertyId";
             this.txtPropertyId.ReadOnly = true;
             this.txtPropertyId.Size = new System.Drawing.Size(298, 35);
-            this.txtPropertyId.TabIndex = 29;
+            this.txtPropertyId.TabIndex = 5;
             // 
             // label10
             // 

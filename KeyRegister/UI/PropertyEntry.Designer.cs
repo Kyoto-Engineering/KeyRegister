@@ -72,7 +72,7 @@
             this.saveButton.Location = new System.Drawing.Point(345, 395);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(165, 62);
-            this.saveButton.TabIndex = 0;
+            this.saveButton.TabIndex = 6;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -85,7 +85,7 @@
             this.label1.Location = new System.Drawing.Point(483, -1);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(264, 36);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Property Creation";
             // 
             // label2
@@ -133,7 +133,7 @@
             this.txtLocationId.Name = "txtLocationId";
             this.txtLocationId.ReadOnly = true;
             this.txtLocationId.Size = new System.Drawing.Size(298, 35);
-            this.txtLocationId.TabIndex = 12;
+            this.txtLocationId.TabIndex = 3;
             // 
             // txtLocationName
             // 
@@ -142,7 +142,7 @@
             this.txtLocationName.Name = "txtLocationName";
             this.txtLocationName.ReadOnly = true;
             this.txtLocationName.Size = new System.Drawing.Size(298, 35);
-            this.txtLocationName.TabIndex = 13;
+            this.txtLocationName.TabIndex = 4;
             // 
             // txtTerritoryId
             // 
@@ -151,7 +151,7 @@
             this.txtTerritoryId.Name = "txtTerritoryId";
             this.txtTerritoryId.ReadOnly = true;
             this.txtTerritoryId.Size = new System.Drawing.Size(298, 35);
-            this.txtTerritoryId.TabIndex = 14;
+            this.txtTerritoryId.TabIndex = 1;
             // 
             // txtTerritoryName
             // 
@@ -160,7 +160,7 @@
             this.txtTerritoryName.Name = "txtTerritoryName";
             this.txtTerritoryName.ReadOnly = true;
             this.txtTerritoryName.Size = new System.Drawing.Size(298, 35);
-            this.txtTerritoryName.TabIndex = 15;
+            this.txtTerritoryName.TabIndex = 2;
             // 
             // label6
             // 
