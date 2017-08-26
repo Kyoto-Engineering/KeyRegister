@@ -58,6 +58,7 @@
             this.txtTerritoryName.Name = "txtTerritoryName";
             this.txtTerritoryName.Size = new System.Drawing.Size(357, 31);
             this.txtTerritoryName.TabIndex = 1;
+            this.txtTerritoryName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTerritoryName_KeyDown);
             // 
             // label1
             // 

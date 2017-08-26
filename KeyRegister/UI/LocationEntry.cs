@@ -185,5 +185,11 @@ namespace KeyRegister.UI
         {
            
         }
+
+        private void txtLocation_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            createButton_Click(this, new EventArgs());
+        }
     }
 }

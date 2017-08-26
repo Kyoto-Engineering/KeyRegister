@@ -78,6 +78,7 @@
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(309, 41);
             this.txtLocation.TabIndex = 3;
+            this.txtLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLocation_KeyDown);
             // 
             // createButton
             // 

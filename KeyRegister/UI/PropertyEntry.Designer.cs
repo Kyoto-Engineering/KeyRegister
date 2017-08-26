@@ -125,6 +125,7 @@
             this.txtPropertyName.Name = "txtPropertyName";
             this.txtPropertyName.Size = new System.Drawing.Size(298, 35);
             this.txtPropertyName.TabIndex = 5;
+            this.txtPropertyName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPropertyName_KeyDown);
             // 
             // txtLocationId
             // 

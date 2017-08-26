@@ -383,6 +383,12 @@ namespace KeyRegister.UI
             }
         }
 
+        private void txtPropertyName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            saveButton_Click(this, new EventArgs());
+        }
+
        
     }
 }

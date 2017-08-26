@@ -646,6 +646,12 @@ namespace KeyRegister.UI
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtKeyNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            createButton_Click(this, new EventArgs());
         }       
     }
 }

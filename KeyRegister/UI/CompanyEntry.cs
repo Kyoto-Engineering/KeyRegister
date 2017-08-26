@@ -79,5 +79,11 @@ namespace KeyRegister.UI
         {
             userId = frmLogin.uId.ToString();
         }
+
+        private void txtCompanyName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            createButton_Click(this, new EventArgs());
+        }
     }
 }

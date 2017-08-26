@@ -587,6 +587,7 @@
             this.txtKeyNo.Name = "txtKeyNo";
             this.txtKeyNo.Size = new System.Drawing.Size(298, 35);
             this.txtKeyNo.TabIndex = 11;
+            this.txtKeyNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKeyNo_KeyDown);
             // 
             // label18
             // 
