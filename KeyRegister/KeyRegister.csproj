@@ -190,6 +190,11 @@
     <Compile Include="Manager\TerritoryManager.cs" />
     <Compile Include="Manager\TerritoryManagerManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
+    <Compile Include="Reports\ListOfCOO.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListOfCOO.rpt</DependentUpon>
+    </Compile>
     <Compile Include="Reports\ListOfKeys.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -213,6 +218,12 @@
     </Compile>
     <Compile Include="Reports\ListOfKeyHolder.Designer.cs">
       <DependentUpon>ListOfKeyHolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ListOfTerritories.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListOfTerritories.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\ListOfUsers.cs">
       <AutoGen>True</AutoGen>
@@ -345,6 +356,10 @@
     <EmbeddedResource Include="LoginUI\UserUpdateForm.resx">
       <DependentUpon>UserUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ListOfCOO.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ListOfCOO.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\ListOfKeys.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ListOfKeys.cs</LastGenOutput>
@@ -359,6 +374,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ListOfKeyHolder.resx">
       <DependentUpon>ListOfKeyHolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ListOfTerritories.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ListOfTerritories.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ListOfUsers.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
