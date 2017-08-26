@@ -190,6 +190,12 @@
     <Compile Include="Manager\TerritoryManager.cs" />
     <Compile Include="Manager\TerritoryManagerManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
+    <Compile Include="Reports\ListOfKeys.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListOfKeys.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\KeyHolderListReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -200,12 +206,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ListOfLockers.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\ListOfEmployees.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ListOfEmployees.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\ListOfKeyHolder.cs">
@@ -345,6 +345,10 @@
     <EmbeddedResource Include="LoginUI\UserUpdateForm.resx">
       <DependentUpon>UserUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ListOfKeys.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ListOfKeys.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\KeyHolderListReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>KeyHolderListReport.cs</LastGenOutput>
@@ -352,10 +356,6 @@
     <EmbeddedResource Include="Reports\ListOfLockers.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ListOfLockers.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\ListOfEmployees.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ListOfEmployees.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ListOfKeyHolder.resx">
       <DependentUpon>ListOfKeyHolder.cs</DependentUpon>
