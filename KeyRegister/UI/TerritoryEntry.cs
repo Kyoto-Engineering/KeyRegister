@@ -113,5 +113,11 @@ namespace KeyRegister.UI
             MainUI frm=new MainUI();
             frm.Show();
         }
+
+        private void txtTerritoryName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            createButton_Click(this, new EventArgs());
+        }
     }
 }
