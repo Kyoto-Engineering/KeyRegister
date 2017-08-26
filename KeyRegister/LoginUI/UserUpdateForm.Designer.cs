@@ -317,6 +317,7 @@
             this.txtBirthCertificatNo.Name = "txtBirthCertificatNo";
             this.txtBirthCertificatNo.Size = new System.Drawing.Size(242, 23);
             this.txtBirthCertificatNo.TabIndex = 10;
+            this.txtBirthCertificatNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBirthCertificatNo_KeyDown);
             // 
             // label15
             // 
@@ -375,6 +376,7 @@
             this.txtPassportNo.Name = "txtPassportNo";
             this.txtPassportNo.Size = new System.Drawing.Size(242, 23);
             this.txtPassportNo.TabIndex = 9;
+            this.txtPassportNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassportNo_KeyDown);
             // 
             // txtMotherName
             // 
@@ -383,6 +385,7 @@
             this.txtMotherName.Name = "txtMotherName";
             this.txtMotherName.Size = new System.Drawing.Size(244, 24);
             this.txtMotherName.TabIndex = 3;
+            this.txtMotherName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMotherName_KeyDown);
             // 
             // label5
             // 
@@ -494,6 +497,7 @@
             this.txtNickName.Name = "txtNickName";
             this.txtNickName.Size = new System.Drawing.Size(244, 23);
             this.txtNickName.TabIndex = 1;
+            this.txtNickName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNickName_KeyDown);
             // 
             // txtFatherName
             // 
@@ -502,6 +506,7 @@
             this.txtFatherName.Name = "txtFatherName";
             this.txtFatherName.Size = new System.Drawing.Size(245, 23);
             this.txtFatherName.TabIndex = 2;
+            this.txtFatherName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFatherName_KeyDown);
             // 
             // groupBox1
             // 
@@ -621,6 +626,7 @@
             this.txtNationalId.Name = "txtNationalId";
             this.txtNationalId.Size = new System.Drawing.Size(242, 23);
             this.txtNationalId.TabIndex = 8;
+            this.txtNationalId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNationalId_KeyDown);
             // 
             // txtFullName
             // 
@@ -629,6 +635,7 @@
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(244, 23);
             this.txtFullName.TabIndex = 0;
+            this.txtFullName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFullName_KeyDown);
             // 
             // cmbDesignation
             // 
@@ -779,6 +786,7 @@
             this.txtPerLandMark.Name = "txtPerLandMark";
             this.txtPerLandMark.Size = new System.Drawing.Size(138, 26);
             this.txtPerLandMark.TabIndex = 12;
+            this.txtPerLandMark.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPerLandMark_KeyDown);
             // 
             // label45
             // 
@@ -807,6 +815,7 @@
             this.txtPerArea.Name = "txtPerArea";
             this.txtPerArea.Size = new System.Drawing.Size(138, 26);
             this.txtPerArea.TabIndex = 11;
+            this.txtPerArea.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPerArea_KeyDown);
             // 
             // txtPerBuilding
             // 
@@ -815,6 +824,7 @@
             this.txtPerBuilding.Name = "txtPerBuilding";
             this.txtPerBuilding.Size = new System.Drawing.Size(152, 26);
             this.txtPerBuilding.TabIndex = 2;
+            this.txtPerBuilding.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPerBuilding_KeyDown);
             // 
             // label46
             // 
@@ -833,6 +843,7 @@
             this.txtPerHouseNo.Name = "txtPerHouseNo";
             this.txtPerHouseNo.Size = new System.Drawing.Size(152, 26);
             this.txtPerHouseNo.TabIndex = 1;
+            this.txtPerHouseNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPerHouseNo_KeyDown);
             // 
             // label47
             // 
@@ -891,6 +902,7 @@
             this.txtPerBlock.Name = "txtPerBlock";
             this.txtPerBlock.Size = new System.Drawing.Size(150, 26);
             this.txtPerBlock.TabIndex = 5;
+            this.txtPerBlock.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPerBlock_KeyDown);
             // 
             // txtPerRoadName
             // 
@@ -899,6 +911,7 @@
             this.txtPerRoadName.Name = "txtPerRoadName";
             this.txtPerRoadName.Size = new System.Drawing.Size(150, 26);
             this.txtPerRoadName.TabIndex = 4;
+            this.txtPerRoadName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPerRoadName_KeyDown);
             // 
             // txtPerRoadNo
             // 
@@ -907,6 +920,7 @@
             this.txtPerRoadNo.Name = "txtPerRoadNo";
             this.txtPerRoadNo.Size = new System.Drawing.Size(151, 26);
             this.txtPerRoadNo.TabIndex = 3;
+            this.txtPerRoadNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPerRoadNo_KeyDown);
             // 
             // txtPerFlatNo
             // 
@@ -915,6 +929,7 @@
             this.txtPerFlatNo.Name = "txtPerFlatNo";
             this.txtPerFlatNo.Size = new System.Drawing.Size(151, 26);
             this.txtPerFlatNo.TabIndex = 0;
+            this.txtPerFlatNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPerFlatNo_KeyDown);
             // 
             // SameAsPACheckBox
             // 
@@ -972,6 +987,7 @@
             this.txtPreLandMark.Name = "txtPreLandMark";
             this.txtPreLandMark.Size = new System.Drawing.Size(164, 26);
             this.txtPreLandMark.TabIndex = 12;
+            this.txtPreLandMark.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPreLandMark_KeyDown);
             // 
             // label64
             // 
@@ -1000,6 +1016,7 @@
             this.txtPreArea.Name = "txtPreArea";
             this.txtPreArea.Size = new System.Drawing.Size(165, 26);
             this.txtPreArea.TabIndex = 11;
+            this.txtPreArea.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPreArea_KeyDown);
             // 
             // txtPreBuildingName
             // 
@@ -1008,6 +1025,7 @@
             this.txtPreBuildingName.Name = "txtPreBuildingName";
             this.txtPreBuildingName.Size = new System.Drawing.Size(162, 26);
             this.txtPreBuildingName.TabIndex = 2;
+            this.txtPreBuildingName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPreBuildingName_KeyDown);
             // 
             // label62
             // 
@@ -1026,6 +1044,7 @@
             this.txtPreHouseNo.Name = "txtPreHouseNo";
             this.txtPreHouseNo.Size = new System.Drawing.Size(162, 26);
             this.txtPreHouseNo.TabIndex = 1;
+            this.txtPreHouseNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPreHouseNo_KeyDown);
             // 
             // label44
             // 
@@ -1084,6 +1103,7 @@
             this.txtPreBlock.Name = "txtPreBlock";
             this.txtPreBlock.Size = new System.Drawing.Size(162, 26);
             this.txtPreBlock.TabIndex = 5;
+            this.txtPreBlock.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPreBlock_KeyDown);
             // 
             // txtPreRoadName
             // 
@@ -1092,6 +1112,7 @@
             this.txtPreRoadName.Name = "txtPreRoadName";
             this.txtPreRoadName.Size = new System.Drawing.Size(163, 26);
             this.txtPreRoadName.TabIndex = 4;
+            this.txtPreRoadName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPreRoadName_KeyDown);
             // 
             // txtPreRoadNo
             // 
@@ -1100,6 +1121,7 @@
             this.txtPreRoadNo.Name = "txtPreRoadNo";
             this.txtPreRoadNo.Size = new System.Drawing.Size(163, 26);
             this.txtPreRoadNo.TabIndex = 3;
+            this.txtPreRoadNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPreRoadNo_KeyDown);
             // 
             // txtPreFlatNo
             // 
@@ -1108,6 +1130,7 @@
             this.txtPreFlatNo.Name = "txtPreFlatNo";
             this.txtPreFlatNo.Size = new System.Drawing.Size(162, 26);
             this.txtPreFlatNo.TabIndex = 0;
+            this.txtPreFlatNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPreFlatNo_KeyDown);
             // 
             // PAPostOfficeCombo
             // 

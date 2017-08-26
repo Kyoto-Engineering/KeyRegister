@@ -1823,5 +1823,291 @@ namespace KeyRegister.LoginUI
                // this.BeginInvoke(new ChangeFocusDelegate(changeFocus), cmbPrimaryDomain);
             }
         }
+
+        private void txtNewProbableId_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txtEmployeeId_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtFullName.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtFullName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtNickName.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtNickName_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+        }
+        private void txtFatherName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtMotherName.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtMotherName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPrimaryUserPart.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrimaryUserPart_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtSecondaryEmailUser.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtSecondaryEmailUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtNationalId.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtNationalId_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPassportNo.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPassportNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtBirthCertificatNo.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtBirthCertificatNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPassword.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPreFlatNo.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtStreetName_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void txtState_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void txtPostalCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void txtPreFlatNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPreHouseNo.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPreHouseNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPreBuildingName.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPreBuildingName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPreRoadNo.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPreRoadNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPreRoadName.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPreRoadName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPreBlock.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPreBlock_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPreArea.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrePostCode_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txtPreArea_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPreLandMark.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPreLandMark_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPerFlatNo.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPerFlatNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPerHouseNo.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPerHouseNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPerBuilding.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPerBuilding_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPerRoadNo.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPerRoadNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPerRoadName.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPerRoadName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPerBlock.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPerBlock_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPerArea.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPerArea_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPerLandMark.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPerLandMark_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtContactNo.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtContactNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            addButton_Click(this, new EventArgs());
+        }
+
+        private void txtFormPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                createUserButton_Click(this, new EventArgs());
+        }
+
+        private void txtNickName_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtFatherName.Focus();
+                e.Handled = true;
+            }
+        }
+
+        
     }
 }
