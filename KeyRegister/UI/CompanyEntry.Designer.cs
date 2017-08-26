@@ -64,6 +64,7 @@
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(340, 35);
             this.txtCompanyName.TabIndex = 0;
+            this.txtCompanyName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCompanyName_KeyDown);
             // 
             // createButton
             // 
