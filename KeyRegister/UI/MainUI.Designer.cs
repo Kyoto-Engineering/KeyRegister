@@ -42,12 +42,14 @@
             this.buttonCompanyCreation = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonLogOut = new System.Windows.Forms.Button();
+            this.ReportsButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.groupBox1.Controls.Add(this.ReportsButton);
             this.groupBox1.Controls.Add(this.buttonTerritoryManager);
             this.groupBox1.Controls.Add(this.userManagementButton);
             this.groupBox1.Controls.Add(this.buttonPropertyCreation);
@@ -60,7 +62,7 @@
             this.groupBox1.Controls.Add(this.buttonCompanyCreation);
             this.groupBox1.Location = new System.Drawing.Point(21, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(155, 654);
+            this.groupBox1.Size = new System.Drawing.Size(155, 703);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -82,7 +84,7 @@
             this.userManagementButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.userManagementButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userManagementButton.ForeColor = System.Drawing.Color.Blue;
-            this.userManagementButton.Location = new System.Drawing.Point(6, 561);
+            this.userManagementButton.Location = new System.Drawing.Point(5, 620);
             this.userManagementButton.Name = "userManagementButton";
             this.userManagementButton.Size = new System.Drawing.Size(139, 59);
             this.userManagementButton.TabIndex = 10;
@@ -106,9 +108,9 @@
             // 
             this.buttonKeyAllocation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonKeyAllocation.ForeColor = System.Drawing.Color.Blue;
-            this.buttonKeyAllocation.Location = new System.Drawing.Point(14, 476);
+            this.buttonKeyAllocation.Location = new System.Drawing.Point(10, 476);
             this.buttonKeyAllocation.Name = "buttonKeyAllocation";
-            this.buttonKeyAllocation.Size = new System.Drawing.Size(130, 55);
+            this.buttonKeyAllocation.Size = new System.Drawing.Size(134, 55);
             this.buttonKeyAllocation.TabIndex = 8;
             this.buttonKeyAllocation.Text = "Key Allocation";
             this.buttonKeyAllocation.UseVisualStyleBackColor = true;
@@ -211,6 +213,18 @@
             this.buttonLogOut.UseVisualStyleBackColor = false;
             this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
+            // ReportsButton
+            // 
+            this.ReportsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportsButton.ForeColor = System.Drawing.Color.Blue;
+            this.ReportsButton.Location = new System.Drawing.Point(15, 550);
+            this.ReportsButton.Name = "ReportsButton";
+            this.ReportsButton.Size = new System.Drawing.Size(125, 51);
+            this.ReportsButton.TabIndex = 12;
+            this.ReportsButton.Text = "Reports";
+            this.ReportsButton.UseVisualStyleBackColor = true;
+            this.ReportsButton.Click += new System.EventHandler(this.ReportsButton_Click);
+            // 
             // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,5 +260,6 @@
         private System.Windows.Forms.Button buttonLogOut;
         private System.Windows.Forms.Button userManagementButton;
         private System.Windows.Forms.Button buttonTerritoryManager;
+        private System.Windows.Forms.Button ReportsButton;
     }
 }
