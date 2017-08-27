@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KeyRegister.LoginUI;
+using KeyRegister.Reports;
 
 namespace KeyRegister.UI
 {
@@ -125,6 +126,15 @@ namespace KeyRegister.UI
                 this.Hide();
             frmLogin frm=new frmLogin();
                   frm.Show();
+        }
+
+        private void ReportsButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReportsUI frm=new ReportsUI();
+            this.Visible = false;
+            frm.ShowDialog();
+            this.Visible = true;
         }
     }
 }
