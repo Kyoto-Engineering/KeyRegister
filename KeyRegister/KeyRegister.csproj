@@ -194,6 +194,11 @@
     <Compile Include="Manager\TerritoryManager.cs" />
     <Compile Include="Manager\TerritoryManagerManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
+    <Compile Include="Reports\KeyHoldingLog.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KeyHoldingLog.rpt</DependentUpon>
+    </Compile>
     <Compile Include="Reports\ListOfCOO.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -372,6 +377,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginUI\UserUpdateForm.resx">
       <DependentUpon>UserUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\KeyHoldingLog.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>KeyHoldingLog.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ListOfCOO.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
