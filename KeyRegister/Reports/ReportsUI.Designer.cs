@@ -35,11 +35,13 @@
             this.KeyListButton = new System.Windows.Forms.Button();
             this.ListCOOButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.KeyHolderListButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.KeyHolderListButton);
             this.groupBox1.Controls.Add(this.TerritoriesListButton);
             this.groupBox1.Controls.Add(this.LockerListButton);
             this.groupBox1.Controls.Add(this.UserListButton);
@@ -111,6 +113,16 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Reports UI";
             // 
+            // KeyHolderListButton
+            // 
+            this.KeyHolderListButton.Location = new System.Drawing.Point(662, 38);
+            this.KeyHolderListButton.Name = "KeyHolderListButton";
+            this.KeyHolderListButton.Size = new System.Drawing.Size(100, 52);
+            this.KeyHolderListButton.TabIndex = 5;
+            this.KeyHolderListButton.Text = "Key Holder List";
+            this.KeyHolderListButton.UseVisualStyleBackColor = true;
+            this.KeyHolderListButton.Click += new System.EventHandler(this.KeyHolderListButton_Click);
+            // 
             // ReportsUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,5 +148,6 @@
         private System.Windows.Forms.Button UserListButton;
         private System.Windows.Forms.Button KeyListButton;
         private System.Windows.Forms.Button ListCOOButton;
+        private System.Windows.Forms.Button KeyHolderListButton;
     }
 }
